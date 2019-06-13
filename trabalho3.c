@@ -20,9 +20,12 @@
 }
 
 int unidadesFuncionais(){
-	
+
 }
 
+int regsStatus(){
+	
+}
 int emissao(){}
 
 int busca()
