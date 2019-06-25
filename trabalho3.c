@@ -2,10 +2,28 @@
 #include <stdlib.h>
 
 #define n 32
-struct barreira{
+struct barreira_busca{
 	unsigned int *reg = malloc(sizeof(char) * 8);
+}b_busca;
+
+struct  barreira_execucao{
+	unsigned int *opcode = malloc(sizeof(char) * 6);
+	unsigned int *rs = malloc(sizeof(char) * 5);
+	unsigned int *rt = malloc(sizeof(char) * 5);
+	unsigned int *immediate = malloc(sizeof(char) * 16);	
 };
 
+struct barreira_memoria{
+	
+};
+
+struct barreira_alinhamento{
+	
+};
+
+//struct barreira_escrita{
+	
+//};
 
 //fazer uma struct barreira para cada estágio
 
@@ -49,12 +67,15 @@ int reordenacao(){}
 int efetivacao(){}
 */
 
-void busca(unsigned char memoria){
+void busca(unsigned char memoria, struct b_busca teste){
+	//struct barreira_busca teste;
+	//teste reg;
+	
 	unsigned int *IR = malloc(sizeof(char) * 8);
 	for (int PC = 0; PC < n; PC += 8){
 		IR = memoria[PC];
 	}
-	barreira.reg = IR;
+	teste.reg = IR;
 }
 
 int main()
