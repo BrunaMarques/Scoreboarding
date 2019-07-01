@@ -1,100 +1,37 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define n 32
-struct barreira_busca{
-	unsigned int *reg = malloc(sizeof(char) * 8);
-}b_busca;
+int n = 16;
 
-struct  barreira_execucao{
-	unsigned int *opcode = malloc(sizeof(char) * 6);
-	unsigned int *rs = malloc(sizeof(char) * 5);
-	unsigned int *rt = malloc(sizeof(char) * 5);
-	unsigned int *immediate = malloc(sizeof(char) * 16);	
-};
 
-struct barreira_memoria{
-	
-};
+char* inicializaMemoria(){
+	//procurar tamanho da memoria e por em n // 
+	char *memoria = malloc(sizeof(char) * n);
+	return memoria;
+}
 
-struct barreira_alinhamento{
-	
-};
-
-//struct barreira_escrita{
-	
-//};
-
-//fazer uma struct barreira para cada estágio
-
-/*int tradutor()
-{
-	unsigned int *aux = malloc(sizeof(char) * 8);
+void escritaMemoria(int tamanho, char *memoria){
 	FILE *instrucoes = fopen("entrada.txt", "r");
-	//n vai ser a entrada c o tamanho
-	unsigned char *memoria = malloc(sizeof(char) * n);
-	for (int i = 0; i < n; i += 8)
-	{
-		fscanf(instrucoes, "%x", aux);
-		memoria[i] = aux;
-		printf("%X\n", *aux);
+	unsigned int *instrucao = malloc(sizeof(char) * 8);
+	for (int contPalavra=0; contPalavra<tamanho; contPalavra+=4){
+		fscanf(instrucoes, "%X", instrucao);
+		for (int contByte=0; contByte<4; contByte++){
+			memoria[contPalavra-contByte+3] = *instrucao&0x0FF;
+			*instrucao = (*instrucao>>8);
+		}
 	}
-
-	return 0;
-}
-
-int unidadesFuncionais(){
-
-}
-
-int regsStatus(){
-	
-}
-int emissao(){}
-
-int busca()
-{
-}
-
-int execução()
-{
-} 
-
-int escrita(){}
-
-int reordenacao(){}
-
-int efetivacao(){}
-*/
-
-void busca(unsigned char memoria, struct b_busca teste){
-	//struct barreira_busca teste;
-	//teste reg;
-	
-	unsigned int *IR = malloc(sizeof(char) * 8);
-	for (int PC = 0; PC < n; PC += 8){
-		IR = memoria[PC];
-	}
-	teste.reg = IR;
 }
 
 int main()
 {
-	unsigned int *aux = malloc(sizeof(char) * 8);
-	FILE *instrucoes = fopen("entrada.txt", "r");
-	//n vai ser a entrada c o tamanho
-	unsigned char *memoria = malloc(sizeof(char) * n);
-	for (int i = 0; i < n; i += 8){
-		fscanf(instrucoes, "%x", aux);
-		memoria[i] = aux;
-		printf("AUX: %X\n", *aux);
+	char *memoria = inicializaMemoria();
+	escritaMemoria(n, memoria);
+
+	for (int i = 0; i<n; i++){
+		printf("Memoria: %X\n", memoria[i]);
 	}
 
 	//busca(memoria);
-
-	// for (int i = 0; i < n; i += 8){
-	// 	printf("%X\n", memoria[i]);
-	// }
 
 	return 0;
 }
