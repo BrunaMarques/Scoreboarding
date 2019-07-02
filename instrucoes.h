@@ -7,6 +7,15 @@ struct R{
     unsigned int func;
 };
 
+struct R2{
+    unsigned int opcode;
+    unsigned int rs;
+    unsigned int rt;
+    unsigned int rd;
+    unsigned int shamt;
+    unsigned int func;
+};
+
 struct I{
     unsigned int opcode;
     unsigned int rs;
