@@ -37,6 +37,15 @@ void Xor(int op1, int op2){
 	resultado = op1/op2;
 }
 
+void LUI(int op1){
+	resultado = op1 << 16;
+}
+
+void MADD(op1, op2){
+	multiplicacao(op1,op2);
+	
+}
+
 int ULA(int op1, int op2, int identificador){
 switch (identificador){
 	case ADD:

@@ -38,3 +38,5 @@ typedef struct
 } Inst;
 
 Inst in;
+
+int bancoRegistradores[34];
