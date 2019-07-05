@@ -1,0 +1,35 @@
+#define ADD 1
+#define ADDI 2
+#define AND 3
+#define ANDI 4
+#define B 5
+#define BEQ 6
+#define BEQL 7
+#define BGEZ 8
+#define BGTZ 9
+#define BLEZ 10
+#define BLTZ 11
+#define BNE 12
+#define DIV 13
+#define J 14
+#define JR 150
+#define LUI 16
+#define MADD 17
+#define MFHI 18
+#define MFLO 19
+#define MOVN 20
+#define MOVZ 21
+#define MSUB 22
+#define MTHI 23
+#define MTLO 24
+#define MUL 25
+#define MULT 26
+#define NOP 27
+#define NOR 28
+#define OR 29
+#define ORI 30
+#define SUB 31
+#define XOR 32
+#define XORI 33
+
+int descobrirOperacao(){}
