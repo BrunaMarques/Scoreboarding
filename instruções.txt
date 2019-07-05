@@ -1,39 +1,173 @@
-<<<SPECIAL>>> op>000000
-ADD:	func>100000
-AND:	func>100100
-DIV:	func>011010
-MFHI:	func>010000
-MFLO:	func>010010
-MOVN:	func>001011
-MOVZ: 	func>001010
-MTHI: 	func>010001
-MTLO: 	func>010011
-NOP: 	func>000000
-NOR:	func>100111
-OR:	func>100101
-SUB:	func>100010
-XOR: 	func>100110
-JR: 	func>001000
-<<<SPECIAL2>>> op>011100
-MADD:	func>000000
-MSUB: 	func>000100
-MUL: 	func>000010
-MULT: 	func>011000
-<<<IMEDIATE>>>
-ADDI:	op>001000
-ANDI:	op>001100
-B:	op>000100
-BEQ:	op>000100
-BEQL:	op>010100
-BGEZ:	op>000001
-BGTZ:	op>000111
-BLEZ:	op>000110
-BLTZ:	op>000001
-BNE:	op>000101
-LUI:	op>001111
-ORI: 	op>001101
-XORI:	op>001110
-<<<JUMP>>>
-J:	op>000010
+## Instruções com Special (opcode = 000000)
+
+- ADD
+    - Format: ADD RD, RS, RT
+    - Trad: 000000 RS RT RD 00000 100000
+    - Descript: RD = RS + RT
+
+- AND
+    - Format: AND RD, RS, RT
+    - Trad 000000 RS RT RD 00000 100100
+    - Descript: RD = RS & RT
+
+- DIV 
+    - Format: DIV RS, RT
+    - Trad: 000000 RS RT 0000000000 011010
+    - Descript: HI , LO = RS / RT
+
+- JR
+    - Format: JR RS
+    - Trad 000000 RS 0000000000 hint 001001
+    - Descript: PC = RS
+
+- MFHI
+    - Format: MFHI RD
+    - Trad: 000000 0000000000 RD 00000 010000
+    - Descript: RD = HI
+
+- MFLO
+    - Format: MFLO RD
+    - Trad: 000000 0000000000 RD 00000 010010
+    - Descript: RD = LO
+
+- MOVN
+    - Format: MOVN RD, RS, RT
+    - Trad: 000000 RS RT RD 00000 001011
+    - Descript: if RT != 0 then RD = RS
+
+- MOVZ
+    - Format: MOVZ RD, RS, RT
+    - Trad: 000000 RS RT RD 00000 001010
+    - Descript: if RT = 0 then RD = RS
+
+- MTHI
+    - Format: MTHI RS
+    - Trad: 000000 RS 000000000000000 010001
+    - Descript: HI = RS
+
+- MTLO
+    - Format: MTLO RS
+    - Trad: 000000 RS 000000000000000 010011 (SPECIAL RS 0 MTLO)
+    - Descript: LO = RS
+
+- MULT
+    - Format: MULT RS, RT
+    - Trad: 000000 RS RT 0000000000 011000
+    - Descript:  (HI, LO) = RS x RT
+
+- NOP
+    - Format: NOP
+    - Trad: 000000 00000 00000 00000 00000 000000
+
+- NOR
+    - Format: NOR RD, RS, RT
+    - Trad: 000000 RS RT RD 00000 100111
+    - Descript: RD = RS NOR RT
+
+- OR
+    - Format: OR RD, RS, RT
+    - Trad: 000000 RS RT RD 00000 100101
+    - Descript: RD = RS | RT
+
+- SUB
+    - Format: SUB RD, RS, RT
+    - Trad: 000000 RS RT RD 00000 100010
+    - Descript: RD = RS - RT
+
+- XOR
+    - Format: XOR RD, RS, RT
+    - Trad: 000000 RS RT RD 00000 100110
+    - Descript:  RD = RS XOR RT
+
+## Instruções Special2 (opcode = 011100)
+
+- MADD
+    - Format: MADD RS, RT
+    - Trad: 011100 RS RT 00000 0000 000000
+    - Descript: (HI, LO) = (HI, LO) + RS x RT
+
+- MSUB
+    - Format: MSUB RS, RT
+    - Trad: 011100 RS RT 00000 00000 000100
+    - Descript: (HI, LO) = (HI, LO) - RS x RT
+
+- MUL
+    - Format: MUL RD, RS, RT
+    - Trad: 011100 RS RT RD 00000 000010
+    - Descript: RD = RS x RT
 
 
+## Instruções Imediato 
+
+- ADDI
+    - Format: ADDI RT, RS, immediate
+    - Trad 001000 RS RT immediate
+    - Descript: RT = RS + immediate
+
+- ANDI
+    - Format: ANDI RT, RS, immediate
+    - Trad: 001100 RS RT immediate
+    - Final: 001100 XXXXX XXXXX XXXXXXXXXXXXXXXX
+    - Descript: RT = RS + immediate
+
+- B
+    - Format: B offset #offset = 16
+    - Trad: 000100 00000 00000 offset
+    - Descript: PC += offset #branch
+
+- BEQ
+    - Format: BEQ RS, RT, offset
+    - Trad: 000100 RS RT offset
+    - Descript: if RS = RT then PC += offset
+
+- BEQL
+    - Format: BEQL RS, RT, offset
+    - Trad: 010100 RS RT offset
+    - Descript: if RS = RT then PC += offset #apenas se o salto é tomado
+
+- BGTZ
+    - Format: BGTZ RS, offset
+    - Trad: 000111 RS 00000 offset
+    - Descript: if RS > 0  then PC += offset
+
+- BLEZ
+    - Format: BLEZ RS, offset
+    - Trad: 000110 RS 00000 offset
+    - Descript: if RS <= 0  then PC += offset
+
+- BNE
+    - Format: BNE RS, RT, offset
+    - Trad: 000101 RS RT offset
+    - Descript: if RS != RT then PC += offset
+
+- J
+    - Format: J target
+    - Trad: 000010 instr_index # 26
+    - Descript: PC = target
+
+- LUI
+    - Format: LUI RT, immediate
+    - Trad: 001111 00000 RT immediate
+    - Descript: RT = immediate << 16 #shift 16bit
+
+- ORI
+    - Format: ORI RT, RS, immediate
+    - Trad: 001101 RS RT immediate
+    - Descript: RT = RS | zero_extend(immediate)
+
+- XORI
+    - Format: XOR RS, RT, immediate
+    - Trad: 001110 RS RT immediate
+     - Descript: RT = RS XOR zero_extend(immediate)
+
+## Instruções com regimm (opcode = 000001)
+
+- BGEZ
+    - Format: BGEZ RS, offset
+    - Trad: 000001 RS 00001 offset
+    - Descript: if RS >= 0 then PC += offset
+
+- BLTZ
+    - Format: BLTZ RS, offset
+    - Trad: 000001 RS 00000 offset
+    - Descript: if RS < 0 then PC += offset
