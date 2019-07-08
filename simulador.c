@@ -6,7 +6,6 @@
 #include "instrucoes.c"
 #include "registradores.c"
 
-
 int n = 20;
 
 char *inicializaMemoria()
@@ -39,7 +38,8 @@ void escritaMemoria(int tamanho, char *memoria)
 int buscaMemoria(unsigned int palavra[], char *memoria, int pc)
 {
 
-	for (int contByte = 0; contByte < 4; contByte++){
+	for (int contByte = 0; contByte < 4; contByte++)
+	{
 		palavra[contByte] = memoria[(4 * pc) + contByte];
 	}
 
@@ -55,66 +55,65 @@ void decodificacao(unsigned int palavra[])
 	printf("Decodificado: %d\n\n", instrucao);
 	int tipo = instrucao >> 26 & MASCARA;
 
-	switch (tipo){
+	switch (tipo)
+	{
 
-		case ESPECIAL:
+	case ESPECIAL:
 
-			in.opcode = instrucao >> 26 & MASCARA;
-			printf("especial opcode: %d\n", in.opcode);
-			in.s_instrucao.rs = instrucao >> 21 & MASCARA;
-			printf("especial rs: %d\n", in.s_instrucao.rs);
-			in.s_instrucao.rd = instrucao >> 16 & MASCARA;
-			printf("especial rd: %d\n", in.s_instrucao.rd);
-			in.s_instrucao.rt = instrucao >> 11 & MASCARA;
-			printf("especial rt: %d\n", in.s_instrucao.rt);
-			in.s_instrucao.shamt = instrucao >> 6 & MASCARA;
-			printf("especial shamt: %d\n", in.s_instrucao.shamt);
-			in.s_instrucao.func = instrucao & 63;
-			printf("especial func: %d\n", in.s_instrucao.func);
+		in.opcode = instrucao >> 26 & MASCARA;
+		printf("especial opcode: %d\n", in.opcode);
+		in.s_instrucao.rs = instrucao >> 21 & MASCARA;
+		printf("especial rs: %d\n", in.s_instrucao.rs);
+		in.s_instrucao.rd = instrucao >> 16 & MASCARA;
+		printf("especial rd: %d\n", in.s_instrucao.rd);
+		in.s_instrucao.rt = instrucao >> 11 & MASCARA;
+		printf("especial rt: %d\n", in.s_instrucao.rt);
+		in.s_instrucao.shamt = instrucao >> 6 & MASCARA;
+		printf("especial shamt: %d\n", in.s_instrucao.shamt);
+		in.s_instrucao.func = instrucao & 63;
+		printf("especial func: %d\n", in.s_instrucao.func);
 
-			break;
+		break;
 
-		case ESPECIAL2:
+	case ESPECIAL2:
 
-			in.opcode = instrucao >> 26 & MASCARA;
-			printf("especial opcode: %d\n", in.opcode);
-			in.s2_instrucao.rs = instrucao >> 21 & MASCARA;
-			printf("especial rs: %d\n", in.s2_instrucao.rs);
-			in.s2_instrucao.rd = instrucao >> 16 & MASCARA;
-			printf("especial rd: %d\n", in.s2_instrucao.rd);
-			in.s2_instrucao.rt = instrucao >> 11 & MASCARA;
-			printf("especial rt: %d\n", in.s2_instrucao.rt);
-			in.s2_instrucao.shamt = instrucao >> 6 & MASCARA;
-			printf("especial shamt: %d\n", in.s2_instrucao.shamt);
-			in.s2_instrucao.func = instrucao & 63;
-			printf("especial func: %d\n", in.s2_instrucao.func);
+		in.opcode = instrucao >> 26 & MASCARA;
+		printf("especial opcode: %d\n", in.opcode);
+		in.s2_instrucao.rs = instrucao >> 21 & MASCARA;
+		printf("especial rs: %d\n", in.s2_instrucao.rs);
+		in.s2_instrucao.rd = instrucao >> 16 & MASCARA;
+		printf("especial rd: %d\n", in.s2_instrucao.rd);
+		in.s2_instrucao.rt = instrucao >> 11 & MASCARA;
+		printf("especial rt: %d\n", in.s2_instrucao.rt);
+		in.s2_instrucao.shamt = instrucao >> 6 & MASCARA;
+		printf("especial shamt: %d\n", in.s2_instrucao.shamt);
+		in.s2_instrucao.func = instrucao & 63;
+		printf("especial func: %d\n", in.s2_instrucao.func);
 
-			break;
+		break;
 
-		case SALTO:
+	case SALTO:
 
-			in.opcode = instrucao >> 26 & MASCARA;
-			printf("jump opcode: %d\n", in.opcode);
-			in.jump_instrucao.addr = instrucao & MASCARA;
-			printf("jump addr: %d\n", in.jump_instrucao.addr);
+		in.opcode = instrucao >> 26 & MASCARA;
+		printf("jump opcode: %d\n", in.opcode);
+		in.jump_instrucao.addr = instrucao & MASCARA;
+		printf("jump addr: %d\n", in.jump_instrucao.addr);
 
-			break;
+		break;
 
-		default:
+	default:
 
-			in.opcode = instrucao >> 26 & MASCARA;
-			printf("imediato opcode: %d\n", in.opcode);
-			in.i_instrucao.rs = instrucao >> 21 & MASCARA;
-			printf("imediato rs: %d\n", in.i_instrucao.rs);
-			in.i_instrucao.rt = instrucao >> 16 & MASCARA;
-			printf("imediato rt: %d\n", in.i_instrucao.rt);
-			in.i_instrucao.imediato = instrucao & MASCARA;
-			printf("imediato opcode: %d\n", in.i_instrucao.imediato);
+		in.opcode = instrucao >> 26 & MASCARA;
+		printf("imediato opcode: %d\n", in.opcode);
+		in.i_instrucao.rs = instrucao >> 21 & MASCARA;
+		printf("imediato rs: %d\n", in.i_instrucao.rs);
+		in.i_instrucao.rt = instrucao >> 16 & MASCARA;
+		printf("imediato rt: %d\n", in.i_instrucao.rt);
+		in.i_instrucao.imediato = instrucao & MASCARA;
+		printf("imediato opcode: %d\n", in.i_instrucao.imediato);
 
-			break;
-
+		break;
 	}
-
 }
 
 int main()
@@ -125,14 +124,16 @@ int main()
 	unsigned int palavra[4];
 	int pc = 0;
 
-	for (int i = 0; i < n; i++){
+	for (int i = 0; i < n; i++)
+	{
 
 		printf("Memoria POS(%d): %X\n", i, memoria[i]);
 	}
 
 	printf("\n\n");
 
-	for (int i = 0; i < n/4; i++){
+	for (int i = 0; i < n / 4; i++)
+	{
 
 		pc = buscaMemoria(palavra, memoria, pc);
 		printf("Teste %d: %X\n", i + 1, palavra[0]);
@@ -143,6 +144,5 @@ int main()
 		decodificacao(palavra);
 		op = descobrirOperacao();
 
-
-	return 0;
-}
+		return 0;
+	}

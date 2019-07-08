@@ -1,4 +1,5 @@
-struct R{
+struct R
+{
     unsigned int opcode;
     unsigned int rs;
     unsigned int rt;
@@ -7,7 +8,8 @@ struct R{
     unsigned int func;
 };
 
-struct R2{
+struct R2
+{
     unsigned int opcode;
     unsigned int rs;
     unsigned int rt;
@@ -16,14 +18,24 @@ struct R2{
     unsigned int func;
 };
 
-struct I{
+struct I
+{
     unsigned int opcode;
     unsigned int rs;
     unsigned int rt;
     unsigned int immediate;
 };
 
-struct J{
+struct J
+{
     unsigned int opcode;
     unsigned int addr; //instruction adress
+};
+
+struct REG_I
+{
+    unsigned int opcode;
+    unsigned int rs;
+    unsigned int id;
+    unsigned int offset;
 };
