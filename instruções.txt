@@ -84,7 +84,8 @@
 - MADD
     - Format: MADD RS, RT
     - Trad: 011100 RS RT 00000 0000 000000
-    - Descript: (HI, LO) = (HI, LO) + RS x RT
+    - Descript: (HI, LO) = (HI, LO) + 
+    RS x RT
 
 - MSUB
     - Format: MSUB RS, RT
