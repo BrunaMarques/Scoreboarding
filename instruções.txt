@@ -1,4 +1,4 @@
-## Instruções com Special (opcode = 000000)
+### Instruções com Special (opcode = 000000)
 
 - ADD
     - Format: ADD RD, RS, RT

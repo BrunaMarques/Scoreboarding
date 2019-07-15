@@ -2,8 +2,9 @@
 #define ESPECIAL 0b000000
 #define ESPECIAL2 0b011100
 #define SALTO 0b000010
-#define IMEDIATO 0b001000
 #define REGIMM 0b000001
+
+
 
 typedef struct
 {
