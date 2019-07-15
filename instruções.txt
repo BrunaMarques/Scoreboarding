@@ -108,7 +108,7 @@
     - Format: ANDI RT, RS, immediate
     - Trad: 001100 RS RT immediate
     - Final: 001100 XXXXX XXXXX XXXXXXXXXXXXXXXX
-    - Descript: RT = RS + immediate
+    - Descript: RT = RS & immediate
 
 - B
     - Format: B offset #offset = 16
@@ -140,11 +140,6 @@
     - Trad: 000101 RS RT offset
     - Descript: if RS != RT then PC += offset
 
-- J
-    - Format: J target
-    - Trad: 000010 instr_index # 26
-    - Descript: PC = target
-
 - LUI
     - Format: LUI RT, immediate
     - Trad: 001111 00000 RT immediate
@@ -159,6 +154,13 @@
     - Format: XOR RS, RT, immediate
     - Trad: 001110 RS RT immediate
      - Descript: RT = RS XOR zero_extend(immediate)
+
+## Instruções de Salto
+
+- J
+    - Format: J target
+    - Trad: 000010 instr_index # 26
+    - Descript: PC = target
 
 ## Instruções com regimm (opcode = 000001)
 
