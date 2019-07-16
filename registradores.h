@@ -35,3 +35,5 @@
 #define LO 33
 
 int bancoRegistradores[34];
+int bufferRegistradores[34];
+int bufferResultado;
