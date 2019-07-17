@@ -4,8 +4,6 @@
 #define SALTO 0b000010
 #define REGIMM 0b000001
 
-
-
 typedef struct
 {
     unsigned int rs;
@@ -56,5 +54,10 @@ typedef struct
 
 Inst in;
 
-void decodificacao(unsigned int palavra[]){
-}
+void decodificacao(unsigned int palavra[]) {}
+
+void separarHILO(int in) {}
+
+int juntarHILO(int hi, int lo) {}
+
+void execucao() {}

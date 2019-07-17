@@ -6,7 +6,7 @@
 
 int registradores(char *aux){
 	printf("REG: %s. ", aux);
-	if(strcasecmp(aux,"$zero") == 0)
+	if((strcasecmp(aux,"$zero") == 0) || (strcasecmp(aux,"$0") == 0))
 		return Z0;
 	else if(strcasecmp(aux,"$at") == 0)
 		return AT;
@@ -72,16 +72,12 @@ int registradores(char *aux){
 		return FP;
 	else if (strcasecmp(aux,"$ra") == 0)
 		return RA;	
-	else return aux;
+	else return atoi(aux);
 }
 
 void binarioSpecial(int vetor[], FILE *saida){
 	int r;
-	for (int i =0; i<6; i++){
-			printf("\nFVetor%i = %d ", i, vetor[i]);
-		}
 	for(int i = 5; i >= 0; i--) {
-		printf("AAAAAA%d\n", vetor[0]);
 		r = vetor[0] >> i;
 		if(r & 1)
 			fputs("1",saida);
@@ -126,38 +122,88 @@ void binarioSpecial(int vetor[], FILE *saida){
 	fputs("\n",saida);
 }
 
-void binarioimediato(int vetor[], FILE *saida){
+void binarioImediato(int vetor[], FILE *saida){
 	int r;
-	for(int i=0; i<6; i++)
-		printf("\nVETOR: %d\n", vetor[i]);
-	for(int i = 6; i > 0; i--) {
+	for(int i = 5; i >= 0; i--) {
 		r = vetor[0] >> i;
 		if(r & 1) 
-			fputs("a1",saida);
+			fputs("1",saida);
 		else 
-			fputs("a0", saida);
+			fputs("0", saida);
 	}
- 	for(int i = 5; i > 0; i--) {
+ 	for(int i = 4; i >= 0; i--) {
 		r = vetor[1] >> i;
 		if(r & 1) 
-			fputs("b1",saida);
+			fputs("1",saida);
 		else 
-			fputs("b0", saida);
+			fputs("0", saida);
 	 }
-	for(int i = 5; i > 0; i--) {
+	for(int i = 4; i >= 0; i--) {
 		r = vetor[2] >> i;
 		if(r & 1) 
-			fputs("c1",saida);
+			fputs("1",saida);
 		else 
-			fputs("c0", saida);
+			fputs("0", saida);
 	}
-	for(int i = 16; i > 0; i--) {
+	for(int i = 15; i >= 0; i--) {
 		r = vetor[3] >> i;
 		if(r & 1) 
-			fputs("d1",saida);
+			fputs("1",saida);
 		else 
-			fputs("d0", saida);
+			fputs("0", saida);
 	}
+	fputs("\n",saida);
+}
+
+void binarioRegim(int vetor[], FILE *saida){
+	int r;
+	for(int i = 5; i >= 0; i--) {
+		r = vetor[0] >> i;
+		if(r & 1) 
+			fputs("1",saida);
+		else 
+			fputs("0", saida);
+	}
+ 	for(int i = 4; i >= 0; i--) {
+		r = vetor[1] >> i;
+		if(r & 1) 
+			fputs("1",saida);
+		else 
+			fputs("0", saida);
+	 }
+	for(int i = 4; i >= 0; i--) {
+		r = vetor[2] >> i;
+		if(r & 1) 
+			fputs("1",saida);
+		else 
+			fputs("0", saida);
+	}
+	for(int i = 15; i >= 0; i--) {
+		r = vetor[3] >> i;
+		if(r & 1) 
+			fputs("1",saida);
+		else 
+			fputs("0", saida);
+	}
+	fputs("\n",saida);
+}
+
+void binarioJump(int vetor[], FILE *saida){
+	int r;
+	for(int i = 5; i >= 0; i--) {
+		r = vetor[0] >> i;
+		if(r & 1) 
+			fputs("1",saida);
+		else 
+			fputs("0", saida);
+	}
+ 	for(int i = 25; i >= 0; i--) {
+		r = vetor[1] >> i;
+		if(r & 1) 
+			fputs("1",saida);
+		else 
+			fputs("0", saida);
+	 }
 	fputs("\n",saida);
 }
 
@@ -169,16 +215,12 @@ int main(){
 	int i = 0;
     FILE *instrucoes = fopen("teste.asm", "r");
 	FILE *saida = fopen("saida.txt", "w");;
-    //i = readfield(instrucoes,texto);
-	//printf("%s", texto);
-	
-	
+  	
 	while(fgets(texto, 1000, instrucoes) != NULL){
 		printf("%s", texto);
 		aux = strtok(texto, ",  \n\0");
 		if( (strcasecmp(aux,"add") == 0) || (strcasecmp(aux,"and") == 0) || (strcasecmp(aux,"div") == 0) || (strcasecmp(aux,"jr") == 0) || (strcasecmp(aux,"mfhi") == 0) || (strcasecmp(aux,"mflo") == 0) ||(strcasecmp(aux,"movn") == 0) || (strcasecmp(aux,"movz") == 0) || (strcasecmp(aux,"mthi") == 0) || (strcasecmp(aux,"mtlo") == 0) || (strcasecmp(aux,"mult") == 0) || (strcasecmp(aux,"nop") == 0) || (strcasecmp(aux,"or") == 0) || (strcasecmp(aux,"sub") == 0) || (strcasecmp(aux,"xor") == 0)){
 			special[0] = 0b000000;
-			printf("%s", aux);
 			if(strcasecmp(aux, "add") == 0){
 				special[5] = ADD;
 				aux = strtok(NULL, ", \n\0");
@@ -396,6 +438,7 @@ int main(){
 			aux = strtok(NULL, ", \n\0");
 			jump[1] = registradores(aux);
 			aux = strtok(NULL, ", \n\0");
+		binarioJump(jump,saida);
 		}
 		else if((strcasecmp(aux,"bgez") == 0) || (strcasecmp(aux,"bltz") == 0)){
 			regim[0] = 0b000001;
@@ -415,7 +458,7 @@ int main(){
 				regim[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
 			}	
-			aux = strtok(NULL, ", \n\0");
+		binarioRegim(regim, saida);
 		}
 		else{
 			if(strcasecmp(aux ,"addi") == 0){
@@ -528,10 +571,10 @@ int main(){
 				imediato[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
-		//binarioimediato(imediato, saida);
+		binarioImediato(imediato, saida);
 		}
-		for (int i =0; i<6; i++){
-			printf("\nVetor%i = %d ", i, special[i]);
+		for (int i =0; i<4; i++){
+			printf("\nVetor%i = %d ", i, imediato[i]);
 		}
 
 			
