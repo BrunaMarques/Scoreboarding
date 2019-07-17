@@ -75,6 +75,92 @@ int registradores(char *aux){
 	else return aux;
 }
 
+void binarioSpecial(int vetor[], FILE *saida){
+	int r;
+	for (int i =0; i<6; i++){
+			printf("\nFVetor%i = %d ", i, vetor[i]);
+		}
+	for(int i = 5; i >= 0; i--) {
+		printf("AAAAAA%d\n", vetor[0]);
+		r = vetor[0] >> i;
+		if(r & 1)
+			fputs("1",saida);
+		else
+			fputs("0", saida);
+	}
+ 	for(int i = 4; i >= 0; i--) {
+		r = vetor[1] >> i;
+		if(r & 1) 
+			fputs("1",saida);
+		else 
+			fputs("0", saida);
+	 }
+	for(int i = 4; i >= 0; i--) {
+		r = vetor[2] >> i;
+		if(r & 1) 
+			fputs("1",saida);
+		else 
+			fputs("0", saida);
+	}
+	for(int i = 4; i >= 0; i--) {
+		r = vetor[3] >> i;
+		if(r & 1) 
+			fputs("1",saida);
+		else 
+			fputs("0", saida);
+	}
+	for(int i = 4; i >= 0; i--) {
+		r = vetor[4] >> i;
+		if(r & 1) 
+			fputs("1",saida);
+		else 
+			fputs("0", saida);
+	}
+	for(int i = 5; i >= 0; i--) {
+		r = vetor[5] >> i;
+		if(r & 1) 
+			fputs("1",saida);
+		else 
+			fputs("0", saida);
+	}
+	fputs("\n",saida);
+}
+
+void binarioimediato(int vetor[], FILE *saida){
+	int r;
+	for(int i=0; i<6; i++)
+		printf("\nVETOR: %d\n", vetor[i]);
+	for(int i = 6; i > 0; i--) {
+		r = vetor[0] >> i;
+		if(r & 1) 
+			fputs("a1",saida);
+		else 
+			fputs("a0", saida);
+	}
+ 	for(int i = 5; i > 0; i--) {
+		r = vetor[1] >> i;
+		if(r & 1) 
+			fputs("b1",saida);
+		else 
+			fputs("b0", saida);
+	 }
+	for(int i = 5; i > 0; i--) {
+		r = vetor[2] >> i;
+		if(r & 1) 
+			fputs("c1",saida);
+		else 
+			fputs("c0", saida);
+	}
+	for(int i = 16; i > 0; i--) {
+		r = vetor[3] >> i;
+		if(r & 1) 
+			fputs("d1",saida);
+		else 
+			fputs("d0", saida);
+	}
+	fputs("\n",saida);
+}
+
 
 int main(){
     char texto[1000], *aux;
@@ -82,6 +168,7 @@ int main(){
 
 	int i = 0;
     FILE *instrucoes = fopen("teste.asm", "r");
+	FILE *saida = fopen("saida.txt", "w");;
     //i = readfield(instrucoes,texto);
 	//printf("%s", texto);
 	
@@ -265,6 +352,7 @@ int main(){
 				special[4] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
 			}
+		binarioSpecial(special,saida);
 		}	
 		else if ((strcasecmp(aux,"madd") == 0) || (strcasecmp(aux,"msub") == 0) || (strcasecmp(aux,"mul") == 0)){
 			special[0] = 0b011100;
@@ -301,6 +389,7 @@ int main(){
 				special[4] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
 			}
+		binarioSpecial(special,saida);
 		}
 		else if (strcasecmp(aux,"j") == 0){
 			jump[0] = J;
@@ -313,17 +402,17 @@ int main(){
 			if (strcasecmp(aux,"bgez") == 0){
 				regim[2] = BGEZ;
 				aux = strtok(NULL, ", \n\0");
-				special[1] = registradores(aux);
+				regim[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[3] = registradores(aux);
+				regim[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
 			else{
 				regim[2] = BLTZ;
 				aux = strtok(NULL, ", \n\0");
-				special[1] = registradores(aux);
+				regim[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[3] = registradores(aux);
+				regim[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
 			}	
 			aux = strtok(NULL, ", \n\0");
@@ -332,117 +421,119 @@ int main(){
 			if(strcasecmp(aux ,"addi") == 0){
 				imediato[0] = ADDI;
 				aux = strtok(NULL, ", \n\0");
-				special[2] = registradores(aux);
+				imediato[2] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[1] = registradores(aux);
+				imediato[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[3] = registradores(aux);					
+				imediato[3] = registradores(aux);					
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"andi") == 0){
 				imediato[0] = ANDI;
 				aux = strtok(NULL, ", \n\0");
-				special[2] = registradores(aux);
+				imediato[2] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[1] = registradores(aux);
+				imediato[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[3] = registradores(aux);					
+				imediato[3] = registradores(aux);					
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"b") == 0){
 				imediato[0] = B;
 				aux = strtok(NULL, ", \n\0");
-				special[1] = 0b00000;
+				imediato[1] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
-				special[2] = 0b00000;
+				imediato[2] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
-				special[3] = registradores(aux);
+				imediato[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"beq") == 0){
 				imediato[0] = BEQ;
 				aux = strtok(NULL, ", \n\0");
-				special[1] = registradores(aux);
+				imediato[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[2] = registradores(aux);
+				imediato[2] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[3] = registradores(aux);
+				imediato[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"beql") == 0){
 				imediato[0] = BEQL;
 				aux = strtok(NULL, ", \n\0");
-				special[1] = registradores(aux);
+				imediato[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[2] = registradores(aux);
+				imediato[2] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[3] = registradores(aux);
+				imediato[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"bgtz") == 0){
 				imediato[0] = BGTZ;
 				aux = strtok(NULL, ", \n\0");
-				special[1] = registradores(aux);
+				imediato[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[2] = 0b00000;
+				imediato[2] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
-				special[3] = registradores(aux);
+				imediato[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"blez") == 0){
 				imediato[0] = BLEZ;
 				aux = strtok(NULL, ", \n\0");
-				special[1] = registradores(aux);
+				imediato[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[2] = 0b00000;
+				imediato[2] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
-				special[3] = registradores(aux);
+				imediato[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"bne") == 0){
 				imediato[0] = BNE;
 				aux = strtok(NULL, ", \n\0");
-				special[1] = registradores(aux);
+				imediato[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[2] = registradores(aux);
+				imediato[2] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[3] = registradores(aux);
+				imediato[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"lui") == 0){
 				imediato[0] = LUI;
 				aux = strtok(NULL, ", \n\0");
-				special[1] = 0b00000;
+				imediato[1] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
-				special[2] = registradores(aux);
+				imediato[2] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[3] = registradores(aux);
+				imediato[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"ori") == 0){
 				imediato[0] = ORI;
 				aux = strtok(NULL, ", \n\0");
-				special[2] = registradores(aux);
+				imediato[2] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[1] = registradores(aux);
+				imediato[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[3] = registradores(aux);
+				imediato[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
 			else{
 				imediato[0] = XORI;
 				aux = strtok(NULL, ", \n\0");
-				special[1] = registradores(aux);
+				imediato[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[2] = registradores(aux);
+				imediato[2] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				special[3] = registradores(aux);
+				imediato[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
+		//binarioimediato(imediato, saida);
 		}
 		for (int i =0; i<6; i++){
-			printf(" %d ", special[i]);
+			printf("\nVetor%i = %d ", i, special[i]);
 		}
+
 			
 
 		
@@ -451,5 +542,6 @@ int main(){
 		
 
 	}
+	//arquivo(saida);
 return 0;
 }
