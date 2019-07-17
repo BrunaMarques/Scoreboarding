@@ -5,7 +5,7 @@
 #include "tradutor.h"
 
 int registradores(char *aux){
-	//printf("REG: %s ", aux);
+	printf("REG: %s. ", aux);
 	if(strcasecmp(aux,"$zero") == 0)
 		return Z0;
 	else if(strcasecmp(aux,"$at") == 0)
@@ -88,339 +88,371 @@ int main(){
 	
 	while(fgets(texto, 1000, instrucoes) != NULL){
 		printf("%s", texto);
-		aux = strtok(texto, ", ");
+		aux = strtok(texto, ",  \n\0");
 		if( (strcasecmp(aux,"add") == 0) || (strcasecmp(aux,"and") == 0) || (strcasecmp(aux,"div") == 0) || (strcasecmp(aux,"jr") == 0) || (strcasecmp(aux,"mfhi") == 0) || (strcasecmp(aux,"mflo") == 0) ||(strcasecmp(aux,"movn") == 0) || (strcasecmp(aux,"movz") == 0) || (strcasecmp(aux,"mthi") == 0) || (strcasecmp(aux,"mtlo") == 0) || (strcasecmp(aux,"mult") == 0) || (strcasecmp(aux,"nop") == 0) || (strcasecmp(aux,"or") == 0) || (strcasecmp(aux,"sub") == 0) || (strcasecmp(aux,"xor") == 0)){
 			special[0] = 0b000000;
 			printf("%s", aux);
 			if(strcasecmp(aux, "add") == 0){
 				special[5] = ADD;
-				aux = strtok(NULL, ", ");
-				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
-				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
+				special[1] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
+				special[2] = registradores(aux);
 				special[4] = 0b00000;
-				//aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 			}
 			else if (strcasecmp(aux ,"and") == 0){
-				aux = strtok(NULL, ", ");
 				special[5] = AND;
-				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
-				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
+				special[1] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
+				special[2] = registradores(aux);
 				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 			}
 			else if (strcasecmp(aux,"div") == 0){
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[5] = DIV;
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 			} 
 			else if (strcasecmp(aux,"jr") == 0){
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[5] = JR;
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 			}
 			else if (strcasecmp(aux,"mfhi") == 0){
 				special[5] = MFHI;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 			} 
 			else if (strcasecmp(aux,"mflo") == 0){
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[5] = MFLO;
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 				
 			} 
 			else if (strcasecmp(aux,"movn") == 0){
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[5] = MOVN;
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 			} 
 					
 			else if (strcasecmp(aux,"movz") == 0){
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[5] = MOVZ;
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 			} 
 					
 			else if (strcasecmp(aux,"mthi") == 0){
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[5] = MTHI;
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 			}
 					
 			else if (strcasecmp(aux,"mtlo") == 0){
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[5] = MTLO;
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 			}
 					
 			else if (strcasecmp(aux,"mult") == 0){
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[5] = MULT;
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 			}
 					
 			else if (strcasecmp(aux,"nop") == 0){
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[5] = NOP;
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 			}
 					
 			else if (strcasecmp(aux,"nor") == 0){
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[5] = NOR;
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 			}
 					
 			else if (strcasecmp(aux,"or") == 0){
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[5] = OR;
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 			} 
 					
 			else if (strcasecmp(aux,"sub") == 0){
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[5] = SUB;
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 			} 
 					
 			else{ 
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[5] = XOR;
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 			}
 		}	
 		else if ((strcasecmp(aux,"madd") == 0) || (strcasecmp(aux,"msub") == 0) || (strcasecmp(aux,"mul") == 0)){
 			special[0] = 0b011100;
 			if(strcasecmp(aux,"madd") == 0){
 				special[5] = MADD;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = 0b00000;
 				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"msub") == 0){
 				special[5] = MSUB;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = 0b00000;
 				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 			}
 			else{
 				special[5] = MUL;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 			}
 		}
 		else if (strcasecmp(aux,"j") == 0){
 			jump[0] = J;
-			aux = strtok(NULL, ", ");
+			aux = strtok(NULL, ", \n\0");
 			jump[1] = registradores(aux);
+			aux = strtok(NULL, ", \n\0");
 		}
 		else if((strcasecmp(aux,"bgez") == 0) || (strcasecmp(aux,"bltz") == 0)){
 			regim[0] = 0b000001;
 			if (strcasecmp(aux,"bgez") == 0){
 				regim[2] = BGEZ;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
 			}
 			else{
 				regim[2] = BLTZ;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
 			}	
+			aux = strtok(NULL, ", \n\0");
 		}
 		else{
 			if(strcasecmp(aux ,"addi") == 0){
 				imediato[0] = ADDI;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);					
+				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"andi") == 0){
 				imediato[0] = ANDI;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"b") == 0){
 				imediato[0] = B;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[1] = 0b00000;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = 0b00000;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"beq") == 0){
 				imediato[0] = BEQ;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"beql") == 0){
 				imediato[0] = BEQL;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"bgtz") == 0){
 				imediato[0] = BGTZ;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = 0b00000;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"blez") == 0){
 				imediato[0] = BLEZ;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = 0b00000;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"bne") == 0){
 				imediato[0] = BNE;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"lui") == 0){
 				imediato[0] = LUI;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[1] = 0b00000;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"ori") == 0){
 				imediato[0] = ORI;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
 			}
 			else{
 				imediato[0] = XORI;
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[2] = registradores(aux);
-				aux = strtok(NULL, ", ");
+				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
 			}
 		}
-		printf("\nteste:%s", aux);
 		for (int i =0; i<6; i++){
 			printf(" %d ", special[i]);
 		}
