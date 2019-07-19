@@ -63,16 +63,17 @@ void decodificacao(unsigned int palavra[])
 	}
 }
 
-void separarHILO(int in){
+void separarHILO(int in)
+{
 
 	bufferRegistradores[HI] = in >> 5;
 	bufferRegistradores[LO] = (in << 5) / 32;
 }
 
-int juntarHILO(int hi, int lo){
+int juntarHILO(int hi, int lo)
+{
 
 	return hi << 5 + lo;
-	
 }
 void execucao()
 {
@@ -80,193 +81,112 @@ void execucao()
 	switch (operacao)
 	{
 	case ADD:
-		r1 = in.s_instrucao.rd;
-		r2 = in.s_instrucao.rs;
-		r3 = in.s_instrucao.rt;
-		bufferRegistradores[r1] = adicao(bancoRegistradores[r2], bancoRegistradores[r3]);
+		bufferRegistradores[in.s_instrucao.rd] = adicao(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt]);
 		break;
 	case AND:
-		r1 = in.s_instrucao.rd;
-		r2 = in.s_instrucao.rs;
-		r3 = in.s_instrucao.rt;
-		bufferRegistradores[r1] = and(bancoRegistradores[r2], bancoRegistradores[r3]);
+		bufferRegistradores[in.s_instrucao.rd] = and(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt]);
 		break;
 	case DIV:
-		r1 = in.s_instrucao.rd;
-		r2 = in.s_instrucao.rs;
-		r3 = in.s_instrucao.rt;
-		bufferRegistradores[r1] = divisao(bancoRegistradores[r2], bancoRegistradores[r3]);
+		separarHILO(divisao(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt]);
 		break;
 	case JR:
-		r1 = in.s_instrucao.rd;
-		r2 = in.s_instrucao.rs;
-		r3 = in.s_instrucao.rt;
-		PC = bancoRegistradores[r2];
+		PC = bancoRegistradores[in.s_instrucao.rs];
 	case MFHI:
-		r1 = in.s_instrucao.rd;
-		r2 = in.s_instrucao.rs;
-		r3 = in.s_instrucao.rt;
-		bufferRegistradores[r1] = bancoRegistradores[HI];
+		bufferRegistradores[in.s_instrucao.rd] = bancoRegistradores[HI];
 		break;
 	case MFLO:
-		r1 = in.s_instrucao.rd;
-		r2 = in.s_instrucao.rs;
-		r3 = in.s_instrucao.rt;
-		bufferRegistradores[r1] = bancoRegistradores[LO];
+		bufferRegistradores[in.s_instrucao.rd] = bancoRegistradores[LO];
 		break;
 	case MOVN:
-		r1 = in.s_instrucao.rd;
-		r2 = in.s_instrucao.rs;
-		r3 = in.s_instrucao.rt;
-		if (not(igual(bancoRegistradores[r3], 0)))
-			bufferRegistradores[r1] = bancoRegistradores[r2];
+		if (not(igual(bancoRegistradores[in.s_instrucao.rt], 0)))
+			bufferRegistradores[in.s_instrucao.rd] = bancoRegistradores[in.s_instrucao.rs];
 		break;
 	case MOVZ:
-		r1 = in.s_instrucao.rd;
-		r2 = in.s_instrucao.rs;
-		r3 = in.s_instrucao.rt;
-		if (igual(bancoRegistradores[r3], 0))
-			bufferRegistradores[r1] = bancoRegistradores[r2];
+		if (igual(bancoRegistradores[in.s_instrucao.rt], 0))
+			bufferRegistradores[in.s_instrucao.rd] = bancoRegistradores[in.s_instrucao.rs];
 		break;
 	case MTHI:
-		r = in.s_instrucao.rs;
-		bufferRegistradores[HI] = bancoRegistradores[r];
+		bufferRegistradores[HI] = bancoRegistradores[in.s_instrucao.rs];
 		break;
 	case MTLO:
-		r = in.s_instrucao.rs;
-		bufferRegistradores[LO] = bancoRegistradores[r];
+		bufferRegistradores[LO] = bancoRegistradores[in.s_instrucao.rs];
 		break;
 	case MULT:
-		r1 = in.s_instrucao.rd;
-		r2 = in.s_instrucao.rs;
-		r3 = in.s_instrucao.rt;
-		separarHILO(multiplicacao(bancoRegistradores[r2], bancoRegistradores[r3]))
-		
+		separarHILO(multiplicacao(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt]))
 		break;
 	case NOP:
-		r1 = in.s_instrucao.rd;
-		r2 = in.s_instrucao.rs;
-		r3 = in.s_instrucao.rt;
-		bancoRegistradores[r1] = 0;
-		bancoRegistradores[r2] = 0;
-		bancoRegistradores[r3] = 0;
+		// nao faz nada por enquanto (no operation)// 
 		break;
 	case NOR:
-		r1 = in.s_instrucao.rd;
-		r2 = in.s_instrucao.rs;
-		r3 = in.s_instrucao.rt;
-		bancoRegistradores[r1] = nor(bancoRegistradores[r2], bancoRegistradores[r3]);
+		bufferRegistradores[in.s_instrucao.rd] = nor(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt]);
 		break;
 	case OR:
-		r1 = in.s_instrucao.rd;
-		r2 = in.s_instrucao.rs;
-		r3 = in.s_instrucao.rt;
-		bancoRegistradores[r1] = or(bancoRegistradores[r2], bancoRegistradores[r3]);
+		bufferRegistradores[in.s_instrucao.rd] = or(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt]);
 		break;
 	case SUB:
-		r1 = in.s_instrucao.rd;
-		r2 = in.s_instrucao.rs;
-		r3 = in.s_instrucao.rt;
-		bancoRegistradores[r1] = subtracao(bancoRegistradores[r2], bancoRegistradores[r3]);
+		bufferRegistradores[in.s_instrucao.rd] = subtracao(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt]);
 		break;
 	case XOR:
-		r1 = in.s_instrucao.rd;
-		r2 = in.s_instrucao.rs;
-		r3 = in.s_instrucao.rt;
-		bancoRegistradores[r1] = xor(bancoRegistradores[r2], bancoRegistradores[r3]);
+		bufferRegistradores[in.s_instrucao.rd] = xor(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt]);
 		break;
 	case MADD:
-		r2 = in.s2_instrucao.rs;
-		r3 = in.s2_instrucao.rt;
-		bufferResultado = multiplicacao(bancoRegistradores[r2], bancoRegistradores[r3]);
-		juntarHILO()
+		bufferResultado = multiplicacao(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt]);
 		bufferResultado = adicao(bufferResultado, juntarHILO(bancoRegistradores[HI], bancoRegistradores[LO]));
-	
 		break;
 	case MSUB:
-		r2 = in.s2_instrucao.rs;
-		r3 = in.s2_instrucao.rt;
-		bancoRegistradores[HI] = subtracao(bancoRegistradores[HI], multiplicacao(bancoRegistradores[r2], bancoRegistradores[r3]));
-		bancoRegistradores[LO] = subtracao(bancoRegistradores[LO], multiplicacao(bancoRegistradores[r2], bancoRegistradores[r3]));
+		bufferResultado = multiplicacao(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt]);
+		bufferResultado = subtracao(bufferResultado, juntarHILO(bancoRegistradores[HI], bancoRegistradores[LO]));
 		break;
 	case MUL:
-		r1 = in.s2_instrucao.rs;
-		r2 = in.s2_instrucao.rs;
-		r3 = in.s2_instrucao.rt;
-		bancoRegistradores[HI] = subtracao(bancoRegistradores[HI], multiplicacao(bancoRegistradores[r2], bancoRegistradores[r3]));
-		bancoRegistradores[LO] = subtracao(bancoRegistradores[LO], multiplicacao(bancoRegistradores[r2], bancoRegistradores[r3]));
+		bufferRegistradores[in.s_instrucao.rd] = multiplicacao(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt])
 		break;
 	case ADDI:
-		r1 = in.i_instrucao.rs;
-		r2 = in.i_instrucao.rt;
-		bancoRegistradores[r2] = adicao(bancoRegistradores[r1], in.i_instrucao.imediato);
+		bufferRegistradores[in.s_instrucao.rt] = adicao(bancoRegistradores[in.s_instrucao.rs], in.i_instrucao.imediato);
 		break;
 	case ANDI:
-		r1 = in.i_instrucao.rs;
-		r2 = in.i_instrucao.rt;
-		bancoRegistradores[r2] = and(bancoRegistradores[r1], in.i_instrucao.imediato);
+		bufferRegistradores[in.s_instrucao.rt] = and(bancoRegistradores[in.s_instrucao.rs], in.i_instrucao.imediato);
 		break;
 	case B:
-		r1 = in.i_instrucao.rs;
-		r2 = in.i_instrucao.rt;
 		PC += in.i_instrucao.imediato;
 		break;
 	case BEQ:
-		r1 = in.i_instrucao.rs;
-		r2 = in.i_instrucao.rt;
-		if (igual(bancoRegistradores[r1], bancoRegistradores[r2]))
+		if (igual(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt]))
 			PC += in.i_instrucao.imediato;
 		break;
 	case BEQL:
-		r1 = in.i_instrucao.rs;
-		r2 = in.i_instrucao.rt;
-		if (igual(bancoRegistradores[r1], bancoRegistradores[r2]))
+		if (igual(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt]))
 			PC += in.i_instrucao.imediato;
 		break;
 	case BGTZ:
-		r1 = in.i_instrucao.rs;
-		r2 = in.i_instrucao.rt;
-		if (maior(bancoRegistradores[r1], 0))
+		if (maior(bancoRegistradores[in.s_instrucao.rs], 0))
 			PC += in.i_instrucao.imediato;
 		break;
 	case BLEZ:
-		r1 = in.i_instrucao.rs;
-		r2 = in.i_instrucao.rt;
-		if (menorIgual(bancoRegistradores[r1], 0))
+		if (menorIgual(bancoRegistradores[in.s_instrucao.rs], 0))
 			PC += in.i_instrucao.imediato;
 		break;
 	case BNE:
-		r1 = in.i_instrucao.rs;
-		r2 = in.i_instrucao.rt;
-		if (not(igual(bancoRegistradores[r1], bancoRegistradores[r2])))
+		if (not(igual(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt])))
 			PC += in.i_instrucao.imediato;
 		break;
 	case LUI:
-		r2 = in.i_instrucao.rt;
-		bancoRegistradores[r2] = shiftLeft(in.i_instrucao.imediato, 16);
+		bufferRegistradores[in.s_instrucao.rt] = shiftLeft(in.i_instrucao.imediato, 16);
 		break;
 	case ORI:
-		r1 = in.i_instrucao.rs;
-		r2 = in.i_instrucao.rt;
-		bancoRegistradores[r2] = or (bancoRegistradores[r1], in.i_instrucao.imediato);
+		bufferRegistradores[in.s_instrucao.rt] = or (bancoRegistradores[in.s_instrucao.rs], in.i_instrucao.imediato);
 		break;
 	case XORI:
-		r1 = in.i_instrucao.rs;
-		r2 = in.i_instrucao.rt;
-		bancoRegistradores[r2] = xor(bancoRegistradores[r1], in.i_instrucao.imediato);
+		bufferRegistradores[in.s_instrucao.rt] = xor(bancoRegistradores[in.s_instrucao.rs], in.i_instrucao.imediato);
 		break;
 	case J:
 		PC = in.j_instrucao.addr;
 		break;
 	case BGEZ:
-		r1 = in.r_instrucao.rs;
-		if (maiorIgual(bancoRegistradores[r1], 0))
+		if (maiorIgual(bancoRegistradores[in.s_instrucao.rs], 0))
 			PC += in.r_instrucao.offset;
 
 	case BLTZ:
-		r1 = in.r_instrucao.rs;
-		r2 = in.r_instrucao.offset;
-		if (menor(bancoRegistradores[r1], 0))
+		if (menor(bancoRegistradores[in.s_instrucao.rs], 0))
 			PC += in.r_instrucao.offset;
 	default:
 		printf("Operação não listada!");
