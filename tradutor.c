@@ -5,7 +5,6 @@
 #include "tradutor.h"
 
 int registradores(char *aux){
-	printf("REG: %s. ", aux);
 	if((strcasecmp(aux,"$zero") == 0) || (strcasecmp(aux,"$0") == 0))
 		return Z0;
 	else if(strcasecmp(aux,"$at") == 0)
@@ -75,149 +74,140 @@ int registradores(char *aux){
 	else return atoi(aux);
 }
 
-void binarioSpecial(int vetor[], FILE *saida){
+void binarioSpecial(int vetor[], FILE *saidaBinario){
 	int r;
 	for(int i = 5; i >= 0; i--) {
 		r = vetor[0] >> i;
 		if(r & 1)
-			fputs("1",saida);
+			fputs("1",saidaBinario);
 		else
-			fputs("0", saida);
+			fputs("0", saidaBinario);
 	}
  	for(int i = 4; i >= 0; i--) {
 		r = vetor[1] >> i;
 		if(r & 1) 
-			fputs("1",saida);
+			fputs("1",saidaBinario);
 		else 
-			fputs("0", saida);
+			fputs("0", saidaBinario);
 	 }
 	for(int i = 4; i >= 0; i--) {
 		r = vetor[2] >> i;
 		if(r & 1) 
-			fputs("1",saida);
+			fputs("1",saidaBinario);
 		else 
-			fputs("0", saida);
+			fputs("0", saidaBinario);
 	}
 	for(int i = 4; i >= 0; i--) {
 		r = vetor[3] >> i;
 		if(r & 1) 
-			fputs("1",saida);
+			fputs("1",saidaBinario);
 		else 
-			fputs("0", saida);
+			fputs("0", saidaBinario);
 	}
 	for(int i = 4; i >= 0; i--) {
 		r = vetor[4] >> i;
 		if(r & 1) 
-			fputs("1",saida);
+			fputs("1",saidaBinario);
 		else 
-			fputs("0", saida);
+			fputs("0", saidaBinario);
 	}
 	for(int i = 5; i >= 0; i--) {
 		r = vetor[5] >> i;
 		if(r & 1) 
-			fputs("1",saida);
+			fputs("1",saidaBinario);
 		else 
-			fputs("0", saida);
+			fputs("0", saidaBinario);
 	}
-	fputs("\n",saida);
+	fputs("\n",saidaBinario);
 }
 
-void binarioImediato(int vetor[], FILE *saida){
+void binarioImediato(int vetor[], FILE *saidaBinario){
 	int r;
 	for(int i = 5; i >= 0; i--) {
 		r = vetor[0] >> i;
 		if(r & 1) 
-			fputs("1",saida);
+			fputs("1",saidaBinario);
 		else 
-			fputs("0", saida);
+			fputs("0", saidaBinario);
 	}
  	for(int i = 4; i >= 0; i--) {
 		r = vetor[1] >> i;
 		if(r & 1) 
-			fputs("1",saida);
+			fputs("1",saidaBinario);
 		else 
-			fputs("0", saida);
+			fputs("0", saidaBinario);
 	 }
 	for(int i = 4; i >= 0; i--) {
 		r = vetor[2] >> i;
 		if(r & 1) 
-			fputs("1",saida);
+			fputs("1",saidaBinario);
 		else 
-			fputs("0", saida);
+			fputs("0", saidaBinario);
 	}
 	for(int i = 15; i >= 0; i--) {
 		r = vetor[3] >> i;
 		if(r & 1) 
-			fputs("1",saida);
+			fputs("1",saidaBinario);
 		else 
-			fputs("0", saida);
+			fputs("0", saidaBinario);
 	}
-	fputs("\n",saida);
+	fputs("\n",saidaBinario);
 }
 
-void binarioRegim(int vetor[], FILE *saida){
+void binarioRegim(int vetor[], FILE *saidaBinario){
 	int r;
 	for(int i = 5; i >= 0; i--) {
 		r = vetor[0] >> i;
 		if(r & 1) 
-			fputs("1",saida);
+			fputs("1",saidaBinario);
 		else 
-			fputs("0", saida);
+			fputs("0", saidaBinario);
 	}
  	for(int i = 4; i >= 0; i--) {
 		r = vetor[1] >> i;
 		if(r & 1) 
-			fputs("1",saida);
+			fputs("1",saidaBinario);
 		else 
-			fputs("0", saida);
+			fputs("0", saidaBinario);
 	 }
 	for(int i = 4; i >= 0; i--) {
 		r = vetor[2] >> i;
 		if(r & 1) 
-			fputs("1",saida);
+			fputs("1",saidaBinario);
 		else 
-			fputs("0", saida);
+			fputs("0", saidaBinario);
 	}
 	for(int i = 15; i >= 0; i--) {
 		r = vetor[3] >> i;
 		if(r & 1) 
-			fputs("1",saida);
+			fputs("1",saidaBinario);
 		else 
-			fputs("0", saida);
+			fputs("0", saidaBinario);
 	}
-	fputs("\n",saida);
+	fputs("\n",saidaBinario);
 }
 
-void binarioJump(int vetor[], FILE *saida){
+void binarioJump(int vetor[], FILE *saidaBinario){
 	int r;
 	for(int i = 5; i >= 0; i--) {
 		r = vetor[0] >> i;
 		if(r & 1) 
-			fputs("1",saida);
+			fputs("1",saidaBinario);
 		else 
-			fputs("0", saida);
+			fputs("0", saidaBinario);
 	}
  	for(int i = 25; i >= 0; i--) {
 		r = vetor[1] >> i;
 		if(r & 1) 
-			fputs("1",saida);
+			fputs("1",saidaBinario);
 		else 
-			fputs("0", saida);
+			fputs("0", saidaBinario);
 	 }
-	fputs("\n",saida);
+	fputs("\n",saidaBinario);
 }
 
-
-int main(){
-    char texto[1000], *aux;
-	int special[6], jump[2], regim[4], imediato[4];
-
-	int i = 0;
-    FILE *instrucoes = fopen("teste.asm", "r");
-	FILE *saida = fopen("saida.txt", "w");;
-  	
-	while(fgets(texto, 1000, instrucoes) != NULL){
-		printf("%s", texto);
+void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char texto[], char *aux, int special[], int imediato[], int regim[],int jump[]){
+	while(fgets(texto, 100, instrucoes) != NULL){
 		aux = strtok(texto, ",  \n\0");
 		if( (strcasecmp(aux,"add") == 0) || (strcasecmp(aux,"and") == 0) || (strcasecmp(aux,"div") == 0) || (strcasecmp(aux,"jr") == 0) || (strcasecmp(aux,"mfhi") == 0) || (strcasecmp(aux,"mflo") == 0) ||(strcasecmp(aux,"movn") == 0) || (strcasecmp(aux,"movz") == 0) || (strcasecmp(aux,"mthi") == 0) || (strcasecmp(aux,"mtlo") == 0) || (strcasecmp(aux,"mult") == 0) || (strcasecmp(aux,"nop") == 0) || (strcasecmp(aux,"or") == 0) || (strcasecmp(aux,"sub") == 0) || (strcasecmp(aux,"xor") == 0)){
 			special[0] = 0b000000;
@@ -394,7 +384,7 @@ int main(){
 				special[4] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
 			}
-		binarioSpecial(special,saida);
+		binarioSpecial(special,saidaBinario);
 		}	
 		else if ((strcasecmp(aux,"madd") == 0) || (strcasecmp(aux,"msub") == 0) || (strcasecmp(aux,"mul") == 0)){
 			special[0] = 0b011100;
@@ -431,14 +421,14 @@ int main(){
 				special[4] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
 			}
-		binarioSpecial(special,saida);
+		binarioSpecial(special,saidaBinario);
 		}
 		else if (strcasecmp(aux,"j") == 0){
 			jump[0] = J;
 			aux = strtok(NULL, ", \n\0");
 			jump[1] = registradores(aux);
 			aux = strtok(NULL, ", \n\0");
-		binarioJump(jump,saida);
+		binarioJump(jump,saidaBinario);
 		}
 		else if((strcasecmp(aux,"bgez") == 0) || (strcasecmp(aux,"bltz") == 0)){
 			regim[0] = 0b000001;
@@ -458,7 +448,7 @@ int main(){
 				regim[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
 			}	
-		binarioRegim(regim, saida);
+		binarioRegim(regim, saidaBinario);
 		}
 		else{
 			if(strcasecmp(aux ,"addi") == 0){
@@ -571,20 +561,38 @@ int main(){
 				imediato[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
-		binarioImediato(imediato, saida);
+		binarioImediato(imediato, saidaBinario);
 		}
-		for (int i =0; i<4; i++){
-			printf("\nVetor%i = %d ", i, imediato[i]);
-		}
+	}
+}
 
-			
-
-		
-		//aux = strtok(texto, ", ");
-		//printf("teste:%s", aux);
-		
+void tradutorHexa(FILE *saidaHexa, FILE *saidaBin){
+	char bin[34], *aux; 
+	int numero;
+	while(fgets(bin, 34, saidaBin) != NULL){
+		// printf("tamanho %d\n", (int)strlen(bin));
+		bin[strlen(bin)] = '\0';
+		printf("\nstring binaria:%s\n", bin);
+		numero = (int)strtol(bin, NULL, 2);
+		printf("\nNUMERO:%d\n", numero);
+		fwrite(&numero, sizeof(int), 1, saidaHexa);
+		fwrite("\n", 1, 1, saidaHexa);
 
 	}
-	//arquivo(saida);
+
+}
+
+
+
+int main(){
+    char texto[100], *aux;
+	int special[6], jump[2], regim[4], imediato[4];
+    FILE *instrucoes = fopen("teste.asm", "r");
+	FILE *saidaBinario = fopen("codigoBinario.txt", "wr+");
+	FILE *saidaHexa = fopen("codigoHexa.txt", "w+");
+	
+	tradutorBin(instrucoes,saidaBinario,saidaHexa,texto,aux,special,imediato,regim,jump);
+	fseek(saidaBinario, 0, SEEK_SET);
+	tradutorHexa(saidaHexa, saidaBinario);
 return 0;
 }

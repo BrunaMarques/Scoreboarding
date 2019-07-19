@@ -83,7 +83,7 @@
 
 - MADD
     - Format: MADD RS, RT
-    - Trad: 011100 RS RT 00000 0000 000000
+    - Trad: 011100 RS RT 00000 00000 000000
     - Descript: (HI, LO) = (HI, LO) + 
     RS x RT
 
@@ -108,7 +108,6 @@
 - ANDI
     - Format: ANDI RT, RS, immediate
     - Trad: 001100 RS RT immediate
-    - Final: 001100 XXXXX XXXXX XXXXXXXXXXXXXXXX
     - Descript: RT = RS & immediate
 
 - B
