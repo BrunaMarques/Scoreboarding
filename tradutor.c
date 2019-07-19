@@ -209,7 +209,7 @@ void binarioJump(int vetor[], FILE *saidaBinario){
 void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char texto[], char *aux, int special[], int imediato[], int regim[],int jump[]){
 	while(fgets(texto, 100, instrucoes) != NULL){
 		aux = strtok(texto, ",  \n\0");
-		if( (strcasecmp(aux,"add") == 0) || (strcasecmp(aux,"and") == 0) || (strcasecmp(aux,"div") == 0) || (strcasecmp(aux,"jr") == 0) || (strcasecmp(aux,"mfhi") == 0) || (strcasecmp(aux,"mflo") == 0) ||(strcasecmp(aux,"movn") == 0) || (strcasecmp(aux,"movz") == 0) || (strcasecmp(aux,"mthi") == 0) || (strcasecmp(aux,"mtlo") == 0) || (strcasecmp(aux,"mult") == 0) || (strcasecmp(aux,"nop") == 0) || (strcasecmp(aux,"or") == 0) || (strcasecmp(aux,"sub") == 0) || (strcasecmp(aux,"xor") == 0)){
+		if( (strcasecmp(aux,"add") == 0) || (strcasecmp(aux,"and") == 0) || (strcasecmp(aux,"div") == 0) || (strcasecmp(aux,"jr") == 0) || (strcasecmp(aux,"mfhi") == 0) || (strcasecmp(aux,"mflo") == 0) ||(strcasecmp(aux,"movn") == 0) || (strcasecmp(aux,"movz") == 0) || (strcasecmp(aux,"mthi") == 0) || (strcasecmp(aux,"mtlo") == 0) || (strcasecmp(aux,"mult") == 0) || (strcasecmp(aux,"nop") == 0) || (strcasecmp(aux,"or") == 0) || (strcasecmp(aux,"sub") == 0) || (strcasecmp(aux,"xor") == 0) || (strcasecmp(aux,"nor") == 0)){
 			special[0] = 0b000000;
 			if(strcasecmp(aux, "add") == 0){
 				special[5] = ADD;
@@ -265,7 +265,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 			else if (strcasecmp(aux,"mflo") == 0){
 				special[5] = MFLO;
 				aux = strtok(NULL, ", \n\0");
-				special[3] = 0b00000;
+				special[3] = registradores(aux);
 				special[1] = 0b00000;
 				special[2] = 0b00000;
 				special[4] = 0b00000;
@@ -336,7 +336,6 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 				special[4] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
 			}
-					
 			else if (strcasecmp(aux,"nor") == 0){
 				special[5] = NOR;
 				aux = strtok(NULL, ", \n\0");
@@ -475,9 +474,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 				imediato[0] = B;
 				aux = strtok(NULL, ", \n\0");
 				imediato[1] = 0b00000;
-				aux = strtok(NULL, ", \n\0");
 				imediato[2] = 0b00000;
-				aux = strtok(NULL, ", \n\0");
 				imediato[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
@@ -505,7 +502,6 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 				imediato[0] = BGTZ;
 				aux = strtok(NULL, ", \n\0");
 				imediato[1] = registradores(aux);
-				aux = strtok(NULL, ", \n\0");
 				imediato[2] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
 				imediato[3] = registradores(aux);
@@ -515,7 +511,6 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 				imediato[0] = BLEZ;
 				aux = strtok(NULL, ", \n\0");
 				imediato[1] = registradores(aux);
-				aux = strtok(NULL, ", \n\0");
 				imediato[2] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
 				imediato[3] = registradores(aux);
@@ -533,7 +528,6 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 			}
 			else if(strcasecmp(aux,"lui") == 0){
 				imediato[0] = LUI;
-				aux = strtok(NULL, ", \n\0");
 				imediato[1] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
 				imediato[2] = registradores(aux);
@@ -572,9 +566,7 @@ void tradutorHexa(FILE *saidaHexa, FILE *saidaBin){
 	while(fgets(bin, 34, saidaBin) != NULL){
 		// printf("tamanho %d\n", (int)strlen(bin));
 		bin[strlen(bin)] = '\0';
-		printf("\nstring binaria:%s\n", bin);
 		numero = (int)strtol(bin, NULL, 2);
-		printf("\nNUMERO:%d\n", numero);
 		fwrite(&numero, sizeof(int), 1, saidaHexa);
 		fwrite("\n", 1, 1, saidaHexa);
 
@@ -587,7 +579,7 @@ void tradutorHexa(FILE *saidaHexa, FILE *saidaBin){
 int main(){
     char texto[100], *aux;
 	int special[6], jump[2], regim[4], imediato[4];
-    FILE *instrucoes = fopen("teste.asm", "r");
+    FILE *instrucoes = fopen("testes.asm", "r");
 	FILE *saidaBinario = fopen("codigoBinario.txt", "wr+");
 	FILE *saidaHexa = fopen("codigoHexa.txt", "w+");
 	
