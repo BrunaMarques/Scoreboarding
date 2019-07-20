@@ -6,7 +6,7 @@ mfhi $s1
 mflo $S6
 movn $A1, $a2, $A3
 movz $ZERO, $Z0, $AT
-mthi $KO
+mthi $K0
 mtlo $k1
 mult $T8, $T9
 nop
