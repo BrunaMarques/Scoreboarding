@@ -12,8 +12,10 @@ typedef struct
 
 UF_status *statusUF;
 
-void issue(op, rt, r1, r2)
-{
+void issue(op, rt, r1, r2) //recebe uma instrução
+{                          //verifica se a uf ta livre
+                           //verifica se o reg ta livre
+                           //
     for (int i = 0; i < qtf_uf; i++)
     {
         statusUF = (UF_status *)malloc(sizeof(statusUF) * qtd_uf);
@@ -22,7 +24,7 @@ void issue(op, rt, r1, r2)
         {
             statusUF[i].Busy = true;
             statusUF[i].Op = op;
-            statusUF[i].Fi = rt;
+            statusUF[i].Fi = rt; //destino
             statusUF[i].Fj = r1;
             statusUF[i].Fk = r2;
             statusUF[i].Qj = Result[r1];

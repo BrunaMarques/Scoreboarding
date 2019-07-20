@@ -4,6 +4,7 @@
 #include "ula.c"
 
 void decodificacao(unsigned int palavra[])
+//etapa de decodificação
 {
 
 	int instrucao = palavra[0] << 24;
@@ -64,6 +65,7 @@ void decodificacao(unsigned int palavra[])
 }
 
 void separarHILO(int in)
+//separa HI e LO
 {
 
 	bufferRegistradores[HI] = in >> 5;
@@ -71,11 +73,13 @@ void separarHILO(int in)
 }
 
 int juntarHILO(int hi, int lo)
+//junta HI e LO
 {
 
 	return hi << 5 + lo;
 }
 void execucao()
+//etapa de execução
 {
 	int operacao = descobrirOperacao() int registrador;
 	switch (operacao)
