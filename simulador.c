@@ -4,6 +4,8 @@
 #include "simulador.h"
 #include "ula.c"
 #include "instrucoes.c"
+#include "instrucoes.h"
+#include "memoria.c"
 #include "registradores.c"
 
 int n = 20;

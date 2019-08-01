@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "ULA.h"
+#include "ula.h"
 
 #define TRUE 1
 #define FALSE 0
