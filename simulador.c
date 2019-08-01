@@ -7,6 +7,7 @@
 #include "instrucoes.h"
 #include "memoria.c"
 #include "registradores.c"
+#include "fila.c"
 
 int n = 20;
 
@@ -15,6 +16,7 @@ int main(){
 	char *memoria = inicializaMemoria();
 	escritaMemoria(n, memoria);
 	unsigned int palavra[4];
+	FILA fila;
 
 	for (int i = 0; i < n/4; i++){
 

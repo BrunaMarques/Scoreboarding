@@ -17,6 +17,13 @@ typedef struct {
 
 FILA *f;
 
+void filaVazia(){
+    if (f->nroElem == 0){
+        return true;
+    }
+    return false;
+}
+
 void inicializarFila() {
     f =(FILA*) malloc(sizeof(FILA));
     f->inicio=0;
@@ -58,10 +65,16 @@ int main(){
     B.opcode = 1;
     C.opcode = 2;
     inicializarFila();
+    filaVazia();
     inserirElementoFila(A);
     inserirElementoFila(B);
     inserirElementoFila(C);
     exibirFila();
     excluirElementoFila();
     exibirFila();
+    filaVazia();
+    excluirElementoFila();
+    excluirElementoFila();
+    exibirFila();
+    filaVazia();
 }
