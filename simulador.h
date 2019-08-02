@@ -12,5 +12,6 @@
 #include "fila.h"
 #include "pipeline.h"
 #include "memoria.h"
+#include "barramento.h"
 
 #endif

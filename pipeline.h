@@ -6,8 +6,12 @@
 #include "ula.h"
 #include "memoria.h"
 #include "registradores.h"
+#include "barramento.h"
+
+int EMITIDA = true;
 
 void buscaPipeline();
 void execucao();
+void emissao();
 
 #endif

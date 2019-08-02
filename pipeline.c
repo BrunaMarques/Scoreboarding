@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "pipeline.h"
 
+
 void buscaPipeline(){
     if(filaVazia()){
         for(int i=0; i<4; i++){
@@ -10,8 +11,20 @@ void buscaPipeline(){
     
             Inst instDecode = decodificacao(instMem);
             inserirElementoFila(instDecode); // não sei como passa esse ponteiro
+			PC += 4;
         }
     }
+
+	if (EMITIDA){
+		if(!verifica_bar(barBI)) escrita_bar(excluirElementoFila(), barBI); 
+	}
+}
+
+void emissao(){
+	if(verifica_bar(barBI)){
+		EMITIDA = false;
+		Inst in  = leitura_bar(barBI);
+	}
 }
 
 void execucao()

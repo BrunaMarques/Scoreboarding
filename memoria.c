@@ -21,6 +21,7 @@ void escritaMemoria()
 
     	for(posicao = endereco; posicao < endereco + 4; posicao++){
     	    memoria[posicao] = palavra_bytes[i++];
+			printf("\nposicao memoria: %d", posicao);
     	}
 		endereco += 4;
     }
@@ -29,9 +30,9 @@ void escritaMemoria()
 
 void buscaMemoria(unsigned int palavra[])
 {
-
+	printf("\nPC = %d ", PC);
 	for (int contByte = 0; contByte < 4; contByte++)
 	{
-		palavra[contByte] = memoria[(4 * PC) + contByte];
+		palavra[contByte] = memoria[PC + contByte];
 	}
 }

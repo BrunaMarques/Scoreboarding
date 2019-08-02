@@ -3,12 +3,12 @@
 
 void inicializa_bar()
 {
-    BI.opcode = sem_instrucao;
-    IR.opcode = sem_instrucao;
+    BI.instrucao.opcode = sem_instrucao;
+    IR.instrucao.opcode = sem_instrucao;
     for (int i = 0; i < 5; i++)
     {
-        RE[i].opcode = sem_instrucao;
-        EW[i].opcode = sem_instrucao;
+        RE[i].instrucao.opcode = sem_instrucao;
+        EW[i].instrucao.opcode = sem_instrucao;
     }
 }
 
@@ -18,13 +18,13 @@ void escrita_bar(Inst instrucao, int tipo_bar)
     {
     case barBI:
 
-        BI = instrucao;
+        BI.instrucao = instrucao;
 
         break;
 
     case barIR:
 
-        IR = instrucao;
+        IR.instrucao = instrucao;
 
         break;
 
@@ -32,9 +32,9 @@ void escrita_bar(Inst instrucao, int tipo_bar)
 
         for (int i = 0; i < 5; i++)
         {
-            if (RE[i].opcode == sem_instrucao)
+            if (RE[i].instrucao.opcode == sem_instrucao)
             {
-                RE[i] = instrucao;
+                RE[i].instrucao = instrucao;
                 break;
             }
         }
@@ -45,9 +45,9 @@ void escrita_bar(Inst instrucao, int tipo_bar)
 
         for (int i = 0; i < 5; i++)
         {
-            if (EW[i].opcode == sem_instrucao)
+            if (EW[i].instrucao.opcode == sem_instrucao)
             {
-                EW[i] = instrucao;
+                EW[i].instrucao = instrucao;
                 break;
             }
         }
@@ -62,25 +62,25 @@ Inst leitura_bar(int tipo_bar)
     {
     case barBI:
 
-        return BI;
+        return BI.instrucao;
 
         break;
 
     case barIR:
 
-        return IR;
+        return IR.instrucao;
 
         break;
 
     case barRE:
 
-        return RE;
+        return RE.instrucao;
 
         break;
 
     case barEW:
 
-        return EW;
+        return EW.instrucao;
 
         break;
     }
@@ -91,7 +91,7 @@ int verifica_bar(int tipo_bar)
     switch (tipo_bar)
     {
     case barBI:
-        if (BI.opcode == sem_instrucao)
+        if (BI.instrucao.opcode == sem_instrucao)
         {
             return 0;
         }
@@ -99,7 +99,7 @@ int verifica_bar(int tipo_bar)
         break;
 
     case barIR:
-        if (IR.opcode == sem_instrucao)
+        if (IR.instrucao.opcode == sem_instrucao)
         {
             return 0;
         }
@@ -109,7 +109,7 @@ int verifica_bar(int tipo_bar)
     case barRE:
         for (int i = 0; i < 5; i++)
         {
-            if (RE[i].opcode != sem_instrucao)
+            if (RE[i].instrucao.opcode != sem_instrucao)
             {
                 return 1;
             }
@@ -120,7 +120,7 @@ int verifica_bar(int tipo_bar)
     case barEW:
         for (int i = 0; i < 5; i++)
         {
-            if (EW[i].opcode != sem_instrucao)
+            if (EW[i].instrucao.opcode != sem_instrucao)
             {
                 return 1;
             }
