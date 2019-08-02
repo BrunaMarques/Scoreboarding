@@ -17,7 +17,7 @@ typedef struct
     unsigned int rd;
     unsigned int shamt;
     unsigned int func;
-} S;
+} E;
 
 typedef struct
 {
@@ -26,7 +26,7 @@ typedef struct
     unsigned int rd;
     unsigned int shamt;
     unsigned int func;
-} S2;
+} E2;
 
 typedef struct
 {
@@ -51,8 +51,8 @@ typedef struct
 typedef struct
 {
     unsigned int opcode;
-    S s_instrucao;
-    S2 s2_instrucao;
+    E s_instrucao;
+    E2 s2_instrucao;
     Jump j_instrucao;
     I i_instrucao;
     R r_instrucao;

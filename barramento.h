@@ -6,8 +6,8 @@
 typedef struct
 {
     unsigned int opcode;
-    S s_instrucao;
-    S2 s2_instrucao;
+    E s_instrucao;
+    E2 s2_instrucao;
     Jump j_instrucao;
     I i_instrucao;
     R r_instrucao;
