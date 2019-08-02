@@ -568,7 +568,7 @@ void tradutorHexa(FILE *saidaHexa, FILE *saidaBin){
 		bin[strlen(bin)] = '\0';
 		numero = (int)strtol(bin, NULL, 2);
 		fwrite(&numero, sizeof(int), 1, saidaHexa);
-		fwrite("\n", 1, 1, saidaHexa);
+		//fwrite("\n", 1, 1, saidaHexa);
 
 	}
 
