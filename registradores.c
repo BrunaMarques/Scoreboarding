@@ -2,6 +2,7 @@
 
 void inicializarRegistradores(){
     for(int i = 0; i < 34; ++i) bancoRegistradores[i] = 0;
+    PC = 0;
 }
 
 void escreverRegistrador(int registrador, int valor){

@@ -1,15 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "simulador.h"
-#include "ula.c"
-#include "instrucoes.c"
-#include "instrucoes.h"
-#include "memoria.c"
-#include "registradores.c"
-#include "fila.h"
-#include "pipeline.h"
-#include "memoria.h"
 
 int n = 20;
 

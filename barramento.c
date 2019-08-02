@@ -129,4 +129,3 @@ int verifica_bar(int tipo_bar)
         break;
     }
 }
-}

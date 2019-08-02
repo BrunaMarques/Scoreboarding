@@ -1,7 +1,6 @@
 #ifndef INSTRUCOES_H
 #define INSTRUCOES_H
 
-#include "ula.h"
 #include "registradores.h"
 
 #define MASCARA 31
@@ -65,7 +64,5 @@ Inst decodificacao(unsigned int palavra[]);
 void separarHILO(int in);
 
 int juntarHILO(int hi, int lo);
-
-void execucao();
 
 #endif

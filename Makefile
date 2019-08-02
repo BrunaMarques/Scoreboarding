@@ -2,4 +2,4 @@ ARQ=./*.c
 CXX=gcc
 
 all:
-	$(CXX) simulador.c ula.c memoria.c instrucoes.c registradores.c fila.c pipeline.c
+	$(CXX) simulador.c ula.c memoria.c instrucoes.c registradores.c fila.c pipeline.c -o mips32

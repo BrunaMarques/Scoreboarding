@@ -44,10 +44,11 @@ int bancoRegistradores[34];
 int bufferRegistradores[34];
 int bufferResultado;
 
-int PC = 0;
+int PC;
 
 void inicializarRegistradores();
 void escreverRegistrador(int registrador, int valor);
 int lerRegistrador(int registrador);
 void printarBancoRegistradores();
+
 #endif
