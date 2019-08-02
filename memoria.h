@@ -1,5 +1,16 @@
-char *inicializaMemoria(){}
+#ifndef MEMORIA_H
+#define MEMORIA_H
 
-void escritaMemoria(int tamanho, char *memoria){}
+#include "registradores.h"
 
-int buscaMemoria(unsigned int palavra[], char *memoria, int pc){}
+#define TAMANHO_MEMORIA 512 //por enquanto memoria tem 512 bytes
+
+char* memoria;
+
+char *inicializaMemoria();
+
+void escritaMemoria(int tamanho, char *memoria);
+
+void buscaMemoria(unsigned int palavra[]);
+
+#endif

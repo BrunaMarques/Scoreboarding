@@ -1,3 +1,6 @@
+#ifndef TRADUTOR_H
+#define TRADUTOR_H
+
 #include "registradores.h"
 //instruções ESPECIAL
 #define ADD 0b100000
@@ -43,7 +46,7 @@
 #define BLTZ 0b00000
 
 
-
+#endif
 
 
 
