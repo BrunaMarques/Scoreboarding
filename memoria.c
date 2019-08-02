@@ -12,20 +12,20 @@ void escritaMemoria(int tamanho, char *memoria)
 {
 
 	FILE *instrucoes = fopen("entrada.txt", "r");
-	unsigned int *palavra = (unsigned int*)malloc(sizeof(char) * 4);
+	char *palavra_bytes;
+	int palavra, posicao, endereco, i = 0;
 
-	for (int contPalavra = 0; contPalavra < tamanho; contPalavra += 4)
-	{
+    while(fread(&palavra, sizeof(int), 1, instrucoes) == 1){
+        // endereco = write_mem(palavra, endereco);
+		i = 0;
+    	*palavra_bytes = (char*) &palavra;
 
-		fscanf(instrucoes, "%X", palavra);
+    	for(posicao = endereco; posicao < endereco + 4; posicao++){
+    	    memoria[posicao] = palavra_bytes[i++];
+    	}
+		endereco += 4;
+    }
 
-		for (int contByte = 0; contByte < 4; contByte++)
-		{
-
-			memoria[contPalavra - contByte + 3] = *palavra & 0x0FF;
-			*palavra = (*palavra >> 8);
-		}
-	}
 }
 
 void buscaMemoria(unsigned int palavra[])
