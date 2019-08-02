@@ -1,13 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "memoria.h"
 
 char *inicializaMemoria()
 {
 
 	//procurar tamanho da memoria e por em n //
-	char *memoria = malloc(sizeof(char) * TAMANHO_MEMORIA);
-	return memoria;
+	char *memoria_aux = (char*)malloc(sizeof(char) * TAMANHO_MEMORIA);
+	return memoria_aux;
 }
 
 void escritaMemoria(int tamanho, char *memoria)
