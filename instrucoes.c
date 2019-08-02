@@ -91,6 +91,7 @@ int juntarHILO(int hi, int lo)
 void execucao()
 //etapa de execução
 {
+	Inst in;
 	int operacao = descobrirOperacao(in);
 	int registrador;
 	switch (operacao)
@@ -127,7 +128,7 @@ void execucao()
 		bufferRegistradores[LO] = bancoRegistradores[in.s_instrucao.rs];
 		break;
 	case MULT:
-		separarHILO(multiplicacao(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt]))
+		separarHILO(multiplicacao(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt]));
 		break;
 	case NOP:
 		// nao faz nada por enquanto (no operation)// 

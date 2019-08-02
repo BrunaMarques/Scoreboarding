@@ -17,7 +17,7 @@ typedef struct
     unsigned int rd;
     unsigned int shamt;
     unsigned int func;
-} E;
+}E;
 
 typedef struct
 {
@@ -26,19 +26,19 @@ typedef struct
     unsigned int rd;
     unsigned int shamt;
     unsigned int func;
-} E2;
+}E2;
 
 typedef struct
 {
     unsigned int rs;
     unsigned int rt;
     unsigned int imediato;
-} I;
+}I;
 
 typedef struct
 {
     unsigned int addr; //instruction adress
-} Jump;
+}Jump;
 
 typedef struct
 {
@@ -46,7 +46,7 @@ typedef struct
     unsigned int rs;
     unsigned int id;
     unsigned int offset;
-} R;
+}R;
 
 typedef struct
 {
@@ -56,7 +56,7 @@ typedef struct
     Jump j_instrucao;
     I i_instrucao;
     R r_instrucao;
-} Inst;
+}Inst;
 
 // Inst in;
 

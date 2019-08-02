@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ula.h"
+#include "instrucoes.h"
 
 #define TRUE 1
 #define FALSE 0
@@ -144,11 +145,6 @@ int descobrirOperacao(Inst in)
         op = BEQL;
         break;
 
-    case 0b000001:
-
-        op = BGEZ;
-        break;
-
     case 0b000111:
 
         op = BGTZ;
@@ -157,11 +153,6 @@ int descobrirOperacao(Inst in)
     case 0b000110:
 
         op = BLEZ;
-        break;
-
-    case 0b000001:
-
-        op = BLTZ;
         break;
 
     case 0b000101:
@@ -188,6 +179,18 @@ int descobrirOperacao(Inst in)
 
         op = J;
         break;
+
+    case 0b000001:
+        switch (in.r_instrucao.id)
+        {
+        case 0b00001:
+            op = BGEZ;
+            break;
+        
+        case 0b00000:
+            op = BLTZ;
+            break;
+        }
     }
 
     return op;
@@ -254,7 +257,7 @@ int menor(int op1, int op2)
 {
     if (op1 < op2)
         return TRUE;
-    return FALSE
+    return FALSE;
 }
 
 int maiorIgual(int op1, int op2)
