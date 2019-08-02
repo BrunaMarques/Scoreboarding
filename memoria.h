@@ -9,9 +9,9 @@
 
 char* memoria;
 
-char *inicializaMemoria();
+void inicializaMemoria();
 
-void escritaMemoria(int tamanho, char *memoria);
+void escritaMemoria();
 
 void buscaMemoria(unsigned int palavra[]);
 

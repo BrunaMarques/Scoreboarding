@@ -4,8 +4,8 @@ int n = 20;
 
 int main(){
 
-	memoria = inicializaMemoria();
-	escritaMemoria(n, memoria);
+	inicializaMemoria();
+	escritaMemoria();
 	inicializarRegistradores();
 	// unsigned int palavra[4];
 	// FILA fila;

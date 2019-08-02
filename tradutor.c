@@ -567,6 +567,7 @@ void tradutorHexa(FILE *saidaHexa, FILE *saidaBin){
 		// printf("tamanho %d\n", (int)strlen(bin));
 		bin[strlen(bin)] = '\0';
 		numero = (int)strtol(bin, NULL, 2);
+		printf("%x\n", numero);
 		fwrite(&numero, sizeof(int), 1, saidaHexa);
 		//fwrite("\n", 1, 1, saidaHexa);
 
@@ -579,12 +580,15 @@ void tradutorHexa(FILE *saidaHexa, FILE *saidaBin){
 int main(){
     char texto[100], *aux;
 	int special[6], jump[2], regim[4], imediato[4];
-    FILE *instrucoes = fopen("testes.asm", "r");
+    FILE *instrucoes = fopen("teste.asm", "r");
 	FILE *saidaBinario = fopen("codigoBinario.txt", "wr+");
-	FILE *saidaHexa = fopen("codigoHexa.txt", "w+");
+	FILE *saidaHexa = fopen("codigoHexa.txt", "w");
 	
 	tradutorBin(instrucoes,saidaBinario,saidaHexa,texto,aux,special,imediato,regim,jump);
 	fseek(saidaBinario, 0, SEEK_SET);
 	tradutorHexa(saidaHexa, saidaBinario);
+
+	fclose(saidaBinario);
+	fclose(saidaHexa);
 return 0;
 }
