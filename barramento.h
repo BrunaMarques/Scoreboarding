@@ -1,3 +1,6 @@
+#ifndef BARRAMENTO_H
+#define BARRAMENTO_H
+
 #include "instrucoes.h"
 
 typedef struct
@@ -26,3 +29,5 @@ void inicializa_bar();
 void escrita_bar(Inst instrucao, int tipo_bar);
 
 Inst leitura_bar(int tipo_bar);
+
+#endif

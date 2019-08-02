@@ -7,24 +7,29 @@
 #include "instrucoes.h"
 #include "memoria.c"
 #include "registradores.c"
-#include "fila.c"
+#include "fila.h"
+#include "pipeline.h"
+#include "memoria.h"
 
 int n = 20;
 
 int main(){
 
-	char *memoria = inicializaMemoria();
+	memoria = inicializaMemoria();
 	escritaMemoria(n, memoria);
-	unsigned int palavra[4];
-	FILA fila;
+	inicializarRegistradores();
+	// unsigned int palavra[4];
+	// FILA fila;
 
-	for (int i = 0; i < n/4; i++){
+	buscaPipeline();
 
-		buscaMemoria(palavra, memoria, pc);
-		decodificacao(palavra);
-		//op = descobrirOperacao();
+	// for (int i = 0; i < n/4; i++){
 
-	}
+	// 	buscaMemoria(palavra, memoria, pc);
+	// 	decodificacao(palavra);
+	// 	//op = descobrirOperacao();
+
+	// }
 
 	return 0;
 	

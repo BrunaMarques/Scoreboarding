@@ -1,23 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "instrucoes.h"
+#include "fila.h"
 
-#define MAX 4
-#define true 1;
-#define false 0;
-
-
-typedef int bool;
-
-typedef struct {
-    Inst fila_inst[MAX];
-    int inicio;
-    int nroElem;
-} FILA;
-
-FILA *f;
-
-void filaVazia(){
+bool filaVazia(){
     if (f->nroElem == 0){
         return true;
     }
@@ -51,30 +36,28 @@ bool inserirElementoFila(Inst i) {
 }
 
 Inst excluirElementoFila() {
-    if (f->nroElem==0)
-        return;
     Inst aux = f->fila_inst[f->inicio];
     f->inicio = (f->inicio+1) % MAX;
     f->nroElem--;
     return aux;
 }
 
-int main(){
-    Inst A, B, C;
-    A.opcode = 0;
-    B.opcode = 1;
-    C.opcode = 2;
-    inicializarFila();
-    filaVazia();
-    inserirElementoFila(A);
-    inserirElementoFila(B);
-    inserirElementoFila(C);
-    exibirFila();
-    excluirElementoFila();
-    exibirFila();
-    filaVazia();
-    excluirElementoFila();
-    excluirElementoFila();
-    exibirFila();
-    filaVazia();
-}
+// int main(){
+//     Inst A, B, C;
+//     A.opcode = 0;
+//     B.opcode = 1;
+//     C.opcode = 2;
+//     inicializarFila();
+//     filaVazia();
+//     inserirElementoFila(A);
+//     inserirElementoFila(B);
+//     inserirElementoFila(C);
+//     exibirFila();
+//     excluirElementoFila();
+//     exibirFila();
+//     filaVazia();
+//     excluirElementoFila();
+//     excluirElementoFila();
+//     exibirFila();
+//     filaVazia();
+// }

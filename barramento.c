@@ -95,6 +95,7 @@ int verifica_bar(int tipo_bar)
         {
             return 0;
         }
+        return 1;
         break;
 
     case barIR:
@@ -102,6 +103,7 @@ int verifica_bar(int tipo_bar)
         {
             return 0;
         }
+        return 1;
         break;
 
     case barRE:
@@ -112,6 +114,7 @@ int verifica_bar(int tipo_bar)
                 return 1;
             }
         }
+        return 0;
         break;
 
     case barEW:
@@ -122,6 +125,7 @@ int verifica_bar(int tipo_bar)
                 return 1;
             }
         }
+        return 0;
         break;
     }
 }

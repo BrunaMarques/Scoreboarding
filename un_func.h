@@ -1,3 +1,6 @@
+#ifndef UN_FUNC_H
+#define UN_FUNC_H
+
 typedef struct
 {
     UF_status status;
@@ -8,3 +11,5 @@ UnidadeFuncional UFMUL1;
 UnidadeFuncional UFMUL2;
 UnidadeFuncional UFDIV;
 UnidadeFuncional UFINT;
+
+#endif

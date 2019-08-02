@@ -2,14 +2,16 @@
 #include <stdlib.h>
 #include "pipeline.h"
 #include "memoria.h"
-#include "fila.c"
+#include "registradores.h"
 
-buscaPipeline(unsigned int palavra, FILA fila, char *memoria, int pc){
-    if(filaVazia){
-        for(int i=0; i<4; i++)
-            buscaMemoria(palavra, memoria, pc);
+void buscaPipeline(){
+    if(filaVazia()){
+        for(int i=0; i<4; i++){
+            unsigned int instMem[4];
+            buscaMemoria(instMem);
     
-        int *instMem = decodificacao(palavra);
-        inserirElementoFila(instMem); // não sei como passa esse ponteiro
+            Inst instDecode = decodificacao(instMem);
+            inserirElementoFila(instDecode); // não sei como passa esse ponteiro
+        }
     }
 }

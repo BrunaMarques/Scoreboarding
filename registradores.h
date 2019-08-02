@@ -1,3 +1,9 @@
+#ifndef REGISTRADORES_H
+#define REGISTRADORES_H
+
+#include <stdlib.h>
+#include <stdio.h>
+
 #define Z0 0
 #define AT 1
 #define V0 2
@@ -37,3 +43,11 @@
 int bancoRegistradores[34];
 int bufferRegistradores[34];
 int bufferResultado;
+
+int PC = 0;
+
+void inicializarRegistradores();
+void escreverRegistrador(int registrador, int valor);
+int lerRegistrador(int registrador);
+void printarBancoRegistradores();
+#endif

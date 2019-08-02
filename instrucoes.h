@@ -1,3 +1,9 @@
+#ifndef INSTRUCOES_H
+#define INSTRUCOES_H
+
+#include "ula.h"
+#include "registradores.h"
+
 #define MASCARA 31
 #define ESPECIAL 0b000000
 #define ESPECIAL2 0b011100
@@ -49,15 +55,17 @@ typedef struct
     S2 s2_instrucao;
     Jump j_instrucao;
     I i_instrucao;
-    R r_instrucao
+    R r_instrucao;
 } Inst;
 
-Inst in;
+// Inst in;
 
-void decodificacao(unsigned int palavra[]) {}
+Inst decodificacao(unsigned int palavra[]);
 
-void separarHILO(int in) {}
+void separarHILO(int in);
 
-int juntarHILO(int hi, int lo) {}
+int juntarHILO(int hi, int lo);
 
-void execucao() {}
+void execucao();
+
+#endif

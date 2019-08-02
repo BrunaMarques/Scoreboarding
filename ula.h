@@ -1,3 +1,8 @@
+#ifndef ULA_H
+#define ULA_H
+
+#include "instrucoes.h"
+
 #define ADD 1
 #define ADDI 2
 #define AND 3
@@ -32,4 +37,38 @@
 #define XOR 32
 #define XORI 33
 
-int descobrirOperacao(){}
+int descobrirOperacao(Inst in);
+
+int adicao(int op1, int op2);
+
+int subtracao(int op1, int op2);
+
+int multiplicacao(int op1, int op2);
+
+int divisao(int op1, int op2);
+
+int and (int op1, int op2);
+
+int or (int op1, int op2);
+
+int xor (int op1, int op2);
+
+int not(int op);
+
+int nor(int op1, int op2);
+
+int igual(int op1, int op2);
+
+int maior(int op1, int op2);
+
+int menor(int op1, int op2);
+
+int maiorIgual(int op1, int op2);
+
+int menorIgual(int op1, int op2);
+
+int shiftLeft(int n, int op);
+
+int shiftRight(int n, int op);
+
+#endif

@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "instrucoes.h"
-#include "ula.c"
 
 Inst decodificacao(unsigned int palavra[])
 //etapa de decodificação
@@ -92,7 +91,8 @@ int juntarHILO(int hi, int lo)
 void execucao()
 //etapa de execução
 {
-	int operacao = descobrirOperacao() int registrador;
+	int operacao = descobrirOperacao(in);
+	int registrador;
 	switch (operacao)
 	{
 	case ADD:
@@ -102,7 +102,7 @@ void execucao()
 		bufferRegistradores[in.s_instrucao.rd] = and(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt]);
 		break;
 	case DIV:
-		separarHILO(divisao(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt]);
+		separarHILO(divisao(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt]));
 		break;
 	case JR:
 		PC = bancoRegistradores[in.s_instrucao.rs];
@@ -153,7 +153,7 @@ void execucao()
 		bufferResultado = subtracao(bufferResultado, juntarHILO(bancoRegistradores[HI], bancoRegistradores[LO]));
 		break;
 	case MUL:
-		bufferRegistradores[in.s_instrucao.rd] = multiplicacao(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt])
+		bufferRegistradores[in.s_instrucao.rd] = multiplicacao(bancoRegistradores[in.s_instrucao.rs], bancoRegistradores[in.s_instrucao.rt]);
 		break;
 	case ADDI:
 		bufferRegistradores[in.s_instrucao.rt] = adicao(bancoRegistradores[in.s_instrucao.rs], in.i_instrucao.imediato);
