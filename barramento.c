@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "barramento.h"
-#include "list.c"
+#include "lista.c"
 
 void inicializa_bar()
 {
