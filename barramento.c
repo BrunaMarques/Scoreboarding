@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include "barramento.h"
+#include "list.c"
 
 void inicializa_bar()
 {
-    BI.instrucao.opcode = sem_instrucao;
-    IR.instrucao.opcode = sem_instrucao;
+    BI.opcode = sem_instrucao;
+    IR.opcode = sem_instrucao;
     for (int i = 0; i < 5; i++)
     {
-        RE[i].instrucao.opcode = sem_instrucao;
-        EW[i].instrucao.opcode = sem_instrucao;
+        RE[i].opcode = sem_instrucao;
+        EW[i].opcode = sem_instrucao;
     }
 }
 
@@ -18,13 +19,13 @@ void escrita_bar(Inst instrucao, int tipo_bar)
     {
     case barBI:
 
-        BI.instrucao = instrucao;
+        BI = instrucao;
 
         break;
 
     case barIR:
 
-        IR.instrucao = instrucao;
+        IR = instrucao;
 
         break;
 
@@ -32,9 +33,9 @@ void escrita_bar(Inst instrucao, int tipo_bar)
 
         for (int i = 0; i < 5; i++)
         {
-            if (RE[i].instrucao.opcode == sem_instrucao)
+            if (RE[i].opcode == sem_instrucao)
             {
-                RE[i].instrucao = instrucao;
+                RE[i] = instrucao;
                 break;
             }
         }
@@ -45,9 +46,9 @@ void escrita_bar(Inst instrucao, int tipo_bar)
 
         for (int i = 0; i < 5; i++)
         {
-            if (EW[i].instrucao.opcode == sem_instrucao)
+            if (EW[i].opcode == sem_instrucao)
             {
-                EW[i].instrucao = instrucao;
+                EW[i] = instrucao;
                 break;
             }
         }
@@ -58,29 +59,54 @@ void escrita_bar(Inst instrucao, int tipo_bar)
 
 Inst leitura_bar(int tipo_bar)
 {
+    Inst aux;
     switch (tipo_bar)
     {
     case barBI:
 
-        return BI.instrucao;
+        aux = BI.instrucao;
+        BI.instrucao = sem_instrucao;
+
+        return aux;
 
         break;
 
     case barIR:
 
-        return IR.instrucao;
+        aux = IR.instrucao;
+        IR.instrucao = sem_instrucao;
+
+        return aux;
 
         break;
 
     case barRE:
 
-        return RE.instrucao;
+        for (int i = 0; i < tam; i++)
+        {
+            if (RE[i].instrucao != sem_instrucao)
+            {
+                aux = RE[i].instrucao;
+                RE[i].instrucao = sem_instrucao;
+                return aux;
+                break;
+            }
+        }
 
         break;
 
     case barEW:
 
-        return EW.instrucao;
+        for (int i = 0; i < tam; i++)
+        {
+            if (EW[i].instrucao != sem_instrucao)
+            {
+                aux = EW[i].instrucao;
+                EW[i].instrucao = sem_instrucao;
+                return aux;
+                break;
+            }
+        }
 
         break;
     }
@@ -91,7 +117,7 @@ int verifica_bar(int tipo_bar)
     switch (tipo_bar)
     {
     case barBI:
-        if (BI.instrucao.opcode == sem_instrucao)
+        if (BI.opcode == sem_instrucao)
         {
             return 0;
         }
@@ -99,7 +125,7 @@ int verifica_bar(int tipo_bar)
         break;
 
     case barIR:
-        if (IR.instrucao.opcode == sem_instrucao)
+        if (IR.opcode == sem_instrucao)
         {
             return 0;
         }
@@ -109,7 +135,7 @@ int verifica_bar(int tipo_bar)
     case barRE:
         for (int i = 0; i < 5; i++)
         {
-            if (RE[i].instrucao.opcode != sem_instrucao)
+            if (RE[i].opcode != sem_instrucao)
             {
                 return 1;
             }
@@ -120,7 +146,7 @@ int verifica_bar(int tipo_bar)
     case barEW:
         for (int i = 0; i < 5; i++)
         {
-            if (EW[i].instrucao.opcode != sem_instrucao)
+            if (EW[i].opcode != sem_instrucao)
             {
                 return 1;
             }
