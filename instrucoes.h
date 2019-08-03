@@ -57,7 +57,7 @@ typedef struct
     R r_instrucao;
 }Inst;
 
-// Inst in;
+Inst in;
 
 Inst decodificacao(unsigned int palavra[]);
 

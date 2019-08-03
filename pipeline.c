@@ -9,8 +9,8 @@ void buscaPipeline(){
             unsigned int instMem[4];
             buscaMemoria(instMem);
     
-            Inst instDecode = decodificacao(instMem);
-            inserirElementoFila(instDecode); // não sei como passa esse ponteiro
+            //Inst instDecode = decodificacao(instMem);
+            //inserirElementoFila(instDecode); // não sei como passa esse ponteiro
 			PC += 4;
         }
     }
@@ -24,13 +24,13 @@ void emissao(){
 	if(verifica_bar(barBI)){
 		EMITIDA = false;
 		Inst in  = leitura_bar(barBI);
+		
 	}
 }
 
 void execucao()
 //etapa de execução
 {
-	Inst in;
 	int operacao = descobrirOperacao(in);
 	int registrador;
 	switch (operacao)
