@@ -72,19 +72,19 @@ int excluirElem(int pos)
     return 1;
 }
 
-int main()
-{
-    Inst A, B, C;
-    A.opcode = 0;
-    B.opcode = 1;
-    C.opcode = 2;
-    inicializarLista();
-    A.posicao = inserirEelemLista(A);
+// int main()
+// {
+//     Inst A, B, C;
+//     A.opcode = 0;
+//     B.opcode = 1;
+//     C.opcode = 2;
+//     inicializarLista();
+//     A.posicao = inserirEelemLista(A);
 
-    B.posicao = inserirEelemLista(B);
-    exibirLista();
-    C.posicao = inserirEelemLista(C);
-    exibirLista();
-    excluirElem(B.posicao);
-    exibirLista();
-}
+//     B.posicao = inserirEelemLista(B);
+//     exibirLista();
+//     C.posicao = inserirEelemLista(C);
+//     exibirLista();
+//     excluirElem(B.posicao);
+//     exibirLista();
+// }
