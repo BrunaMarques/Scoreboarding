@@ -55,6 +55,7 @@ typedef struct
     Jump j_instrucao;
     I i_instrucao;
     R r_instrucao;
+    int posicao;
 }Inst;
 
 Inst in;
