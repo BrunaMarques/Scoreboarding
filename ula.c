@@ -186,7 +186,7 @@ int descobrirOperacao(Inst in)
         case 0b00001:
             op = BGEZ;
             break;
-        
+
         case 0b00000:
             op = BLTZ;
             break;

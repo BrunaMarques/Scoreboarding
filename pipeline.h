@@ -10,6 +10,8 @@
 
 int EMITIDA = true;
 
+#define infinito 2147483647;
+
 void buscaPipeline();
 void execucao();
 void emissao();

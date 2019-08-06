@@ -7,10 +7,10 @@
 #include "simulador.h"
 #include "ula.h"
 #include "instrucoes.h"
-#include "registradores.h"
+#include "registradores.c"
 #include "fila.h"
 #include "pipeline.h"
-#include "memoria.h"
+#include "memoria.c"
 #include "barramento.h"
 
 #endif

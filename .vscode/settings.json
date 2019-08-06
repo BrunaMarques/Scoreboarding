@@ -2,6 +2,8 @@
     "C_Cpp.errorSquiggles": "Disabled",
     "files.associations": {
         "stdio.h": "c",
-        "ula.c": "cpp"
+        "ula.c": "cpp",
+        "barramento.h": "c",
+        "simulador.h": "c"
     }
 }

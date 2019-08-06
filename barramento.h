@@ -6,6 +6,7 @@
 typedef struct
 {
     Inst instrucao;
+    int tem_instrucao;
 } barramento;
 
 barramento BI;
@@ -17,7 +18,8 @@ barramento EW[5];
 #define barIR 1
 #define barRE 2
 #define barEW 3
-#define sem_instrucao -1
+#define true 1
+#define false 0
 
 void inicializa_bar();
 
