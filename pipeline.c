@@ -52,11 +52,33 @@ void emissao() //fazer pra todos
 		EMITIDA = false;
 		Inst in = leitura_bar(barBI);
 	}
+
+	if (IR.tem_instrucao == true)
+	{
+		EMITIDA = false;
+		Inst in = leitura_bar(barIR);
+	}
+	for (int i = 0; i < 5; i++)
+	{
+		if (RE[i].tem_instrucao == true)
+		{
+			EMITIDA = false;
+			Inst in = leitura_bar(barRE);
+		}
+	}
+	for (int i = 0; i < 5; i++)
+	{
+		if (EW[i].tem_instrucao == true)
+		{
+			EMITIDA = false;
+			Inst in = leitura_bar(barEW);
+		}
+	}
 }
 
 void leitura()
 {
-	return in. //buscar operando dependendo do tipo de instrução
+	//return in. //buscar operando dependendo do tipo de instrução
 }
 
 void execucao()

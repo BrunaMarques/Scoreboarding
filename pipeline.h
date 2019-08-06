@@ -15,5 +15,6 @@ int EMITIDA = true;
 void buscaPipeline();
 void execucao();
 void emissao();
+void escrita();
 
 #endif
