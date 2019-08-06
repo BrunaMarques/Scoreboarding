@@ -567,12 +567,20 @@ void tradutorHexa(FILE *saidaHexa, FILE *saidaBin){
 		// printf("tamanho %d\n", (int)strlen(bin));
 		bin[strlen(bin)] = '\0';
 		numero = (int)strtol(bin, NULL, 2);
-		printf("%x\n", numero);
+		printf("%X\n", numero);
 		fwrite(&numero, sizeof(int), 1, saidaHexa);
 		//fwrite("\n", 1, 1, saidaHexa);
 
 	}
 
+}
+
+void print_assembly(FILE *instrucoes){
+	char *aux, texto[100];
+	while(fgets(texto, 100, instrucoes) != NULL){
+		aux = strtok(texto, "\n\0");
+		printf("%s\n", aux);
+	}
 }
 
 
@@ -581,11 +589,16 @@ int main(){
     char texto[100], *aux;
 	int special[6], jump[2], regim[4], imediato[4];
     FILE *instrucoes = fopen("teste.asm", "r");
-	FILE *saidaBinario = fopen("codigoBinario.txt", "wr+");
-	FILE *saidaHexa = fopen("codigoHexa.txt", "w");
+	FILE *saidaBinario = fopen("codigoBinario.txt", "w+");
+	FILE *saidaHexa = fopen("codigoHexa.txt", "w+");
 	
+	printf("\nPrograma:\n");
+	print_assembly(instrucoes);
+	fseek(instrucoes, 0, SEEK_SET);
 	tradutorBin(instrucoes,saidaBinario,saidaHexa,texto,aux,special,imediato,regim,jump);
 	fseek(saidaBinario, 0, SEEK_SET);
+
+	printf("\nBinário:\n");
 	tradutorHexa(saidaHexa, saidaBinario);
 
 	fclose(saidaBinario);
