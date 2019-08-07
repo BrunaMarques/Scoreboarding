@@ -9,9 +9,9 @@ LISTA listaRead;
 LISTA listaExecucao;
 LISTA listaWriteB;
 
-void inicializarLista();
-int tamanho();
-void exibirLista();
-int inserirEelemLista(Inst ch);
-int excluirElem(int pos);
+void inicializarLista(LISTA *list);
+int tamanho(LISTA *list);
+void exibirLista(LISTA *list);
+int inserirEelemLista(LISTA *list, Inst ch);
+int excluirElem(LISTA *list, int pos);
 //int main();

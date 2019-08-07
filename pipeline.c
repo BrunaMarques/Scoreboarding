@@ -57,8 +57,12 @@ void emissao() //fazer pra todos
 	}
 }
 
-void leitura()
-{
+void leitura(){
+	if(verifica_bar(IR))
+		IR.instrucao.posicao = inserirEelemLista(listaRead,IR.instrucao);
+	for(int i = 0; i < listaRead.nroElem; i++){
+		
+	} 
 	//return in. //buscar operando dependendo do tipo de instrução
 }
 
