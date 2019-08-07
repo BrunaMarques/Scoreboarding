@@ -7,6 +7,7 @@
 #include "memoria.h"
 #include "registradores.h"
 #include "barramento.h"
+#include "lista.h"
 
 int EMITIDA true;
 
