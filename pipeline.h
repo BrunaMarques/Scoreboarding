@@ -8,7 +8,7 @@
 #include "registradores.h"
 #include "barramento.h"
 
-int EMITIDA = true;
+int EMITIDA true;
 
 #define infinito 2147483647;
 

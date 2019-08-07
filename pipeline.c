@@ -47,31 +47,12 @@ void buscaPipeline()
 }
 void emissao() //fazer pra todos
 {
-	if (BI.tem_instrucao == true)
+	if (EMITIDA)
 	{
-		EMITIDA = false;
-		Inst in = leitura_bar(barBI);
-	}
-
-	if (IR.tem_instrucao == true)
-	{
-		EMITIDA = false;
-		Inst in = leitura_bar(barIR);
-	}
-	for (int i = 0; i < 5; i++)
-	{
-		if (RE[i].tem_instrucao == true)
+		if (BI.tem_instrucao == true)
 		{
 			EMITIDA = false;
-			Inst in = leitura_bar(barRE);
-		}
-	}
-	for (int i = 0; i < 5; i++)
-	{
-		if (EW[i].tem_instrucao == true)
-		{
-			EMITIDA = false;
-			Inst in = leitura_bar(barEW);
+			Inst in = leitura_bar(barBI);
 		}
 	}
 }
@@ -81,7 +62,7 @@ void leitura()
 	//return in. //buscar operando dependendo do tipo de instrução
 }
 
-void execucao()
+Inst execucao()
 //etapa de execução
 {
 	int operacao = descobrirOperacao(in);

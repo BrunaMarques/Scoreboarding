@@ -116,46 +116,46 @@ Inst leitura_bar(int tipo_bar)
     }
 }
 
-// int verifica_bar(int tipo_bar)
-// {
-//     switch (tipo_bar)
-//     {
-//     case barBI:
-//         if (BI.opcode == sem_instrucao)
-//         {
-//             return 0;
-//         }
-//         return 1;
-//         break;
+int verifica_bar(int tipo_bar)
+{
+    switch (tipo_bar)
+    {
+    case barBI:
+        if (BI.tem_instrucao == false)
+        {
+            return 0;
+        }
+        return 1;
+        break;
 
-//     case barIR:
-//         if (IR.opcode == sem_instrucao)
-//         {
-//             return 0;
-//         }
-//         return 1;
-//         break;
+    case barIR:
+        if (IR.tem_instrucao == false)
+        {
+            return 0;
+        }
+        return 1;
+        break;
 
-//     case barRE:
-//         for (int i = 0; i < 5; i++)
-//         {
-//             if (RE[i].opcode != sem_instrucao)
-//             {
-//                 return 1;
-//             }
-//         }
-//         return 0;
-//         break;
+    case barRE:
+        for (int i = 0; i < 5; i++)
+        {
+            if (RE[i].tem_instrucao == true)
+            {
+                return 1;
+            }
+        }
+        return 0;
+        break;
 
-//     case barEW:
-//         for (int i = 0; i < 5; i++)
-//         {
-//             if (EW[i].opcode != sem_instrucao)
-//             {
-//                 return 1;
-//             }
-//         }
-//         return 0;
-//         break;
-//     }
-// }
+    case barEW:
+        for (int i = 0; i < 5; i++)
+        {
+            if (EW[i].tem_instrucao == true)
+            {
+                return 1;
+            }
+        }
+        return 0;
+        break;
+    }
+}
