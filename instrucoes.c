@@ -20,8 +20,8 @@ Inst decodificacao(unsigned int palavra[])
 
 		in.opcode = instrucao >> 26 & MASCARA;
 		in.s_instrucao.rs = instrucao >> 21 & MASCARA;
-		in.s_instrucao.rd = instrucao >> 16 & MASCARA;
-		in.s_instrucao.rt = instrucao >> 11 & MASCARA;
+		in.s_instrucao.rt = instrucao >> 16 & MASCARA;
+		in.s_instrucao.rd = instrucao >> 11 & MASCARA;
 		in.s_instrucao.shamt = instrucao >> 6 & MASCARA;
 		in.s_instrucao.func = instrucao & 63;
 		printf("opcode: %d rs: %d rt: %d rd: %d funct: %d\n", in.opcode, in.s_instrucao.rs, in.s_instrucao.rt, in.s_instrucao.rd, in.s_instrucao.func);
@@ -34,8 +34,8 @@ Inst decodificacao(unsigned int palavra[])
 
 		in.opcode = instrucao >> 26 & MASCARA;
 		in.s2_instrucao.rs = instrucao >> 21 & MASCARA;
-		in.s2_instrucao.rd = instrucao >> 16 & MASCARA;
-		in.s2_instrucao.rt = instrucao >> 11 & MASCARA;
+		in.s2_instrucao.rt = instrucao >> 16 & MASCARA;
+		in.s2_instrucao.rd = instrucao >> 11 & MASCARA;
 		in.s2_instrucao.shamt = instrucao >> 6 & MASCARA;
 		in.s2_instrucao.func = instrucao & 63;
 		printf("opcode: %d rs: %d rt: %d rd: %d funct: %d\n", in.opcode, in.s2_instrucao.rs, in.s2_instrucao.rt, in.s2_instrucao.rd, in.s2_instrucao.func);
