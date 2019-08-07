@@ -1,17 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "pipeline.h"
 #include "barramento.h"
 #include "un_func.h"
 #include "lista.h"
 #include "ula.h"
 
-void buscaPipeline()
-{
-	if (filaVazia())
-	{
-		for (int i = 0; i < 4; i++)
-		{
+int EMITIDA = true;
+
+void buscaPipeline(){
+	if (filaVazia()){
+		for (int i = 0; i < 4; i++){
 			unsigned int instMem[4];
 			buscaMemoria(instMem);
 
@@ -21,10 +21,8 @@ void buscaPipeline()
 		}
 	}
 
-	if (EMITIDA)
-	{
-		if (BI.tem_instrucao == false)
-		{
+	if (EMITIDA){
+		if (BI.tem_instrucao == false){
 			escrita_bar(excluirElementoFila(), barBI);
 		}
 	}
@@ -43,7 +41,7 @@ void emissao()
 	if (!EMITIDA)
 	{
 		Inst in;
-		in = listaIssue.lista_inst[0];
+		in = listaIssue->lista_inst[0];
 		int operacao = descobrirOperacao(in);
 		switch (operacao)
 		{
@@ -114,7 +112,7 @@ void emissao()
 			}
 			break;
 		case JR:
-			if (!UF_INT.status.Busy)
+			if (!UFINT.status.Busy)
 			{
 				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
 				{
@@ -158,7 +156,8 @@ void emissao()
 			}
 			break;
 		case MFLO:
-			rd e hi break;
+			// rd e hi 
+			break;
 		case MOVN:
 			if (!UFINT.status.Busy)
 			{
@@ -204,11 +203,14 @@ void emissao()
 			}
 			break;
 		case MTHI:
-			hi = rs break;
+			//hi = rs 
+			break;
 		case MTLO:
-			lo = rs break;
+			//lo = rs 
+			break;
 		case MULT:
-			mul rs e rt break;
+			//mul rs e rt 
+			break;
 		case NOP:
 			break;
 		case NOR:
@@ -300,9 +302,10 @@ void emissao()
 			}
 			break;
 		case MADD:
-			rd = rs rt break;
+			//rd = rs rt 
+			break;
 		case MSUB:
-			||
+			//||
 				break;
 		case MUL:
 			if (!UFMUL1.status.Busy)
@@ -325,8 +328,7 @@ void emissao()
 					EMITIDA = true;
 				}
 			}
-			if
-				else(!UFMUL2.status.Busy)
+			else if(!UFMUL2.status.Busy)
 				{
 					if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
 					{
@@ -414,15 +416,20 @@ void emissao()
 			}
 			break;
 		case BEQ:
-			rs rt break;
+			//rs rt 
+			break;
 		case BEQL:
-			rs rt break;
+			//rs rt
+			break;
 		case BGTZ:
-			rs break;
+			//rs 
+			break;
 		case BLEZ:
-			rs break;
+			//rs 
+			break;
 		case BNE:
-			rs rt break;
+			//rs rt 
+			break;
 		case LUI:
 			if (!UFINT.status.Busy)
 			{
@@ -468,7 +475,8 @@ void emissao()
 			}
 			break;
 		case XORI:
-			rt rs break;
+			// rt rs 
+			break;
 		case J:
 			if (!UFINT.status.Busy)
 			{
@@ -505,10 +513,10 @@ void emissao()
 
 void leitura()
 {
-	Inst in = listaRead.lista_inst[0];
-	if (verifica_bar(IR))
+	Inst in = listaRead->lista_inst[0];
+	if (verifica_bar(barIR))
 		IR.instrucao.posicao = inserirElemLista(listaRead, IR.instrucao);
-	for (int i = 0; i < listaRead.nroElem; i++)
+	for (int i = 0; i < listaRead->nroElem; i++)
 	{
 		switch (in.UF)
 		{
@@ -569,8 +577,6 @@ void leitura()
 			else
 			{
 			}
-			break;
-		case default:
 			break;
 		}
 		//pra cada instrução na lista de leitura verificar se os reg de origem tem alguma UF produzindo eles ainda, se n tiver ta ok e pode prosseguir
@@ -724,7 +730,7 @@ void escritaPipeline(int reg)
 	bancoRegistradores[reg].valor = bufferRegistradores[reg].valor;
 	bufferRegistradores[reg].valor = infinito;
 	bancoRegistradores[reg].UF = semUF;
-	excluirElem(listaWriteB, EW.instrucao.posicao);
+	excluirElem(listaWriteB, EW->instrucao.posicao);
 
 	//liberar a uf, falar que nenuma uf ta produzindo o reg q eu escrevi, tirar a in da lista
 }

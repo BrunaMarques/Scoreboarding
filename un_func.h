@@ -2,16 +2,16 @@
 #define UN_FUNC_H
 #define qtd_uf = 5;
 
-typedef struct
-{
-    UF_status status;
-} UnidadeFuncional;
 
 typedef struct
 {
     int Busy, Fi, Fj, Fk, Qj, Qk, Rj, Rk, Op;
-    UnidadeFuncional uf;
 } UF_status;
+
+typedef struct
+{
+    UF_status status;
+} UnidadeFuncional;
 
 UnidadeFuncional UFADD;
 UnidadeFuncional UFMUL1;
@@ -25,7 +25,7 @@ UnidadeFuncional UFINT;
 #define UF_DIV 4
 #define UF_INT 5
 
-UF_status.uf.busy_buff = FALSE;
+//UF_status.uf.busy_buff = FALSE;
 
 UF_status *statusUF;
 

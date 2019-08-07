@@ -9,7 +9,7 @@ int main(){
 	inicializaMemoria();
 	escritaMemoria();
 	inicializarRegistradores();
-	buscaPipeline(palavra);
+	//buscaPipeline(palavra);
 	//inicializarFila();
 	// unsigned int palavra[4];
 	// FILA fila;

@@ -9,7 +9,7 @@
 #include "instrucoes.h"
 #include "registradores.h"
 #include "fila.h"
-//#include "pipeline.h"
+#include "pipeline.h"
 #include "memoria.h"
 #include "barramento.h"
 

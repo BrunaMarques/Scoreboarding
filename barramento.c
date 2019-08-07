@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "barramento.h"
-#include "lista.c"
+#include "lista.h"
 
 void inicializa_bar()
 {
@@ -86,7 +86,7 @@ Inst leitura_bar(int tipo_bar)
 
     case barRE:
 
-        for (int i = 0; i < tam; i++)
+        for (int i = 0; i < 5; i++)
         {
             if (RE[i].tem_instrucao == true)
             {
@@ -101,7 +101,7 @@ Inst leitura_bar(int tipo_bar)
 
     case barEW:
 
-        for (int i = 0; i < tam; i++)
+        for (int i = 0; i < 5; i++)
         {
             if (EW[i].tem_instrucao == true)
             {

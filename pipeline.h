@@ -10,8 +10,6 @@
 #include "lista.h"
 #include <stdbool.h>
 
-int EMITIDA = true;
-
 #define infinito 2147483647;
 
 void buscaPipeline();
