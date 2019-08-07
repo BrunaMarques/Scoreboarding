@@ -2,6 +2,7 @@
 #define BARRAMENTO_H
 
 #include "instrucoes.h"
+#include <stdbool.h>
 
 typedef struct
 {
@@ -18,8 +19,6 @@ barramento EW[5];
 #define barIR 1
 #define barRE 2
 #define barEW 3
-#define true 1
-#define false 0
 
 void inicializa_bar();
 

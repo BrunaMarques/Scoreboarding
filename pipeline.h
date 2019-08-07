@@ -7,13 +7,14 @@
 #include "memoria.h"
 #include "registradores.h"
 #include "barramento.h"
+#include <stdbool.h>
 
-int EMITIDA true;
+int EMITIDA = true;
 
 #define infinito 2147483647;
 
 void buscaPipeline();
-void execucao();
+int execucao();
 void emissao();
 void escritaPipeline();
 
