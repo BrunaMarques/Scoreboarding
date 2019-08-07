@@ -4,7 +4,6 @@
 #include "instrucoes.h"
 #include "lista.h"
 
-
 int tam = 0;
 
 void inicializarLista(LISTA *list)
