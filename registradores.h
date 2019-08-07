@@ -40,9 +40,17 @@
 #define HI 32
 #define LO 33
 
-int bancoRegistradores[34];
-int bufferRegistradores[34];
-int bufferResultado;
+#define semUF -1
+
+typedef struct
+{
+    int valor;
+    int UF;
+} registrador;
+
+registrador bancoRegistradores[34];
+registrador bufferRegistradores[34];
+registrador bufferResultado;
 
 int PC;
 

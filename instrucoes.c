@@ -80,8 +80,8 @@ void separarHILO(int in)
 //separa HI e LO
 {
 
-	bufferRegistradores[HI] = in >> 5;
-	bufferRegistradores[LO] = (in << 5) / 32;
+	bufferRegistradores[HI].valor = in >> 5;
+	bufferRegistradores[LO].valor = (in << 5) / 32;
 }
 
 int juntarHILO(int hi, int lo)
