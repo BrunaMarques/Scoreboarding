@@ -4,7 +4,7 @@ void exibirLista();
 int inserirLista(Inst ch, int i);
 int inserirEelemLista(Inst ch);
 int excluirElem(int pos);
-int main();
+//int main();
 
 typedef struct
 {

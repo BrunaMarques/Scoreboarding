@@ -12,8 +12,8 @@ void buscaPipeline()
 			unsigned int instMem[4];
 			buscaMemoria(instMem);
 
-			//Inst instDecode = decodificacao(instMem);
-			//inserirElementoFila(instDecode); // não sei como passa esse ponteiro
+			Inst instDecode = decodificacao(instMem);
+			inserirElementoFila(instDecode); // não sei como passa esse ponteiro
 			PC += 4;
 		}
 	}
@@ -204,7 +204,7 @@ Inst execucao()
 	}
 }
 
-void escrita(int reg)
+void escritaPipeline(int reg)
 {
 	bancoRegistradores[reg] = bufferRegistradores[reg];
 	bufferRegistradores[reg] = infinito;
