@@ -74,7 +74,7 @@ int registradores(char *aux){
 	else return atoi(aux);
 }
 
-void binarioSpecial(int vetor[], FILE *saidaBinario){
+void binarioSpecial(int vetor[], FILE *saidaBinario){ //Transformar em binário
 	int r;
 	for(int i = 5; i >= 0; i--) {
 		r = vetor[0] >> i;
@@ -207,10 +207,10 @@ void binarioJump(int vetor[], FILE *saidaBinario){
 }
 
 void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char texto[], char *aux, int special[], int imediato[], int regim[],int jump[]){
-	while(fgets(texto, 100, instrucoes) != NULL){
-		aux = strtok(texto, ",  \n\0");
+	while(fgets(texto, 100, instrucoes) != NULL){ //pegar as instruções
+		aux = strtok(texto, ",  \n\0"); //vai pegar até virgula, espaço, quebra de linha e fim de arquivo, para separra cada instrução ou registrador
 		if( (strcasecmp(aux,"add") == 0) || (strcasecmp(aux,"and") == 0) || (strcasecmp(aux,"div") == 0) || (strcasecmp(aux,"jr") == 0) || (strcasecmp(aux,"mfhi") == 0) || (strcasecmp(aux,"mflo") == 0) ||(strcasecmp(aux,"movn") == 0) || (strcasecmp(aux,"movz") == 0) || (strcasecmp(aux,"mthi") == 0) || (strcasecmp(aux,"mtlo") == 0) || (strcasecmp(aux,"mult") == 0) || (strcasecmp(aux,"nop") == 0) || (strcasecmp(aux,"or") == 0) || (strcasecmp(aux,"sub") == 0) || (strcasecmp(aux,"xor") == 0) || (strcasecmp(aux,"nor") == 0)){
-			special[0] = 0b000000;
+			special[0] = 0b000000; //pega opcode 
 			if(strcasecmp(aux, "add") == 0){
 				special[5] = ADD;
 				aux = strtok(NULL, ", \n\0");
@@ -566,9 +566,9 @@ void tradutorHexa(FILE *saidaHexa, FILE *saidaBin){
 	while(fgets(bin, 34, saidaBin) != NULL){
 		// printf("tamanho %d\n", (int)strlen(bin));
 		bin[strlen(bin)] = '\0';
-		numero = (int)strtol(bin, NULL, 2);
+		numero = (int)strtol(bin, NULL, 2); //converte para a base 2 e depois pra int
 		printf("%X\n", numero);
-		fwrite(&numero, sizeof(int), 1, saidaHexa);
+		fwrite(&numero, sizeof(int), 1, saidaHexa); //escreve no arquivo
 		//fwrite("\n", 1, 1, saidaHexa);
 
 	}
@@ -594,7 +594,7 @@ int main(){
 	
 	printf("\nPrograma:\n");
 	print_assembly(instrucoes);
-	fseek(instrucoes, 0, SEEK_SET);
+	fseek(instrucoes, 0, SEEK_SET); //voltar para o começo s
 	tradutorBin(instrucoes,saidaBinario,saidaHexa,texto,aux,special,imediato,regim,jump);
 	fseek(saidaBinario, 0, SEEK_SET);
 
