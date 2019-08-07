@@ -1,25 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 50
+#define MAX 5
 #include "instrucoes.h"
 #include "lista.h"
 
-LISTA *list;
+
 int tam = 0;
 
-void inicializarLista()
+void inicializarLista(LISTA *list)
 { //inicializar lista
     list = (LISTA *)malloc(sizeof(LISTA));
     list->nroElem = 0;
     printf("\nLista inicializada");
 }
 
-int tamanho()
+int tamanho(LISTA *list)
 {
     return list->nroElem;
 }
 
-void exibirLista()
+void exibirLista(LISTA *list)
 {
     int i;
     printf("\nLista ->");
@@ -28,7 +28,7 @@ void exibirLista()
     printf("<--");
 }
 
-int inserirLista(Inst ch, int i)
+int inserirLista(LISTA *list, Inst ch, int i)
 {
     int k;
     if ((list->nroElem >= MAX)) //verificar se a lista está cheia
@@ -44,7 +44,7 @@ int inserirLista(Inst ch, int i)
     return i;
 }
 
-int inserirEelemLista(Inst ch)
+int inserirEelemLista(LISTA *list, LISTA *list, Inst ch)
 {
     int i = 0;
     if (list->nroElem >= MAX)
@@ -53,7 +53,7 @@ int inserirEelemLista(Inst ch)
     return inserirLista(ch, list->nroElem);
 }
 
-int excluirElem(int pos)
+int excluirElem(LISTA *list, int pos)
 {
     int j;
     if (pos == -1)
@@ -64,7 +64,6 @@ int excluirElem(int pos)
     for (j = pos; j < list->nroElem - 1; j++)
     {
         list->lista_inst[j] = list->lista_inst[j + 1];
-        printf("AAAAA");
     }
 
     list->nroElem--;
