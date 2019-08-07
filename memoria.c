@@ -55,7 +55,7 @@ void buscaMemoria(unsigned int palavra[])
 	for (contByte = 0; contByte < 4; contByte++)
 	{
 		palavra[contByte] = memoria[PC + contByte];
-		printf ("teste --> %X", palavra[contByte]);
+		// printf ("teste --> %X", palavra[contByte]);
 	}
 
 

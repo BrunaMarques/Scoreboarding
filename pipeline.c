@@ -6,6 +6,7 @@
 #include "un_func.h"
 #include "lista.h"
 #include "ula.h"
+#include "fila.h"
 
 int EMITIDA = true;
 
