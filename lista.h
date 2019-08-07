@@ -4,10 +4,10 @@ typedef struct
     int nroElem;
 } LISTA;
 
-LISTA listaIssue;
-LISTA listaRead;
-LISTA listaExecucao;
-LISTA listaWriteB;
+LISTA *listaIssue;
+LISTA *listaRead;
+LISTA *listaExecucao;
+LISTA *listaWriteB;
 
 void inicializarLista(LISTA *list);
 int tamanho(LISTA *list);
