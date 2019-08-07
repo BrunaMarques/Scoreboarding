@@ -3,6 +3,7 @@
 #include <string.h>
 #include <strings.h>
 #include "tradutor.h"
+#include "hash.c"
 
 int registradores(char *aux){
 	if((strcasecmp(aux,"$zero") == 0) || (strcasecmp(aux,"$0") == 0))
@@ -207,6 +208,25 @@ void binarioJump(int vetor[], FILE *saidaBinario){
 }
 
 void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char texto[], char *aux, int special[], int imediato[], int regim[],int jump[]){
+	int linhas = 0;
+	inicializarHash();
+	while(fgets(texto, 100, instrucoes) != NULL){
+		aux = strtok(texto, ",  \n\0");
+		linhas++;
+		printf("Teste:\n %s, %d\n", aux, linhas);
+		if((strcasecmp(aux,"add") == 0) || (strcasecmp(aux,"and") == 0) || (strcasecmp(aux,"div") == 0) || (strcasecmp(aux,"jr") == 0) || (strcasecmp(aux,"mfhi") == 0) || (strcasecmp(aux,"mflo") == 0) ||(strcasecmp(aux,"movn") == 0) || (strcasecmp(aux,"movz") == 0) || (strcasecmp(aux,"mthi") == 0) || (strcasecmp(aux,"mtlo") == 0) || (strcasecmp(aux,"mult") == 0) || (strcasecmp(aux,"nop") == 0) || (strcasecmp(aux,"or") == 0) || (strcasecmp(aux,"sub") == 0) || (strcasecmp(aux,"xor") == 0) || (strcasecmp(aux,"nor") == 0) || (strcasecmp(aux,"madd") == 0) || (strcasecmp(aux,"msub") == 0) || (strcasecmp(aux,"mul") == 0) ||(strcasecmp(aux,"j") == 0) || (strcasecmp(aux,"bgez") == 0) || (strcasecmp(aux,"bltz") == 0) || (strcasecmp(aux,"addi") == 0) || (strcasecmp(aux,"andi") == 0) || (strcasecmp(aux,"b") == 0) || (strcasecmp(aux,"beq") == 0) || (strcasecmp(aux,"beql") == 0) || (strcasecmp(aux,"bgtz") == 0) || (strcasecmp(aux,"blez") == 0) || (strcasecmp(aux,"bne") == 0) || (strcasecmp(aux,"lui") == 0) || (strcasecmp(aux,"ori") == 0) || (strcasecmp(aux,"xori") == 0)){
+		}
+		else
+		{
+			hash(aux);
+			inserirLabel(aux, linhas);
+			printf("\nENTRU NA HASH\n");
+			printf("\nCaiu no else\n");
+		}
+		// ((strcasecmp(aux,"add") == 0) || (strcasecmp(aux,"and") == 0) || (strcasecmp(aux,"div") == 0) || (strcasecmp(aux,"jr") == 0) || (strcasecmp(aux,"mfhi") == 0) || (strcasecmp(aux,"mflo") == 0) ||(strcasecmp(aux,"movn") == 0) || (strcasecmp(aux,"movz") == 0) || (strcasecmp(aux,"mthi") == 0) || (strcasecmp(aux,"mtlo") == 0) || (strcasecmp(aux,"mult") == 0) || (strcasecmp(aux,"nop") == 0) || (strcasecmp(aux,"or") == 0) || (strcasecmp(aux,"sub") == 0) || (strcasecmp(aux,"xor") == 0) || (strcasecmp(aux,"nor") == 0) || (strcasecmp(aux,"madd") == 0) || (strcasecmp(aux,"msub") == 0) || (strcasecmp(aux,"mul") == 0) ||(strcasecmp(aux,"j") == 0) || (strcasecmp(aux,"bgez") == 0) || (strcasecmp(aux,"bltz") == 0) || (strcasecmp(aux,"addi") == 0) || (strcasecmp(aux,"andi") == 0) || (strcasecmp(aux,"b") == 0) || (strcasecmp(aux,"beq") == 0) || (strcasecmp(aux,"beql") == 0) || (strcasecmp(aux,"bgtz") == 0) || (strcasecmp(aux,"blez") == 0) || (strcasecmp(aux,"bne") == 0) || (strcasecmp(aux,"lui") == 0) || (strcasecmp(aux,"ori") == 0) || (strcasecmp(aux,"xori") == 0))?  : inserirLabel(aux, linhas);
+		
+	}
+	fseek(instrucoes, 0, SEEK_SET);
 	while(fgets(texto, 100, instrucoes) != NULL){ //pegar as instruções
 		aux = strtok(texto, ",  \n\0"); //vai pegar até virgula, espaço, quebra de linha e fim de arquivo, para separra cada instrução ou registrador
 		if( (strcasecmp(aux,"add") == 0) || (strcasecmp(aux,"and") == 0) || (strcasecmp(aux,"div") == 0) || (strcasecmp(aux,"jr") == 0) || (strcasecmp(aux,"mfhi") == 0) || (strcasecmp(aux,"mflo") == 0) ||(strcasecmp(aux,"movn") == 0) || (strcasecmp(aux,"movz") == 0) || (strcasecmp(aux,"mthi") == 0) || (strcasecmp(aux,"mtlo") == 0) || (strcasecmp(aux,"mult") == 0) || (strcasecmp(aux,"nop") == 0) || (strcasecmp(aux,"or") == 0) || (strcasecmp(aux,"sub") == 0) || (strcasecmp(aux,"xor") == 0) || (strcasecmp(aux,"nor") == 0)){
@@ -425,7 +445,11 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 		else if (strcasecmp(aux,"j") == 0){
 			jump[0] = J;
 			aux = strtok(NULL, ", \n\0");
-			jump[1] = registradores(aux);
+			printf("\nENTROU NO JUMP\n");
+			printf("\t%s", aux);
+			hash(aux);
+			jump[1] = pegarEndereco(aux);
+			printf("valor: %d", jump[1]);
 			aux = strtok(NULL, ", \n\0");
 		binarioJump(jump,saidaBinario);
 		}
@@ -436,7 +460,8 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 				aux = strtok(NULL, ", \n\0");
 				regim[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				regim[3] = registradores(aux);
+				hash(aux);
+				regim[3] = pegarEndereco(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
 			else{
@@ -444,12 +469,13 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 				aux = strtok(NULL, ", \n\0");
 				regim[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				regim[3] = registradores(aux);
+				hash(aux);
+				regim[3] = pegarEndereco(aux);
 				aux = strtok(NULL, ", \n\0");
 			}	
 		binarioRegim(regim, saidaBinario);
 		}
-		else{
+		else if((strcasecmp(aux,"addi") == 0) || (strcasecmp(aux,"andi") == 0) || (strcasecmp(aux,"b") == 0) || (strcasecmp(aux,"beq") == 0) || (strcasecmp(aux,"beql") == 0) || (strcasecmp(aux,"bgtz") == 0) || (strcasecmp(aux,"blez") == 0) || (strcasecmp(aux,"bne") == 0) || (strcasecmp(aux,"lui") == 0) || (strcasecmp(aux,"ori") == 0) || (strcasecmp(aux,"xori") == 0)){
 			if(strcasecmp(aux ,"addi") == 0){
 				imediato[0] = ADDI;
 				aux = strtok(NULL, ", \n\0");
@@ -475,7 +501,8 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 				aux = strtok(NULL, ", \n\0");
 				imediato[1] = 0b00000;
 				imediato[2] = 0b00000;
-				imediato[3] = registradores(aux);
+				hash(aux);
+				imediato[3] = pegarEndereco(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"beq") == 0){
@@ -485,7 +512,8 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 				aux = strtok(NULL, ", \n\0");
 				imediato[2] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				imediato[3] = registradores(aux);
+				hash(aux);
+				imediato[3] = pegarEndereco(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"beql") == 0){
@@ -495,7 +523,8 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 				aux = strtok(NULL, ", \n\0");
 				imediato[2] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				imediato[3] = registradores(aux);
+				hash(aux);
+				imediato[3] = pegarEndereco(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"bgtz") == 0){
@@ -504,7 +533,8 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 				imediato[1] = registradores(aux);
 				imediato[2] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
-				imediato[3] = registradores(aux);
+				hash(aux);
+				imediato[3] = pegarEndereco(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"blez") == 0){
@@ -513,7 +543,8 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 				imediato[1] = registradores(aux);
 				imediato[2] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
-				imediato[3] = registradores(aux);
+				hash(aux);
+				imediato[3] = pegarEndereco(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"bne") == 0){
@@ -523,7 +554,8 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 				aux = strtok(NULL, ", \n\0");
 				imediato[2] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				imediato[3] = registradores(aux);
+				hash(aux);
+				imediato[3] = pegarEndereco(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"lui") == 0){
@@ -557,6 +589,12 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 			}
 		binarioImediato(imediato, saidaBinario);
 		}
+		else{
+			aux = strtok(NULL, ", \n\0");
+			printf("\nAAAAAAAAAAAA\n");
+			//aqui vai ser a label tem que fazer a hash
+		}
+		
 	}
 }
 
