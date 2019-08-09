@@ -151,7 +151,7 @@
     - Descript: RT = RS | zero_extend(immediate)
 
 - XORI
-    - Format: XORI RS, RT, immediate
+    - Format: XORI RT, RS, immediate
     - Trad: 001110 RS RT immediate
      - Descript: RT = RS XOR zero_extend(immediate)
 
