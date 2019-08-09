@@ -6,10 +6,10 @@ int main(){
 	
 
 	unsigned int palavra[4];
-	inicializarLista(listaExecucao);
-	inicializarLista(listaIssue);
-	inicializarLista(listaRead);
-	inicializarLista(listaWriteB);
+	inicializarLista(&listaExecucao);
+	inicializarLista(&listaIssue);
+	inicializarLista(&listaRead);
+	inicializarLista(&listaWriteB);
 	inicializarFila();
 	inicializaMemoria();
 	escritaMemoria();
