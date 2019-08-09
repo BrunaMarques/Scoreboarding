@@ -102,7 +102,7 @@ void emissao()
 				{
 					UFDIV.status.Busy = true;
 					UFDIV.status.Op = DIV;
-					UFDIV.status.Fi = bancoRegistradores[HI];
+					UFDIV.status.Fi = in.s_instrucao.rd; //é pra colocar o hi, mas não sei como
 					UFDIV.status.Fj = in.s_instrucao.rs;
 					UFDIV.status.Fk = in.s_instrucao.rt;
 					UFDIV.status.Qj = bancoRegistradores[in.s_instrucao.rs].UF;
@@ -312,7 +312,7 @@ void emissao()
 			}
 			break;
 		case NOP:
-			if (!UF_INT.status.Busy)
+			if (!UFINT.status.Busy)
 			{
 				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
 				{
@@ -418,7 +418,7 @@ void emissao()
 				}
 			}
 			break;
-		case MADD: //ver se ta certo
+		case MADD: //ver se ta certo//destino é hi e lo
 			if (!UFINT.status.Busy)
 			{
 				if (bancoRegistradores[in.s2_instrucao.rd].UF == semUF)
@@ -491,7 +491,7 @@ void emissao()
 					UFMUL2.status.Op = MUL;
 					UFMUL2.status.Fi = in.s2_instrucao.rd;
 					UFMUL2.status.Fj = in.s2_instrucao.rs;
-					UFMUL2.status.Fk = in .2s_instrucao.rt;
+					UFMUL2.status.Fk = in.s2_instrucao.rt;
 					UFMUL2.status.Qj = bancoRegistradores[in.s2_instrucao.rs].UF;
 					UFMUL2.status.Qk = bancoRegistradores[in.s2_instrucao.rt].UF;
 					UFMUL2.status.Rj = (bancoRegistradores[in.s2_instrucao.rs].UF == semUF) ? true : false;
@@ -529,7 +529,7 @@ void emissao()
 		case ANDI:
 			if (!UFINT.status.Busy)
 			{
-				if (bancoRegistradores[in.i_instrucao.rd].UF == semUF)
+				if (bancoRegistradores[in.i_instrucao.rt].UF == semUF)
 				{
 					UFINT.status.Busy = true;
 					UFINT.status.Op = ANDI;
@@ -548,26 +548,22 @@ void emissao()
 				}
 			}
 			break;
-		case B:
+		case B: //ver se tá certo
 			if (!UFINT.status.Busy)
 			{
-				if (bancoRegistradores[in.i_instrucao.rd].UF == semUF)
-				{
-					UFINT.status.Busy = true;
-					UFINT.status.Op = B;
-					UFINT.status.Fi = semUF;
-					UFINT.status.Fj = in.i_instrucao.imediato;
-					UFINT.status.Fk = semUF;
-					UFINT.status.Qj = bancoRegistradores[in.i_instrucao.imediato].UF;
-					UFINT.status.Qk = semUF;
-					UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
-					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
-					bancoRegistradores[in.i_instrucao.rd].UF = UF_INT;
-					in.UF = UF_INT;
-					escrita_bar(in, barIR);
-					excluirElem(listaIssue, 0);
-					EMITIDA = true;
-				}
+				UFINT.status.Busy = true;
+				UFINT.status.Op = B;
+				UFINT.status.Fi = semUF;
+				UFINT.status.Fj = in.i_instrucao.imediato;
+				UFINT.status.Fk = semUF;
+				UFINT.status.Qj = bancoRegistradores[in.i_instrucao.imediato].UF;
+				UFINT.status.Qk = semUF;
+				UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
+				UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
+				in.UF = UF_INT;
+				escrita_bar(in, barIR);
+				excluirElem(listaIssue, 0);
+				EMITIDA = true;
 			}
 			break;
 		case BEQ:
@@ -683,7 +679,7 @@ void emissao()
 		case LUI: //ver se ta certo
 			if (!UFINT.status.Busy)
 			{
-				if (bancoRegistradores[in.i_instrucao.rd].UF == semUF)
+				if (bancoRegistradores[in.i_instrucao.rt].UF == semUF)
 				{
 					UFINT.status.Busy = true;
 					UFINT.status.Op = LUI;
@@ -694,7 +690,7 @@ void emissao()
 					UFINT.status.Qk = bancoRegistradores[in.i_instrucao.rt].UF;
 					UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rs].UF == semUF) ? true : false;
 					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
-					bancoRegistradores[in.i_instrucao.rd].UF = UF_INT;
+					bancoRegistradores[in.i_instrucao.rt].UF = UF_INT;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
 					excluirElem(listaIssue, 0);
@@ -749,23 +745,23 @@ void emissao()
 		case J:
 			if (!UFINT.status.Busy)
 			{
-				if (bancoRegistradores[in.i_instrucao.rd].UF == semUF)
-				{
-					UFINT.status.Busy = true;
-					UFINT.status.Op = J;
-					UFINT.status.Fi = semREG;
-					UFINT.status.Fj = semREG;
-					UFINT.status.Fk = semREG;
-					UFINT.status.Qj = bancoRegistradores[in.i_instrucao.rs].UF;
-					UFINT.status.Qk = bancoRegistradores[in.i_instrucao.rt].UF;
-					UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rs].UF == semUF) ? true : false;
-					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
-					bancoRegistradores[in.i_instrucao.rd].UF = UF_INT;
-					in.UF = UF_INT;
-					escrita_bar(in, barIR);
-					excluirElem(listaIssue, 0);
-					EMITIDA = true;
-				}
+				// if (bancoRegistradores[in.i_instrucao.rd].UF == semUF)
+				// {
+				UFINT.status.Busy = true;
+				UFINT.status.Op = J;
+				UFINT.status.Fi = semREG;
+				UFINT.status.Fj = semREG;
+				UFINT.status.Fk = semREG;
+				UFINT.status.Qj = bancoRegistradores[in.i_instrucao.rs].UF;
+				UFINT.status.Qk = bancoRegistradores[in.i_instrucao.rt].UF;
+				UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rs].UF == semUF) ? true : false;
+				UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
+				// bancoRegistradores[in.i_instrucao.rd].UF = UF_INT;
+				in.UF = UF_INT;
+				escrita_bar(in, barIR);
+				excluirElem(listaIssue, 0);
+				EMITIDA = true;
+				// }
 			}
 			break;
 		case BGEZ:
@@ -790,7 +786,8 @@ void emissao()
 				}
 			}
 			break;
-		case BLTZ:
+		case BLTZ: //em saltos o destino é pc, só tem source
+
 			if (!UFINT.status.Busy)
 			{
 				if (bancoRegistradores[in.i_instrucao.rt].UF == semUF)
@@ -835,7 +832,7 @@ void leitura()
 		case UF_ADD:
 			if ((UFADD.status.Fj != semREG) && (UFADD.status.Fk != semREG))
 			{
-				if ((bancoRegistradores[UFADD.status.Fj].UF == semUF) && (bancoRegistradores[UFADD.status.Fk] == semUF))
+				if ((bancoRegistradores[UFADD.status.Fj].UF == semUF) && (bancoRegistradores[UFADD.status.Fk].UF == semUF))
 				{
 					escrita_bar(in, barRE);
 					excluirElem(listaRead, in.posicao);
@@ -858,7 +855,7 @@ void leitura()
 		case UF_DIV:
 			if ((UFDIV.status.Fj != semREG) && (UFDIV.status.Fk != semREG))
 			{
-				if ((bancoRegistradores[UFDIV.status.Fj].UF == semUF) && (bancoRegistradores[UFDIV.status.Fk] == semUF))
+				if ((bancoRegistradores[UFDIV.status.Fj].UF == semUF) && (bancoRegistradores[UFDIV.status.Fk].UF == semUF))
 				{
 					escrita_bar(in, barRE);
 					excluirElem(listaRead, in.posicao);
@@ -876,7 +873,7 @@ void leitura()
 		case UF_INT:
 			if ((UFINT.status.Fj != semREG) && (UFINT.status.Fk != semREG))
 			{
-				if ((bancoRegistradores[UFINT.status.Fj].UF == semUF) && (bancoRegistradores[UFINT.status.Fk] == semUF))
+				if ((bancoRegistradores[UFINT.status.Fj].UF == semUF) && (bancoRegistradores[UFINT.status.Fk].UF == semUF))
 				{
 					escrita_bar(in, barRE);
 					excluirElem(listaRead, in.posicao);
@@ -899,7 +896,7 @@ void leitura()
 		case UF_MUL1:
 			if ((UFMUL1.status.Fj != semREG) && (UFMUL1.status.Fk != semREG))
 			{
-				if ((bancoRegistradores[UFMUL1.status.Fj].UF == semUF) && (bancoRegistradores[UFMUL1.status.Fk] == semUF))
+				if ((bancoRegistradores[UFMUL1.status.Fj].UF == semUF) && (bancoRegistradores[UFMUL1.status.Fk].UF == semUF))
 				{
 					escrita_bar(in, barRE);
 					excluirElem(listaRead, in.posicao);
@@ -922,7 +919,7 @@ void leitura()
 		case UF_MUL2:
 			if ((UFMUL2.status.Fj != semREG) && (UFMUL2.status.Fk != semREG))
 			{
-				if ((bancoRegistradores[UFMUL2.status.Fj].UF == semUF) && (bancoRegistradores[UFMUL2.status.Fk] == semUF))
+				if ((bancoRegistradores[UFMUL2.status.Fj].UF == semUF) && (bancoRegistradores[UFMUL2.status.Fk].UF == semUF))
 				{
 					escrita_bar(in, barRE);
 					excluirElem(listaRead, in.posicao);
