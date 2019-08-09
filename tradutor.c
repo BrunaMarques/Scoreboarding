@@ -219,7 +219,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 		else
 		{
 			hash(aux);
-			inserirLabel(aux, linhas);
+			inserirLabel(aux, linhas*4);
 			printf("\nENTRU NA HASH\n");
 			printf("\nCaiu no else\n");
 		}

@@ -28,29 +28,22 @@ void buscaPipeline(){
 		}
 	}
 }
-void emissao()
-{
-	if (EMITIDA)
-	{
-		if (BI.tem_instrucao == true)
-		{
+void emissao(){
+	if (EMITIDA){
+		if (BI.tem_instrucao == true){
 			EMITIDA = false;
 			Inst in = leitura_bar(barBI);
 			BI.instrucao.posicao = inserirElemLista(listaRead, BI.instrucao);
 		}
 	}
-	if (!EMITIDA)
-	{
+	if (!EMITIDA){
 		Inst in;
 		in = listaIssue->lista_inst[0];
 		int operacao = descobrirOperacao(in);
-		switch (operacao)
-		{
+		switch (operacao){
 		case ADD:
-			if (!UFADD.status.Busy)
-			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
-				{
+			if (!UFADD.status.Busy){
+				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF){
 					UFADD.status.Busy = true;
 					UFADD.status.Op = ADD;
 					UFADD.status.Fi = in.s_instrucao.rd;
@@ -69,10 +62,8 @@ void emissao()
 			}
 			break;
 		case AND:
-			if (!UFINT.status.Busy)
-			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
-				{
+			if (!UFINT.status.Busy){
+				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF){
 					UFINT.status.Busy = true;
 					UFINT.status.Op = AND;
 					UFINT.status.Fi = in.s_instrucao.rd;
@@ -91,10 +82,8 @@ void emissao()
 			}
 			break;
 		case DIV:
-			if (!UFDIV.status.Busy)
-			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
-				{
+			if (!UFDIV.status.Busy){
+				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF){
 					UFDIV.status.Busy = true;
 					UFDIV.status.Op = DIV;
 					UFDIV.status.Fi = in.s_instrucao.rd;
@@ -113,10 +102,8 @@ void emissao()
 			}
 			break;
 		case JR:
-			if (!UFINT.status.Busy)
-			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
-				{
+			if (!UFINT.status.Busy){
+				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF){
 					UFINT.status.Busy = true;
 					UFINT.status.Op = JR;
 					UFINT.status.Fi = semUF;
@@ -135,10 +122,8 @@ void emissao()
 			}
 			break;
 		case MFHI:
-			if (!UFDIV.status.Busy)
-			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
-				{
+			if (!UFDIV.status.Busy){
+				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF){
 					UFDIV.status.Busy = true;
 					UFDIV.status.Op = MFHI;
 					UFDIV.status.Fi = in.s_instrucao.rd;
@@ -160,10 +145,8 @@ void emissao()
 			// rd e hi 
 			break;
 		case MOVN:
-			if (!UFINT.status.Busy)
-			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
-				{
+			if (!UFINT.status.Busy){
+				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF){
 					UFINT.status.Busy = true;
 					UFINT.status.Op = MOVN;
 					UFINT.status.Fi = in.s_instrucao.rd;
@@ -182,10 +165,8 @@ void emissao()
 			}
 			break;
 		case MOVZ:
-			if (!UFINT.status.Busy)
-			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
-				{
+			if (!UFINT.status.Busy){
+				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF){
 					UFINT.status.Busy = true;
 					UFINT.status.Op = MOVZ;
 					UFINT.status.Fi = in.s_instrucao.rd;
@@ -215,10 +196,8 @@ void emissao()
 		case NOP:
 			break;
 		case NOR:
-			if (!UFINT.status.Busy)
-			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
-				{
+			if (!UFINT.status.Busy){
+				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF){
 					UFINT.status.Busy = true;
 					UFINT.status.Op = NOR;
 					UFINT.status.Fi = in.s_instrucao.rd;
@@ -237,10 +216,8 @@ void emissao()
 			}
 			break;
 		case OR:
-			if (!UFINT.status.Busy)
-			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
-				{
+			if (!UFINT.status.Busy){
+				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF){
 					UFINT.status.Busy = true;
 					UFINT.status.Op = OR;
 					UFINT.status.Fi = in.s_instrucao.rd;
@@ -259,10 +236,8 @@ void emissao()
 			}
 			break;
 		case SUB:
-			if (!UFINT.status.Busy)
-			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
-				{
+			if (!UFINT.status.Busy){
+				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF){
 					UFINT.status.Busy = true;
 					UFINT.status.Op = SUB;
 					UFINT.status.Fi = in.s_instrucao.rd;
@@ -281,10 +256,8 @@ void emissao()
 			}
 			break;
 		case XOR:
-			if (!UFINT.status.Busy)
-			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
-				{
+			if (!UFINT.status.Busy){
+				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF){
 					UFINT.status.Busy = true;
 					UFINT.status.Op = XOR;
 					UFINT.status.Fi = in.s_instrucao.rd;
@@ -309,10 +282,8 @@ void emissao()
 			//||
 				break;
 		case MUL:
-			if (!UFMUL1.status.Busy)
-			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
-				{
+			if (!UFMUL1.status.Busy){
+				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF){
 					UFMUL1.status.Busy = true;
 					UFMUL1.status.Op = MUL;
 					UFMUL1.status.Fi = in.s_instrucao.rd;
@@ -329,10 +300,8 @@ void emissao()
 					EMITIDA = true;
 				}
 			}
-			else if(!UFMUL2.status.Busy)
-				{
-					if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
-					{
+			else if(!UFMUL2.status.Busy){
+					if (bancoRegistradores[in.s_instrucao.rd].UF == semUF){
 						UFMUL2.status.Busy = true;
 						UFMUL2.status.Op = MUL;
 						UFMUL2.status.Fi = in.s_instrucao.rd;
@@ -351,10 +320,8 @@ void emissao()
 				}
 			break;
 		case ADDI:
-			if (!UFINT.status.Busy)
-			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
-				{
+			if (!UFINT.status.Busy){
+				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF){
 					UFINT.status.Busy = true;
 					UFINT.status.Op = ADDI;
 					UFINT.status.Fi = in.s_instrucao.rd;

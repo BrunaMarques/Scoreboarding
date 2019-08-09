@@ -6,11 +6,15 @@ int main(){
 	
 
 	unsigned int palavra[4];
+	inicializarLista(listaExecucao);
+	inicializarLista(listaIssue);
+	inicializarLista(listaRead);
+	inicializarLista(listaWriteB);
+	inicializarFila();
 	inicializaMemoria();
 	escritaMemoria();
 	inicializarRegistradores();
-	inicializarFila();
-	buscaPipeline(); //esta dando seg fault
+	buscaPipeline(); 
 	//buscaPipeline();
 	//inicializarFila();
 	// unsigned int palavra[4];
