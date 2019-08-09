@@ -41,6 +41,7 @@
 #define LO 33
 
 #define semUF -1
+#define semREG -2
 
 typedef struct
 {
