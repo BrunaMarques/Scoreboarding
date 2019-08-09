@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 5
 #include "instrucoes.h"
 #include "lista.h"
 
-int tam = 0;
+//int tam = 0;
 
 void inicializarLista(LISTA *list)
 { //inicializar lista
@@ -30,7 +29,7 @@ void exibirLista(LISTA *list)
 int inserirLista(LISTA *list, Inst ch, int i)
 {
     int k;
-    if ((list->nroElem >= MAX)) //verificar se a lista está cheia
+    if ((list->nroElem >= N)) //verificar se a lista está cheia
         return 0;               //lista cheia ou indice invalido
     if ((list->nroElem > 0) && (i < list->nroElem))
     {
@@ -43,13 +42,13 @@ int inserirLista(LISTA *list, Inst ch, int i)
     return i;
 }
 
-int inserirEelemLista(LISTA *list, LISTA *list, Inst ch)
+int inserirElemLista(LISTA *list, Inst ch)
 {
     int i = 0;
-    if (list->nroElem >= MAX)
+    if (list->nroElem >= N)
         return 0; // lista cheia
 
-    return inserirLista(ch, list->nroElem);
+    return inserirLista(list, ch, list->nroElem);
 }
 
 int excluirElem(LISTA *list, int pos)

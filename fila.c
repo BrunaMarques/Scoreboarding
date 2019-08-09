@@ -59,5 +59,6 @@ Inst excluirElementoFila() {
 //     excluirElementoFila();
 //     excluirElementoFila();
 //     exibirFila();
-//     filaVazia();
+//     if(filaVazia())
+//         printf("VAZIAAAAA");
 // }

@@ -9,7 +9,9 @@ int main(){
 	inicializaMemoria();
 	escritaMemoria();
 	inicializarRegistradores();
-	buscaPipeline(palavra);
+	inicializarFila();
+	buscaPipeline(); //esta dando seg fault
+	//buscaPipeline();
 	//inicializarFila();
 	// unsigned int palavra[4];
 	// FILA fila;

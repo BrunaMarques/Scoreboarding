@@ -2,12 +2,13 @@
 #define FILA_H
 
 #include "instrucoes.h"
+#include <stdbool.h>
 
 #define MAX 4
-#define true 1;
-#define false 0;
+// #define true 1
+// #define false 0
 
-typedef int bool;
+// typedef int bool;
 
 typedef struct {
     Inst fila_inst[MAX];
