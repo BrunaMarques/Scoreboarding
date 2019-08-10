@@ -227,19 +227,19 @@ void emissao()
 			break;
 		case MTHI: //ver se ta certo
 		{
-			if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
+			if (bancoRegistradores[HI].UF == semUF)
 			{
 				UFINT.status.Busy = true;
 				UFINT.status.Op = MTHI;
 				UFINT.status.Fi = semREG;
-				UFINT.status.Fj = in.s_instrucao.rs;
+				UFINT.status.Fj = HI;
 				UFINT.status.Fk = semREG;
-				UFINT.status.Qj = bancoRegistradores[in.s_instrucao.rs].UF;
+				UFINT.status.Qj = bancoRegistradores[HI].UF;
 				UFINT.status.Qk = semUF;
-				UFINT.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
+				UFINT.status.Rj = (bancoRegistradores[HI].UF == semUF) ? true : false;
 				UFINT.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
 				;
-				bancoRegistradores[in.s_instrucao.rs].UF = UF_INT;
+				bancoRegistradores[HI].UF = UF_INT;
 				in.UF = UF_INT;
 				escrita_bar(in, barIR);
 				excluirElem(listaIssue, 0);
@@ -250,18 +250,18 @@ void emissao()
 		case MTLO: //ver se ta certo
 			if (!UFINT.status.Busy)
 			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
+				if (bancoRegistradores[LO].UF == semUF)
 				{
 					UFINT.status.Busy = true;
 					UFINT.status.Op = MTLO;
 					UFINT.status.Fi = semREG;
-					UFINT.status.Fj = in.s_instrucao.rs;
+					UFINT.status.Fj = LO;
 					UFINT.status.Fk = semREG;
-					UFINT.status.Qj = bancoRegistradores[in.s_instrucao.rs].UF;
+					UFINT.status.Qj = bancoRegistradores[LO].UF;
 					UFINT.status.Qk = semUF;
-					UFINT.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
+					UFINT.status.Rj = (bancoRegistradores[LO].UF == semUF) ? true : false;
 					UFINT.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
-					bancoRegistradores[in.s_instrucao.rs].UF = UF_INT;
+					bancoRegistradores[LO].UF = UF_INT;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
 					excluirElem(listaIssue, 0);
@@ -425,7 +425,7 @@ void emissao()
 				{
 					UFINT.status.Busy = true;
 					UFINT.status.Op = MADD;
-					UFINT.status.Fi = semREG;
+					UFINT.status.Fi = HI;
 					UFINT.status.Fj = in.s2_instrucao.rs;
 					UFINT.status.Fk = in.s2_instrucao.rt;
 					UFINT.status.Qj = bancoRegistradores[in.s2_instrucao.rs].UF;
