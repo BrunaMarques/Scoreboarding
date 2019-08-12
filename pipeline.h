@@ -13,7 +13,7 @@
 #define infinito 2147483647;
 
 void buscaPipeline();
-int execucao();
+void execucao();
 void emissao();
 void escritaPipeline();
 
