@@ -1,4 +1,5 @@
 #include "simulador.h"
+#include "tradutor.h"
 
 int n = 20;
 
@@ -12,6 +13,9 @@ int main(){
 	inicializarLista(&listaWriteB);
 	inicializarFila();
 	inicializaMemoria();
+
+	tradutor();
+
 	escritaMemoria();
 	inicializarRegistradores();
 	buscaPipeline(); 

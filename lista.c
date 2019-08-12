@@ -12,7 +12,6 @@ void inicializarLista(LISTA **list)
     printf("\nLista inicializada");
     for(int i = 0; i < N; i++){
         (*list)->lista_inst[i].posicao = excluido;
-        printf("%d\n", (*list)->lista_inst[i].posicao);
     }
 }
 
@@ -71,13 +70,10 @@ int inserirElemLista(LISTA *list, Inst ch)
     }
     else{
         for (int i = 0; i < N; i++){
-            //printf("AAAA");
-            printf("POR QUEEEE: %d\n", list->lista_inst[i].posicao);
             if (list->lista_inst[i].posicao == excluido){
                 list->lista_inst[i] = ch;
                 list->lista_inst[i].posicao = list->nroElem;
                 list->nroElem++;
-                printf("caiu");
                 break;
             }
         }

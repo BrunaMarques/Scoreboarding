@@ -3,7 +3,7 @@
 #include <string.h>
 #include <strings.h>
 #include "tradutor.h"
-#include "hash.c"
+
 
 int registradores(char *aux){
 	if((strcasecmp(aux,"$zero") == 0) || (strcasecmp(aux,"$0") == 0))
@@ -207,21 +207,18 @@ void binarioJump(int vetor[], FILE *saidaBinario){
 	fputs("\n",saidaBinario);
 }
 
-void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char texto[], char *aux, int special[], int imediato[], int regim[],int jump[]){
+void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 	int linhas = 0;
 	inicializarHash();
 	while(fgets(texto, 100, instrucoes) != NULL){
 		aux = strtok(texto, ",  \n\0");
 		linhas++;
-		printf("Teste:\n %s, %d\n", aux, linhas);
 		if((strcasecmp(aux,"add") == 0) || (strcasecmp(aux,"and") == 0) || (strcasecmp(aux,"div") == 0) || (strcasecmp(aux,"jr") == 0) || (strcasecmp(aux,"mfhi") == 0) || (strcasecmp(aux,"mflo") == 0) ||(strcasecmp(aux,"movn") == 0) || (strcasecmp(aux,"movz") == 0) || (strcasecmp(aux,"mthi") == 0) || (strcasecmp(aux,"mtlo") == 0) || (strcasecmp(aux,"mult") == 0) || (strcasecmp(aux,"nop") == 0) || (strcasecmp(aux,"or") == 0) || (strcasecmp(aux,"sub") == 0) || (strcasecmp(aux,"xor") == 0) || (strcasecmp(aux,"nor") == 0) || (strcasecmp(aux,"madd") == 0) || (strcasecmp(aux,"msub") == 0) || (strcasecmp(aux,"mul") == 0) ||(strcasecmp(aux,"j") == 0) || (strcasecmp(aux,"bgez") == 0) || (strcasecmp(aux,"bltz") == 0) || (strcasecmp(aux,"addi") == 0) || (strcasecmp(aux,"andi") == 0) || (strcasecmp(aux,"b") == 0) || (strcasecmp(aux,"beq") == 0) || (strcasecmp(aux,"beql") == 0) || (strcasecmp(aux,"bgtz") == 0) || (strcasecmp(aux,"blez") == 0) || (strcasecmp(aux,"bne") == 0) || (strcasecmp(aux,"lui") == 0) || (strcasecmp(aux,"ori") == 0) || (strcasecmp(aux,"xori") == 0)){
 		}
 		else
 		{
 			hash(aux);
 			inserirLabel(aux, linhas*4);
-			printf("\nENTRU NA HASH\n");
-			printf("\nCaiu no else\n");
 		}
 		// ((strcasecmp(aux,"add") == 0) || (strcasecmp(aux,"and") == 0) || (strcasecmp(aux,"div") == 0) || (strcasecmp(aux,"jr") == 0) || (strcasecmp(aux,"mfhi") == 0) || (strcasecmp(aux,"mflo") == 0) ||(strcasecmp(aux,"movn") == 0) || (strcasecmp(aux,"movz") == 0) || (strcasecmp(aux,"mthi") == 0) || (strcasecmp(aux,"mtlo") == 0) || (strcasecmp(aux,"mult") == 0) || (strcasecmp(aux,"nop") == 0) || (strcasecmp(aux,"or") == 0) || (strcasecmp(aux,"sub") == 0) || (strcasecmp(aux,"xor") == 0) || (strcasecmp(aux,"nor") == 0) || (strcasecmp(aux,"madd") == 0) || (strcasecmp(aux,"msub") == 0) || (strcasecmp(aux,"mul") == 0) ||(strcasecmp(aux,"j") == 0) || (strcasecmp(aux,"bgez") == 0) || (strcasecmp(aux,"bltz") == 0) || (strcasecmp(aux,"addi") == 0) || (strcasecmp(aux,"andi") == 0) || (strcasecmp(aux,"b") == 0) || (strcasecmp(aux,"beq") == 0) || (strcasecmp(aux,"beql") == 0) || (strcasecmp(aux,"bgtz") == 0) || (strcasecmp(aux,"blez") == 0) || (strcasecmp(aux,"bne") == 0) || (strcasecmp(aux,"lui") == 0) || (strcasecmp(aux,"ori") == 0) || (strcasecmp(aux,"xori") == 0))?  : inserirLabel(aux, linhas);
 		
@@ -445,11 +442,8 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 		else if (strcasecmp(aux,"j") == 0){
 			jump[0] = J;
 			aux = strtok(NULL, ", \n\0");
-			printf("\nENTROU NO JUMP\n");
-			printf("\t%s", aux);
 			hash(aux);
 			jump[1] = pegarEndereco(aux);
-			printf("valor: %d", jump[1]);
 			aux = strtok(NULL, ", \n\0");
 		binarioJump(jump,saidaBinario);
 		}
@@ -591,7 +585,6 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario, FILE *saidaHexa, char tex
 		}
 		else{
 			aux = strtok(NULL, ", \n\0");
-			printf("\nAAAAAAAAAAAA\n");
 			//aqui vai ser a label tem que fazer a hash
 		}
 		
@@ -621,25 +614,18 @@ void print_assembly(FILE *instrucoes){
 	}
 }
 
-
-
-int main(){
-    char texto[100], *aux;
-	int special[6], jump[2], regim[4], imediato[4];
-    FILE *instrucoes = fopen("teste.asm", "r");
-	FILE *saidaBinario = fopen("codigoBinario.txt", "w+");
-	FILE *saidaHexa = fopen("codigoHexa.txt", "w+");
-	
+void tradutor(){
+	instrucoes = fopen("teste.asm", "r");
+	saidaBinario = fopen("codigoBinario.txt", "w+");
+	saidaHexa = fopen("codigoHexa.txt", "w+");
 	printf("\nPrograma:\n");
 	print_assembly(instrucoes);
 	fseek(instrucoes, 0, SEEK_SET); //voltar para o começo s
-	tradutorBin(instrucoes,saidaBinario,saidaHexa,texto,aux,special,imediato,regim,jump);
+	tradutorBin(instrucoes, saidaBinario);
 	fseek(saidaBinario, 0, SEEK_SET);
-
 	printf("\nBinário:\n");
 	tradutorHexa(saidaHexa, saidaBinario);
-
 	fclose(saidaBinario);
 	fclose(saidaHexa);
-return 0;
 }
+
