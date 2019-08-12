@@ -10,7 +10,8 @@ void inicializarLista(LISTA **list)
     *list = (LISTA *)malloc(sizeof(LISTA));
     (*list)->nroElem = 0;
     printf("\nLista inicializada");
-    for(int i = 0; i < N; i++){
+    for (int i = 0; i < N; i++)
+    {
         (*list)->lista_inst[i].posicao = excluido;
     }
 }
@@ -64,13 +65,17 @@ void exibirLista(LISTA *list)
 
 int inserirElemLista(LISTA *list, Inst ch)
 {
-    if (list->nroElem == N){
+    if (list->nroElem == N)
+    {
         printf("retun0");
         return 0; // lista cheia
     }
-    else{
-        for (int i = 0; i < N; i++){
-            if (list->lista_inst[i].posicao == excluido){
+    else
+    {
+        for (int i = 0; i < N; i++)
+        {
+            if (list->lista_inst[i].posicao == excluido)
+            {
                 list->lista_inst[i] = ch;
                 list->lista_inst[i].posicao = list->nroElem;
                 list->nroElem++;
@@ -106,8 +111,8 @@ int excluirElem(LISTA *list, int pos)
     if (list->lista_inst[pos].posicao == excluido)
         printf("\nElemento já excluido"); // nõ existe
     list->lista_inst[pos].posicao = excluido;
+    printf("\nElemento excluido\n");
 }
-
 
 // int main()
 // {

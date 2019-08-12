@@ -12,6 +12,7 @@ int EMITIDA = true;
 
 void buscaPipeline()
 {
+	printf("----busca------");
 	if (filaVazia())
 	{
 		for (int i = 0; i < 4; i++)
@@ -35,18 +36,21 @@ void buscaPipeline()
 }
 void emissao()
 {
+	printf("-----emissao------");
 	if (EMITIDA)
 	{
 		if (BI.tem_instrucao == true)
 		{
 			EMITIDA = false;
-			Inst in = leitura_bar(barBI);
+			printf("barramento BI: %d", BI.instrucao.opcode);
+			in = leitura_bar(barBI);
+			exibirLista(listaIssue);
 			inserirElemLista(listaIssue, in);
+			exibirLista(listaIssue);
 		}
 	}
 	if (!EMITIDA)
 	{
-		Inst in;
 		in = listaIssue->lista_inst[0];
 		int operacao = descobrirOperacao(in);
 		switch (operacao)
@@ -509,7 +513,15 @@ void emissao()
 					bancoRegistradores[in.i_instrucao.rt].UF = UF_INT;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
-					excluirElem(listaIssue, 0);
+					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+					printf("barramento IR RS: %d\n", IR.instrucao.i_instrucao.rs);
+					printf("barramento IR RT: %d\n", IR.instrucao.i_instrucao.rt);
+					printf("barramento IR IMM: %d\n", IR.instrucao.i_instrucao.imediato);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
+					excluirElem(listaIssue, in.posicao);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					EMITIDA = true;
 				}
 			}
@@ -794,11 +806,11 @@ void emissao()
 
 void leitura()
 {
+	printf("----leitura------");
 	if (verifica_bar(barIR))
 	{
-		Inst in;
 		in = leitura_bar(barIR);
-		inserirElemLista(listaRead, in);
+		inserirElemLista(listaRead, IR.instrucao);
 	}
 	for (int i = 0; i < listaRead->nroElem; i++)
 	{
@@ -851,7 +863,11 @@ void leitura()
 				if ((bancoRegistradores[UFINT.status.Fj].UF == semUF) && (bancoRegistradores[UFINT.status.Fk].UF == semUF))
 				{
 					escrita_bar(in, barRE);
+					printf("barramento RE: %d\n", RE->instrucao.opcode);
+					printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
+					exibirLista(listaRead);
 					excluirElem(listaRead, in.posicao);
+					printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
 				}
 			}
 			else if (UFINT.status.Fj != semREG)
@@ -921,11 +937,14 @@ void leitura()
 void execucao()
 //etapa de execução
 {
-	if (verifica_bar(barEW))
+	printf("----execucao------");
+	while (verifica_bar(barRE))
 	{
-		Inst in;
-		in = leitura_bar(barEW);
+		in = leitura_bar(barRE);
+		printf("barramento RE: %d", RE->instrucao.opcode);
 		inserirElemLista(listaExecucao, in);
+		printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
+		exibirLista(listaExecucao);
 	}
 	int operacao = descobrirOperacao(in);
 	int registrador;
@@ -1029,8 +1048,17 @@ void execucao()
 		break;
 	case ADDI:
 		bufferRegistradores[in.i_instrucao.rt].valor = adicao(bancoRegistradores[in.i_instrucao.rs].valor, in.i_instrucao.imediato);
+		printf("ADDI opcode: %d\n", in.opcode);
+		printf("ADDI RS: %d\n", in.i_instrucao.rs);
+		printf("ADDI RT: %d\n", in.i_instrucao.rt);
+		printf("ADDI IMM: %d\n", in.i_instrucao.imediato);
+		printf("resultado ADDI: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 		escrita_bar(in, barEW);
+		printf("barramento EW: %d\n", EW->instrucao.opcode);
+		exibirLista(listaExecucao);
+		printf("elemento na lista execução dentro do add: %d", listaExecucao->lista_inst[in.posicao].posicao);
 		excluirElem(listaExecucao, in.posicao);
+		printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
 		break;
 	case ANDI:
 		bufferRegistradores[in.s_instrucao.rt].valor = and(bancoRegistradores[in.s_instrucao.rs].valor, in.i_instrucao.imediato);
@@ -1107,19 +1135,27 @@ void execucao()
 	}
 }
 
-void escritaPipeline(int reg)
+void escritaPipeline()
 {
-	Inst in;
+	printf("-----escrita------");
 	while (verifica_bar(barEW))
 	{
 		in = leitura_bar(barEW);
 		inserirElemLista(listaWriteB, in);
+		exibirLista(listaWriteB);
+		printf("barramento EW: %d", EW->instrucao.opcode);
 	}
 	for (int i = 0; i < listaWriteB->nroElem; i++)
 	{
-		//bancoRegistradores[reg].valor;
-		bancoRegistradores[reg].UF = semUF;
-		UFINT.status.Busy = false;
-		excluirElem(listaWriteB, in.posicao);
+		int tipo = instrucao >> 26 & MASCARA;
+		switch (tipo)
+		{
+		case ESPECIAL:
+			bancoRegistradores[in.].valor = bufferRegistradores[reg].valor;
+			bancoRegistradores[reg].UF = semUF;
+			UFINT.status.Busy = false;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		}
 	}
 }

@@ -16,5 +16,6 @@ void buscaPipeline();
 void execucao();
 void emissao();
 void escritaPipeline();
+void leitura();
 
 #endif

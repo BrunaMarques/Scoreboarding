@@ -1,8 +1,10 @@
 #include "simulador.h"
 #include "tradutor.h"
+#include "pipeline.h"
 
 int n = 20;
-void inicializar(){
+void inicializar()
+{
 	inicializarLista(&listaExecucao);
 	inicializarLista(&listaIssue);
 	inicializarLista(&listaRead);
@@ -11,18 +13,24 @@ void inicializar(){
 	inicializaMemoria();
 }
 
-int main(){
+int main()
+{
+	int i = 0;
 	unsigned int palavra[4];
 	inicializar();
-
-
-
-
 	tradutor();
-
 	escritaMemoria();
 	inicializarRegistradores();
-	buscaPipeline(); 
+	while (i <= 4)
+	{
+		buscaPipeline();
+		emissao();
+		leitura();
+		execucao();
+		escritaPipeline();
+		i++;
+	}
+
 	//buscaPipeline();
 	//inicializarFila();
 	// unsigned int palavra[4];
@@ -41,5 +49,4 @@ int main(){
 	// }
 
 	return 0;
-	
 }
