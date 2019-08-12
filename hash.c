@@ -20,8 +20,6 @@ int inserirLabel(char* label, int linha){ //linha vai ser a linha, label a label
         return 0;
     Hash_Table[hash(label)].label = label;
     Hash_Table[hash(label)].linha = linha;
-    printf("inseriu na hash");
-
 }
 
 int pegarEndereco(char* label){

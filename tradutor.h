@@ -2,6 +2,8 @@
 #define TRADUTOR_H
 
 #include "registradores.h"
+#include "hash.h"
+
 //instruções ESPECIAL
 #define ADD 0b100000
 #define AND 0b100100
@@ -45,6 +47,21 @@
 #define BGEZ 0b00001
 #define BLTZ 0b00000
 
+char texto[100], *aux;
+int special[6], jump[2], regim[4], imediato[4];
+FILE *instrucoes;
+FILE *saidaBinario;
+FILE *saidaHexa;
+
+int registradores(char *aux);
+void binarioSpecial(int vetor[], FILE *saidaBinario);
+void binarioImediato(int vetor[], FILE *saidaBinario);
+void binarioRegim(int vetor[], FILE *saidaBinario);
+void binarioJump(int vetor[], FILE *saidaBinario);
+void tradutorBin();
+void tradutorHexa(FILE *saidaHexa, FILE *saidaBin);
+void print_assembly(FILE *instrucoes);
+void tradutor();
 
 #endif
 

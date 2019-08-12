@@ -1,17 +1,25 @@
 #include "simulador.h"
+#include "tradutor.h"
 
 int n = 20;
-
-int main(){
-	
-
-	unsigned int palavra[4];
+void inicializar(){
 	inicializarLista(&listaExecucao);
 	inicializarLista(&listaIssue);
 	inicializarLista(&listaRead);
 	inicializarLista(&listaWriteB);
 	inicializarFila();
 	inicializaMemoria();
+}
+
+int main(){
+	unsigned int palavra[4];
+	inicializar();
+
+
+
+
+	tradutor();
+
 	escritaMemoria();
 	inicializarRegistradores();
 	buscaPipeline(); 

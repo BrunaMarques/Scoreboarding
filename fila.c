@@ -13,6 +13,7 @@ void inicializarFila() {
     f =(FILA*) malloc(sizeof(FILA));
     f->inicio=0;
     f->nroElem=0;
+    printf("\nFila inicializada");
 }
 
 void exibirFila() {

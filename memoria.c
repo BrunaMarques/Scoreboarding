@@ -4,7 +4,7 @@ void inicializaMemoria()
 {
 	//procurar tamanho da memoria e por em n //
 	memoria = (char*)malloc(sizeof(char) * TAMANHO_MEMORIA);
-	printf("Memoria inicializada");
+	printf("\nMemoria inicializada\n");
 }
 
 /*void escritaMemoria()
