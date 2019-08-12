@@ -98,11 +98,11 @@ void emissao()
 		case DIV:
 			if (!UFDIV.status.Busy)
 			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
+				if (bancoRegistradores[HI].UF == semUF)
 				{
 					UFDIV.status.Busy = true;
 					UFDIV.status.Op = DIV;
-					UFDIV.status.Fi = in.s_instrucao.rd; //é pra colocar o hi, mas não sei como
+					UFDIV.status.Fi = HI;
 					UFDIV.status.Fj = in.s_instrucao.rs;
 					UFDIV.status.Fk = in.s_instrucao.rt;
 					UFDIV.status.Qj = bancoRegistradores[in.s_instrucao.rs].UF;
@@ -140,18 +140,18 @@ void emissao()
 		case MFHI:
 			if (!UFINT.status.Busy)
 			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
+				if (bancoRegistradores[HI].UF == semUF)
 				{
 					UFINT.status.Busy = true;
 					UFINT.status.Op = MFHI;
-					UFINT.status.Fi = in.s_instrucao.rd;
+					UFINT.status.Fi = HI;
 					UFINT.status.Fj = semREG;
 					UFINT.status.Fk = semREG;
 					UFINT.status.Qj = semUF;
 					UFINT.status.Qk = semUF;
 					UFINT.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
 					UFINT.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
-					bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
+					bancoRegistradores[HI].UF = UF_INT;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
 					excluirElem(listaIssue, 0);
@@ -162,18 +162,18 @@ void emissao()
 		case MFLO:
 			if (!UFINT.status.Busy)
 			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
+				if (bancoRegistradores[LO].UF == semUF)
 				{
 					UFINT.status.Busy = true;
 					UFINT.status.Op = MFLO;
-					UFINT.status.Fi = in.s_instrucao.rd;
+					UFINT.status.Fi = LO;
 					UFINT.status.Fj = semREG;
 					UFINT.status.Fk = semREG;
 					UFINT.status.Qj = semUF;
 					UFINT.status.Qk = semUF;
 					UFINT.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
 					UFINT.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
-					bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
+					bancoRegistradores[LO].UF = UF_INT;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
 					excluirElem(listaIssue, 0);
@@ -225,26 +225,22 @@ void emissao()
 				}
 			}
 			break;
-		case MTHI: //ver se ta certo
+		case MTHI: //ver se ta CERTO, SE PODE TIRAR O RD==SEMUF
 		{
-			if (bancoRegistradores[HI].UF == semUF)
-			{
-				UFINT.status.Busy = true;
-				UFINT.status.Op = MTHI;
-				UFINT.status.Fi = semREG;
-				UFINT.status.Fj = HI;
-				UFINT.status.Fk = semREG;
-				UFINT.status.Qj = bancoRegistradores[HI].UF;
-				UFINT.status.Qk = semUF;
-				UFINT.status.Rj = (bancoRegistradores[HI].UF == semUF) ? true : false;
-				UFINT.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
-				;
-				bancoRegistradores[HI].UF = UF_INT;
-				in.UF = UF_INT;
-				escrita_bar(in, barIR);
-				excluirElem(listaIssue, 0);
-				EMITIDA = true;
-			}
+			UFINT.status.Busy = true;
+			UFINT.status.Op = MTHI;
+			UFINT.status.Fi = semREG;
+			UFINT.status.Fj = HI;
+			UFINT.status.Fk = semREG;
+			UFINT.status.Qj = bancoRegistradores[HI].UF;
+			UFINT.status.Qk = semUF;
+			UFINT.status.Rj = (bancoRegistradores[HI].UF == semUF) ? true : false;
+			UFINT.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
+			bancoRegistradores[HI].UF = UF_INT;
+			in.UF = UF_INT;
+			escrita_bar(in, barIR);
+			excluirElem(listaIssue, 0);
+			EMITIDA = true;
 		}
 		break;
 		case MTLO: //ver se ta certo
@@ -272,43 +268,35 @@ void emissao()
 		case MULT: //ver se ta certo
 			if (!UFMUL1.status.Busy)
 			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
-				{
-					UFMUL1.status.Busy = true;
-					UFMUL1.status.Op = MUL;
-					UFMUL1.status.Fi = semREG;
-					UFMUL1.status.Fj = in.s_instrucao.rs;
-					UFMUL1.status.Fk = in.s_instrucao.rt;
-					UFMUL1.status.Qj = bancoRegistradores[in.s_instrucao.rs].UF;
-					UFMUL1.status.Qk = bancoRegistradores[in.s_instrucao.rt].UF;
-					UFMUL1.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
-					UFMUL1.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
-					bancoRegistradores[in.s_instrucao.rd].UF = UF_MUL1;
-					in.UF = UF_MUL1;
-					escrita_bar(in, barIR);
-					excluirElem(listaIssue, 0);
-					EMITIDA = true;
-				}
+				UFMUL1.status.Busy = true;
+				UFMUL1.status.Op = MUL;
+				UFMUL1.status.Fi = semREG;
+				UFMUL1.status.Fj = in.s_instrucao.rs;
+				UFMUL1.status.Fk = in.s_instrucao.rt;
+				UFMUL1.status.Qj = bancoRegistradores[in.s_instrucao.rs].UF;
+				UFMUL1.status.Qk = bancoRegistradores[in.s_instrucao.rt].UF;
+				UFMUL1.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
+				UFMUL1.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
+				in.UF = UF_MUL1;
+				escrita_bar(in, barIR);
+				excluirElem(listaIssue, 0);
+				EMITIDA = true;
 			}
 			if (!UFMUL2.status.Busy)
 			{
-				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
-				{
-					UFMUL2.status.Busy = true;
-					UFMUL2.status.Op = MUL;
-					UFMUL2.status.Fi = semREG;
-					UFMUL2.status.Fj = in.s_instrucao.rs;
-					UFMUL2.status.Fk = in.s_instrucao.rt;
-					UFMUL2.status.Qj = bancoRegistradores[in.s_instrucao.rs].UF;
-					UFMUL2.status.Qk = bancoRegistradores[in.s_instrucao.rt].UF;
-					UFMUL2.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
-					UFMUL2.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
-					bancoRegistradores[in.s_instrucao.rd].UF = UF_MUL2;
-					in.UF = UF_MUL2;
-					escrita_bar(in, barIR);
-					excluirElem(listaIssue, 0);
-					EMITIDA = true;
-				}
+				UFMUL2.status.Busy = true;
+				UFMUL2.status.Op = MUL;
+				UFMUL2.status.Fi = semREG;
+				UFMUL2.status.Fj = in.s_instrucao.rs;
+				UFMUL2.status.Fk = in.s_instrucao.rt;
+				UFMUL2.status.Qj = bancoRegistradores[in.s_instrucao.rs].UF;
+				UFMUL2.status.Qk = bancoRegistradores[in.s_instrucao.rt].UF;
+				UFMUL2.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
+				UFMUL2.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
+				in.UF = UF_MUL2;
+				escrita_bar(in, barIR);
+				excluirElem(listaIssue, 0);
+				EMITIDA = true;
 			}
 			break;
 		case NOP:
@@ -421,7 +409,7 @@ void emissao()
 		case MADD: //ver se ta certo//destino é hi e lo
 			if (!UFINT.status.Busy)
 			{
-				if (bancoRegistradores[in.s2_instrucao.rd].UF == semUF)
+				if (bancoRegistradores[HI].UF == semUF)
 				{
 					UFINT.status.Busy = true;
 					UFINT.status.Op = MADD;
@@ -432,7 +420,7 @@ void emissao()
 					UFINT.status.Qk = bancoRegistradores[in.s2_instrucao.rt].UF;
 					UFINT.status.Rj = (bancoRegistradores[in.s2_instrucao.rs].UF == semUF) ? true : false;
 					UFINT.status.Rk = (bancoRegistradores[in.s2_instrucao.rt].UF == semUF) ? true : false;
-					bancoRegistradores[in.s2_instrucao.rd].UF = UF_INT;
+					bancoRegistradores[HI].UF = UF_INT;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
 					excluirElem(listaIssue, 0);
@@ -443,18 +431,18 @@ void emissao()
 		case MSUB: //ver se ta certo
 			if (!UFINT.status.Busy)
 			{
-				if (bancoRegistradores[in.s2_instrucao.rd].UF == semUF)
+				if (bancoRegistradores[HI].UF == semUF)
 				{
 					UFINT.status.Busy = true;
 					UFINT.status.Op = MSUB;
-					UFINT.status.Fi = semREG;
+					UFINT.status.Fi = HI;
 					UFINT.status.Fj = in.s2_instrucao.rs;
 					UFINT.status.Fk = in.s2_instrucao.rt;
 					UFINT.status.Qj = bancoRegistradores[in.s2_instrucao.rs].UF;
 					UFINT.status.Qk = bancoRegistradores[in.s2_instrucao.rt].UF;
 					UFINT.status.Rj = (bancoRegistradores[in.s2_instrucao.rs].UF == semUF) ? true : false;
 					UFINT.status.Rk = (bancoRegistradores[in.s2_instrucao.rt].UF == semUF) ? true : false;
-					bancoRegistradores[in.s2_instrucao.rd].UF = UF_INT;
+					bancoRegistradores[HI].UF = UF_INT;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
 					excluirElem(listaIssue, 0);
@@ -553,9 +541,9 @@ void emissao()
 			{
 				UFINT.status.Busy = true;
 				UFINT.status.Op = B;
-				UFINT.status.Fi = semUF;
+				UFINT.status.Fi = semREG;
 				UFINT.status.Fj = in.i_instrucao.imediato;
-				UFINT.status.Fk = semUF;
+				UFINT.status.Fk = semREG;
 				UFINT.status.Qj = bancoRegistradores[in.i_instrucao.imediato].UF;
 				UFINT.status.Qk = semUF;
 				UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
@@ -617,10 +605,10 @@ void emissao()
 				{
 					UFINT.status.Busy = true;
 					UFINT.status.Op = BGTZ;
-					UFINT.status.Fi = semREG;
-					UFINT.status.Fj = in.i_instrucao.rt;
+					UFINT.status.Fi = in.i_instrucao.rs;
+					UFINT.status.Fj = semREG;
 					UFINT.status.Fk = in.i_instrucao.imediato;
-					UFINT.status.Qj = bancoRegistradores[in.i_instrucao.rt].UF;
+					UFINT.status.Qj = semUF;
 					UFINT.status.Qk = bancoRegistradores[in.i_instrucao.imediato].UF;
 					UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
 					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
@@ -639,10 +627,10 @@ void emissao()
 				{
 					UFINT.status.Busy = true;
 					UFINT.status.Op = BLEZ;
-					UFINT.status.Fi = semREG;
-					UFINT.status.Fj = in.i_instrucao.rt;
+					UFINT.status.Fi = in.i_instrucao.rs;
+					UFINT.status.Fj = semREG;
 					UFINT.status.Fk = in.i_instrucao.imediato;
-					UFINT.status.Qj = bancoRegistradores[in.i_instrucao.rt].UF;
+					UFINT.status.Qj = semUF;
 					UFINT.status.Qk = bancoRegistradores[in.i_instrucao.imediato].UF;
 					UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
 					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
@@ -654,7 +642,7 @@ void emissao()
 				}
 			}
 			break;
-		case BNE: //VER SE TA CERTO
+		case BNE:
 			if (!UFINT.status.Busy)
 			{
 				if (bancoRegistradores[in.i_instrucao.rs].UF == semUF)
@@ -686,9 +674,9 @@ void emissao()
 					UFINT.status.Fi = in.i_instrucao.rt;
 					UFINT.status.Fj = in.i_instrucao.imediato;
 					UFINT.status.Fk = semREG;
-					UFINT.status.Qj = bancoRegistradores[in.i_instrucao.rs].UF;
-					UFINT.status.Qk = bancoRegistradores[in.i_instrucao.rt].UF;
-					UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rs].UF == semUF) ? true : false;
+					UFINT.status.Qj = bancoRegistradores[in.i_instrucao.imediato].UF;
+					UFINT.status.Qk = semUF;
+					UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
 					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
 					bancoRegistradores[in.i_instrucao.rt].UF = UF_INT;
 					in.UF = UF_INT;
@@ -745,68 +733,56 @@ void emissao()
 		case J:
 			if (!UFINT.status.Busy)
 			{
-				// if (bancoRegistradores[in.i_instrucao.rd].UF == semUF)
-				// {
 				UFINT.status.Busy = true;
 				UFINT.status.Op = J;
 				UFINT.status.Fi = semREG;
 				UFINT.status.Fj = semREG;
 				UFINT.status.Fk = semREG;
-				UFINT.status.Qj = bancoRegistradores[in.i_instrucao.rs].UF;
-				UFINT.status.Qk = bancoRegistradores[in.i_instrucao.rt].UF;
+				UFINT.status.Qj = semUF;
+				UFINT.status.Qk = semUF;
 				UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rs].UF == semUF) ? true : false;
 				UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
-				// bancoRegistradores[in.i_instrucao.rd].UF = UF_INT;
 				in.UF = UF_INT;
 				escrita_bar(in, barIR);
 				excluirElem(listaIssue, 0);
 				EMITIDA = true;
-				// }
 			}
 			break;
 		case BGEZ:
 			if (!UFINT.status.Busy)
 			{
-				if (bancoRegistradores[in.i_instrucao.rt].UF == semUF)
-				{
-					UFINT.status.Busy = true;
-					UFINT.status.Op = BGEZ;
-					UFINT.status.Fi = semREG;
-					UFINT.status.Fj = in.i_instrucao.rs;
-					UFINT.status.Fk = in.i_instrucao.imediato;
-					UFINT.status.Qj = semUF;
-					UFINT.status.Qk = bancoRegistradores[in.i_instrucao.imediato].UF;
-					UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rs].UF == semUF) ? true : false;
-					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
-					bancoRegistradores[in.i_instrucao.rt].UF = UF_INT;
-					in.UF = UF_INT;
-					escrita_bar(in, barIR);
-					excluirElem(listaIssue, 0);
-					EMITIDA = true;
-				}
+				UFINT.status.Busy = true;
+				UFINT.status.Op = BGEZ;
+				UFINT.status.Fi = semREG;
+				UFINT.status.Fj = in.i_instrucao.rs;
+				UFINT.status.Fk = in.i_instrucao.imediato;
+				UFINT.status.Qj = bancoRegistradores[in.i_instrucao.rs].UF;
+				UFINT.status.Qk = bancoRegistradores[in.i_instrucao.imediato].UF;
+				UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rs].UF == semUF) ? true : false;
+				UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
+				in.UF = UF_INT;
+				escrita_bar(in, barIR);
+				excluirElem(listaIssue, 0);
+				EMITIDA = true;
 			}
 			break;
 		case BLTZ: //em saltos o destino é pc, só tem source
 
 			if (!UFINT.status.Busy)
 			{
-				if (bancoRegistradores[in.i_instrucao.rt].UF == semUF)
-				{
-					UFINT.status.Busy = true;
-					UFINT.status.Op = BLTZ;
-					UFINT.status.Fi = semREG;
-					UFINT.status.Fj = in.i_instrucao.rs;
-					UFINT.status.Fk = in.i_instrucao.imediato;
-					UFINT.status.Qj = semUF;
-					UFINT.status.Qk = bancoRegistradores[in.i_instrucao.imediato].UF;
-					UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rs].UF == semUF) ? true : false;
-					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
-					bancoRegistradores[in.i_instrucao.rt].UF = UF_INT;
-					in.UF = UF_INT;
-					escrita_bar(in, barIR);
-					excluirElem(listaIssue, 0);
-					EMITIDA = true;
-				}
+				UFINT.status.Busy = true;
+				UFINT.status.Op = BLTZ;
+				UFINT.status.Fi = semREG;
+				UFINT.status.Fj = in.i_instrucao.rs;
+				UFINT.status.Fk = in.i_instrucao.imediato;
+				UFINT.status.Qj = bancoRegistradores[in.i_instrucao.rs].UF;
+				UFINT.status.Qk = bancoRegistradores[in.i_instrucao.imediato].UF;
+				UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rs].UF == semUF) ? true : false;
+				UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
+				in.UF = UF_INT;
+				escrita_bar(in, barIR);
+				excluirElem(listaIssue, 0);
+				EMITIDA = true;
 			}
 			break;
 		default:
