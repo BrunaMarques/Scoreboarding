@@ -24,10 +24,10 @@ int tamanho(LISTA *list)
 void exibirLista(LISTA *list)
 {
     int i;
-    printf("\nLista ->");
+    printf("\nLista: ");
     for (i = 0; i < list->nroElem; i++)
-        printf("%d", list->lista_inst[i].opcode);
-    printf("<--");
+        printf("%d,", list->lista_inst[i].opcode);
+    printf(" \n");
 }
 
 // int inserirLista(LISTA *list, Inst ch, int i)
@@ -74,12 +74,16 @@ int inserirElemLista(LISTA *list, Inst ch)
     {
         for (int i = 0; i < N; i++)
         {
+            int i = 0;
             if (list->lista_inst[i].posicao == excluido)
             {
                 list->lista_inst[i] = ch;
-                list->lista_inst[i].posicao = list->nroElem;
+                list->lista_inst[i].posicao = i;
+                printf("\nPosicao: %d\n", list->lista_inst[i].posicao);
                 list->nroElem++;
-                break;
+                printf("\nElemento inserido na lista!\n");
+                // break;
+                i++;
             }
         }
     }

@@ -36,7 +36,7 @@ void buscaPipeline()
 }
 void emissao()
 {
-	printf("-----emissao------");
+	printf("\n-----emissao------\n");
 	if (EMITIDA)
 	{
 		if (BI.tem_instrucao == true)
@@ -46,6 +46,7 @@ void emissao()
 			in = leitura_bar(barBI);
 			exibirLista(listaIssue);
 			inserirElemLista(listaIssue, in);
+			//printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 			exibirLista(listaIssue);
 		}
 	}
@@ -72,7 +73,15 @@ void emissao()
 					bancoRegistradores[in.s_instrucao.rd].UF = UF_ADD;
 					in.UF = UF_ADD;
 					escrita_bar(in, barIR);
+					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+					printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rd);
+					printf("barramento IR RT: %d\n", IR.instrucao.s_instrucao.rs);
+					printf("barramento IR IMM: %d\n", IR.instrucao.s_instrucao.rt);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					excluirElem(listaIssue, 0);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					EMITIDA = true;
 				}
 			}
@@ -474,7 +483,15 @@ void emissao()
 					bancoRegistradores[in.s2_instrucao.rd].UF = UF_MUL1;
 					in.UF = UF_MUL1;
 					escrita_bar(in, barIR);
+					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+					printf("barramento IR RS: %d\n", IR.instrucao.s2_instrucao.rd);
+					printf("barramento IR RT: %d\n", IR.instrucao.s2_instrucao.rs);
+					printf("barramento IR IMM: %d\n", IR.instrucao.s2_instrucao.rt);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					excluirElem(listaIssue, 0);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					EMITIDA = true;
 				}
 			}
@@ -522,7 +539,7 @@ void emissao()
 					printf("barramento IR IMM: %d\n", IR.instrucao.i_instrucao.imediato);
 					exibirLista(listaIssue);
 					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
-					excluirElem(listaIssue, in.posicao);
+					excluirElem(listaIssue,0);
 					exibirLista(listaIssue);
 					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					EMITIDA = true;
@@ -809,11 +826,12 @@ void emissao()
 
 void leitura()
 {
-	printf("----leitura------");
+	printf("\n----leitura------\n");
 	if (verifica_bar(barIR))
 	{
 		in = leitura_bar(barIR);
 		inserirElemLista(listaRead, IR.instrucao);
+		printf("\nBarramento IR: %d\n", IR.instrucao.opcode);
 	}
 	for (int i = 0; i < listaRead->nroElem; i++)
 	{
@@ -940,7 +958,7 @@ void leitura()
 void execucao()
 //etapa de execução
 {
-	printf("----execucao------");
+	printf("\n----execucao------\n");
 	while (verifica_bar(barRE))
 	{
 		in = leitura_bar(barRE);
@@ -1140,7 +1158,7 @@ void execucao()
 
 void escritaPipeline()
 {
-	printf("-----escrita------");
+	printf("\n-----escrita------\n");
 	while (verifica_bar(barEW))
 	{
 		in = leitura_bar(barEW);
