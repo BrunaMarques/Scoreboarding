@@ -1147,12 +1147,36 @@ void escritaPipeline()
 	}
 	for (int i = 0; i < listaWriteB->nroElem; i++)
 	{
-		int tipo = instrucao >> 26 & MASCARA;
+		int tipo = in.opcode;
 		switch (tipo)
 		{
 		case ESPECIAL:
-			bancoRegistradores[in.].valor = bufferRegistradores[reg].valor;
-			bancoRegistradores[reg].UF = semUF;
+			bancoRegistradores[in.s_instrucao.rd].valor = bufferRegistradores[in.s_instrucao.rd].valor;
+			bancoRegistradores[in.s_instrucao.rd].UF = semUF;
+			UFINT.status.Busy = false;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case ESPECIAL2:
+			bancoRegistradores[in.s2_instrucao.rd].valor = bufferRegistradores[in.s2_instrucao.rd].valor;
+			bancoRegistradores[in.s2_instrucao.rd].UF = semUF;
+			UFINT.status.Busy = false;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case SALTO:
+			bancoRegistradores[in.j_instrucao.addr].valor = bufferRegistradores[in.j_instrucao.addr].valor;
+			bancoRegistradores[in.j_instrucao.addr].UF = semUF;
+			UFINT.status.Busy = false;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case REGIMM:
+			bancoRegistradores[in.r_instrucao.rs].valor = bufferRegistradores[in.r_instrucao.rs].valor;
+			bancoRegistradores[in.r_instrucao.rs].UF = semUF;
+			UFINT.status.Busy = false;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		default:
+			bancoRegistradores[in.i_instrucao.rt].valor = bufferRegistradores[in.i_instrucao.rt].valor;
+			bancoRegistradores[in.i_instrucao.rt].UF = semUF;
 			UFINT.status.Busy = false;
 			excluirElem(listaWriteB, in.posicao);
 			break;
