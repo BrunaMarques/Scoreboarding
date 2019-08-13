@@ -106,7 +106,7 @@ void emissao()
 				{
 					UFDIV.status.Busy = true;
 					UFDIV.status.Op = DIV;
-					UFDIV.status.Fi = HI;
+					UFDIV.status.Fi = HI; //coloco hi ou lo???
 					UFDIV.status.Fj = in.s_instrucao.rs;
 					UFDIV.status.Fk = in.s_instrucao.rt;
 					UFDIV.status.Qj = bancoRegistradores[in.s_instrucao.rs].UF;
@@ -144,18 +144,18 @@ void emissao()
 		case MFHI:
 			if (!UFINT.status.Busy)
 			{
-				if (bancoRegistradores[HI].UF == semUF)
+				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
 				{
 					UFINT.status.Busy = true;
 					UFINT.status.Op = MFHI;
-					UFINT.status.Fi = HI;
+					UFINT.status.Fi = in.s_instrucao.rd;
 					UFINT.status.Fj = semREG;
 					UFINT.status.Fk = semREG;
 					UFINT.status.Qj = semUF;
 					UFINT.status.Qk = semUF;
 					UFINT.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
 					UFINT.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
-					bancoRegistradores[HI].UF = UF_INT;
+					bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
 					excluirElem(listaIssue, 0);
@@ -166,18 +166,18 @@ void emissao()
 		case MFLO:
 			if (!UFINT.status.Busy)
 			{
-				if (bancoRegistradores[LO].UF == semUF)
+				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
 				{
 					UFINT.status.Busy = true;
 					UFINT.status.Op = MFLO;
-					UFINT.status.Fi = LO;
+					UFINT.status.Fi = in.s_instrucao.rd;
 					UFINT.status.Fj = semREG;
 					UFINT.status.Fk = semREG;
 					UFINT.status.Qj = semUF;
 					UFINT.status.Qk = semUF;
 					UFINT.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
 					UFINT.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
-					bancoRegistradores[LO].UF = UF_INT;
+					bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
 					excluirElem(listaIssue, 0);
@@ -231,20 +231,23 @@ void emissao()
 			break;
 		case MTHI: //ver se ta CERTO, SE PODE TIRAR O RD==SEMUF
 		{
-			UFINT.status.Busy = true;
-			UFINT.status.Op = MTHI;
-			UFINT.status.Fi = semREG;
-			UFINT.status.Fj = HI;
-			UFINT.status.Fk = semREG;
-			UFINT.status.Qj = bancoRegistradores[HI].UF;
-			UFINT.status.Qk = semUF;
-			UFINT.status.Rj = (bancoRegistradores[HI].UF == semUF) ? true : false;
-			UFINT.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
-			bancoRegistradores[HI].UF = UF_INT;
-			in.UF = UF_INT;
-			escrita_bar(in, barIR);
-			excluirElem(listaIssue, 0);
-			EMITIDA = true;
+			if (bancoRegistradores[HI].UF == semUF)
+			{
+				UFINT.status.Busy = true;
+				UFINT.status.Op = MTHI;
+				UFINT.status.Fi = HI;
+				UFINT.status.Fj = in.s_instrucao.rs;
+				UFINT.status.Fk = semREG;
+				UFINT.status.Qj = bancoRegistradores[in.s_instrucao.rs].UF;
+				UFINT.status.Qk = semUF;
+				UFINT.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
+				UFINT.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
+				bancoRegistradores[HI].UF = UF_INT;
+				in.UF = UF_INT;
+				escrita_bar(in, barIR);
+				excluirElem(listaIssue, 0);
+				EMITIDA = true;
+			}
 		}
 		break;
 		case MTLO: //ver se ta certo
@@ -254,12 +257,12 @@ void emissao()
 				{
 					UFINT.status.Busy = true;
 					UFINT.status.Op = MTLO;
-					UFINT.status.Fi = semREG;
-					UFINT.status.Fj = LO;
+					UFINT.status.Fi = LO;
+					UFINT.status.Fj = in.s_instrucao.rs;
 					UFINT.status.Fk = semREG;
-					UFINT.status.Qj = bancoRegistradores[LO].UF;
+					UFINT.status.Qj = bancoRegistradores[in.s_instrucao.rs].UF;
 					UFINT.status.Qk = semUF;
-					UFINT.status.Rj = (bancoRegistradores[LO].UF == semUF) ? true : false;
+					UFINT.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
 					UFINT.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
 					bancoRegistradores[LO].UF = UF_INT;
 					in.UF = UF_INT;
@@ -413,7 +416,7 @@ void emissao()
 		case MADD: //ver se ta certo//destino é hi e lo
 			if (!UFINT.status.Busy)
 			{
-				if (bancoRegistradores[HI].UF == semUF)
+				if ((bancoRegistradores[HI].UF == semUF) && (bancoRegistradores[LO].UF == semUF))
 				{
 					UFINT.status.Busy = true;
 					UFINT.status.Op = MADD;
@@ -435,7 +438,7 @@ void emissao()
 		case MSUB: //ver se ta certo
 			if (!UFINT.status.Busy)
 			{
-				if (bancoRegistradores[HI].UF == semUF)
+				if ((bancoRegistradores[HI].UF == semUF) && (bancoRegistradores[LO].UF == semUF))
 				{
 					UFINT.status.Busy = true;
 					UFINT.status.Op = MSUB;
@@ -567,14 +570,14 @@ void emissao()
 			}
 			break;
 		case BEQ:
-			if (!UFINT.status.Busy)
+			if (!UFINT.status.Busy) //não sei oq colocar, rt e imediato ou rs e rt??
 			{
 				if (bancoRegistradores[in.i_instrucao.rs].UF == semUF)
 				{
 					UFINT.status.Busy = true;
 					UFINT.status.Op = BEQ;
-					UFINT.status.Fi = in.i_instrucao.rs;
-					UFINT.status.Fj = in.i_instrucao.rt;
+					UFINT.status.Fi = semREG;
+					UFINT.status.Fj = in.i_instrucao.rs;
 					UFINT.status.Fk = in.i_instrucao.imediato;
 					UFINT.status.Qj = bancoRegistradores[in.i_instrucao.rt].UF;
 					UFINT.status.Qk = bancoRegistradores[in.i_instrucao.imediato].UF;
@@ -1029,7 +1032,7 @@ void execucao()
 		escrita_bar(in, barEW);
 		excluirElem(listaExecucao, in.posicao);
 		break;
-	case MADD:
+	case MADD: //MAIS SIG SOMA PRO HI E 16 MENOS SOMA PRO LO
 		bancoRegistradores[in.s2_instrucao.rd].valor = multiplicacao(bancoRegistradores[in.s2_instrucao.rs].valor, bancoRegistradores[in.s2_instrucao.rt].valor);
 		bufferResultado.valor = adicao(bufferResultado.valor, juntarHILO(bancoRegistradores[HI].valor, bancoRegistradores[LO].valor));
 		escrita_bar(in, barEW);
@@ -1082,7 +1085,7 @@ void execucao()
 		escrita_bar(in, barEW);
 		excluirElem(listaExecucao, in.posicao);
 		break;
-	case BGTZ:
+	case BGTZ: //ta certo??
 		if (maior(bancoRegistradores[in.i_instrucao.rs].valor, 0))
 			PC += in.i_instrucao.imediato;
 		escrita_bar(in, barEW);
@@ -1153,7 +1156,7 @@ void escritaPipeline()
 		case ESPECIAL:
 			bancoRegistradores[in.s_instrucao.rd].valor = bufferRegistradores[in.s_instrucao.rd].valor;
 			bancoRegistradores[in.s_instrucao.rd].UF = semUF;
-			UFINT.status.Busy = false;
+			UFINT.status.Busy = false; //verificar qual é a uf
 			excluirElem(listaWriteB, in.posicao);
 			break;
 		case ESPECIAL2:
