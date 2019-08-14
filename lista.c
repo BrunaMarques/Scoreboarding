@@ -25,8 +25,10 @@ void exibirLista(LISTA *list)
 {
     int i;
     printf("\nLista: ");
-    for (i = 0; i < list->nroElem; i++)
-        printf("%d,", list->lista_inst[i].opcode);
+    for (i = 0; i < N; i++){
+        if(list->lista_inst[i].posicao != excluido)
+            printf("%d,", list->lista_inst[i].opcode);
+    }
     printf(" \n");
 }
 

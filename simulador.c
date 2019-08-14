@@ -25,17 +25,64 @@ int main()
 
 do{
 	buscaPipeline();
+	printf("\nLista E:\n");
+	exibirLista(listaExecucao);
+	printf("\nLista I:\n");
+	exibirLista(listaIssue);
+	printf("\nLista R:\n");
+	exibirLista(listaRead);
+	printf("\nLista WB:\n");
+	exibirLista(listaWriteB);
+
 	emissao();
+	printf("\nLista E:\n");
+	exibirLista(listaExecucao);
+	printf("\nLista I:\n");
+	exibirLista(listaIssue);
+	printf("\nLista R:\n");
+	exibirLista(listaRead);
+	printf("\nLista WB:\n");
+	exibirLista(listaWriteB);
+	
 	leitura();
+	printf("\nLista E:\n");
+	exibirLista(listaExecucao);
+	printf("\nLista I:\n");
+	exibirLista(listaIssue);
+	printf("\nLista R:\n");
+	exibirLista(listaRead);
+	printf("\nLista WB:\n");
+	exibirLista(listaWriteB);
+	
 	execucao();
+	printf("\nLista E:\n");
+	exibirLista(listaExecucao);
+	printf("\nLista I:\n");
+	exibirLista(listaIssue);
+	printf("\nLista R:\n");
+	exibirLista(listaRead);
+	printf("\nLista WB:\n");
+	exibirLista(listaWriteB);
+	
 	escritaPipeline();
+	
 	// escritaPipeline();
 	// execucao();
 	// leitura();
 	// emissao();
 	// buscaPipeline();
+	printf("\nLista E:\n");
+	exibirLista(listaExecucao);
+	printf("\nLista I:\n");
+	exibirLista(listaIssue);
+	printf("\nLista R:\n");
+	exibirLista(listaRead);
+	printf("\nLista WB:\n");
+	exibirLista(listaWriteB);
 
-}while (listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) !=1 || listaVazia(listaWriteB) !=1);
+	i++;
+
+}while(i<4);//while (listaVazia(listaExecucao) != 1 && listaVazia(listaIssue) != 1 && listaVazia(listaRead) !=1 && listaVazia(listaWriteB) !=1);
 
 
 	//buscaPipeline();
