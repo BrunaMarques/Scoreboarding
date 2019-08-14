@@ -54,9 +54,9 @@ void emissao()
 	{
 		in = listaIssue->lista_inst[0];
 		int operacao = descobrirOperacao(in);
-		for (int i = 0; i < listaWriteB->nroElem; i++)
+		for (int i = 0; i < listaIssue->nroElem; i++)
 		{
-			in = listaWriteB->lista_inst[i];
+			in = listaIssue->lista_inst[i];
 			if (in.posicao == -1)
 			{
 				continue;
