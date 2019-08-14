@@ -24,11 +24,16 @@ int main()
 	
 
 do{
-	escritaPipeline();
-	execucao();
-	leitura();
-	emissao();
 	buscaPipeline();
+	emissao();
+	leitura();
+	execucao();
+	escritaPipeline();
+	// escritaPipeline();
+	// execucao();
+	// leitura();
+	// emissao();
+	// buscaPipeline();
 
 }while (listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) !=1 || listaVazia(listaWriteB) !=1);
 
