@@ -11,6 +11,7 @@ void inicializar()
 	inicializarLista(&listaWriteB);
 	inicializarFila();
 	inicializaMemoria();
+	inicializarRegistradores();
 }
 
 int main()
@@ -20,16 +21,17 @@ int main()
 	inicializar();
 	tradutor();
 	escritaMemoria();
-	inicializarRegistradores();
-	while (i <= 4)
-	{
-		buscaPipeline();
-		emissao();
-		leitura();
-		execucao();
-		escritaPipeline();
-		i++;
-	}
+	
+
+do{
+	escritaPipeline();
+	execucao();
+	leitura();
+	emissao();
+	buscaPipeline();
+
+}while (listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) != 1 || listaVazia(listaRead) !=1 || listaVazia(listaWriteB) !=1);
+
 
 	//buscaPipeline();
 	//inicializarFila();

@@ -74,7 +74,7 @@ int inserirElemLista(LISTA *list, Inst ch)
     {
         for (int i = 0; i < N; i++)
         {
-            int i = 0;
+
             if (list->lista_inst[i].posicao == excluido)
             {
                 list->lista_inst[i] = ch;
@@ -82,10 +82,9 @@ int inserirElemLista(LISTA *list, Inst ch)
                 printf("\nPosicao: %d\n", list->lista_inst[i].posicao);
                 list->nroElem++;
                 printf("\nElemento inserido na lista!\n");
-                // break;
-                i++;
+                break;
             }
-        }
+       }
     }
     return 1;
     //printf("\n\nInserido: %d\n",ch);
@@ -118,6 +117,17 @@ int excluirElem(LISTA *list, int pos)
     printf("\nElemento excluido\n");
 }
 
+int listaVazia(LISTA *list){
+    for (int i = 0; i < N; i++){
+        //printf("\nteste: %d", list->lista_inst[i].posicao);
+        if(list->lista_inst[i].posicao == excluido)
+            continue;
+        else
+            return 0;
+    }
+    return 1;      
+}
+
 // int main()
 // {
 //         LISTA *l;
@@ -126,13 +136,14 @@ int excluirElem(LISTA *list, int pos)
 //     B.opcode = 1;
 //     C.opcode = 2;
 //     inicializarLista(&l);
-//             for (int i = 0; i < N; i++)
-//                 printf("AAAA:%d\n", l->lista_inst[i].posicao);
+//     printf("\nVazia? %d\n" ,listaVazia(l));
 //     inserirElemLista(l,A);
 //     inserirElemLista(l, B);
 //     exibirLista(l);
+//     printf("\nVazia? %d\n" ,listaVazia(l));
 //     inserirElemLista(l, C);
 //     exibirLista(l);
+//     printf("\nVazia? %d\n" ,listaVazia(l));
 //     printf("\nB: %d", l->lista_inst[B.posicao].posicao);
 //     excluirElem(l, B.posicao);
 //     printf("\nB: %d", l->lista_inst[B.posicao].posicao);
