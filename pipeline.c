@@ -61,6 +61,7 @@ void emissao()
 			{
 				continue;
 			}
+
 			switch (operacao)
 			{
 			case ADD:
@@ -82,9 +83,9 @@ void emissao()
 						escrita_bar(in, barIR);
 						printf("\nADD\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
-						printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rd);
-						printf("barramento IR RT: %d\n", IR.instrucao.s_instrucao.rs);
-						printf("barramento IR IMM: %d\n", IR.instrucao.s_instrucao.rt);
+						printf("barramento IR RD: %d\n", IR.instrucao.s_instrucao.rd);
+						printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
+						printf("barramento IR RT: %d\n", IR.instrucao.s_instrucao.rt);
 						exibirLista(listaIssue);
 						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						excluirElem(listaIssue, 0);
@@ -93,6 +94,7 @@ void emissao()
 						EMITIDA = true;
 					}
 				}
+
 				break;
 			case AND:
 				if (!UFINT.status.Busy)
@@ -111,7 +113,16 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_ADD;
 						in.UF = UF_INT;
 						escrita_bar(in, barIR);
+						printf("\nAND\n");
+						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+						printf("barramento IR RD: %d\n", IR.instrucao.s_instrucao.rd);
+						printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
+						printf("barramento IR RT: %d\n", IR.instrucao.s_instrucao.rt);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						excluirElem(listaIssue, 0);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						EMITIDA = true;
 					}
 				}
@@ -133,11 +144,20 @@ void emissao()
 						bancoRegistradores[HI].UF = UF_DIV;
 						in.UF = UF_DIV;
 						escrita_bar(in, barIR);
+						printf("\nDIV\n");
+						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+						printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
+						printf("barramento IR RT: %d\n", IR.instrucao.s_instrucao.rt);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						excluirElem(listaIssue, 0);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						EMITIDA = true;
 					}
 				}
 				break;
+
 			case JR:
 				if (!UFINT.status.Busy)
 				{
@@ -152,7 +172,14 @@ void emissao()
 					UFINT.status.Rk = semUF;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
+					printf("\nJR\n");
+					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+					printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					excluirElem(listaIssue, 0);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					EMITIDA = true;
 				}
 				break;
@@ -173,7 +200,14 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						escrita_bar(in, barIR);
+						printf("\nMFHI\n");
+						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+						printf("barramento IR RD: %d\n", IR.instrucao.s_instrucao.rd);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						excluirElem(listaIssue, 0);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						EMITIDA = true;
 					}
 				}
@@ -195,7 +229,14 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						escrita_bar(in, barIR);
+						printf("\nMFLO\n");
+						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+						printf("barramento IR RD: %d\n", IR.instrucao.s_instrucao.rd);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						excluirElem(listaIssue, 0);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						EMITIDA = true;
 					}
 				}
@@ -217,7 +258,16 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						escrita_bar(in, barIR);
+						printf("\nMOVN\n");
+						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+						printf("barramento IR RD: %d\n", IR.instrucao.s_instrucao.rd);
+						printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
+						printf("barramento IR RT: %d\n", IR.instrucao.s_instrucao.rt);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						excluirElem(listaIssue, 0);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						EMITIDA = true;
 					}
 				}
@@ -239,7 +289,16 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						escrita_bar(in, barIR);
+						printf("\nMOVZ\n");
+						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+						printf("barramento IR RD: %d\n", IR.instrucao.s_instrucao.rd);
+						printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
+						printf("barramento IR RT: %d\n", IR.instrucao.s_instrucao.rt);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						excluirElem(listaIssue, 0);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						EMITIDA = true;
 					}
 				}
@@ -260,7 +319,14 @@ void emissao()
 					bancoRegistradores[HI].UF = UF_INT;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
+					printf("\nMTHI\n");
+					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+					printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					excluirElem(listaIssue, 0);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					EMITIDA = true;
 				}
 			}
@@ -268,7 +334,7 @@ void emissao()
 			case MTLO:
 				if (!UFINT.status.Busy)
 				{
-					if (bancoRegistradores[LO].UF == semUF)
+					if (bancoRegistradores[HI].UF == semUF)
 					{
 						UFINT.status.Busy = true;
 						UFINT.status.Op = MTLO;
@@ -279,14 +345,22 @@ void emissao()
 						UFINT.status.Qk = semUF;
 						UFINT.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
 						UFINT.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
-						bancoRegistradores[LO].UF = UF_INT;
+						bancoRegistradores[HI].UF = UF_INT;
 						in.UF = UF_INT;
 						escrita_bar(in, barIR);
+						printf("\nMTLO\n");
+						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+						printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						excluirElem(listaIssue, 0);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						EMITIDA = true;
 					}
 				}
 				break;
+
 			case MULT:
 				if (!UFMUL1.status.Busy)
 				{
@@ -304,13 +378,19 @@ void emissao()
 						bancoRegistradores[HI].UF = UF_INT;
 						in.UF = UF_MUL1;
 						escrita_bar(in, barIR);
+						printf("\nMUL\n");
+						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+						printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
+						printf("barramento IR RT: %d\n", IR.instrucao.s_instrucao.rt);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						excluirElem(listaIssue, 0);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						EMITIDA = true;
 					}
-				}
-				if (!UFMUL2.status.Busy)
-				{
-					if (bancoRegistradores[HI].UF == semUF)
+
+					if (!UFMUL2.status.Busy)
 					{
 						UFMUL2.status.Busy = true;
 						UFMUL2.status.Op = MULT;
@@ -324,7 +404,15 @@ void emissao()
 						bancoRegistradores[HI].UF = UF_INT;
 						in.UF = UF_MUL2;
 						escrita_bar(in, barIR);
+						printf("\nMUL\n");
+						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+						printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
+						printf("barramento IR RT: %d\n", IR.instrucao.s_instrucao.rt);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						excluirElem(listaIssue, 0);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						EMITIDA = true;
 					}
 				}
@@ -334,6 +422,8 @@ void emissao()
 				{
 					if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
 					{
+						UFINT.status.Busy = true;
+						UFINT.status.Op = NOP;
 						UFINT.status.Fi = in.s_instrucao.rd;
 						UFINT.status.Fj = in.s_instrucao.rs;
 						UFINT.status.Fk = in.s_instrucao.rt;
@@ -344,7 +434,16 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						escrita_bar(in, barIR);
+						printf("\nNOP\n");
+						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+						printf("barramento IR RD: %d\n", IR.instrucao.s_instrucao.rd);
+						printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
+						printf("barramento IR RT: %d\n", IR.instrucao.s_instrucao.rt);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						excluirElem(listaIssue, 0);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						EMITIDA = true;
 					}
 				}
@@ -366,7 +465,16 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						escrita_bar(in, barIR);
+						printf("\nNOR\n");
+						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+						printf("barramento IR RD: %d\n", IR.instrucao.s_instrucao.rd);
+						printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
+						printf("barramento IR RT: %d\n", IR.instrucao.s_instrucao.rt);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						excluirElem(listaIssue, 0);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						EMITIDA = true;
 					}
 				}
@@ -387,7 +495,16 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						escrita_bar(in, barIR);
+						printf("\nOR\n");
+						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+						printf("barramento IR RD: %d\n", IR.instrucao.s_instrucao.rd);
+						printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
+						printf("barramento IR RT: %d\n", IR.instrucao.s_instrucao.rt);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						excluirElem(listaIssue, 0);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						EMITIDA = true;
 					}
 				}
@@ -409,7 +526,16 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						escrita_bar(in, barIR);
+						printf("\nSUB\n");
+						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+						printf("barramento IR RD: %d\n", IR.instrucao.s_instrucao.rd);
+						printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
+						printf("barramento IR RT: %d\n", IR.instrucao.s_instrucao.rt);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						excluirElem(listaIssue, 0);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						EMITIDA = true;
 					}
 				}
@@ -431,7 +557,16 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						escrita_bar(in, barIR);
+						printf("\nXOR\n");
+						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+						printf("barramento IR RD: %d\n", IR.instrucao.s_instrucao.rd);
+						printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
+						printf("barramento IR RT: %d\n", IR.instrucao.s_instrucao.rt);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						excluirElem(listaIssue, 0);
+						exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						EMITIDA = true;
 					}
 				}
@@ -609,15 +744,22 @@ void emissao()
 					UFINT.status.Busy = true;
 					UFINT.status.Op = B;
 					UFINT.status.Fi = semREG;
-					UFINT.status.Fj = semREG;
+					UFINT.status.Fj = in.i_instrucao.imediato;
 					UFINT.status.Fk = semREG;
-					UFINT.status.Qj = semUF;
+					UFINT.status.Qj = bancoRegistradores[in.i_instrucao.imediato].UF;
 					UFINT.status.Qk = semUF;
 					UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
 					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
+					printf("\nB\n");
+					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+					printf("barramento IR IMM: %d\n", IR.instrucao.i_instrucao.imediato);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					excluirElem(listaIssue, 0);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					EMITIDA = true;
 				}
 				break;
@@ -628,14 +770,22 @@ void emissao()
 					UFINT.status.Op = BEQ;
 					UFINT.status.Fi = semREG;
 					UFINT.status.Fj = in.i_instrucao.rs;
-					UFINT.status.Fk = in.i_instrucao.rt;
+					UFINT.status.Fk = in.i_instrucao.imediato;
 					UFINT.status.Qj = bancoRegistradores[in.i_instrucao.rt].UF;
 					UFINT.status.Qk = bancoRegistradores[in.i_instrucao.imediato].UF;
 					UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
 					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
+					printf("\nBEQ\n");
+					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+					printf("barramento IR RS: %d\n", IR.instrucao.i_instrucao.rs);
+					printf("barramento IR IMM: %d\n", IR.instrucao.i_instrucao.imediato);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					excluirElem(listaIssue, 0);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					EMITIDA = true;
 				}
 				break;
@@ -653,7 +803,16 @@ void emissao()
 					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
+					printf("\nBEQL\n");
+					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+					printf("barramento IR RS: %d\n", IR.instrucao.i_instrucao.rs);
+					printf("barramento IR RT: %d\n", IR.instrucao.i_instrucao.rt);
+					printf("barramento IR IMM: %d\n", IR.instrucao.i_instrucao.imediato);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					excluirElem(listaIssue, 0);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					EMITIDA = true;
 				}
 				break;
@@ -671,7 +830,15 @@ void emissao()
 					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
+					printf("\nBGTZ\n");
+					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+					printf("barramento IR RS: %d\n", IR.instrucao.i_instrucao.rs);
+					printf("barramento IR IMM: %d\n", IR.instrucao.i_instrucao.imediato);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					excluirElem(listaIssue, 0);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					EMITIDA = true;
 				}
 				break;
@@ -689,7 +856,15 @@ void emissao()
 					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
+					printf("\nADDI\n");
+					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+					printf("barramento IR RS: %d\n", IR.instrucao.i_instrucao.rs);
+					printf("barramento IR IMM: %d\n", IR.instrucao.i_instrucao.imediato);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					excluirElem(listaIssue, 0);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					EMITIDA = true;
 				}
 				break;
@@ -707,10 +882,20 @@ void emissao()
 					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
+					printf("\nBNE\n");
+					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+					printf("barramento IR RS: %d\n", IR.instrucao.i_instrucao.rs);
+					printf("barramento IR RT: %d\n", IR.instrucao.i_instrucao.rt);
+					printf("barramento IR IMM: %d\n", IR.instrucao.i_instrucao.imediato);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					excluirElem(listaIssue, 0);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					EMITIDA = true;
 				}
 				break;
+
 			case LUI: //ver se ta certo
 				if (!UFINT.status.Busy)
 				{
@@ -778,6 +963,7 @@ void emissao()
 				}
 				break;
 			case J:
+
 				if (!UFINT.status.Busy)
 				{
 					UFINT.status.Busy = true;
@@ -791,7 +977,14 @@ void emissao()
 					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
+					printf("\nADDI\n");
+					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+					printf("barramento IR addr: %d\n", IR.instrucao.j_instrucao.addr);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					excluirElem(listaIssue, 0);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					EMITIDA = true;
 				}
 				break;
@@ -801,15 +994,23 @@ void emissao()
 					UFINT.status.Busy = true;
 					UFINT.status.Op = BGEZ;
 					UFINT.status.Fi = semREG;
-					UFINT.status.Fj = in.i_instrucao.rs;
-					UFINT.status.Fk = in.i_instrucao.imediato;
-					UFINT.status.Qj = bancoRegistradores[in.i_instrucao.rs].UF;
-					UFINT.status.Qk = bancoRegistradores[in.i_instrucao.imediato].UF;
-					UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rs].UF == semUF) ? true : false;
-					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
+					UFINT.status.Fj = in.r_instrucao.rs;
+					UFINT.status.Fk = in.r_instrucao.offset;
+					UFINT.status.Qj = bancoRegistradores[in.r_instrucao.rs].UF;
+					UFINT.status.Qk = bancoRegistradores[in.r_instrucao.offset].UF;
+					UFINT.status.Rj = (bancoRegistradores[in.r_instrucao.rs].UF == semUF) ? true : false;
+					UFINT.status.Rk = (bancoRegistradores[in.r_instrucao.offset].UF == semUF) ? true : false;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
+					printf("\nBGEZ\n");
+					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+					printf("barramento IR RS: %d\n", IR.instrucao.r_instrucao.rs);
+					printf("barramento IR offset: %d\n", IR.instrucao.r_instrucao.offset);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					excluirElem(listaIssue, 0);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					EMITIDA = true;
 				}
 				break;
@@ -820,15 +1021,23 @@ void emissao()
 					UFINT.status.Busy = true;
 					UFINT.status.Op = BLTZ;
 					UFINT.status.Fi = semREG;
-					UFINT.status.Fj = in.i_instrucao.rs;
-					UFINT.status.Fk = in.i_instrucao.imediato;
-					UFINT.status.Qj = bancoRegistradores[in.i_instrucao.rs].UF;
-					UFINT.status.Qk = bancoRegistradores[in.i_instrucao.imediato].UF;
-					UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rs].UF == semUF) ? true : false;
-					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
+					UFINT.status.Fj = in.r_instrucao.rs;
+					UFINT.status.Fk = in.r_instrucao.offset;
+					UFINT.status.Qj = bancoRegistradores[in.r_instrucao.rs].UF;
+					UFINT.status.Qk = bancoRegistradores[in.r_instrucao.offset].UF;
+					UFINT.status.Rj = (bancoRegistradores[in.r_instrucao.rs].UF == semUF) ? true : false;
+					UFINT.status.Rk = (bancoRegistradores[in.r_instrucao.offset].UF == semUF) ? true : false;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
+					printf("\nBLTZ\n");
+					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+					printf("barramento IR RS: %d\n", IR.instrucao.r_instrucao.rs);
+					printf("barramento IR offset: %d\n", IR.instrucao.r_instrucao.offset);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					excluirElem(listaIssue, 0);
+					exibirLista(listaIssue);
+					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 					EMITIDA = true;
 				}
 				break;
@@ -839,7 +1048,6 @@ void emissao()
 		}
 	}
 }
-
 void leitura()
 {
 	printf("\n----leitura------\n");
