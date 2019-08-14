@@ -54,10 +54,10 @@ void emissao()
 	{
 		in = listaIssue->lista_inst[0];
 		int operacao = descobrirOperacao(in);
-		for (int i = 0; i < listaWriteB->nroElem; i++)
+		for (int i = 0; i < listaIssue->nroElem; i++)
 		{
-			in = listaWriteB->lista_inst[i];
-			if (in.posicao == -1)
+			in = listaIssue->lista_inst[i];
+			if (listaIssue->lista_inst[i].posicao == -1)
 			{
 				continue;
 			}
@@ -1215,9 +1215,9 @@ void execucao()
 			printf("ADD opcode: %d\n", in.opcode);
 			printf("ADD RS: %d\n", in.s_instrucao.rs);
 			printf("ADD RT: %d\n", in.s_instrucao.rt);
-			printf("ADD IMM: %d\n", in.s_instrucao.rd);
-			printf("ADD IMM: %d\n", in.s_instrucao.shamt);
-			printf("ADD IMM: %d\n", in.s_instrucao.func);
+			printf("ADD RD: %d\n", in.s_instrucao.rd);
+			printf("ADD SHAMT: %d\n", in.s_instrucao.shamt);
+			printf("ADD FUNC: %d\n", in.s_instrucao.func);
 			printf("resultado ADD: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 			escrita_bar(in, barEW);
 			printf("barramento EW: %d\n", EW->instrucao.opcode);
@@ -1231,9 +1231,9 @@ void execucao()
 			printf("AND opcode: %d\n", in.opcode);
 			printf("AND RS: %d\n", in.s_instrucao.rs);
 			printf("AND RT: %d\n", in.s_instrucao.rt);
-			printf("AND IMM: %d\n", in.s_instrucao.rd);
-			printf("AND IMM: %d\n", in.s_instrucao.shamt);
-			printf("AND IMM: %d\n", in.s_instrucao.func);
+			printf("AND RD: %d\n", in.s_instrucao.rd);
+			printf("AND SHAMT: %d\n", in.s_instrucao.shamt);
+			printf("AND FUNC: %d\n", in.s_instrucao.func);
 			printf("resultado AND: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 			escrita_bar(in, barEW);
 			printf("barramento EW: %d\n", EW->instrucao.opcode);
@@ -1247,9 +1247,9 @@ void execucao()
 			printf("DIV opcode: %d\n", in.opcode);
 			printf("DIV RS: %d\n", in.s_instrucao.rs);
 			printf("DIV RT: %d\n", in.s_instrucao.rt);
-			printf("DIV IMM: %d\n", in.s_instrucao.rd);
-			printf("DIV IMM: %d\n", in.s_instrucao.shamt);
-			printf("DIV IMM: %d\n", in.s_instrucao.func);
+			printf("DIV RD: %d\n", in.s_instrucao.rd);
+			printf("DIV SHAMT: %d\n", in.s_instrucao.shamt);
+			printf("DIV FUNC: %d\n", in.s_instrucao.func);
 			printf("resultado DIV: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 			escrita_bar(in, barEW);
 			printf("barramento EW: %d\n", EW->instrucao.opcode);
@@ -1263,9 +1263,9 @@ void execucao()
 			printf("JR opcode: %d\n", in.opcode);
 			printf("JR RS: %d\n", in.s_instrucao.rs);
 			printf("JR RT: %d\n", in.s_instrucao.rt);
-			printf("JR IMM: %d\n", in.s_instrucao.rd);
-			printf("JR IMM: %d\n", in.s_instrucao.shamt);
-			printf("JR IMM: %d\n", in.s_instrucao.func);
+			printf("JR RD: %d\n", in.s_instrucao.rd);
+			printf("JR SHAMT: %d\n", in.s_instrucao.shamt);
+			printf("JR FUNC: %d\n", in.s_instrucao.func);
 			printf("resultado JR: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 			escrita_bar(in, barEW);
 			printf("barramento EW: %d\n", EW->instrucao.opcode);
@@ -1279,9 +1279,9 @@ void execucao()
 			printf("MFHI opcode: %d\n", in.opcode);
 			printf("MFHI RS: %d\n", in.s_instrucao.rs);
 			printf("MFHI RT: %d\n", in.s_instrucao.rt);
-			printf("MFHI IMM: %d\n", in.s_instrucao.rd);
-			printf("MFHI IMM: %d\n", in.s_instrucao.shamt);
-			printf("MFHI IMM: %d\n", in.s_instrucao.func);
+			printf("MFHI RD: %d\n", in.s_instrucao.rd);
+			printf("MFHI SHAMT: %d\n", in.s_instrucao.shamt);
+			printf("MFHI FUNC: %d\n", in.s_instrucao.func);
 			printf("resultado MFHI: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 			escrita_bar(in, barEW);
 			printf("barramento EW: %d\n", EW->instrucao.opcode);
@@ -1295,9 +1295,9 @@ void execucao()
 			printf("MFLO opcode: %d\n", in.opcode);
 			printf("MFLO RS: %d\n", in.s_instrucao.rs);
 			printf("MFLO RT: %d\n", in.s_instrucao.rt);
-			printf("MFLO IMM: %d\n", in.s_instrucao.rd);
-			printf("MFLO IMM: %d\n", in.s_instrucao.shamt);
-			printf("MFLO IMM: %d\n", in.s_instrucao.func);
+			printf("MFLO RD: %d\n", in.s_instrucao.rd);
+			printf("MFLO SHAMT: %d\n", in.s_instrucao.shamt);
+			printf("MFLO FUNC: %d\n", in.s_instrucao.func);
 			printf("resultado MFLO: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 			escrita_bar(in, barEW);
 			printf("barramento EW: %d\n", EW->instrucao.opcode);
@@ -1312,9 +1312,9 @@ void execucao()
 			printf("MOVN opcode: %d\n", in.opcode);
 			printf("MOVN RS: %d\n", in.s_instrucao.rs);
 			printf("MOVN RT: %d\n", in.s_instrucao.rt);
-			printf("MOVN IMM: %d\n", in.s_instrucao.rd);
-			printf("MOVN IMM: %d\n", in.s_instrucao.shamt);
-			printf("MOVN IMM: %d\n", in.s_instrucao.func);
+			printf("MOVN RD: %d\n", in.s_instrucao.rd);
+			printf("MOVN SHAMT: %d\n", in.s_instrucao.shamt);
+			printf("MOVN FUNC: %d\n", in.s_instrucao.func);
 			printf("resultado MOVN: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 			escrita_bar(in, barEW);
 			printf("barramento EW: %d\n", EW->instrucao.opcode);
@@ -1329,9 +1329,9 @@ void execucao()
 			printf("MOVZ opcode: %d\n", in.opcode);
 			printf("MOVZ RS: %d\n", in.s_instrucao.rs);
 			printf("MOVZ RT: %d\n", in.s_instrucao.rt);
-			printf("MOVZ IMM: %d\n", in.s_instrucao.rd);
-			printf("MOVZ IMM: %d\n", in.s_instrucao.shamt);
-			printf("MOVZ IMM: %d\n", in.s_instrucao.func);
+			printf("MOVZ RD: %d\n", in.s_instrucao.rd);
+			printf("MOVZ SHAMT: %d\n", in.s_instrucao.shamt);
+			printf("MOVZ FUNC: %d\n", in.s_instrucao.func);
 			printf("resultado MOVZ: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 			escrita_bar(in, barEW);
 			printf("barramento EW: %d\n", EW->instrucao.opcode);
@@ -1345,9 +1345,9 @@ void execucao()
 			printf("MTHI opcode: %d\n", in.opcode);
 			printf("MTHI RS: %d\n", in.s_instrucao.rs);
 			printf("MTHI RT: %d\n", in.s_instrucao.rt);
-			printf("MTHI IMM: %d\n", in.s_instrucao.rd);
-			printf("MTHI IMM: %d\n", in.s_instrucao.shamt);
-			printf("MTHI IMM: %d\n", in.s_instrucao.func);
+			printf("MTHI RD: %d\n", in.s_instrucao.rd);
+			printf("MTHI SHAMT: %d\n", in.s_instrucao.shamt);
+			printf("MTHI FUNC: %d\n", in.s_instrucao.func);
 			printf("resultado MTHI: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 			escrita_bar(in, barEW);
 			printf("barramento EW: %d\n", EW->instrucao.opcode);
@@ -1361,9 +1361,9 @@ void execucao()
 			printf("MTLO opcode: %d\n", in.opcode);
 			printf("MTLO RS: %d\n", in.s_instrucao.rs);
 			printf("MTLO RT: %d\n", in.s_instrucao.rt);
-			printf("MTLO IMM: %d\n", in.s_instrucao.rd);
-			printf("MTLO IMM: %d\n", in.s_instrucao.shamt);
-			printf("MTLO IMM: %d\n", in.s_instrucao.func);
+			printf("MTLO RD: %d\n", in.s_instrucao.rd);
+			printf("MTLO SHAMT: %d\n", in.s_instrucao.shamt);
+			printf("MTLO FUNC: %d\n", in.s_instrucao.func);
 			printf("resultado MTLO: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 			escrita_bar(in, barEW);
 			printf("barramento EW: %d\n", EW->instrucao.opcode);
@@ -1377,9 +1377,9 @@ void execucao()
 			printf("MULT opcode: %d\n", in.opcode);
 			printf("MULT RS: %d\n", in.s_instrucao.rs);
 			printf("MULT RT: %d\n", in.s_instrucao.rt);
-			printf("MULT IMM: %d\n", in.s_instrucao.rd);
-			printf("MULT IMM: %d\n", in.s_instrucao.shamt);
-			printf("MULT IMM: %d\n", in.s_instrucao.func);
+			printf("MULT RD: %d\n", in.s_instrucao.rd);
+			printf("MULT SHAMT: %d\n", in.s_instrucao.shamt);
+			printf("MULT FUNC: %d\n", in.s_instrucao.func);
 			printf("resultado MULT: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 			escrita_bar(in, barEW);
 			printf("barramento EW: %d\n", EW->instrucao.opcode);
@@ -1397,9 +1397,9 @@ void execucao()
 			printf("NOR opcode: %d\n", in.opcode);
 			printf("NOR RS: %d\n", in.s_instrucao.rs);
 			printf("NOR RT: %d\n", in.s_instrucao.rt);
-			printf("NOR IMM: %d\n", in.s_instrucao.rd);
-			printf("NOR IMM: %d\n", in.s_instrucao.shamt);
-			printf("NOR IMM: %d\n", in.s_instrucao.func);
+			printf("NOR RD: %d\n", in.s_instrucao.rd);
+			printf("NOR SHAMT: %d\n", in.s_instrucao.shamt);
+			printf("NOR FUNC: %d\n", in.s_instrucao.func);
 			printf("resultado NOR: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 			escrita_bar(in, barEW);
 			printf("barramento EW: %d\n", EW->instrucao.opcode);
@@ -1413,9 +1413,9 @@ void execucao()
 			printf("OR opcode: %d\n", in.opcode);
 			printf("OR RS: %d\n", in.s_instrucao.rs);
 			printf("OR RT: %d\n", in.s_instrucao.rt);
-			printf("OR IMM: %d\n", in.s_instrucao.rd);
-			printf("OR IMM: %d\n", in.s_instrucao.shamt);
-			printf("OR IMM: %d\n", in.s_instrucao.func);
+			printf("OR RD: %d\n", in.s_instrucao.rd);
+			printf("OR SHAMT: %d\n", in.s_instrucao.shamt);
+			printf("OR FUNC: %d\n", in.s_instrucao.func);
 			printf("resultado OR: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 			escrita_bar(in, barEW);
 			printf("barramento EW: %d\n", EW->instrucao.opcode);
@@ -1429,9 +1429,9 @@ void execucao()
 			printf("SUB opcode: %d\n", in.opcode);
 			printf("SUB RS: %d\n", in.s_instrucao.rs);
 			printf("SUB RT: %d\n", in.s_instrucao.rt);
-			printf("SUB IMM: %d\n", in.s_instrucao.rd);
-			printf("SUB IMM: %d\n", in.s_instrucao.shamt);
-			printf("SUB IMM: %d\n", in.s_instrucao.func);
+			printf("SUB RD: %d\n", in.s_instrucao.rd);
+			printf("SUB SHAMT: %d\n", in.s_instrucao.shamt);
+			printf("SUB FUNC: %d\n", in.s_instrucao.func);
 			printf("resultado SUB: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 			escrita_bar(in, barEW);
 			printf("barramento EW: %d\n", EW->instrucao.opcode);
@@ -1445,9 +1445,9 @@ void execucao()
 			printf("XOR opcode: %d\n", in.opcode);
 			printf("XOR RS: %d\n", in.s_instrucao.rs);
 			printf("XOR RT: %d\n", in.s_instrucao.rt);
-			printf("XOR IMM: %d\n", in.s_instrucao.rd);
-			printf("XOR IMM: %d\n", in.s_instrucao.shamt);
-			printf("XOR IMM: %d\n", in.s_instrucao.func);
+			printf("XOR RD: %d\n", in.s_instrucao.rd);
+			printf("XOR SHAMT: %d\n", in.s_instrucao.shamt);
+			printf("XOR FUNC: %d\n", in.s_instrucao.func);
 			printf("resultado XOR: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 			escrita_bar(in, barEW);
 			printf("barramento EW: %d\n", EW->instrucao.opcode);
@@ -1463,9 +1463,9 @@ void execucao()
 			printf("MADD opcode: %d\n", in.opcode);
 			printf("MADD RS: %d\n", in.s2_instrucao.rs);
 			printf("MADD RT: %d\n", in.s2_instrucao.rt);
-			printf("MADD IMM: %d\n", in.s2_instrucao.rd);
-			printf("MADD IMM: %d\n", in.s2_instrucao.shamt);
-			printf("MADD IMM: %d\n", in.s2_instrucao.func);
+			printf("MADD RD: %d\n", in.s2_instrucao.rd);
+			printf("MADD SHAMT: %d\n", in.s2_instrucao.shamt);
+			printf("MADD FUNC: %d\n", in.s2_instrucao.func);
 			printf("resultado MADD: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 			escrita_bar(in, barEW);
 			printf("barramento EW: %d\n", EW->instrucao.opcode);
@@ -1480,9 +1480,9 @@ void execucao()
 			printf("MSUB opcode: %d\n", in.opcode);
 			printf("MSUB RS: %d\n", in.s2_instrucao.rs);
 			printf("MSUB RT: %d\n", in.s2_instrucao.rt);
-			printf("MSUB IMM: %d\n", in.s2_instrucao.rd);
-			printf("MSUB IMM: %d\n", in.s2_instrucao.shamt);
-			printf("MSUB IMM: %d\n", in.s2_instrucao.func);
+			printf("MSUB RD: %d\n", in.s2_instrucao.rd);
+			printf("MSUB SHAMT: %d\n", in.s2_instrucao.shamt);
+			printf("MSUB FUNC: %d\n", in.s2_instrucao.func);
 			printf("resultado MSUB: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 			escrita_bar(in, barEW);
 			printf("barramento EW: %d\n", EW->instrucao.opcode);
@@ -1496,9 +1496,9 @@ void execucao()
 			printf("MUL opcode: %d\n", in.opcode);
 			printf("MUL RS: %d\n", in.s2_instrucao.rs);
 			printf("MUL RT: %d\n", in.s2_instrucao.rt);
-			printf("MUL IMM: %d\n", in.s2_instrucao.rd);
-			printf("MUL IMM: %d\n", in.s2_instrucao.shamt);
-			printf("MUL IMM: %d\n", in.s2_instrucao.func);
+			printf("MUL RD: %d\n", in.s2_instrucao.rd);
+			printf("MUL SHAMT: %d\n", in.s2_instrucao.shamt);
+			printf("MUL FUNC: %d\n", in.s2_instrucao.func);
 			printf("resultado MUL: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 			escrita_bar(in, barEW);
 			printf("barramento EW: %d\n", EW->instrucao.opcode);
