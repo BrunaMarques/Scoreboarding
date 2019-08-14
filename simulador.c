@@ -30,7 +30,7 @@ do{
 	emissao();
 	buscaPipeline();
 
-}while (listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) != 1 || listaVazia(listaRead) !=1 || listaVazia(listaWriteB) !=1);
+}while (listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) !=1 || listaVazia(listaWriteB) !=1);
 
 
 	//buscaPipeline();
