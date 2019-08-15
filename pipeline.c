@@ -26,7 +26,8 @@ void buscaPipeline()
 			PC += 4;
 		}
 	}
-	if(EMITIDA){
+	if (EMITIDA)
+	{
 		if (BI.tem_instrucao == false)
 		{
 			in = excluirElementoFila();
@@ -40,7 +41,8 @@ void emissao()
 	if (EMITIDA)
 	{
 		if (verifica_bar(barBI))
-		{	printf("\n\nPORQUEEEEEEEE\n");
+		{
+			printf("\n\nPORQUEEEEEEEE\n");
 			EMITIDA = false;
 			printf("barramento BI: %d", BI.instrucao.opcode);
 			in = leitura_bar(barBI);
@@ -51,7 +53,7 @@ void emissao()
 		}
 	}
 	if (!EMITIDA)
-	{	
+	{
 		in = listaIssue->lista_inst[0];
 		int operacao = descobrirOperacao(in);
 
@@ -123,7 +125,7 @@ void emissao()
 		case DIV:
 			if (!UFDIV.status.Busy)
 			{
-				if (bancoRegistradores[HI].UF == semUF)
+				if ((bancoRegistradores[HI].UF == semUF) && (bancoRegistradores[LO].UF == semUF))
 				{
 					UFDIV.status.Busy = true;
 					UFDIV.status.Op = DIV;
@@ -135,6 +137,7 @@ void emissao()
 					UFDIV.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
 					UFDIV.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
 					bancoRegistradores[HI].UF = UF_DIV;
+					bancoRegistradores[LO].UF = UF_DIV;
 					in.UF = UF_DIV;
 					escrita_bar(in, barIR);
 					printf("\nDIV\n");
@@ -339,7 +342,7 @@ void emissao()
 					UFINT.status.Qk = semUF;
 					UFINT.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
 					UFINT.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
-					bancoRegistradores[HI].UF = UF_INT;
+					bancoRegistradores[LO].UF = UF_INT;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
 					printf("\nMTLO\n");
@@ -358,7 +361,7 @@ void emissao()
 		case MULT:
 			if (!UFMUL1.status.Busy)
 			{
-				if (bancoRegistradores[HI].UF == semUF)
+				if ((bancoRegistradores[HI].UF == semUF) && (bancoRegistradores[LO].UF == semUF))
 				{
 					UFMUL1.status.Busy = true;
 					UFMUL1.status.Op = MULT;
@@ -370,6 +373,7 @@ void emissao()
 					UFMUL1.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
 					UFMUL1.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
 					bancoRegistradores[HI].UF = UF_INT;
+					bancoRegistradores[LO].UF = UF_INT;
 					in.UF = UF_MUL1;
 					escrita_bar(in, barIR);
 					printf("\nMUL\n");
@@ -386,28 +390,32 @@ void emissao()
 
 				if (!UFMUL2.status.Busy)
 				{
-					UFMUL2.status.Busy = true;
-					UFMUL2.status.Op = MULT;
-					UFMUL2.status.Fi = HI;
-					UFMUL2.status.Fj = in.s_instrucao.rs;
-					UFMUL2.status.Fk = in.s_instrucao.rt;
-					UFMUL2.status.Qj = bancoRegistradores[in.s_instrucao.rs].UF;
-					UFMUL2.status.Qk = bancoRegistradores[in.s_instrucao.rt].UF;
-					UFMUL2.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
-					UFMUL2.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
-					bancoRegistradores[HI].UF = UF_INT;
-					in.UF = UF_MUL2;
-					escrita_bar(in, barIR);
-					printf("\nMUL\n");
-					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
-					printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
-					printf("barramento IR RT: %d\n", IR.instrucao.s_instrucao.rt);
-					//exibirLista(listaIssue);
-					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
-					excluirElem(listaIssue, 0);
-					//exibirLista(listaIssue);
-					printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
-					EMITIDA = true;
+					if ((bancoRegistradores[HI].UF == semUF) && (bancoRegistradores[LO].UF == semUF))
+					{
+						UFMUL2.status.Busy = true;
+						UFMUL2.status.Op = MULT;
+						UFMUL2.status.Fi = HI;
+						UFMUL2.status.Fj = in.s_instrucao.rs;
+						UFMUL2.status.Fk = in.s_instrucao.rt;
+						UFMUL2.status.Qj = bancoRegistradores[in.s_instrucao.rs].UF;
+						UFMUL2.status.Qk = bancoRegistradores[in.s_instrucao.rt].UF;
+						UFMUL2.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
+						UFMUL2.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
+						bancoRegistradores[HI].UF = UF_INT;
+						bancoRegistradores[LO].UF = UF_INT;
+						in.UF = UF_MUL2;
+						escrita_bar(in, barIR);
+						printf("\nMUL\n");
+						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+						printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
+						printf("barramento IR RT: %d\n", IR.instrucao.s_instrucao.rt);
+						//exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
+						excluirElem(listaIssue, 0);
+						//exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
+						EMITIDA = true;
+					}
 				}
 			}
 			break;
@@ -603,6 +611,7 @@ void emissao()
 					UFINT.status.Rj = (bancoRegistradores[in.s2_instrucao.rs].UF == semUF) ? true : false;
 					UFINT.status.Rk = (bancoRegistradores[in.s2_instrucao.rt].UF == semUF) ? true : false;
 					bancoRegistradores[HI].UF = UF_INT;
+					bancoRegistradores[LO].UF = UF_INT;
 					in.UF = UF_INT;
 					escrita_bar(in, barIR);
 					excluirElem(listaIssue, 0);
@@ -764,11 +773,11 @@ void emissao()
 				UFINT.status.Op = BEQ;
 				UFINT.status.Fi = semREG;
 				UFINT.status.Fj = in.i_instrucao.rs;
-				UFINT.status.Fk = in.i_instrucao.imediato;
-				UFINT.status.Qj = bancoRegistradores[in.i_instrucao.rt].UF;
-				UFINT.status.Qk = bancoRegistradores[in.i_instrucao.imediato].UF;
-				UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
-				UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
+				UFINT.status.Fk = in.i_instrucao.rt;
+				UFINT.status.Qj = bancoRegistradores[in.i_instrucao.rs].UF;
+				UFINT.status.Qk = bancoRegistradores[in.i_instrucao.rt].UF;
+				UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rs].UF == semUF) ? true : false;
+				UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
 				in.UF = UF_INT;
 				escrita_bar(in, barIR);
 				printf("\nBEQ\n");
@@ -788,13 +797,13 @@ void emissao()
 			{
 				UFINT.status.Busy = true;
 				UFINT.status.Op = BEQL;
-				UFINT.status.Fi = in.i_instrucao.rs;
-				UFINT.status.Fj = in.i_instrucao.rt;
-				UFINT.status.Fk = in.i_instrucao.imediato;
-				UFINT.status.Qj = bancoRegistradores[in.i_instrucao.rt].UF;
-				UFINT.status.Qk = bancoRegistradores[in.i_instrucao.imediato].UF;
-				UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
-				UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
+				UFINT.status.Fi = semREG;
+				UFINT.status.Fj = in.i_instrucao.rs;
+				UFINT.status.Fk = in.i_instrucao.rt;
+				UFINT.status.Qj = bancoRegistradores[in.i_instrucao.rs].UF;
+				UFINT.status.Qk = bancoRegistradores[in.i_instrucao.rt].UF;
+				UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rs].UF == semUF) ? true : false;
+				UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
 				in.UF = UF_INT;
 				escrita_bar(in, barIR);
 				printf("\nBEQL\n");
@@ -815,13 +824,13 @@ void emissao()
 			{
 				UFINT.status.Busy = true;
 				UFINT.status.Op = BGTZ;
-				UFINT.status.Fi = in.i_instrucao.rs;
-				UFINT.status.Fj = semREG;
-				UFINT.status.Fk = in.i_instrucao.imediato;
-				UFINT.status.Qj = semUF;
-				UFINT.status.Qk = bancoRegistradores[in.i_instrucao.imediato].UF;
-				UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
-				UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
+				UFINT.status.Fi = semREG;
+				UFINT.status.Fj = in.i_instrucao.rs;
+				UFINT.status.Fk = in.i_instrucao.rt;
+				UFINT.status.Qj = bancoRegistradores[in.i_instrucao.rs].UF;
+				UFINT.status.Qk = bancoRegistradores[in.i_instrucao.rt].UF;
+				UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rs].UF == semUF) ? true : false;
+				UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
 				in.UF = UF_INT;
 				escrita_bar(in, barIR);
 				printf("\nBGTZ\n");
