@@ -702,9 +702,10 @@ void emissao()
 					bancoRegistradores[in.i_instrucao.rt].UF = UF_INT;
 					printf("\n\nbancoRegistradores[in.i_instrucao.imediato].UF: %d\n\n", bancoRegistradores[in.i_instrucao.imediato].UF);
 					printf("\n\nbancoRegistradores[in.i_instrucao.rs].UF: %d\n\n", bancoRegistradores[in.i_instrucao.rs].UF);
+					printf("\nUFINT.status.Rj: %d", UFINT.status.Rj);
+					printf("\nUFINT.status.Rk: %d", UFINT.status.Rk);
+
 					in.UF = UF_INT;
-					printf("\n\nbancoRegistradores[in.i_instrucao.imediato].UF: %d\n\n", bancoRegistradores[in.i_instrucao.imediato].UF);
-					printf("\n\nbancoRegistradores[in.i_instrucao.rs].UF: %d\n\n", bancoRegistradores[in.i_instrucao.rs].UF);
 					in.qtd_cloc_prec = 1;
 					escrita_bar(in, barIR);
 					printf("\nADDI\n");
@@ -1084,7 +1085,7 @@ void leitura()
 		printf("\n\nleitura case uf_add\n\n");
 			if ((UFADD.status.Fj != semREG) && (UFADD.status.Fk != semREG))
 			{ printf("\nEntou no 1 if");
-				if ((bancoRegistradores[UFADD.status.Fj].UF == semUF) && (bancoRegistradores[UFADD.status.Fk].UF == semUF))
+				if ((bancoRegistradores[UFADD.status.Fj].UF == semUF) && (bancoRegistradores[UFADD.status.Fk].UF == semUF)) //DEPOIS DA PRIMEIRA NÃO ENTRA AQUI
 				{printf("\nEntou no if do if");
 					escrita_bar(in, barRE);
 					printf("barramento RE: %d\n", RE->instrucao.opcode);
@@ -1579,7 +1580,7 @@ void execucao()
 			printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
 			break;
 		case ADDI:
-			bufferRegistradores[in.i_instrucao.rt].valor = adicao(bancoRegistradores[in.i_instrucao.rs].valor, in.i_instrucao.imediato);
+			bufferRegistradores[in.i_instrucao.rt].valor = adicao(bancoRegistradores[in.i_instrucao.rs].valor,in.i_instrucao.imediato);
 			printf("ADDI opcode: %d\n", in.opcode);
 			printf("ADDI RS: %d\n", in.i_instrucao.rs);
 			printf("ADDI RT: %d\n", in.i_instrucao.rt);
@@ -1810,16 +1811,12 @@ void escritaPipeline()
 			printf("\nENTROU case especial ESCRITA\n");
 			bancoRegistradores[in.s_instrucao.rd].valor = bufferRegistradores[in.s_instrucao.rd].valor;
 			bancoRegistradores[in.s_instrucao.rd].UF = semUF;
-			bancoRegistradores[UFADD.status.Fj].UF == semUF;
-			bancoRegistradores[UFADD.status.Fk].UF == semUF;
 			excluirElem(listaWriteB, in.posicao);
 			break;
 		case ESPECIAL2:
 			printf("\nENTROU case especial 2 ESCRITA\n");
 			bancoRegistradores[in.s2_instrucao.rd].valor = bufferRegistradores[in.s2_instrucao.rd].valor;
 			bancoRegistradores[in.s2_instrucao.rd].UF = semUF;
-			bancoRegistradores[UFADD.status.Fj].UF == semUF;
-			bancoRegistradores[UFADD.status.Fk].UF == semUF;
 			excluirElem(listaWriteB, in.posicao);
 			break;
 		case SALTO:
@@ -1838,8 +1835,6 @@ void escritaPipeline()
 			printf("\nENTROU default ESCRITA\n");
 			bancoRegistradores[in.i_instrucao.rt].valor = bufferRegistradores[in.i_instrucao.rt].valor;
 			bancoRegistradores[in.i_instrucao.rt].UF = semUF;
-			bancoRegistradores[UFADD.status.Fj].UF == semUF;
-			bancoRegistradores[UFADD.status.Fk].UF == semUF;
 			excluirElem(listaWriteB, in.posicao);
 			break;
 		}
