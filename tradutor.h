@@ -52,6 +52,7 @@ int special[6], jump[2], regim[4], imediato[4];
 FILE *instrucoes;
 FILE *saidaBinario;
 FILE *saidaHexa;
+int qtd;
 
 int registradores(char *aux);
 void binarioSpecial(int vetor[], FILE *saidaBinario);

@@ -11,6 +11,8 @@ typedef struct
 typedef struct
 {
     UF_status status;
+    int qtd_ciclos;
+    int cont_ciclos;
 } UnidadeFuncional;
 
 UnidadeFuncional UFADD;

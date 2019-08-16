@@ -15,4 +15,6 @@
 
 #endif
 
+int FLAG;
+int clock;
 int main();

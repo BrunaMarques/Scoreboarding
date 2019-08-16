@@ -16,6 +16,7 @@ void inicializar()
 
 int main()
 {
+	clock = 1;
 	int i = 0;
 	unsigned int palavra[4];
 	inicializar();
@@ -24,45 +25,46 @@ int main()
 	
 
 do{
+		
 	buscaPipeline();
-	printf("\nLista E:\n");
-	exibirLista(listaExecucao);
-	printf("\nLista I:\n");
-	exibirLista(listaIssue);
-	printf("\nLista R:\n");
-	exibirLista(listaRead);
-	printf("\nLista WB:\n");
-	exibirLista(listaWriteB);
+	// printf("\nLista E:\n");
+	// exibirLista(listaExecucao);
+	// printf("\nLista I:\n");
+	// exibirLista(listaIssue);
+	// printf("\nLista R:\n");
+	// exibirLista(listaRead);
+	// printf("\nLista WB:\n");
+	// exibirLista(listaWriteB);
 
 	emissao();
-	printf("\nLista E:\n");
-	exibirLista(listaExecucao);
-	printf("\nLista I:\n");
-	exibirLista(listaIssue);
-	printf("\nLista R:\n");
-	exibirLista(listaRead);
-	printf("\nLista WB:\n");
-	exibirLista(listaWriteB);
+	// printf("\nLista E:\n");
+	// exibirLista(listaExecucao);
+	// printf("\nLista I:\n");
+	// exibirLista(listaIssue);
+	// printf("\nLista R:\n");
+	// exibirLista(listaRead);
+	// printf("\nLista WB:\n");
+	// exibirLista(listaWriteB);
 	
 	leitura();
-	printf("\nLista E:\n");
-	exibirLista(listaExecucao);
-	printf("\nLista I:\n");
-	exibirLista(listaIssue);
-	printf("\nLista R:\n");
-	exibirLista(listaRead);
-	printf("\nLista WB:\n");
-	exibirLista(listaWriteB);
+	// printf("\nLista E:\n");
+	// exibirLista(listaExecucao);
+	// printf("\nLista I:\n");
+	// exibirLista(listaIssue);
+	// printf("\nLista R:\n");
+	// exibirLista(listaRead);
+	// printf("\nLista WB:\n");
+	// exibirLista(listaWriteB);
 	
 	execucao();
-	printf("\nLista E:\n");
-	exibirLista(listaExecucao);
-	printf("\nLista I:\n");
-	exibirLista(listaIssue);
-	printf("\nLista R:\n");
-	exibirLista(listaRead);
-	printf("\nLista WB:\n");
-	exibirLista(listaWriteB);
+	// printf("\nLista E:\n");
+	// exibirLista(listaExecucao);
+	// printf("\nLista I:\n");
+	// exibirLista(listaIssue);
+	// printf("\nLista R:\n");
+	// exibirLista(listaRead);
+	// printf("\nLista WB:\n");
+	// exibirLista(listaWriteB);
 	
 	escritaPipeline();
 	
@@ -71,18 +73,23 @@ do{
 	// leitura();
 	// emissao();
 	// buscaPipeline();
-	printf("\nLista E:\n");
-	exibirLista(listaExecucao);
-	printf("\nLista I:\n");
-	exibirLista(listaIssue);
-	printf("\nLista R:\n");
-	exibirLista(listaRead);
-	printf("\nLista WB:\n");
-	exibirLista(listaWriteB);
-
+	// printf("\nLista E:\n");
+	// exibirLista(listaExecucao);
+	// printf("\nLista I:\n");
+	// exibirLista(listaIssue);
+	// printf("\nLista R:\n");
+	// exibirLista(listaRead);
+	// printf("\nLista WB:\n");
+	// exibirLista(listaWriteB);
+	if(verifica_bar(barBI) || verifica_bar(barIR) || verifica_bar(barRE) || verifica_bar(barEW) || (PC>qtd*4)){
+		printf("\n\nENTROU NO IF DA FLAG\n\n");
+		FLAG = true;
+	}
+	else FLAG = false;
+	clock++;
 	i++;
 
-}while(i<4);//while (listaVazia(listaExecucao) != 1 && listaVazia(listaIssue) != 1 && listaVazia(listaRead) !=1 && listaVazia(listaWriteB) !=1);
+}while(i<8);//while (listaVazia(listaExecucao) != 1 && listaVazia(listaIssue) != 1 && listaVazia(listaRead) !=1 && listaVazia(listaWriteB) !=1);
 
 
 	//buscaPipeline();

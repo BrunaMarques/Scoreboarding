@@ -57,6 +57,8 @@ typedef struct
     R r_instrucao;
     int posicao;
     int UF;
+    int qtd_cloc_prec;
+    int cont_clock;
 } Inst;
 
 Inst in;

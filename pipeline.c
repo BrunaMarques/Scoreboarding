@@ -13,7 +13,7 @@ int EMITIDA = true;
 
 void buscaPipeline()
 {
-	printf("----busca------");
+	printf("\n----busca------\n");
 	if (filaVazia())
 	{
 		for (int i = 0; i < 4; i++)
@@ -60,10 +60,11 @@ void emissao()
 		switch (operacao)
 		{
 		case ADD:
+		printf("\n TESTE 1 \n");
 			if (!UFADD.status.Busy)
-			{
+			{printf("\n TESTE 2 \n");
 				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
-				{
+				{printf("\n TESTE 3 \n");
 					UFADD.status.Busy = true;
 					UFADD.status.Op = ADD;
 					UFADD.status.Fi = in.s_instrucao.rd;
@@ -75,6 +76,7 @@ void emissao()
 					UFADD.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
 					bancoRegistradores[in.s_instrucao.rd].UF = UF_ADD;
 					in.UF = UF_ADD;
+					in.qtd_cloc_prec = 2;
 					escrita_bar(in, barIR);
 					printf("\nADD\n");
 					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -620,10 +622,11 @@ void emissao()
 			}
 			break;
 		case MUL:
+		printf("\n TESTE 1 \n");
 			if (!UFMUL1.status.Busy)
-			{
+			{printf("\n TESTE 2 \n");
 				if (bancoRegistradores[in.s2_instrucao.rd].UF == semUF)
-				{
+				{printf("\n TESTE 3 \n");
 					UFMUL1.status.Busy = true;
 					UFMUL1.status.Op = MUL;
 					UFMUL1.status.Fi = in.s2_instrucao.rd;
@@ -635,6 +638,7 @@ void emissao()
 					UFMUL1.status.Rk = (bancoRegistradores[in.s2_instrucao.rt].UF == semUF) ? true : false;
 					bancoRegistradores[in.s2_instrucao.rd].UF = UF_MUL1;
 					in.UF = UF_MUL1;
+					UFMUL1.qtd_ciclos = 5;
 					escrita_bar(in, barIR);
 					printf("\nMUL\n");
 					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -664,6 +668,7 @@ void emissao()
 					UFMUL2.status.Rk = (bancoRegistradores[in.s2_instrucao.rt].UF == semUF) ? true : false;
 					bancoRegistradores[in.s2_instrucao.rd].UF = UF_MUL2;
 					in.UF = UF_MUL2;
+					in.qtd_cloc_prec = 5;
 					escrita_bar(in, barIR);
 					printf("\nMUL\n");
 					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -680,10 +685,11 @@ void emissao()
 			}
 			break;
 		case ADDI:
+		printf("\n TESTE 1 \n");
 			if (!UFINT.status.Busy)
-			{
+			{printf("\n TESTE 2 \n");
 				if (bancoRegistradores[in.i_instrucao.rt].UF == semUF)
-				{
+				{printf("\n TESTE 3 \n");
 					UFINT.status.Busy = true;
 					UFINT.status.Op = ADDI;
 					UFINT.status.Fi = in.i_instrucao.rt;
@@ -694,7 +700,12 @@ void emissao()
 					UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rs].UF == semUF) ? true : false;
 					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
 					bancoRegistradores[in.i_instrucao.rt].UF = UF_INT;
+					printf("\n\nbancoRegistradores[in.i_instrucao.imediato].UF: %d\n\n", bancoRegistradores[in.i_instrucao.imediato].UF);
+					printf("\n\nbancoRegistradores[in.i_instrucao.rs].UF: %d\n\n", bancoRegistradores[in.i_instrucao.rs].UF);
 					in.UF = UF_INT;
+					printf("\n\nbancoRegistradores[in.i_instrucao.imediato].UF: %d\n\n", bancoRegistradores[in.i_instrucao.imediato].UF);
+					printf("\n\nbancoRegistradores[in.i_instrucao.rs].UF: %d\n\n", bancoRegistradores[in.i_instrucao.rs].UF);
+					in.qtd_cloc_prec = 1;
 					escrita_bar(in, barIR);
 					printf("\nADDI\n");
 					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -1070,22 +1081,24 @@ void leitura()
 		switch (in.UF)
 		{
 		case UF_ADD:
+		printf("\n\nleitura case uf_add\n\n");
 			if ((UFADD.status.Fj != semREG) && (UFADD.status.Fk != semREG))
-			{
+			{ printf("\nEntou no 1 if");
 				if ((bancoRegistradores[UFADD.status.Fj].UF == semUF) && (bancoRegistradores[UFADD.status.Fk].UF == semUF))
-				{
+				{printf("\nEntou no if do if");
 					escrita_bar(in, barRE);
 					printf("barramento RE: %d\n", RE->instrucao.opcode);
 					printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
 					//exibirLista(listaRead);
 					excluirElem(listaRead, in.posicao);
 					printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
+
 				}
 			}
 			else if (UFADD.status.Fj != semREG)
-			{
+			{printf("\nEntou no else if  if");
 				if (bancoRegistradores[UFADD.status.Fj].UF == semUF)
-				{
+				{printf("\nEntou no if do else if if");
 					escrita_bar(in, barRE);
 					printf("barramento RE: %d\n", RE->instrucao.opcode);
 					printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1095,7 +1108,7 @@ void leitura()
 				}
 			}
 			else
-			{
+			{printf("\nEntou no else");
 				escrita_bar(in, barRE);
 				printf("barramento RE: %d\n", RE->instrucao.opcode);
 				printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1105,10 +1118,11 @@ void leitura()
 			}
 			break;
 		case UF_DIV:
+		printf("\n\nleitura case uf_div\n\n");
 			if ((UFDIV.status.Fj != semREG) && (UFDIV.status.Fk != semREG))
-			{
+			{printf("\nEntou no primeiro if");
 				if ((bancoRegistradores[UFDIV.status.Fj].UF == semUF) && (bancoRegistradores[UFDIV.status.Fk].UF == semUF))
-				{
+				{printf("\nEntou no if do if");
 					escrita_bar(in, barRE);
 					printf("barramento RE: %d\n", RE->instrucao.opcode);
 					printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1118,9 +1132,9 @@ void leitura()
 				}
 			}
 			else if (UFDIV.status.Fj != semREG)
-			{
+			{printf("\nEntou no else if");
 				if (bancoRegistradores[UFDIV.status.Fj].UF == semUF)
-				{
+				{printf("\nEntou no ifdo else if");
 					escrita_bar(in, barRE);
 					printf("barramento RE: %d\n", RE->instrucao.opcode);
 					printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1131,10 +1145,11 @@ void leitura()
 			}
 			break;
 		case UF_INT:
+		printf("\n\nleitura case uf_int\n\n");
 			if ((UFINT.status.Fj != semREG) && (UFINT.status.Fk != semREG))
-			{
+			{printf("\nEntou no primeiro if");
 				if ((bancoRegistradores[UFINT.status.Fj].UF == semUF) && (bancoRegistradores[UFINT.status.Fk].UF == semUF))
-				{
+				{printf("\nEntou no if do if");
 					escrita_bar(in, barRE);
 					printf("barramento RE: %d\n", RE->instrucao.opcode);
 					printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1144,9 +1159,9 @@ void leitura()
 				}
 			}
 			else if (UFINT.status.Fj != semREG)
-			{
+			{printf("\nEntou no else if");
 				if (bancoRegistradores[UFINT.status.Fj].UF == semUF)
-				{
+				{printf("\nEntou no if do else if");
 					escrita_bar(in, barRE);
 					printf("barramento RE: %d\n", RE->instrucao.opcode);
 					printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1156,7 +1171,7 @@ void leitura()
 				}
 			}
 			else
-			{
+			{printf("\nEntou no else ");
 				escrita_bar(in, barRE);
 				printf("barramento RE: %d\n", RE->instrucao.opcode);
 				printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1166,6 +1181,7 @@ void leitura()
 			}
 			break;
 		case UF_MUL1:
+		printf("\n\nleitura case uf_mul1\n\n");
 			if ((UFMUL1.status.Fj != semREG) && (UFMUL1.status.Fk != semREG))
 			{
 				if ((bancoRegistradores[UFMUL1.status.Fj].UF == semUF) && (bancoRegistradores[UFMUL1.status.Fk].UF == semUF))
@@ -1201,6 +1217,7 @@ void leitura()
 			}
 			break;
 		case UF_MUL2:
+		printf("\n\nleitura case uf_mul2\n\n");
 			if ((UFMUL2.status.Fj != semREG) && (UFMUL2.status.Fk != semREG))
 			{
 				if ((bancoRegistradores[UFMUL2.status.Fj].UF == semUF) && (bancoRegistradores[UFMUL2.status.Fk].UF == semUF))
@@ -1259,7 +1276,9 @@ void execucao()
 			continue;
 		}
 		int operacao = descobrirOperacao(in);
-		int registrador;
+
+		for(in.cont_clock = 0; in.cont_clock < in.qtd_cloc_prec; in.cont_clock++){
+			if(in.cont_clock == 0){
 		switch (operacao)
 		{
 		case ADD:
@@ -1760,6 +1779,7 @@ void execucao()
 			excluirElem(listaExecucao, in.posicao);
 			printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
 			break;
+		}}
 		}
 	}
 }
@@ -1768,68 +1788,82 @@ void escritaPipeline()
 {
 	printf("\n-----escrita------\n");
 	while (verifica_bar(barEW))
-	{
+	{printf("\nENTROU WHILE ESCRITA\n");
 		in = leitura_bar(barEW);
 		inserirElemLista(listaWriteB, in);
 		//exibirLista(listaWriteB);
 		printf("barramento EW: %d", EW->instrucao.opcode);
 	}
 	for (int i = 0; i < N; i++)
-	{
+	{printf("\nENTROU FOR ESCRITA\n");
 		in = listaWriteB->lista_inst[i];
 		if (in.posicao == -1)
 		{
+			printf("\nENTROU if ESCRITA\n");
 			continue;
 		}
 		int tipo = in.opcode;
 		switch (tipo)
 		{
+		printf("\nENTROU switch ESCRITA\n");
 		case ESPECIAL:
-
+			printf("\nENTROU case especial ESCRITA\n");
 			bancoRegistradores[in.s_instrucao.rd].valor = bufferRegistradores[in.s_instrucao.rd].valor;
 			bancoRegistradores[in.s_instrucao.rd].UF = semUF;
+			bancoRegistradores[UFADD.status.Fj].UF == semUF;
+			bancoRegistradores[UFADD.status.Fk].UF == semUF;
 			excluirElem(listaWriteB, in.posicao);
 			break;
 		case ESPECIAL2:
+			printf("\nENTROU case especial 2 ESCRITA\n");
 			bancoRegistradores[in.s2_instrucao.rd].valor = bufferRegistradores[in.s2_instrucao.rd].valor;
 			bancoRegistradores[in.s2_instrucao.rd].UF = semUF;
-			UFINT.status.Busy = false;
+			bancoRegistradores[UFADD.status.Fj].UF == semUF;
+			bancoRegistradores[UFADD.status.Fk].UF == semUF;
 			excluirElem(listaWriteB, in.posicao);
 			break;
 		case SALTO:
+			printf("\nENTROU salto ESCRITA\n");
 			bancoRegistradores[in.j_instrucao.addr].valor = bufferRegistradores[in.j_instrucao.addr].valor;
 			bancoRegistradores[in.j_instrucao.addr].UF = semUF;
-			UFINT.status.Busy = false;
 			excluirElem(listaWriteB, in.posicao);
 			break;
 		case REGIMM:
+			printf("\nENTROU regimm ESCRITA\n");
 			bancoRegistradores[in.r_instrucao.rs].valor = bufferRegistradores[in.r_instrucao.rs].valor;
 			bancoRegistradores[in.r_instrucao.rs].UF = semUF;
-			UFINT.status.Busy = false;
 			excluirElem(listaWriteB, in.posicao);
 			break;
 		default:
+			printf("\nENTROU default ESCRITA\n");
 			bancoRegistradores[in.i_instrucao.rt].valor = bufferRegistradores[in.i_instrucao.rt].valor;
 			bancoRegistradores[in.i_instrucao.rt].UF = semUF;
-			UFINT.status.Busy = false;
+			bancoRegistradores[UFADD.status.Fj].UF == semUF;
+			bancoRegistradores[UFADD.status.Fk].UF == semUF;
 			excluirElem(listaWriteB, in.posicao);
 			break;
 		}
 		switch (in.UF)
 		{
+		printf("\nENTROU switch 2 ESCRITA\n");
 		case UF_INT:
+		printf("\nENTROU case UF_INT ESCRITA\n");
 			UFINT.status.Busy = false;
 			break;
 		case UF_ADD:
+			printf("\nENTROU UF_ADD ESCRITA\n");
 			UFADD.status.Busy = false;
 			break;
 		case UF_DIV:
+		printf("\nENTROU UF_DIV ESCRITA\n");
 			UFDIV.status.Busy = false;
 			break;
 		case UF_MUL1:
+			printf("\nENTROU UF_MUL1 ESCRITA\n");
 			UFMUL1.status.Busy = false;
 			break;
 		case UF_MUL2:
+			printf("\nENTROU UF_MUL2 ESCRITA\n");
 			UFMUL2.status.Busy = false;
 			break;
 		}

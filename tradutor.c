@@ -209,11 +209,13 @@ void binarioJump(int vetor[], FILE *saidaBinario){
 
 void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 	int linhas = 0;
+	qtd = 0;
 	inicializarHash();
 	while(fgets(texto, 100, instrucoes) != NULL){
 		aux = strtok(texto, ",  \n\0");
 		linhas++;
 		if((strcasecmp(aux,"add") == 0) || (strcasecmp(aux,"and") == 0) || (strcasecmp(aux,"div") == 0) || (strcasecmp(aux,"jr") == 0) || (strcasecmp(aux,"mfhi") == 0) || (strcasecmp(aux,"mflo") == 0) ||(strcasecmp(aux,"movn") == 0) || (strcasecmp(aux,"movz") == 0) || (strcasecmp(aux,"mthi") == 0) || (strcasecmp(aux,"mtlo") == 0) || (strcasecmp(aux,"mult") == 0) || (strcasecmp(aux,"nop") == 0) || (strcasecmp(aux,"or") == 0) || (strcasecmp(aux,"sub") == 0) || (strcasecmp(aux,"xor") == 0) || (strcasecmp(aux,"nor") == 0) || (strcasecmp(aux,"madd") == 0) || (strcasecmp(aux,"msub") == 0) || (strcasecmp(aux,"mul") == 0) ||(strcasecmp(aux,"j") == 0) || (strcasecmp(aux,"bgez") == 0) || (strcasecmp(aux,"bltz") == 0) || (strcasecmp(aux,"addi") == 0) || (strcasecmp(aux,"andi") == 0) || (strcasecmp(aux,"b") == 0) || (strcasecmp(aux,"beq") == 0) || (strcasecmp(aux,"beql") == 0) || (strcasecmp(aux,"bgtz") == 0) || (strcasecmp(aux,"blez") == 0) || (strcasecmp(aux,"bne") == 0) || (strcasecmp(aux,"lui") == 0) || (strcasecmp(aux,"ori") == 0) || (strcasecmp(aux,"xori") == 0)){
+			qtd++;
 		}
 		else
 		{

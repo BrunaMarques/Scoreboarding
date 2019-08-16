@@ -91,6 +91,3 @@ int juntarHILO(int hi, int lo)
 	return hi << 5 + lo;
 }
 
-void escrita(Inst intrucao)
-{
-}
