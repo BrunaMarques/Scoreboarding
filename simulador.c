@@ -26,70 +26,23 @@ int main()
 
 do{
 		
-	buscaPipeline();
-	// printf("\nLista E:\n");
-	// exibirLista(listaExecucao);
-	// printf("\nLista I:\n");
-	// exibirLista(listaIssue);
-	// printf("\nLista R:\n");
-	// exibirLista(listaRead);
-	// printf("\nLista WB:\n");
-	// exibirLista(listaWriteB);
-
-	emissao();
-	// printf("\nLista E:\n");
-	// exibirLista(listaExecucao);
-	// printf("\nLista I:\n");
-	// exibirLista(listaIssue);
-	// printf("\nLista R:\n");
-	// exibirLista(listaRead);
-	// printf("\nLista WB:\n");
-	// exibirLista(listaWriteB);
-	
-	leitura();
-	// printf("\nLista E:\n");
-	// exibirLista(listaExecucao);
-	// printf("\nLista I:\n");
-	// exibirLista(listaIssue);
-	// printf("\nLista R:\n");
-	// exibirLista(listaRead);
-	// printf("\nLista WB:\n");
-	// exibirLista(listaWriteB);
-	
-	execucao();
-	// printf("\nLista E:\n");
-	// exibirLista(listaExecucao);
-	// printf("\nLista I:\n");
-	// exibirLista(listaIssue);
-	// printf("\nLista R:\n");
-	// exibirLista(listaRead);
-	// printf("\nLista WB:\n");
-	// exibirLista(listaWriteB);
+	// buscaPipeline();
+	// emissao();
+	// leitura();
+	// execucao();
+	// escritaPipeline();
 	
 	escritaPipeline();
-	
-	// escritaPipeline();
-	// execucao();
-	// leitura();
-	// emissao();
-	// buscaPipeline();
-	// printf("\nLista E:\n");
-	// exibirLista(listaExecucao);
-	// printf("\nLista I:\n");
-	// exibirLista(listaIssue);
-	// printf("\nLista R:\n");
-	// exibirLista(listaRead);
-	// printf("\nLista WB:\n");
-	// exibirLista(listaWriteB);
-	if(verifica_bar(barBI) || verifica_bar(barIR) || verifica_bar(barRE) || verifica_bar(barEW) || (PC>qtd*4)){
-		printf("\n\nENTROU NO IF DA FLAG\n\n");
-		FLAG = true;
-	}
-	else FLAG = false;
+	execucao();
+	leitura();
+	emissao();
+	buscaPipeline();
+
+
 	clock++;
 	i++;
 
-}while(i<8);//while (listaVazia(listaExecucao) != 1 && listaVazia(listaIssue) != 1 && listaVazia(listaRead) !=1 && listaVazia(listaWriteB) !=1);
+}while(i>10);//(f->nroElem != 0 || listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) !=1 || listaVazia(listaWriteB) !=1 || verifica_bar(barBI) || verifica_bar(barIR) || verifica_bar(barRE) || verifica_bar(barEW));
 
 
 	//buscaPipeline();
