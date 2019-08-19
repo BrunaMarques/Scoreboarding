@@ -22,28 +22,26 @@ int main()
 	inicializar();
 	tradutor();
 	escritaMemoria();
-	
 
-do{
-		
-	// buscaPipeline();
-	// emissao();
-	// leitura();
-	// execucao();
-	// escritaPipeline();
-	
-	escritaPipeline();
-	execucao();
-	leitura();
-	emissao();
-	buscaPipeline();
+	do
+	{
 
+		// buscaPipeline();
+		// emissao();
+		// leitura();
+		// execucao();
+		// escritaPipeline();
 
-	clock++;
-	i++;
+		escritaPipeline();
+		execucao();
+		leitura();
+		emissao();
+		buscaPipeline();
 
-}while(i>10);//(f->nroElem != 0 || listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) !=1 || listaVazia(listaWriteB) !=1 || verifica_bar(barBI) || verifica_bar(barIR) || verifica_bar(barRE) || verifica_bar(barEW));
+		clock++;
+		i++;
 
+	} while (i < 10); //(f->nroElem != 0 || listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) !=1 || listaVazia(listaWriteB) !=1 || verifica_bar(barBI) || verifica_bar(barIR) || verifica_bar(barRE) || verifica_bar(barEW));
 
 	//buscaPipeline();
 	//inicializarFila();

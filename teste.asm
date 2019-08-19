@@ -1,6 +1,5 @@
-addi $t0, $zero, 0
-addi $t0, $t0, 10
-add $t1, $t0, $zero
-addi $t1, $t1, 3
-mul $t2, $t1, $t0
-add $t0, $zero,$zero
+sub $t0, $zero, $s3
+add $t2, $t3, $s6
+add $t7, $s4, $s5
+mul $t4, $t5, $t6
+add $t1, $s1, $s2

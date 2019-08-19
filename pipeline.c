@@ -13,7 +13,7 @@ int EMITIDA = true;
 
 void buscaPipeline()
 {
-	printf("\n----busca------\n");
+	printf("\n\t--------------busca--------------\n");
 	if (filaVazia())
 	{
 		for (int i = 0; i < 4; i++)
@@ -26,22 +26,23 @@ void buscaPipeline()
 			PC += 4;
 		}
 	}
-	if (EMITIDA)
+
+	if (BI.tem_instrucao == false)
 	{
-		if (BI.tem_instrucao == false)
-		{
-			in = excluirElementoFila();
-			escrita_bar(in, barBI);
-		}
+		in = excluirElementoFila();
+		int operacao = descobrirOperacao(in);
+		printf("\nINTRUCAO: %d\n", operacao);
+		escrita_bar(in, barBI);
 	}
 }
 void emissao()
 {
-	printf("\n\t------------emissao-------------\n");
+	printf("\n\t--------------emissão--------------\n");
 	if (EMITIDA)
 	{
 		if (verifica_bar(barBI))
 		{
+			printf("\nEMITIDA\n");
 			EMITIDA = false;
 			printf("barramento BI: %d", BI.instrucao.opcode);
 			in = leitura_bar(barBI);
@@ -53,8 +54,10 @@ void emissao()
 	}
 	if (!EMITIDA)
 	{
+		printf("\nNÃO EMITIDA\n");
 		in = listaIssue->lista_inst[0];
 		int operacao = descobrirOperacao(in);
+		printf("INSTRUÇÃO: %d\n", operacao);
 
 		switch (operacao)
 		{
@@ -65,7 +68,6 @@ void emissao()
 
 				if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
 				{
-
 					UFADD.status.Busy = true;
 					UFADD.status.Op = ADD;
 					UFADD.status.Fi = in.s_instrucao.rd;
@@ -76,6 +78,8 @@ void emissao()
 					UFADD.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
 					UFADD.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
 					bancoRegistradores[in.s_instrucao.rd].UF = UF_ADD;
+					// bancoRegistradores[in.s_instrucao.rs].UF = UF_ADD;
+					// bancoRegistradores[in.s_instrucao.rt].UF = UF_ADD;
 					in.UF = UF_ADD;
 					in.qtd_cloc_prec = 2;
 					escrita_bar(in, barIR);
@@ -1061,7 +1065,7 @@ void emissao()
 
 void leitura()
 {
-	printf("\n----leitura------\n");
+	printf("\n\t--------------leitura--------------\n");
 	if (verifica_bar(barIR))
 	{
 		in = leitura_bar(barIR);
@@ -1071,6 +1075,8 @@ void leitura()
 	for (int i = 0; i < N; i++)
 	{
 		in = listaRead->lista_inst[i];
+		int operacao = descobrirOperacao(in);
+		printf("INSTRUÇÃO: %d\n", operacao);
 		if (in.posicao == -1)
 		{
 			continue;
@@ -1081,10 +1087,12 @@ void leitura()
 			printf("\n\nleitura case uf_add\n\n");
 			if ((UFADD.status.Fj != semREG) && (UFADD.status.Fk != semREG))
 			{
-				printf("\nEntou no 1 if");
-				if ((bancoRegistradores[UFADD.status.Fj].UF == semUF) && (bancoRegistradores[UFADD.status.Fk].UF == semUF)) //DEPOIS DA PRIMEIRA NÃO ENTRA AQUI
+				printf("\nEntou no 1 if\n");
+				if ((bancoRegistradores[in.s_instrucao.rs].UF == semUF) && (bancoRegistradores[in.s_instrucao.rt].UF == semUF))
 				{
-					printf("\nEntou no if do if");
+					// bancoRegistradores[in.s_instrucao.rs].UF = UF_ADD;
+					// bancoRegistradores[in.s_instrucao.rt].UF = UF_ADD;
+					printf("\nEntou no 2 if\n");
 					escrita_bar(in, barRE);
 					printf("barramento RE: %d\n", RE->instrucao.opcode);
 					printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1095,10 +1103,10 @@ void leitura()
 			}
 			else if (UFADD.status.Fj != semREG)
 			{
-				printf("\nEntou no else if  if");
+				printf("\nEntou no else if  if\n");
 				if (bancoRegistradores[UFADD.status.Fj].UF == semUF)
 				{
-					printf("\nEntou no if do else if if");
+					printf("\nEntou no if do else if if\n");
 					escrita_bar(in, barRE);
 					printf("barramento RE: %d\n", RE->instrucao.opcode);
 					printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1109,7 +1117,7 @@ void leitura()
 			}
 			else
 			{
-				printf("\nEntou no else");
+				printf("\nEntou no else\n");
 				escrita_bar(in, barRE);
 				printf("barramento RE: %d\n", RE->instrucao.opcode);
 				printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1122,10 +1130,10 @@ void leitura()
 			printf("\n\nleitura case uf_div\n\n");
 			if ((UFDIV.status.Fj != semREG) && (UFDIV.status.Fk != semREG))
 			{
-				printf("\nEntou no primeiro if");
+				printf("\nEntou no primeiro if\n");
 				if ((bancoRegistradores[UFDIV.status.Fj].UF == semUF) && (bancoRegistradores[UFDIV.status.Fk].UF == semUF))
 				{
-					printf("\nEntou no if do if");
+					printf("\nEntou no if do if\n");
 					escrita_bar(in, barRE);
 					printf("barramento RE: %d\n", RE->instrucao.opcode);
 					printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1136,10 +1144,10 @@ void leitura()
 			}
 			else if (UFDIV.status.Fj != semREG)
 			{
-				printf("\nEntou no else if");
+				printf("\nEntou no else if\n");
 				if (bancoRegistradores[UFDIV.status.Fj].UF == semUF)
 				{
-					printf("\nEntou no ifdo else if");
+					printf("\nEntou no ifdo else if\n");
 					escrita_bar(in, barRE);
 					printf("barramento RE: %d\n", RE->instrucao.opcode);
 					printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1153,10 +1161,10 @@ void leitura()
 			printf("\n\nleitura case uf_int\n\n");
 			if ((UFINT.status.Fj != semREG) && (UFINT.status.Fk != semREG))
 			{
-				printf("\nEntou no primeiro if");
+				printf("\nEntou no 1 if\n");
 				if ((bancoRegistradores[UFINT.status.Fj].UF == semUF) && (bancoRegistradores[UFINT.status.Fk].UF == semUF))
 				{
-					printf("\nEntou no if do if");
+					printf("\nEntou no 2 if\n");
 					escrita_bar(in, barRE);
 					printf("barramento RE: %d\n", RE->instrucao.opcode);
 					printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1167,10 +1175,10 @@ void leitura()
 			}
 			else if (UFINT.status.Fj != semREG)
 			{
-				printf("\nEntou no else if");
+				printf("\nEntou no else if\n");
 				if (bancoRegistradores[UFINT.status.Fj].UF == semUF)
 				{
-					printf("\nEntou no if do else if");
+					printf("\nEntou no if do else if\n");
 					escrita_bar(in, barRE);
 					printf("barramento RE: %d\n", RE->instrucao.opcode);
 					printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1181,7 +1189,7 @@ void leitura()
 			}
 			else
 			{
-				printf("\nEntou no else ");
+				printf("\nEntou no else \n");
 				escrita_bar(in, barRE);
 				printf("barramento RE: %d\n", RE->instrucao.opcode);
 				printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1194,8 +1202,10 @@ void leitura()
 			printf("\n\nleitura case uf_mul1\n\n");
 			if ((UFMUL1.status.Fj != semREG) && (UFMUL1.status.Fk != semREG))
 			{
+				printf("\nEntou no 1 if\n");
 				if ((bancoRegistradores[UFMUL1.status.Fj].UF == semUF) && (bancoRegistradores[UFMUL1.status.Fk].UF == semUF))
 				{
+					printf("\nEntou no 2 if\n");
 					escrita_bar(in, barRE);
 					printf("barramento RE: %d\n", RE->instrucao.opcode);
 					printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1206,6 +1216,7 @@ void leitura()
 			}
 			else if (UFMUL1.status.Fj != semREG)
 			{
+				printf("\nEntou no else if\n");
 				if (bancoRegistradores[UFMUL1.status.Fj].UF == semUF)
 				{
 					escrita_bar(in, barRE);
@@ -1218,6 +1229,7 @@ void leitura()
 			}
 			else
 			{
+				printf("\nEntou no else if\n");
 				escrita_bar(in, barRE);
 				printf("barramento RE: %d\n", RE->instrucao.opcode);
 				printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1230,8 +1242,10 @@ void leitura()
 			printf("\n\nleitura case uf_mul2\n\n");
 			if ((UFMUL2.status.Fj != semREG) && (UFMUL2.status.Fk != semREG))
 			{
+				printf("\nEntou no 1 if\n");
 				if ((bancoRegistradores[UFMUL2.status.Fj].UF == semUF) && (bancoRegistradores[UFMUL2.status.Fk].UF == semUF))
 				{
+					printf("\nEntou no 2 if\n");
 					escrita_bar(in, barRE);
 					printf("barramento RE: %d\n", RE->instrucao.opcode);
 					printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1242,6 +1256,7 @@ void leitura()
 			}
 			else if (UFMUL2.status.Fj != semREG)
 			{
+				printf("\nEntou no else if\n");
 				if (bancoRegistradores[UFMUL2.status.Fj].UF == semUF)
 				{
 					escrita_bar(in, barRE);
@@ -1254,6 +1269,7 @@ void leitura()
 			}
 			else
 			{
+				printf("\nEntou no else\n");
 				escrita_bar(in, barRE);
 				printf("barramento RE: %d\n", RE->instrucao.opcode);
 				printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
@@ -1269,7 +1285,7 @@ void leitura()
 void execucao()
 //etapa de execução
 {
-	printf("\n----execucao------\n");
+	printf("\n\t--------------execução--------------\n");
 	while (verifica_bar(barRE))
 	{
 		in = leitura_bar(barRE);
@@ -1281,11 +1297,12 @@ void execucao()
 	for (int i = 0; i < N; i++)
 	{
 		in = listaExecucao->lista_inst[i];
+		int operacao = descobrirOperacao(in);
+		printf("INTRUÇÃO: %d\n", operacao);
 		if (in.posicao == -1)
 		{
 			continue;
 		}
-		int operacao = descobrirOperacao(in);
 
 		for (in.cont_clock = 0; in.cont_clock < in.qtd_cloc_prec; in.cont_clock++)
 		{
@@ -1515,7 +1532,7 @@ void execucao()
 					printf("SUB RD: %d\n", in.s_instrucao.rd);
 					printf("SUB SHAMT: %d\n", in.s_instrucao.shamt);
 					printf("SUB FUNC: %d\n", in.s_instrucao.func);
-					printf("resultado SUB: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
+					printf("resultado SUB: %d\n", bufferRegistradores[in.s_instrucao.rd].valor);
 					escrita_bar(in, barEW);
 					printf("barramento EW: %d\n", EW->instrucao.opcode);
 					//exibirLista(listaExecucao);
@@ -1799,7 +1816,7 @@ void execucao()
 
 void escritaPipeline()
 {
-	printf("\n-----escrita------\n");
+	printf("\n\t--------------escrita--------------\n");
 	while (verifica_bar(barEW))
 	{
 		in = leitura_bar(barEW);
@@ -1810,6 +1827,8 @@ void escritaPipeline()
 	for (int i = 0; i < N; i++)
 	{
 		in = listaWriteB->lista_inst[i];
+		int operacao = descobrirOperacao(in);
+		printf("INSTRUÇÃO: %d\n", operacao);
 		if (in.posicao == -1)
 		{
 
@@ -1822,6 +1841,8 @@ void escritaPipeline()
 
 			bancoRegistradores[in.s_instrucao.rd].valor = bufferRegistradores[in.s_instrucao.rd].valor;
 			bancoRegistradores[in.s_instrucao.rd].UF = semUF;
+			// bancoRegistradores[in.s_instrucao.rs].UF = semUF;
+			// bancoRegistradores[in.s_instrucao.rt].UF = semUF;
 			excluirElem(listaWriteB, in.posicao);
 			break;
 		case ESPECIAL2:
