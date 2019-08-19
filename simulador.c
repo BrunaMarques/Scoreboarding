@@ -41,7 +41,7 @@ int main()
 		clock++;
 		i++;
 
-	} while (i < 10); //(f->nroElem != 0 || listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) !=1 || listaVazia(listaWriteB) !=1 || verifica_bar(barBI) || verifica_bar(barIR) || verifica_bar(barRE) || verifica_bar(barEW));
+	} while (i < 20); //(f->nroElem != 0 || listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) !=1 || listaVazia(listaWriteB) !=1 || verifica_bar(barBI) || verifica_bar(barIR) || verifica_bar(barRE) || verifica_bar(barEW));
 
 	//buscaPipeline();
 	//inicializarFila();
