@@ -12,7 +12,6 @@ void inicializar()
 	inicializarFila();
 	inicializaMemoria();
 	inicializarRegistradores();
-
 }
 
 int main(/*int argc, char *argv[ ]*/)
@@ -50,7 +49,7 @@ int main(/*int argc, char *argv[ ]*/)
 		i++;
 
 	} while (i < 20); //(f->nroElem != 0 || listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) !=1 || listaVazia(listaWriteB) !=1 || verifica_bar(barBI) || verifica_bar(barIR) || verifica_bar(barRE) || verifica_bar(barEW));
-	
+
 	fprintf(prog, "\n\nCiclos:\n");
 	fprintf(prog, "\t%d cilcos\n", clock);
 	fprintf(prog, "\nInstruções:\n \tEmitidas: ver o que colocar\n \tEfetivadas: ver o que colocar");
