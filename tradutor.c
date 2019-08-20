@@ -619,9 +619,9 @@ void print_assembly(FILE *instrucoes){
 }
 
 void tradutor(){
-	instrucoes = fopen("teste.asm", "r");
+	instrucoes = fopen(entrada, "r");
 	saidaBinario = fopen("codigoBinario.txt", "w+");
-	saidaHexa = fopen("codigoHexa.txt", "w+");
+	saidaHexa = fopen(saida, "w+");
 	//printf("\nPrograma:\n");
 	fprintf(prog,"Programa:\n");
 	print_assembly(instrucoes);

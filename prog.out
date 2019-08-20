@@ -1,0 +1,20 @@
+Programa:
+	add $t1, $zero,$zero
+	addi $t0, $t0, 10
+	add $t1, $t0, $zero
+	addi $t1, $t1, 3
+	mul $t2, $t1, $t0
+
+Binário:
+	4820
+	2108000A
+	1004820
+	21290003
+	71285002
+
+Ciclos:
+	21 cilcos
+
+Instruções:
+ 	Emitidas: ver o que colocar
+ 	Efetivadas: ver o que colocar
