@@ -86,7 +86,7 @@ Inst leitura_bar(int tipo_bar)
 
     case barRE:
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (RE[i].tem_instrucao == true)
             {
@@ -101,7 +101,7 @@ Inst leitura_bar(int tipo_bar)
 
     case barEW:
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (EW[i].tem_instrucao == true)
             {

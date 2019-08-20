@@ -26,7 +26,7 @@ void exibirFila()
     printf("Fila: \" ");
     for (temp = 0; temp < f->nroElem; temp++)
     {
-        printf("%i ", f->fila_inst[i].opcode);
+        printf("%i, ", f->fila_inst[i].opcode);
         i = (i + 1) % MAX;
     }
     printf("\"\n");

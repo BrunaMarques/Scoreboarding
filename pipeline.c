@@ -8,16 +8,22 @@
 #include "ula.h"
 #include "fila.h"
 #include "instrucoes.h"
+#include "tradutor.h"
 
 int EMITIDA = true;
 
 void buscaPipeline()
 {
 	printf("\n\t--------------busca--------------\n");
-	if (filaVazia())
+	printf("\nQUANTIDADE %d\n", qtd);
+	if (filaVazia() && (PC < (qtd * 4)))
 	{
 		for (int i = 0; i < 4; i++)
 		{
+			if (PC >= (qtd * 4))
+			{
+				break;
+			}
 			unsigned int instMem[4];
 			buscaMemoria(instMem);
 
@@ -26,14 +32,18 @@ void buscaPipeline()
 			PC += 4;
 		}
 	}
-
+	printf("\nBARRAMENTO BI AAAA: %d\n", BI.instrucao.opcode);
 	if (BI.tem_instrucao == false)
 	{
+		printf("ENTROU NO IFFFF");
 		in = excluirElementoFila();
 		int operacao = descobrirOperacao(in);
 		printf("\nINTRUCAO: %d\n", operacao);
+		printf("\nBARRAMENTO BI AAAA: %d\n", BI.instrucao.opcode);
 		escrita_bar(in, barBI);
 	}
+	printf("\nBARRAMENTO BI AAAA: %d\n", BI.instrucao.opcode);
+	printf("\nBARRAMENTO BI AAAABBBBBBBBB: %d\n", verifica_bar(barBI));
 }
 void emissao()
 {
@@ -42,6 +52,7 @@ void emissao()
 	{
 		if (verifica_bar(barBI))
 		{
+			printf("\nENTROU NO IF DA EMISSAO\n");
 			printf("\nEMITIDA\n");
 			EMITIDA = false;
 			printf("barramento BI: %d", BI.instrucao.opcode);
@@ -52,6 +63,7 @@ void emissao()
 			exibirLista(listaIssue);
 		}
 	}
+	printf("\nBARRAMENTO BI CCCCCCCCCCCCCCCC: %d\n", verifica_bar(barBI));
 	if (!EMITIDA)
 	{
 		printf("\nNÃO EMITIDA\n");
@@ -60,7 +72,7 @@ void emissao()
 		printf("INSTRUÇÃO: %d\n", operacao);
 		if (in.posicao != -1)
 		{
-
+			printf("ENTROU NO IF -1");
 			switch (operacao)
 			{
 			case ADD:
@@ -1088,7 +1100,7 @@ void leitura()
 		{
 		case UF_ADD:
 			printf("\n\nleitura case uf_add\n\n");
-			if (((UFADD.status.Fj != semREG) && (UFADD.status.Fk != semREG)) || (UFADD.status.Fi == UFADD.status.Fj))
+			if ((UFADD.status.Fj != semREG) && (UFADD.status.Fk != semREG))
 			{
 				printf("\nEntou no 1 if\n");
 				if (((bancoRegistradores[in.s_instrucao.rs].UF == semUF) && (bancoRegistradores[in.s_instrucao.rt].UF == semUF)) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fj].UF))
@@ -1104,10 +1116,10 @@ void leitura()
 					printf("posição na lista read: %d\n", listaRead->lista_inst[in.posicao].posicao);
 				}
 			}
-			else if (((UFADD.status.Fj != semREG) || (UFADD.status.Fi == UFADD.status.Fj)) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fj].UF))
+			else if ((UFADD.status.Fj != semREG) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fj].UF))
 			{
 				printf("\nEntou no else if  if\n");
-				if (bancoRegistradores[UFADD.status.Fj].UF == semUF)
+				if ((bancoRegistradores[UFADD.status.Fj].UF == semUF) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fj].UF))
 				{
 					printf("\nEntou no if do else if if\n");
 					escrita_bar(in, barRE);
