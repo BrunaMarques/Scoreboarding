@@ -5,6 +5,8 @@
         "ula.c": "cpp",
         "barramento.h": "c",
         "simulador.h": "c",
-        "pipeline.h": "c"
+        "pipeline.h": "c",
+        "string.h": "c",
+        "stdlib.h": "c"
     }
 }

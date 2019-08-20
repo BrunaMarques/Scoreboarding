@@ -231,7 +231,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 		if( (strcasecmp(aux,"add") == 0) || (strcasecmp(aux,"and") == 0) || (strcasecmp(aux,"div") == 0) || (strcasecmp(aux,"jr") == 0) || (strcasecmp(aux,"mfhi") == 0) || (strcasecmp(aux,"mflo") == 0) ||(strcasecmp(aux,"movn") == 0) || (strcasecmp(aux,"movz") == 0) || (strcasecmp(aux,"mthi") == 0) || (strcasecmp(aux,"mtlo") == 0) || (strcasecmp(aux,"mult") == 0) || (strcasecmp(aux,"nop") == 0) || (strcasecmp(aux,"or") == 0) || (strcasecmp(aux,"sub") == 0) || (strcasecmp(aux,"xor") == 0) || (strcasecmp(aux,"nor") == 0)){
 			special[0] = 0b000000; //pega opcode 
 			if(strcasecmp(aux, "add") == 0){
-				special[5] = ADD;
+				special[5] = TADD;
 				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -242,7 +242,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if (strcasecmp(aux ,"and") == 0){
-				special[5] = AND;
+				special[5] = TAND;
 				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -253,7 +253,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if (strcasecmp(aux,"div") == 0){
-				special[5] = DIV;
+				special[5] = TDIV;
 				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -264,7 +264,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			} 
 			else if (strcasecmp(aux,"jr") == 0){
-				special[5] = JR;
+				special[5] = TJR;
 				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
 				special[2] = 0b00000;
@@ -273,7 +273,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if (strcasecmp(aux,"mfhi") == 0){
-				special[5] = MFHI;
+				special[5] = TMFHI;
 				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				special[2] = 0b00000;
@@ -282,7 +282,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			} 
 			else if (strcasecmp(aux,"mflo") == 0){
-				special[5] = MFLO;
+				special[5] = TMFLO;
 				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				special[1] = 0b00000;
@@ -292,7 +292,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				
 			} 
 			else if (strcasecmp(aux,"movn") == 0){
-				special[5] = MOVN;
+				special[5] = TMOVN;
 				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -304,7 +304,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 			} 
 					
 			else if (strcasecmp(aux,"movz") == 0){
-				special[5] = MOVZ;
+				special[5] = TMOVZ;
 				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -316,7 +316,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 			} 
 					
 			else if (strcasecmp(aux,"mthi") == 0){
-				special[5] = MTHI;
+				special[5] = TMTHI;
 				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
 				special[2] = 0b00000;
@@ -326,7 +326,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 			}
 					
 			else if (strcasecmp(aux,"mtlo") == 0){
-				special[5] = MTLO;
+				special[5] = TMTLO;
 				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
 				special[2] = 0b00000;
@@ -336,7 +336,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 			}
 					
 			else if (strcasecmp(aux,"mult") == 0){
-				special[5] = MULT;
+				special[5] = TMULT;
 				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -348,7 +348,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 			}
 					
 			else if (strcasecmp(aux,"nop") == 0){
-				special[5] = NOP;
+				special[5] = TNOP;
 				special[1] = 0b00000;
 				special[2] = 0b00000;
 				special[3] = 0b00000;
@@ -356,7 +356,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if (strcasecmp(aux,"nor") == 0){
-				special[5] = NOR;
+				special[5] = TNOR;
 				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -368,7 +368,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 			}
 					
 			else if (strcasecmp(aux,"or") == 0){
-				special[5] = OR;
+				special[5] = TOR;
 				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -380,7 +380,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 			} 
 					
 			else if (strcasecmp(aux,"sub") == 0){
-				special[5] = SUB;
+				special[5] = TSUB;
 				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -392,7 +392,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 			} 
 					
 			else{ 
-				special[5] = XOR;
+				special[5] = TXOR;
 				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -407,7 +407,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 		else if ((strcasecmp(aux,"madd") == 0) || (strcasecmp(aux,"msub") == 0) || (strcasecmp(aux,"mul") == 0)){
 			special[0] = 0b011100;
 			if(strcasecmp(aux,"madd") == 0){
-				special[5] = MADD;
+				special[5] = TMADD;
 				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -418,7 +418,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"msub") == 0){
-				special[5] = MSUB;
+				special[5] = TMSUB;
 				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -429,7 +429,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			}
 			else{
-				special[5] = MUL;
+				special[5] = TMUL;
 				aux = strtok(NULL, ", \n\0");
 				special[3] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -442,7 +442,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 		binarioSpecial(special,saidaBinario);
 		}
 		else if (strcasecmp(aux,"j") == 0){
-			jump[0] = J;
+			jump[0] = TJ;
 			aux = strtok(NULL, ", \n\0");
 			hash(aux);
 			jump[1] = pegarEndereco(aux);
@@ -452,7 +452,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 		else if((strcasecmp(aux,"bgez") == 0) || (strcasecmp(aux,"bltz") == 0)){
 			regim[0] = 0b000001;
 			if (strcasecmp(aux,"bgez") == 0){
-				regim[2] = BGEZ;
+				regim[2] = TBGEZ;
 				aux = strtok(NULL, ", \n\0");
 				regim[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -461,7 +461,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			}
 			else{
-				regim[2] = BLTZ;
+				regim[2] = TBLTZ;
 				aux = strtok(NULL, ", \n\0");
 				regim[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -473,7 +473,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 		}
 		else if((strcasecmp(aux,"addi") == 0) || (strcasecmp(aux,"andi") == 0) || (strcasecmp(aux,"b") == 0) || (strcasecmp(aux,"beq") == 0) || (strcasecmp(aux,"beql") == 0) || (strcasecmp(aux,"bgtz") == 0) || (strcasecmp(aux,"blez") == 0) || (strcasecmp(aux,"bne") == 0) || (strcasecmp(aux,"lui") == 0) || (strcasecmp(aux,"ori") == 0) || (strcasecmp(aux,"xori") == 0)){
 			if(strcasecmp(aux ,"addi") == 0){
-				imediato[0] = ADDI;
+				imediato[0] = TADDI;
 				aux = strtok(NULL, ", \n\0");
 				imediato[2] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -483,7 +483,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"andi") == 0){
-				imediato[0] = ANDI;
+				imediato[0] = TANDI;
 				aux = strtok(NULL, ", \n\0");
 				imediato[2] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -493,7 +493,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"b") == 0){
-				imediato[0] = B;
+				imediato[0] = TB;
 				aux = strtok(NULL, ", \n\0");
 				imediato[1] = 0b00000;
 				imediato[2] = 0b00000;
@@ -502,7 +502,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"beq") == 0){
-				imediato[0] = BEQ;
+				imediato[0] = TBEQ;
 				aux = strtok(NULL, ", \n\0");
 				imediato[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -513,7 +513,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"beql") == 0){
-				imediato[0] = BEQL;
+				imediato[0] = TBEQL;
 				aux = strtok(NULL, ", \n\0");
 				imediato[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -524,7 +524,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"bgtz") == 0){
-				imediato[0] = BGTZ;
+				imediato[0] = TBGTZ;
 				aux = strtok(NULL, ", \n\0");
 				imediato[1] = registradores(aux);
 				imediato[2] = 0b00000;
@@ -534,7 +534,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"blez") == 0){
-				imediato[0] = BLEZ;
+				imediato[0] = TBLEZ;
 				aux = strtok(NULL, ", \n\0");
 				imediato[1] = registradores(aux);
 				imediato[2] = 0b00000;
@@ -544,7 +544,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"bne") == 0){
-				imediato[0] = BNE;
+				imediato[0] = TBNE;
 				aux = strtok(NULL, ", \n\0");
 				imediato[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -555,7 +555,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"lui") == 0){
-				imediato[0] = LUI;
+				imediato[0] = TLUI;
 				imediato[1] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
 				imediato[2] = registradores(aux);
@@ -564,7 +564,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if(strcasecmp(aux,"ori") == 0){
-				imediato[0] = ORI;
+				imediato[0] = TORI;
 				aux = strtok(NULL, ", \n\0");
 				imediato[2] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -574,7 +574,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				aux = strtok(NULL, ", \n\0");
 			}
 			else{
-				imediato[0] = XORI;
+				imediato[0] = TXORI;
 				aux = strtok(NULL, ", \n\0");
 				imediato[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -600,7 +600,7 @@ void tradutorHexa(FILE *saidaHexa, FILE *saidaBin){
 		// printf("tamanho %d\n", (int)strlen(bin));
 		bin[strlen(bin)] = '\0';
 		numero = (int)strtol(bin, NULL, 2); //converte para a base 2 e depois pra int
-		printf("%X\n", numero);
+		fprintf(prog, "\n\t%X", numero);
 		fwrite(&numero, sizeof(int), 1, saidaHexa); //escreve no arquivo
 		//fwrite("\n", 1, 1, saidaHexa);
 
@@ -612,7 +612,9 @@ void print_assembly(FILE *instrucoes){
 	char *aux, texto[100];
 	while(fgets(texto, 100, instrucoes) != NULL){
 		aux = strtok(texto, "\n\0");
-		printf("%s\n", aux);
+		//printf("%s\n", aux);
+		fprintf(prog, "\t%s", aux);
+		fprintf(prog, "\n");
 	}
 }
 
@@ -620,12 +622,13 @@ void tradutor(){
 	instrucoes = fopen("teste.asm", "r");
 	saidaBinario = fopen("codigoBinario.txt", "w+");
 	saidaHexa = fopen("codigoHexa.txt", "w+");
-	printf("\nPrograma:\n");
+	//printf("\nPrograma:\n");
+	fprintf(prog,"Programa:\n");
 	print_assembly(instrucoes);
 	fseek(instrucoes, 0, SEEK_SET); //voltar para o começo s
 	tradutorBin(instrucoes, saidaBinario);
 	fseek(saidaBinario, 0, SEEK_SET);
-	printf("\nBinário:\n");
+	fprintf(prog, "\nBinário:");
 	tradutorHexa(saidaHexa, saidaBinario);
 	fclose(saidaBinario);
 	fclose(saidaHexa);
