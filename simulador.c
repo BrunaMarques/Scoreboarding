@@ -15,8 +15,14 @@ void inicializar()
 
 }
 
-int main()
+int main(/*int argc, char *argv[ ]*/)
 {
+	// if(strcmp(argv[1], "-h") == 0){
+	// 	printf("\n\n---------------------------------------------HELP----------------------------------------------------\n");
+	// 	printf("\n\t-h: help \n\t-i: arquivo assembly contendo programa a ser simulado \n\t-o: arquivo de saída contendo programa convertido para binário \n\t--detail: execução detalhada\n");
+	// 	printf("\n\n-----------------------------------------------------------------------------------------------------\n");
+	// }
+	
 	prog = fopen("prog.out", "w");
 	clock = 1;
 	int i = 0;
