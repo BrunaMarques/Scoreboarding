@@ -13,8 +13,8 @@
 #include "memoria.h"
 #include "barramento.h"
 
-#endif
-
 int FLAG;
 int clock;
 int main();
+
+#endif

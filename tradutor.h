@@ -5,53 +5,54 @@
 #include "hash.h"
 
 //instruções ESPECIAL
-#define ADD 0b100000
-#define AND 0b100100
-#define DIV 0b11010
-#define JR 0b001001
-#define MFHI 0b010000
-#define MFLO 0b010010
-#define MOVN 0b001011
-#define MOVZ 0b001010
-#define MTHI 0b010001
-#define MTLO 0b010011
-#define MULT 0b011000
-#define NOP 0b000000
-#define NOR 0b100111
-#define OR 0b100101
-#define SUB 0b100010
-#define XOR 0b100110
+#define TADD 0b100000
+#define TAND 0b100100
+#define TDIV 0b11010
+#define TJR 0b001001
+#define TMFHI 0b010000
+#define TMFLO 0b010010
+#define TMOVN 0b001011
+#define TMOVZ 0b001010
+#define TMTHI 0b010001
+#define TMTLO 0b010011
+#define TMULT 0b011000
+#define TNOP 0b000000
+#define TNOR 0b100111
+#define TOR 0b100101
+#define TSUB 0b100010
+#define TXOR 0b100110
 
 //instruções ESPECIAL2
-#define MADD 0b000000
-#define MSUB 0b000100
-#define MUL 0b000010
+#define TMADD 0b000000
+#define TMSUB 0b000100
+#define TMUL 0b000010
 
 //instruções IMEDIATO
-#define ADDI 0b001000
-#define ANDI 0b001100
-#define B 0b000100
-#define BEQ 0b000100
-#define BEQL 0b010100
-#define BGTZ 0b000111
-#define BLEZ 0b000110
-#define BNE 0b000101
-#define LUI 0b001111
-#define ORI 0b001101
-#define XORI 0b001110
+#define TADDI 0b001000
+#define TANDI 0b001100
+#define TB 0b000100
+#define TBEQ 0b000100
+#define TBEQL 0b010100
+#define TBGTZ 0b000111
+#define TBLEZ 0b000110
+#define TBNE 0b000101
+#define TLUI 0b001111
+#define TORI 0b001101
+#define TXORI 0b001110
 
 //instruções de SALTO
-#define J 0b000010
+#define TJ 0b000010
 
 //instruções REGIM
-#define BGEZ 0b00001
-#define BLTZ 0b00000
+#define TBGEZ 0b00001
+#define TBLTZ 0b00000
 
 char texto[100], *aux;
 int special[6], jump[2], regim[4], imediato[4];
 FILE *instrucoes;
 FILE *saidaBinario;
 FILE *saidaHexa;
+FILE *prog;
 int qtd;
 
 int registradores(char *aux);
