@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "registradores.h"
+#include "tradutor.h"
 
 #define TAMANHO_MEMORIA 512 //por enquanto memoria tem 512 bytes
 

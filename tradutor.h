@@ -53,7 +53,10 @@ FILE *instrucoes;
 FILE *saidaBinario;
 FILE *saidaHexa;
 FILE *prog;
+FILE *detail;
 int qtd;
+char entrada[100], saida[100];
+
 
 int registradores(char *aux);
 void binarioSpecial(int vetor[], FILE *saidaBinario);
