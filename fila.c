@@ -2,33 +2,39 @@
 #include <stdlib.h>
 #include "fila.h"
 
-bool filaVazia(){
-    if (f->nroElem == 0){
+bool filaVazia()
+{
+    if (f->nroElem == 0)
+    {
         return true;
     }
     return false;
 }
 
-void inicializarFila() {
-    f =(FILA*) malloc(sizeof(FILA));
-    f->inicio=0;
-    f->nroElem=0;
+void inicializarFila()
+{
+    f = (FILA *)malloc(sizeof(FILA));
+    f->inicio = 0;
+    f->nroElem = 0;
     printf("\nFila inicializada");
 }
 
-void exibirFila() {
+void exibirFila()
+{
     int i = f->inicio;
     int temp;
     printf("Fila: \" ");
-    for (temp = 0; temp < f->nroElem; temp++) {
+    for (temp = 0; temp < f->nroElem; temp++)
+    {
         printf("%i ", f->fila_inst[i].opcode);
         i = (i + 1) % MAX;
     }
     printf("\"\n");
-} 
+}
 
-bool inserirElementoFila(Inst i) {
-    if (f->nroElem >= MAX) 
+bool inserirElementoFila(Inst i)
+{
+    if (f->nroElem >= MAX)
         return false;
     int posicao = (f->inicio + f->nroElem) % MAX;
     f->fila_inst[posicao] = i;
@@ -36,9 +42,10 @@ bool inserirElementoFila(Inst i) {
     return true;
 }
 
-Inst excluirElementoFila() {
+Inst excluirElementoFila()
+{
     Inst aux = f->fila_inst[f->inicio];
-    f->inicio = (f->inicio+1) % MAX;
+    f->inicio = (f->inicio + 1) % MAX;
     f->nroElem--;
     return aux;
 }
