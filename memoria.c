@@ -31,7 +31,7 @@ void inicializaMemoria()
 void escritaMemoria()
 {
 
-	FILE *instrucoes = fopen("codigoHexa.txt", "r");
+	FILE *instrucoes = fopen(saida, "r");
 	int palavra = 0, contPalavra = 0;
 
 
