@@ -128,6 +128,7 @@ void emissao()
 						UFINT.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_ADD;
 						in.UF = UF_INT;
+						in.qtd_cloc_prec = 1;
 						escrita_bar(in, barIR);
 						printf("\nAND\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -160,6 +161,7 @@ void emissao()
 						bancoRegistradores[HI].UF = UF_DIV;
 						bancoRegistradores[LO].UF = UF_DIV;
 						in.UF = UF_DIV;
+						in.qtd_cloc_prec = 5;
 						escrita_bar(in, barIR);
 						printf("\nDIV\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -188,6 +190,7 @@ void emissao()
 					UFINT.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
 					UFINT.status.Rk = semUF;
 					in.UF = UF_INT;
+					in.qtd_cloc_prec = 1;
 					escrita_bar(in, barIR);
 					printf("\nJR\n");
 					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -517,6 +520,7 @@ void emissao()
 						UFINT.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
+						in.qtd_cloc_prec = 1;
 						escrita_bar(in, barIR);
 						printf("\nOR\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -548,6 +552,7 @@ void emissao()
 						UFINT.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
+						in.qtd_cloc_prec = 2;
 						escrita_bar(in, barIR);
 						printf("\nSUB\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -579,6 +584,7 @@ void emissao()
 						UFINT.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
+						in.qtd_cloc_prec = 1;
 						escrita_bar(in, barIR);
 						printf("\nXOR\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -656,7 +662,7 @@ void emissao()
 						UFMUL1.status.Rk = (bancoRegistradores[in.s2_instrucao.rt].UF == semUF) ? true : false;
 						bancoRegistradores[in.s2_instrucao.rd].UF = UF_MUL1;
 						in.UF = UF_MUL1;
-						UFMUL1.qtd_ciclos = 5;
+						in.qtd_cloc_prec = 5;
 						escrita_bar(in, barIR);
 						printf("\nMUL\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
