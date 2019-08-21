@@ -47,7 +47,7 @@ void executarPipeline()
 		//getchar();
 		//filaVazia() == false || listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) != 1 || listaVazia(listaWriteB) != 1 || verifica_bar(barBI) != 0 || verifica_bar(barIR) != 0 || verifica_bar(barRE) != 0 || verifica_bar(barEW) != 0);
 
-	} while (i < 8);
+	} while (i < 11);
 	fprintf(prog, "\n\nCiclos:\n");
 	fprintf(prog, "\t%d cilcos\n", clock);
 	fprintf(prog, "\nInstruções:\n \tEmitidas: ver o que colocar\n \tEfetivadas: ver o que colocar");

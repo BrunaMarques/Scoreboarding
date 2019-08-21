@@ -1232,7 +1232,7 @@ void leitura()
 			else if (UFADD.status.Fj != semREG)
 			{
 				printf("\nEntou no else if  if\n");
-				if ((bancoRegistradores[UFADD.status.Fj].UF == semUF) || (bancoRegistradores[UFADD.status.Fi].UF == bancoRegistradores[UFADD.status.Fj].UF))
+				if ((bancoRegistradores[in.s_instrucao.rs].UF == semUF) || (bancoRegistradores[UFADD.status.Fi].UF == bancoRegistradores[UFADD.status.Fj].UF))
 				{
 					printf("\nEntou no if do else if if\n");
 					escrita_bar(in, barRE);
@@ -1259,7 +1259,7 @@ void leitura()
 			if (((UFDIV.status.Fj != semREG) && (UFDIV.status.Fk != semREG)) || (UFADD.status.Fi == UFADD.status.Fj))
 			{
 				printf("\nEntou no primeiro if\n");
-				if (((bancoRegistradores[UFDIV.status.Fj].UF == semUF) && (bancoRegistradores[UFDIV.status.Fk].UF == semUF)) || (bancoRegistradores[UFDIV.status.Fi].UF == bancoRegistradores[UFDIV.status.Fj].UF))
+				if (((bancoRegistradores[in.s_instrucao.rs].UF == semUF) && (bancoRegistradores[UFDIV.status.Fk].UF == semUF)) || (bancoRegistradores[UFDIV.status.Fi].UF == bancoRegistradores[UFDIV.status.Fj].UF))
 				{
 					printf("\nEntou no if do if\n");
 					escrita_bar(in, barRE);
@@ -1290,7 +1290,7 @@ void leitura()
 			if ((UFINT.status.Fj != semREG) && (UFINT.status.Fk != semREG))
 			{
 				printf("\nEntou no 1 if\n");
-				if (((bancoRegistradores[UFINT.status.Fj].UF == semUF) && (bancoRegistradores[UFINT.status.Fk].UF == semUF)) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fj].UF))
+				if (((bancoRegistradores[in.s_instrucao.rs].UF == semUF) && (bancoRegistradores[UFINT.status.Fk].UF == semUF)) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fj].UF))
 				{
 					printf("\nEntou no 2 if\n");
 					escrita_bar(in, barRE);
@@ -1335,7 +1335,11 @@ void leitura()
 			if ((UFMUL1.status.Fj != semREG) && (UFMUL1.status.Fk != semREG))
 			{
 				printf("\nEntou no 1 if\n");
-				if (((bancoRegistradores[UFMUL1.status.Fj].UF == semUF) && (bancoRegistradores[UFMUL1.status.Fk].UF == semUF)) || (bancoRegistradores[UFMUL1.status.Fi].UF == bancoRegistradores[UFMUL1.status.Fj].UF))
+				printf("UF: %d\n", UFMUL1.status.Fj);
+				printf("UF: %d\n", UFMUL1.status.Fk);
+				printf("UF: %d\n", bancoRegistradores[in.s2_instrucao.rs].UF);
+				printf("UF: %d\n", bancoRegistradores[in.s2_instrucao.rt].UF);
+				if ((bancoRegistradores[in.s2_instrucao.rs].UF == semUF) && (bancoRegistradores[in.s2_instrucao.rt].UF == semUF)) //|| (bancoRegistradores[UFMUL1.status.Fi].UF == bancoRegistradores[UFMUL1.status.Fj].UF))
 				{
 					printf("\nEntou no 2 if\n");
 					escrita_bar(in, barRE);
@@ -1349,7 +1353,7 @@ void leitura()
 			else if (UFMUL1.status.Fj != semREG)
 			{
 				printf("\nEntou no else if\n");
-				if ((bancoRegistradores[UFMUL1.status.Fj].UF == semUF) || (bancoRegistradores[UFMUL1.status.Fi].UF == bancoRegistradores[UFMUL1.status.Fj].UF))
+				if ((bancoRegistradores[in.s2_instrucao.rs].UF == semUF) || (bancoRegistradores[in.s2_instrucao.rt].UF == bancoRegistradores[UFMUL1.status.Fj].UF))
 				{
 					escrita_bar(in, barRE);
 					printf("barramento RE: %d\n", RE->instrucao.opcode);
@@ -1375,7 +1379,7 @@ void leitura()
 			if ((UFMUL2.status.Fj != semREG) && (UFMUL2.status.Fk != semREG))
 			{
 				printf("\nEntou no 1 if\n");
-				if (((bancoRegistradores[UFMUL2.status.Fj].UF == semUF) && (bancoRegistradores[UFMUL2.status.Fk].UF == semUF)) || (bancoRegistradores[UFMUL2.status.Fi].UF == bancoRegistradores[UFMUL2.status.Fj].UF))
+				if (((bancoRegistradores[in.s2_instrucao.rs].UF == semUF) && (bancoRegistradores[in.s2_instrucao.rt].UF == semUF)) || (bancoRegistradores[UFMUL2.status.Fi].UF == bancoRegistradores[UFMUL2.status.Fj].UF))
 				{
 					printf("\nEntou no 2 if\n");
 					escrita_bar(in, barRE);
@@ -1389,7 +1393,7 @@ void leitura()
 			else if (UFMUL2.status.Fj != semREG)
 			{
 				printf("\nEntou no else if\n");
-				if ((bancoRegistradores[UFMUL2.status.Fj].UF == semUF) || (bancoRegistradores[UFMUL2.status.Fi].UF == bancoRegistradores[UFMUL2.status.Fj].UF))
+				if ((bancoRegistradores[in.s2_instrucao.rs].UF == semUF) || (bancoRegistradores[in.s2_instrucao.rt].UF == bancoRegistradores[UFMUL2.status.Fj].UF))
 				{
 					escrita_bar(in, barRE);
 					printf("barramento RE: %d\n", RE->instrucao.opcode);
