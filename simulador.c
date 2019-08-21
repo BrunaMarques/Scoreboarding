@@ -34,9 +34,7 @@ void executarPipeline()
 		clock++;
 		i++;
 
-		printf("\nFILA: %d\n", f->nroElem);
-		printf("\nAAAA: %d\n", f->fila_inst[0].opcode);
-		printf("\nAAAA: %d\n", f->fila_inst[1].opcode);
+		printf("\nFILA nro elementos: %d\n", f->nroElem);
 		exibirFila();
 		printf("\nLISTA EXECUÇÃO: %d\n", listaVazia(listaExecucao));
 		printf("\nLISTA EMISSAO: %d\n", listaVazia(listaIssue));
@@ -46,10 +44,10 @@ void executarPipeline()
 		printf("\nBARRAMENTO IR: %d\n", verifica_bar(barIR));
 		printf("\nBARRAMENTO RE: %d\n", verifica_bar(barRE));
 		printf("\nBARRAMENTO EW: %d\n", verifica_bar(barEW));
-		exibirFila();
-		getchar();
+		//getchar();
+		//filaVazia() == false || listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) != 1 || listaVazia(listaWriteB) != 1 || verifica_bar(barBI) != 0 || verifica_bar(barIR) != 0 || verifica_bar(barRE) != 0 || verifica_bar(barEW) != 0);
 
-	} while (filaVazia() == false || listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) != 1 || listaVazia(listaWriteB) != 1 || verifica_bar(barBI) != 0 || verifica_bar(barIR) != 0 || verifica_bar(barRE) != 0 || verifica_bar(barEW) != 0);
+	} while (filaVazia() == false);
 	fprintf(prog, "\n\nCiclos:\n");
 	fprintf(prog, "\t%d cilcos\n", clock);
 	fprintf(prog, "\nInstruções:\n \tEmitidas: ver o que colocar\n \tEfetivadas: ver o que colocar");

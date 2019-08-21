@@ -15,11 +15,11 @@ int EMITIDA = true;
 void buscaPipeline()
 {
 	printf("\n\t--------------busca--------------\n");
-	printf("\nQUANTIDADE %d\n", qtd);
 	if (filaVazia() && (PC < (qtd * 4)))
 	{
 		for (int i = 0; i < 4; i++)
 		{
+			printf("\n PC: %d\n", PC);
 			if (PC >= (qtd * 4))
 			{
 				break;
@@ -33,13 +33,13 @@ void buscaPipeline()
 		}
 	}
 	printf("\nBARRAMENTO BI AAAA: %d\n", BI.instrucao.opcode);
-	if (BI.tem_instrucao == false)
+	printf("\nBARRAMENTO BI AAAABBBBBBBBB: %d\n", verifica_bar(barBI));
+	if (verifica_bar(barBI) == 0)
 	{
-		printf("ENTROU NO IFFFF");
+		printf("ENTROU NO IFFFF\n");
 		in = excluirElementoFila();
 		int operacao = descobrirOperacao(in);
-		printf("\nINTRUCAO: %d\n", operacao);
-		printf("\nBARRAMENTO BI AAAA: %d\n", BI.instrucao.opcode);
+		printf("\nINSTRUCAO: %d\n", operacao);
 		escrita_bar(in, barBI);
 	}
 	printf("\nBARRAMENTO BI AAAA: %d\n", BI.instrucao.opcode);
@@ -52,10 +52,9 @@ void emissao()
 	{
 		if (verifica_bar(barBI))
 		{
-			printf("\nENTROU NO IF DA EMISSAO\n");
 			printf("\nEMITIDA\n");
 			EMITIDA = false;
-			printf("barramento BI: %d", BI.instrucao.opcode);
+			printf("barramento BI dentro do IF: %d\n", BI.instrucao.opcode);
 			in = leitura_bar(barBI);
 			exibirLista(listaIssue);
 			inserirElemLista(listaIssue, in);
@@ -63,13 +62,13 @@ void emissao()
 			exibirLista(listaIssue);
 		}
 	}
-	printf("\nBARRAMENTO BI CCCCCCCCCCCCCCCC: %d\n", verifica_bar(barBI));
+	printf("\nBARRAMENTO BI FORA: %d\n", BI.instrucao.opcode);
 	if (!EMITIDA)
 	{
 		printf("\nNÃO EMITIDA\n");
 		in = listaIssue->lista_inst[0];
 		int operacao = descobrirOperacao(in);
-		printf("INSTRUÇÃO: %d\n", operacao);
+		printf("\nINSTRUÇÃO: %d\n", operacao);
 		if (in.posicao != -1)
 		{
 			printf("ENTROU NO IF -1");
@@ -717,11 +716,6 @@ void emissao()
 						UFINT.status.Rj = (bancoRegistradores[in.i_instrucao.rs].UF == semUF) ? true : false;
 						UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
 						bancoRegistradores[in.i_instrucao.rt].UF = UF_INT;
-						printf("\n\nbancoRegistradores[in.i_instrucao.imediato].UF: %d\n\n", bancoRegistradores[in.i_instrucao.imediato].UF);
-						printf("\n\nbancoRegistradores[in.i_instrucao.rs].UF: %d\n\n", bancoRegistradores[in.i_instrucao.rs].UF);
-						printf("\nUFINT.status.Rj: %d", UFINT.status.Rj);
-						printf("\nUFINT.status.Rk: %d\n\n", UFINT.status.Rk);
-
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 1;
 						escrita_bar(in, barIR);
@@ -1071,7 +1065,7 @@ void emissao()
 				}
 				break;
 			default:
-				printf("Operação não listada!");
+				EMITIDA = true;
 				break;
 			}
 		}
@@ -1103,7 +1097,7 @@ void leitura()
 			if ((UFADD.status.Fj != semREG) && (UFADD.status.Fk != semREG))
 			{
 				printf("\nEntou no 1 if\n");
-				if (((bancoRegistradores[in.s_instrucao.rs].UF == semUF) && (bancoRegistradores[in.s_instrucao.rt].UF == semUF)) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fj].UF))
+				if (((bancoRegistradores[in.s_instrucao.rs].UF == semUF) && (bancoRegistradores[in.s_instrucao.rt].UF == semUF)) || (bancoRegistradores[UFADD.status.Fi].UF == bancoRegistradores[UFADD.status.Fj].UF)) //ou fi = fk, ou os 3 iguais
 				{
 					// bancoRegistradores[in.s_instrucao.rs].UF = UF_ADD;
 					// bancoRegistradores[in.s_instrucao.rt].UF = UF_ADD;
@@ -1847,7 +1841,7 @@ void escritaPipeline()
 	{
 		in = listaWriteB->lista_inst[i];
 		int operacao = descobrirOperacao(in);
-		printf("INSTRUÇÃO: %d\n", operacao);
+		printf("\nINSTRUÇÃO: %d\n", operacao);
 		if (in.posicao == -1)
 		{
 
