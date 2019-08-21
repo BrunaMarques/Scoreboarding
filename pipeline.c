@@ -748,6 +748,7 @@ void emissao()
 				{
 					if (bancoRegistradores[in.s2_instrucao.rd].UF == semUF)
 					{
+						printf("\n Antes de atribuir: rt %d, rs %d\n", bancoRegistradores[in.s2_instrucao.rs].UF, bancoRegistradores[in.s2_instrucao.rt].UF);
 						UFMUL1.status.Busy = true;
 						UFMUL1.status.Op = MUL;
 						UFMUL1.status.Fi = in.s2_instrucao.rd;
@@ -761,6 +762,7 @@ void emissao()
 						in.UF = UF_MUL1;
 						in.qtd_cloc_prec = 5;
 						escrita_bar(in, barIR);
+						printf("\n depois de atribuir: rt %d, rs %d\n", bancoRegistradores[in.s2_instrucao.rs].UF, bancoRegistradores[in.s2_instrucao.rt].UF);
 						printf("\nMUL\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
 						printf("barramento IR rd: %d\n", IR.instrucao.s2_instrucao.rd);
@@ -772,6 +774,7 @@ void emissao()
 						//exibirLista(listaIssue);
 						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 						EMITIDA = true;
+						printf("\n bem depois de atribuir: rt %d, rs %d\n", bancoRegistradores[in.s2_instrucao.rs].UF, bancoRegistradores[in.s2_instrucao.rt].UF);
 					}
 				}
 				else if (!UFMUL2.status.Busy)
@@ -1259,7 +1262,7 @@ void leitura()
 			if (((UFDIV.status.Fj != semREG) && (UFDIV.status.Fk != semREG)) || (UFADD.status.Fi == UFADD.status.Fj))
 			{
 				printf("\nEntou no primeiro if\n");
-				if (((bancoRegistradores[in.s_instrucao.rs].UF == semUF) && (bancoRegistradores[UFDIV.status.Fk].UF == semUF)) || (bancoRegistradores[UFDIV.status.Fi].UF == bancoRegistradores[UFDIV.status.Fj].UF))
+				if (((bancoRegistradores[in.s_instrucao.rs].UF == semUF) && (bancoRegistradores[in.s_instrucao.rt].UF == semUF)) || (bancoRegistradores[UFDIV.status.Fi].UF == bancoRegistradores[UFDIV.status.Fj].UF))
 				{
 					printf("\nEntou no if do if\n");
 					escrita_bar(in, barRE);
@@ -1290,7 +1293,7 @@ void leitura()
 			if ((UFINT.status.Fj != semREG) && (UFINT.status.Fk != semREG))
 			{
 				printf("\nEntou no 1 if\n");
-				if (((bancoRegistradores[in.s_instrucao.rs].UF == semUF) && (bancoRegistradores[UFINT.status.Fk].UF == semUF)) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fj].UF))
+				if (((bancoRegistradores[in.s_instrucao.rs].UF == semUF) && (bancoRegistradores[in.s_instrucao.rt].UF == semUF)) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fj].UF))
 				{
 					printf("\nEntou no 2 if\n");
 					escrita_bar(in, barRE);
