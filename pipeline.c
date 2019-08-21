@@ -85,7 +85,6 @@ void emissao()
 
 				if (!UFADD.status.Busy)
 				{
-
 					if (bancoRegistradores[in.s_instrucao.rd].UF == semUF)
 					{
 						UFADD.status.Busy = true;
@@ -132,7 +131,7 @@ void emissao()
 						UFINT.status.Qk = bancoRegistradores[in.s_instrucao.rt].UF;
 						UFINT.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
 						UFINT.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
-						bancoRegistradores[in.s_instrucao.rd].UF = UF_ADD;
+						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 1;
 						escrita_bar(in, barIR);
@@ -408,8 +407,8 @@ void emissao()
 						UFMUL1.status.Qk = bancoRegistradores[in.s_instrucao.rt].UF;
 						UFMUL1.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
 						UFMUL1.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
-						bancoRegistradores[HI].UF = UF_INT;
-						bancoRegistradores[LO].UF = UF_INT;
+						bancoRegistradores[HI].UF = UF_MUL1;
+						bancoRegistradores[LO].UF = UF_MUL1;
 						in.UF = UF_MUL1;
 						in.qtd_cloc_prec = 5;
 						escrita_bar(in, barIR);
@@ -438,8 +437,8 @@ void emissao()
 							UFMUL2.status.Qk = bancoRegistradores[in.s_instrucao.rt].UF;
 							UFMUL2.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
 							UFMUL2.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
-							bancoRegistradores[HI].UF = UF_INT;
-							bancoRegistradores[LO].UF = UF_INT;
+							bancoRegistradores[HI].UF = UF_MUL2;
+							bancoRegistradores[LO].UF = UF_MUL2;
 							in.UF = UF_MUL2;
 							in.qtd_cloc_prec = 5;
 							escrita_bar(in, barIR);
@@ -617,7 +616,7 @@ void emissao()
 				}
 				break;
 			case MADD: //ver se ta certo//destino é hi e lo
-				if (!UFINT.status.Busy)
+				if (!UFMUL1.status.Busy)
 				{
 					if ((bancoRegistradores[HI].UF == semUF) && (bancoRegistradores[LO].UF == semUF))
 					{
@@ -630,9 +629,40 @@ void emissao()
 						UFINT.status.Qk = bancoRegistradores[in.s2_instrucao.rt].UF;
 						UFINT.status.Rj = (bancoRegistradores[in.s2_instrucao.rs].UF == semUF) ? true : false;
 						UFINT.status.Rk = (bancoRegistradores[in.s2_instrucao.rt].UF == semUF) ? true : false;
-						bancoRegistradores[HI].UF = UF_INT;
-						bancoRegistradores[LO].UF = UF_INT;
-						in.UF = UF_INT;
+						bancoRegistradores[HI].UF = UF_MUL1;
+						bancoRegistradores[LO].UF = UF_MUL1;
+						in.UF = UF_MUL1;
+						in.qtd_cloc_prec = 5;
+						escrita_bar(in, barIR);
+						printf("\nMADD\n");
+						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+						printf("barramento IR rd: %d\n", IR.instrucao.s2_instrucao.rd);
+						printf("barramento IR rs: %d\n", IR.instrucao.s2_instrucao.rs);
+						printf("barramento IR rt: %d\n", IR.instrucao.s2_instrucao.rt);
+						//exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
+						excluirElem(listaIssue, 0);
+						//exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
+						EMITIDA = true;
+					}
+				}
+				else if (!UFMUL2.status.Busy)
+				{
+					if ((bancoRegistradores[HI].UF == semUF) && (bancoRegistradores[LO].UF == semUF))
+					{
+						UFINT.status.Busy = true;
+						UFINT.status.Op = MADD;
+						UFINT.status.Fi = HI;
+						UFINT.status.Fj = in.s2_instrucao.rs;
+						UFINT.status.Fk = in.s2_instrucao.rt;
+						UFINT.status.Qj = bancoRegistradores[in.s2_instrucao.rs].UF;
+						UFINT.status.Qk = bancoRegistradores[in.s2_instrucao.rt].UF;
+						UFINT.status.Rj = (bancoRegistradores[in.s2_instrucao.rs].UF == semUF) ? true : false;
+						UFINT.status.Rk = (bancoRegistradores[in.s2_instrucao.rt].UF == semUF) ? true : false;
+						bancoRegistradores[HI].UF = UF_MUL2;
+						bancoRegistradores[LO].UF = UF_MUL2;
+						in.UF = UF_MUL2;
 						in.qtd_cloc_prec = 5;
 						escrita_bar(in, barIR);
 						printf("\nMADD\n");
@@ -650,7 +680,7 @@ void emissao()
 				}
 				break;
 			case MSUB: //ver se ta certo
-				if (!UFINT.status.Busy)
+				if (!UFMUL1.status.Busy)
 				{
 					if ((bancoRegistradores[HI].UF == semUF) && (bancoRegistradores[LO].UF == semUF))
 					{
@@ -663,9 +693,40 @@ void emissao()
 						UFINT.status.Qk = bancoRegistradores[in.s2_instrucao.rt].UF;
 						UFINT.status.Rj = (bancoRegistradores[in.s2_instrucao.rs].UF == semUF) ? true : false;
 						UFINT.status.Rk = (bancoRegistradores[in.s2_instrucao.rt].UF == semUF) ? true : false;
-						bancoRegistradores[HI].UF = UF_INT;
-						bancoRegistradores[LO].UF = UF_INT;
-						in.UF = UF_INT;
+						bancoRegistradores[HI].UF = UF_MUL1;
+						bancoRegistradores[LO].UF = UF_MUL1;
+						in.UF = UF_MUL1;
+						in.qtd_cloc_prec = 5;
+						escrita_bar(in, barIR);
+						printf("\nMSUB\n");
+						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
+						printf("barramento IR rd: %d\n", IR.instrucao.s2_instrucao.rd);
+						printf("barramento IR rs: %d\n", IR.instrucao.s2_instrucao.rs);
+						printf("barramento IR rt: %d\n", IR.instrucao.s2_instrucao.rt);
+						//exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
+						excluirElem(listaIssue, 0);
+						//exibirLista(listaIssue);
+						printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
+						EMITIDA = true;
+					}
+				}
+				else if (!UFMUL2.status.Busy)
+				{
+					if ((bancoRegistradores[HI].UF == semUF) && (bancoRegistradores[LO].UF == semUF))
+					{
+						UFINT.status.Busy = true;
+						UFINT.status.Op = MSUB;
+						UFINT.status.Fi = HI;
+						UFINT.status.Fj = in.s2_instrucao.rs;
+						UFINT.status.Fk = in.s2_instrucao.rt;
+						UFINT.status.Qj = bancoRegistradores[in.s2_instrucao.rs].UF;
+						UFINT.status.Qk = bancoRegistradores[in.s2_instrucao.rt].UF;
+						UFINT.status.Rj = (bancoRegistradores[in.s2_instrucao.rs].UF == semUF) ? true : false;
+						UFINT.status.Rk = (bancoRegistradores[in.s2_instrucao.rt].UF == semUF) ? true : false;
+						bancoRegistradores[HI].UF = UF_MUL2;
+						bancoRegistradores[LO].UF = UF_MUL2;
+						in.UF = UF_MUL2;
 						in.qtd_cloc_prec = 5;
 						escrita_bar(in, barIR);
 						printf("\nMSUB\n");
