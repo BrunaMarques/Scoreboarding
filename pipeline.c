@@ -15,6 +15,7 @@ int EMITIDA = true;
 void buscaPipeline()
 {
 	printf("\n\t--------------busca--------------\n");
+	printf("\nEMITIDA COMEÇO DA BUSCA: %d\n", EMITIDA);
 	printf("\nQUANTIDADE %d\n", qtd);
 	if (filaVazia() && (PC < (qtd * 4)))
 	{
@@ -44,10 +45,12 @@ void buscaPipeline()
 	}
 	printf("\nBARRAMENTO BI AAAA: %d\n", BI.instrucao.opcode);
 	printf("\nBARRAMENTO BI AAAABBBBBBBBB: %d\n", verifica_bar(barBI));
+	printf("\nEMITIDA FIM DA BUSCA: %d\n", EMITIDA);
 }
 void emissao()
 {
 	printf("\n\t--------------emissão--------------\n");
+	printf("\nEMITIDA COMEÇO DA EMISSÃO: %d\n", EMITIDA);
 	if (EMITIDA)
 	{
 		if (verifica_bar(barBI))
@@ -1124,11 +1127,13 @@ void emissao()
 			}
 		}
 	}
+printf("\nEMITIDA FIM DA EMISSÃO: %d\n" ,EMITIDA);
 }
 
 void leitura()
 {
 	printf("\n\t--------------leitura--------------\n");
+	printf("\nEMITIDA COMEÇO DA LEITURA: %d\n", EMITIDA);
 	if (verifica_bar(barIR))
 	{
 		in = leitura_bar(barIR);
@@ -1347,12 +1352,14 @@ void leitura()
 			break;
 		}
 	}
+	printf("\nEMITIDA FIM DA LEITURA: %d\n", EMITIDA);
 }
 
 void execucao()
 //etapa de execução
 {
 	printf("\n\t--------------execução--------------\n");
+	printf("\nEMITIDA COMEÇO DA EXECUÇÃO: %d\n", EMITIDA);
 	while (verifica_bar(barRE))
 	{
 		in = leitura_bar(barRE);
@@ -1879,11 +1886,13 @@ void execucao()
 			}
 		}
 	}
+	printf("\nEMITIDA FIM DA EXECUÇÃO: %d\n", EMITIDA);
 }
 
 void escritaPipeline()
 {
 	printf("\n\t--------------escrita--------------\n");
+	printf("\nEMITIDA COMEÇO DA ESCRITA: %d\n", EMITIDA);
 	while (verifica_bar(barEW))
 	{
 		in = leitura_bar(barEW);
@@ -1962,4 +1971,5 @@ void escritaPipeline()
 			break;
 		}
 	}
+	printf("\nEMITIDA FIM DA ESCRITA: %d\n" ,EMITIDA);
 }
