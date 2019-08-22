@@ -23,8 +23,15 @@ void executarPipeline()
 	inicializar();
 	tradutor();
 	escritaMemoria();
+	if(detail != NULL){
+		fprintf(detail, "\n\nCiclos:\n");
+		fprintf(detail, "\t%d cilcos\n", clock);
+	}
 	do
 	{
+		if(detail != NULL){
+			fprintf(detail, "\n\nCiclo: %i\n", clock);
+		}
 		escritaPipeline();
 		execucao();
 		leitura();

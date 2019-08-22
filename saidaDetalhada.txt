@@ -1,0 +1,121 @@
+Programa:
+	addi $t0, $zero, 10
+	add $t0, $t0, $zero
+	sub $t1, $t0, $zero
+	addi $t1, $s1, 3
+	mul $t2, $t1, $t0
+
+Binário:
+	2008000A
+	1004020
+	1004822
+	22290003
+	71285002
+
+Ciclos:
+	1 cilcos
+
+
+Ciclo: 1
+
+	Busca:
+
+ 8		addi $t0  z0  10 
+
+ 0		add  $t0  $t0  z0 
+
+ 0		sub  $t1  $t0  z0 
+
+ 8		addi $t1  $s1  3 
+
+
+Ciclo: 2
+
+	Emissão:
+
+ 8		addi $t0  z0  10 
+
+	Busca:
+
+
+Ciclo: 3
+
+	Emissão:
+
+ 0		add  $t0  $t0  z0 
+
+	Busca:
+
+
+Ciclo: 4
+
+	Busca:
+
+
+Ciclo: 5
+
+	Busca:
+
+
+Ciclo: 6
+
+	Emissão:
+
+ 0		sub  $t1  $t0  z0 
+
+	Busca:
+
+
+Ciclo: 7
+
+	Emissão:
+
+ 8		addi $t1  $s1  3 
+
+	Busca:
+
+ 28		mul  $t2  $t1  $t0 
+
+
+Ciclo: 8
+
+	Busca:
+
+
+Ciclo: 9
+
+	Busca:
+
+
+Ciclo: 10
+
+	Busca:
+
+
+Ciclo: 11
+
+	Emissão:
+
+ 28		mul  $t2  $t1  $t0 
+
+	Busca:
+
+
+Ciclo: 12
+
+	Busca:
+
+
+Ciclo: 13
+
+	Busca:
+
+
+Ciclo: 14
+
+	Busca:
+
+
+Ciclo: 15
+
+	Busca:

@@ -15,6 +15,7 @@ int EMITIDA = true;
 void buscaPipeline()
 {
 	printf("\n\t--------------busca--------------\n");
+	 fprintf(detail, "\n\tBusca:\n");
 	if (filaVazia() && (PC < (qtd * 4)))
 	{
 		for (int i = 0; i < 4; i++)
@@ -27,6 +28,7 @@ void buscaPipeline()
 			buscaMemoria(instMem);
 
 			Inst instDecode = decodificacao(instMem);
+			printar(instDecode);
 			inserirElementoFila(instDecode);
 			PC += 4;
 		}
@@ -53,9 +55,11 @@ void emissao()
 		printf("\nEMITIDA\n");
 		if (verifica_bar(barBI))
 		{
+			fprintf(detail, "\n\tEmissão:\n");
 			printf("\nif bar bi vazio\n");
 			EMITIDA = false;
 			in = leitura_bar(barBI);
+			printar(in);
 			exibirLista(listaIssue);
 			inserirElemLista(listaIssue, in);
 			//printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
