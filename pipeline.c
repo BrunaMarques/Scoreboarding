@@ -30,7 +30,7 @@ void buscaPipeline()
 			}
 			unsigned int instMem[4];
 			buscaMemoria(instMem);
-			printf("\n\nAQUI: %ls", instMem);
+			//printf("\n\nAQUI: %ls", instMem);
 			Inst instDecode = decodificacao(instMem);
 			printar(instDecode);
 			//printf("%d\n",instDecode.opcode);
