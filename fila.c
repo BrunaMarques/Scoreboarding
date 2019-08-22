@@ -39,6 +39,7 @@ bool inserirElementoFila(Inst i)
     int posicao = (f->inicio + f->nroElem) % MAX;
     f->fila_inst[posicao] = i;
     f->nroElem++;
+    printf("nro elementos fila inseriu: %d\n", f->nroElem);
     return true;
 }
 
@@ -47,6 +48,7 @@ Inst excluirElementoFila()
     Inst aux = f->fila_inst[f->inicio];
     f->inicio = (f->inicio + 1) % MAX;
     f->nroElem--;
+    printf("nro elementos filaexcluiu: %d\n", f->nroElem);
     return aux;
 }
 
