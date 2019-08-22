@@ -1,0 +1,77 @@
+Programa:
+	addi $t0, $t1, 10
+	addi $s0, $t2, 5
+	sub $t4, $t5, $t6
+	addi $t0, $t1, 10
+	addi $s0, $t2, 5
+	addi $t0, $t1, 10
+	addi $s0, $t2, 5
+
+Binário:
+	2128000A
+	21500005
+	1AE6022
+	2128000A
+	21500005
+	2128000A
+	21500005
+
+Ciclos:
+	0 cilcos
+
+
+Ciclo: 1
+
+	Busca:
+
+ 8		addi $t0  $t1  10 
+ 8		addi $s0  $t2  5 
+ 0		sub 		madd 		j 
+ 8		addi $t0  $t1  10 
+
+Ciclo: 2
+
+	Busca:
+
+ 8		addi $s0  $t2  5 
+ 8		addi $t0  $t1  10 
+ 8		addi $s0  $t2  5 
+
+Ciclo: 3
+
+	Busca:
+
+
+Ciclo: 4
+
+	Busca:
+
+
+Ciclo: 5
+
+	Busca:
+
+
+Ciclo: 6
+
+	Busca:
+
+
+Ciclo: 7
+
+	Busca:
+
+
+Ciclo: 8
+
+	Busca:
+
+
+Ciclo: 9
+
+	Busca:
+
+
+Ciclo: 10
+
+	Busca:

@@ -4,7 +4,6 @@
 #include <strings.h>
 #include "tradutor.h"
 
-
 int registradores(char *aux){
 	if((strcasecmp(aux,"$zero") == 0) || (strcasecmp(aux,"$0") == 0))
 		return Z0;
@@ -603,6 +602,9 @@ void tradutorHexa(FILE *saidaHexa, FILE *saidaBin){
 		fprintf(prog, "\n\t%X", numero);
 		fwrite(&numero, sizeof(int), 1, saidaHexa); //escreve no arquivo
 		//fwrite("\n", 1, 1, saidaHexa);
+		if(detail != NULL){
+			fprintf(detail, "\n\t%X", numero);
+		}
 
 	}
 
@@ -615,6 +617,10 @@ void print_assembly(FILE *instrucoes){
 		//printf("%s\n", aux);
 		fprintf(prog, "\t%s", aux);
 		fprintf(prog, "\n");
+		if(detail != NULL){
+		fprintf(detail, "\t%s", aux);
+		fprintf(detail, "\n");
+		}
 	}
 }
 
@@ -624,11 +630,15 @@ void tradutor(){
 	saidaHexa = fopen(saida, "w+");
 	//printf("\nPrograma:\n");
 	fprintf(prog,"Programa:\n");
+	if(detail != NULL)
+		fprintf(detail,"Programa:\n");
 	print_assembly(instrucoes);
 	fseek(instrucoes, 0, SEEK_SET); //voltar para o começo s
 	tradutorBin(instrucoes, saidaBinario);
 	fseek(saidaBinario, 0, SEEK_SET);
 	fprintf(prog, "\nBinário:");
+	if(detail != NULL)
+		fprintf(detail, "\nBinário:");
 	tradutorHexa(saidaHexa, saidaBinario);
 	fclose(saidaBinario);
 	fclose(saidaHexa);

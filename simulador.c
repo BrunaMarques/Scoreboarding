@@ -18,20 +18,29 @@ void executarPipeline()
 {
 	prog = fopen("prog.out", "w");
 	clock = 1;
+	int aux = 0;
 	int i = 0;
 	unsigned int palavra[4];
 	inicializar();
 	tradutor();
 	escritaMemoria();
+	if(detail != NULL){
+		fprintf(detail, "\n\nCiclos:\n");
+		fprintf(detail, "\t%d cilcos\n", aux);
+	}
 	do
 	{
+		if(detail != NULL){
+			fprintf(detail, "\n\nCiclo: %d\n", clock);
+		}
+
 		escritaPipeline();
 		execucao();
 		leitura();
 		emissao();
 		buscaPipeline();
 
-		clock++;
+		aux = clock++;
 		i++;
 
 		printf("\nFILA nro elementos: %d\n", f->nroElem);
@@ -47,15 +56,15 @@ void executarPipeline()
 		//getchar();
 		//filaVazia() == false || listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) != 1 || listaVazia(listaWriteB) != 1 || verifica_bar(barBI) != 0 || verifica_bar(barIR) != 0 || verifica_bar(barRE) != 0 || verifica_bar(barEW) != 0);
 
-	} while (i < 11);
+	} while (i < 10);
 	fprintf(prog, "\n\nCiclos:\n");
+
 	fprintf(prog, "\t%d cilcos\n", clock);
 	fprintf(prog, "\nInstruções:\n \tEmitidas: ver o que colocar\n \tEfetivadas: ver o que colocar");
 }
 
 int main(int argc, char *argv[])
 {
-	printf("\n%d\n", argc);
 	for (int i = 0; i < argc; i++)
 	{
 		if (argc == 1)
@@ -106,7 +115,8 @@ int main(int argc, char *argv[])
 
 		else if (strcmp(argv[i], "--detail") == 0)
 		{
-			detail = fopen("saidaDetalhada.txt", "w");
+			detail = fopen("saidaDetalhada.txt", "w+");
+			executarPipeline();
 		}
 
 		else if (strcmp(argv[1], "--detail") == 0)
@@ -120,8 +130,6 @@ int main(int argc, char *argv[])
 			printf("\nExecute o programa ao menos uma vez!\n");
 			break;
 		}
-
-		//else printf("\nComando não encontrado");
 	}
 	return 0;
 }
