@@ -16,5 +16,4 @@
 int FLAG;
 int clock;
 int main();
-
 #endif

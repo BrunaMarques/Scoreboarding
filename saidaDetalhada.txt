@@ -1,25 +1,8 @@
 Programa:
-<<<<<<< HEAD
-	addi $t0, $zero, 10
-	add $t0, $t0, $zero
-	sub $t1, $t0, $zero
-	addi $t1, $s1, 3
-	mul $t2, $t1, $t0
-
-Binário:
-	2008000A
-	1004020
-	1004822
-	22290003
-	71285002
-
-Ciclos:
-	16 cilcos
-=======
-	mfhi $s1
+	mfhi $t1
 	mflo $S6
 	movn $A1, $a2, $A3
-	addi $t0, $t1, 5
+	addi $s1, $s2, 5
 	and $T0, $T1, $T2
 	div $T3, $T4
 	movz $ZERO, $Z0, $AT
@@ -41,10 +24,10 @@ Ciclos:
 	xori $V0, $V1, 0
 
 Binário:
-	8810
+	4810
 	B012
 	C7280B
-	21280005
+	22510005
 	12A4024
 	16C001A
 	1000A
@@ -66,9 +49,24 @@ Binário:
 	38430000
 
 Ciclos:
-	3 cilcos
->>>>>>> bruna
+	0 cilcos
 
-Instruções:
- 	Emitidas: ver o que colocar
- 	Efetivadas: ver o que colocar
+
+Ciclo: 1
+
+	Busca:
+
+ 0		mghi  $t1 
+
+ 31
+ 31
+ 8		addi $s1  $s2  5 
+
+
+Ciclo: 2
+
+	EmissãoAAA:
+
+ 0		nop 
+
+	Busca:

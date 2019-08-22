@@ -13,8 +13,12 @@
 int EMITIDA = true;
 
 void buscaPipeline()
-{
+{	
 	printf("\n\t--------------busca--------------\n");
+	printf("\nEMITIDA COMEÇO DA BUSCA: %d\n", EMITIDA);
+	printf("\nQUANTIDADE %d\n", qtd);
+	// if(detail != NULL)
+        fprintf(detail, "\n\tBusca:\n");
 	if (filaVazia() && (PC < (qtd * 4)))
 	{
 		for (int i = 0; i < 4; i++)
@@ -25,11 +29,16 @@ void buscaPipeline()
 			}
 			unsigned int instMem[4];
 			buscaMemoria(instMem);
-
+			//printf("\n\nAQUI: %ls", instMem);
 			Inst instDecode = decodificacao(instMem);
+			printar(instDecode);
+			//printf("%d\n",instDecode.opcode);
+			//printf("%d\n",detail==NULL);
+			//fprintf(detail, "%d\n", instDecode.opcode);
 			inserirElementoFila(instDecode);
 			PC += 4;
 		}
+		
 	}
 	if (EMITIDA)
 	{
@@ -56,6 +65,9 @@ void emissao()
 			printf("\nif bar bi vazio\n");
 			EMITIDA = false;
 			in = leitura_bar(barBI);
+			// if(detail != NULL)
+        	// 	fprintf(detail, "\n\tEmissãoAAA:\n");
+			// printar(in);
 			exibirLista(listaIssue);
 			inserirElemLista(listaIssue, in);
 			//printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
@@ -1337,8 +1349,9 @@ void execucao()
 			continue;
 		}
 
-		for (in.cont_clock = 0; in.cont_clock < in.qtd_cloc_prec; in.cont_clock++)
+		for (in.cont_clock = 1; in.cont_clock <= in.qtd_cloc_prec; in.cont_clock++)
 		{
+			printf("\n\nCONTCLOCK:%d CLOCP: %d", in.cont_clock,  in.qtd_cloc_prec);
 			if (in.cont_clock == 0)
 			{
 				switch (operacao)
@@ -1824,6 +1837,9 @@ void execucao()
 					printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					break;
 				}
+			}
+			else{
+				continue;
 			}
 		}
 	}
