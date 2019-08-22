@@ -50,8 +50,10 @@ void emissao()
 	printf("\n\t--------------emissão--------------\n");
 	if (EMITIDA)
 	{
+		printf("\nEMITIDA\n");
 		if (verifica_bar(barBI))
 		{
+			printf("\nif bar bi vazio\n");
 			EMITIDA = false;
 			in = leitura_bar(barBI);
 			exibirLista(listaIssue);
@@ -62,10 +64,16 @@ void emissao()
 	}
 	if (!EMITIDA)
 	{
+		printf("\nNÃO EMITIDA\n");
+		in = listaIssue->lista_inst[0];
 		int operacao = descobrirOperacao(in);
 		printf("INSTRUÇÃO: %d\n", operacao);
+		exibirLista(listaIssue);
+		printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
+
 		if (in.posicao != -1)
 		{
+			printf("\nIF EMITIDA\n");
 			switch (operacao)
 			{
 			case ADD:

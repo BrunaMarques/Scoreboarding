@@ -1,19 +1,19 @@
 Programa:
-	addi $t6, $t1, 10
-	mul $s0, $t2, $t3
-	div $t5, $t6
-	mul $s3, $s4, $s5
-	add $s2, $s1, $s6
+	addi $t0, $zero, 10
+	add $t0, $t0, $zero
+	sub $t1, $t0, $zero
+	addi $t1, $s1, 3
+	mul $t2, $t1, $t0
 
 Binário:
-	212E000A
-	714B8002
-	1AE001A
-	72959802
-	2369020
+	2008000A
+	1004020
+	1004822
+	22290003
+	71285002
 
 Ciclos:
-	10 cilcos
+	16 cilcos
 
 Instruções:
  	Emitidas: ver o que colocar
