@@ -1342,7 +1342,7 @@ void leitura()
 				printf("UF: %d\n", UFMUL1.status.Fk);
 				printf("UF: %d\n", bancoRegistradores[in.s2_instrucao.rs].UF);
 				printf("UF: %d\n", bancoRegistradores[in.s2_instrucao.rt].UF);
-				if ((bancoRegistradores[in.s2_instrucao.rs].UF == semUF) && (bancoRegistradores[in.s2_instrucao.rt].UF == semUF)) //|| (bancoRegistradores[UFMUL1.status.Fi].UF == bancoRegistradores[UFMUL1.status.Fj].UF))
+				if ((bancoRegistradores[Ufmul1.status.fj].UF == semUF) && (bancoRegistradores[Ufmul1.status.fk].UF == semUF) || (bancoRegistradores[UFMUL1.status.Fi].UF == bancoRegistradores[UFMUL1.status.Fj].UF))
 				{
 					printf("\nEntou no 2 if\n");
 					escrita_bar(in, barRE);
