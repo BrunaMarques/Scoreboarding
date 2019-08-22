@@ -15,12 +15,10 @@ int EMITIDA = true;
 void buscaPipeline()
 {
 	printf("\n\t--------------busca--------------\n");
-	printf("\nEMITIDA COMEÇO DA BUSCA: %d\n", EMITIDA);
 	if (filaVazia() && (PC < (qtd * 4)))
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			printf("\n PC: %d\n", PC);
 			if (PC >= (qtd * 4))
 			{
 				break;
@@ -30,20 +28,13 @@ void buscaPipeline()
 
 			Inst instDecode = decodificacao(instMem);
 			inserirElementoFila(instDecode);
-			printf("\n INSERIU FILA\n");
-			printf("INSTRUÇÃO BUSCADA: %d\n", instDecode.opcode);
 			PC += 4;
 		}
 	}
-	printf("\nBARRAMENTO BI ELE: %d\n", BI.instrucao.opcode);
-	printf("\nBARRAMENTO BI vazio: %d\n", verifica_bar(barBI));
 	if (EMITIDA)
 	{
 		if (verifica_bar(barBI) == 0)
 		{
-			printf("\nif BARRAMENTO BI ELE: %d\n", BI.instrucao.opcode);
-			printf("\nif BARRAMENTO BI vazio: %d\n", verifica_bar(barBI));
-			printf("ENTROU NO IFFFF\n");
 			in = excluirElementoFila();
 			if (f->nroElem >= 0)
 			{
@@ -52,23 +43,16 @@ void buscaPipeline()
 				escrita_bar(in, barBI);
 			}
 		}
-		printf("\nBARRAMENTO BI ELE: %d\n", BI.instrucao.opcode);
-		printf("\nBARRAMENTO BI vazio: %d\n", verifica_bar(barBI));
 	}
-	printf("\nEMITIDA FIM DA BUSCA: %d\n", EMITIDA);
 }
 void emissao()
 {
 	printf("\n\t--------------emissão--------------\n");
-	printf("\nEMITIDA COMEÇO DA EMISSÃO: %d\n", EMITIDA);
 	if (EMITIDA)
 	{
 		if (verifica_bar(barBI))
 		{
-			printf("\nEMITIDA\n");
 			EMITIDA = false;
-			printf("\nBARRAMENTO BI AAAA: %d\n", BI.instrucao.opcode);
-			printf("\nBARRAMENTO BI AAAABBBBBBBBB: %d\n", verifica_bar(barBI));
 			in = leitura_bar(barBI);
 			exibirLista(listaIssue);
 			inserirElemLista(listaIssue, in);
@@ -76,17 +60,12 @@ void emissao()
 			exibirLista(listaIssue);
 		}
 	}
-	printf("\nBARRAMENTO BI FORA: %d\n", BI.instrucao.opcode);
 	if (!EMITIDA)
 	{
-		printf("\nBARRAMENTO BI AAAA: %d\n", BI.instrucao.opcode);
-		printf("\nBARRAMENTO BI AAAABBBBBBBBB: %d\n", verifica_bar(barBI));
-		printf("\nNÃO EMITIDA\n");
 		int operacao = descobrirOperacao(in);
 		printf("INSTRUÇÃO: %d\n", operacao);
 		if (in.posicao != -1)
 		{
-			printf("\nENTROU NO IF DA LISTA VAZIA\n");
 			switch (operacao)
 			{
 			case ADD:
@@ -105,8 +84,6 @@ void emissao()
 						UFADD.status.Rj = (bancoRegistradores[in.s_instrucao.rs].UF == semUF) ? true : false;
 						UFADD.status.Rk = (bancoRegistradores[in.s_instrucao.rt].UF == semUF) ? true : false;
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_ADD;
-						// bancoRegistradores[in.s_instrucao.rs].UF = UF_ADD;
-						// bancoRegistradores[in.s_instrucao.rt].UF = UF_ADD;
 						in.UF = UF_ADD;
 						in.qtd_cloc_prec = 2;
 						escrita_bar(in, barIR);
@@ -115,9 +92,7 @@ void emissao()
 						printf("barramento IR RD: %d\n", IR.instrucao.s_instrucao.rd);
 						printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
 						printf("barramento IR RT: %d\n", IR.instrucao.s_instrucao.rt);
-						//exibirLista(listaIssue);
 						excluirElem(listaIssue, 0);
-						//exibirLista(listaIssue);
 						EMITIDA = true;
 					}
 				}
@@ -146,9 +121,7 @@ void emissao()
 						printf("barramento IR RD: %d\n", IR.instrucao.s_instrucao.rd);
 						printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
 						printf("barramento IR RT: %d\n", IR.instrucao.s_instrucao.rt);
-						//exibirLista(listaIssue);
 						excluirElem(listaIssue, 0);
-						//exibirLista(listaIssue);
 						EMITIDA = true;
 					}
 				}
@@ -200,9 +173,7 @@ void emissao()
 					printf("\nJR\n");
 					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
 					printf("barramento IR RS: %d\n", IR.instrucao.s_instrucao.rs);
-					//exibirLista(listaIssue);
 					excluirElem(listaIssue, 0);
-					//exibirLista(listaIssue);
 					EMITIDA = true;
 				}
 				break;
@@ -227,9 +198,7 @@ void emissao()
 						printf("\nMFHI\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
 						printf("barramento IR RD: %d\n", IR.instrucao.s_instrucao.rd);
-						//exibirLista(listaIssue);
 						excluirElem(listaIssue, 0);
-						//exibirLista(listaIssue);
 						EMITIDA = true;
 					}
 				}
@@ -255,9 +224,7 @@ void emissao()
 						printf("\nMFLO\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
 						printf("barramento IR RD: %d\n", IR.instrucao.s_instrucao.rd);
-						//exibirLista(listaIssue);
 						excluirElem(listaIssue, 0);
-						//exibirLista(listaIssue);
 						EMITIDA = true;
 					}
 				}
