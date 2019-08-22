@@ -43,20 +43,21 @@ void executarPipeline()
 		aux = clock++;
 		i++;
 
-		printf("\nFILA nro elementos: %d\n", f->nroElem);
+		printf("FILA nro elementos: %d\n", f->nroElem);
 		exibirFila();
-		printf("\nLISTA EXECUÇÃO: %d\n", listaVazia(listaExecucao));
-		printf("\nLISTA EMISSAO: %d\n", listaVazia(listaIssue));
-		printf("\nLISTA READ: %d\n", listaVazia(listaRead));
-		printf("\nLISTA ESCRITA: %d\n", listaVazia(listaWriteB));
-		printf("\nBARRAMENTO BI: %d\n", verifica_bar(barBI));
-		printf("\nBARRAMENTO IR: %d\n", verifica_bar(barIR));
-		printf("\nBARRAMENTO RE: %d\n", verifica_bar(barRE));
-		printf("\nBARRAMENTO EW: %d\n", verifica_bar(barEW));
+		printf("LISTA EMISSAO: %d\n", listaVazia(listaIssue));
+		printf("LISTA READ: %d\n", listaVazia(listaRead));
+		printf("LISTA EXECUÇÃO: %d\n", listaVazia(listaExecucao));
+		printf("LISTA ESCRITA: %d\n", listaVazia(listaWriteB));
+		printf("BARRAMENTO BI: %d\n", verifica_bar(barBI));
+		printf("BARRAMENTO IR: %d\n", verifica_bar(barIR));
+		printf("BARRAMENTO RE: %d\n", verifica_bar(barRE));
+		printf("BARRAMENTO EW: %d\n", verifica_bar(barEW));
 		//getchar();
 		//filaVazia() == false || listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) != 1 || listaVazia(listaWriteB) != 1 || verifica_bar(barBI) != 0 || verifica_bar(barIR) != 0 || verifica_bar(barRE) != 0 || verifica_bar(barEW) != 0);
 
-	} while (i < 2);
+	} while (listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) != 1 || listaVazia(listaWriteB) != 1 || verifica_bar(barBI) == 1 || verifica_bar(barIR) == 1 || verifica_bar(barRE) == 1 || verifica_bar(barEW) == 1);
+
 	fprintf(prog, "\n\nCiclos:\n");
 
 	fprintf(prog, "\t%d cilcos\n", clock);

@@ -1,8 +1,8 @@
 Programa:
-	mfhi $t1
+	mfhi $s1
 	mflo $S6
 	movn $A1, $a2, $A3
-	addi $s1, $s2, 5
+	addi $t0, $t1, 5
 	and $T0, $T1, $T2
 	div $T3, $T4
 	movz $ZERO, $Z0, $AT
@@ -24,10 +24,10 @@ Programa:
 	xori $V0, $V1, 0
 
 Binário:
-	4810
+	8810
 	B012
 	C7280B
-	22510005
+	21280005
 	12A4024
 	16C001A
 	1000A

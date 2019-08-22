@@ -42,7 +42,7 @@
 
 - MTHI
     - Format: MTHI RS
-    - Trad: 000000 RS 000000000000000 010001
+    - Trad: 000000 RS 00000 00000 00000 010001
     - Descript: HI = RS
 
 - MTLO

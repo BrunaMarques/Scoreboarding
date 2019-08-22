@@ -213,7 +213,12 @@ int multiplicacao(int op1, int op2)
 
 int divisao(int op1, int op2)
 {
-    return op1 / op2;
+    if (op2 == 0)
+    {
+        printf("\n NÃO É POSSIVEL FAZER DIVISÃO POR ZERO\n");
+        exit(-1);
+    }
+    return (int)(op1 / op2);
 }
 
 int and (int op1, int op2)
