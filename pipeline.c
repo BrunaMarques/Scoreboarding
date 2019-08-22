@@ -13,11 +13,11 @@
 int EMITIDA = true;
 
 void buscaPipeline()
-{	Inst instDecode;
+{	
 	printf("\n\t--------------busca--------------\n");
 	printf("\nEMITIDA COMEÇO DA BUSCA: %d\n", EMITIDA);
 	printf("\nQUANTIDADE %d\n", qtd);
-	if(detail != NULL)
+	// if(detail != NULL)
         fprintf(detail, "\n\tBusca:\n");
 	if (filaVazia() && (PC < (qtd * 4)))
 	{
@@ -30,7 +30,8 @@ void buscaPipeline()
 			}
 			unsigned int instMem[4];
 			buscaMemoria(instMem);
-			instDecode = decodificacao(instMem);
+			printf("\n\nAQUI: %ls", instMem);
+			Inst instDecode = decodificacao(instMem);
 			printar(instDecode);
 			//printf("%d\n",instDecode.opcode);
 			//printf("%d\n",detail==NULL);
@@ -56,34 +57,42 @@ void buscaPipeline()
 void emissao()
 {
 	printf("\n\t--------------emissão--------------\n");
-	printf("\nEMITIDA COMEÇO DA EMISSÃO: %d\n", EMITIDA);
+	//printf("\nEMITIDA COMEÇO DA EMISSÃO: %d\n", EMITIDA);
+
 	if (EMITIDA)
 	{
+		
 		if (verifica_bar(barBI))
 		{
 			printf("\nEMITIDA\n");
 			EMITIDA = false;
-			printf("\nBARRAMENTO BI AAAA: %d\n", BI.instrucao.opcode);
-			printf("\nBARRAMENTO BI AAAABBBBBBBBB: %d\n", verifica_bar(barBI));
+			//printf("\nBARRAMENTO BI AAAA: %d\n", BI.instrucao.opcode);
+			//printf("\nBARRAMENTO BI AAAABBBBBBBBB: %d\n", verifica_bar(barBI));
 			in = leitura_bar(barBI);
+			// if(detail != NULL)
+        	// 	fprintf(detail, "\n\tEmissãoAAA:\n");
+			// printar(in);
 			exibirLista(listaIssue);
 			inserirElemLista(listaIssue, in);
 			//printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 			exibirLista(listaIssue);
 		}
 	}
-	printf("\nBARRAMENTO BI FORA: %d\n", BI.instrucao.opcode);
+	//printf("\nBARRAMENTO BI FORA: %d\n", BI.instrucao.opcode);
 	if (!EMITIDA)
 	{
-		printf("\nBARRAMENTO BI AAAA: %d\n", BI.instrucao.opcode);
-		printf("\nBARRAMENTO BI AAAABBBBBBBBB: %d\n", verifica_bar(barBI));
-		printf("\nNÃO EMITIDA\n");
+		//printf("\nBARRAMENTO BI AAAA: %d\n", BI.instrucao.opcode);
+		////printf("\nBARRAMENTO BI AAAABBBBBBBBB: %d\n", verifica_bar(barBI));
+		//printf("\nNÃO EMITIDA\n");
 		in = listaIssue->lista_inst[0];
+		if(detail != NULL)
+        		fprintf(detail, "\n\tEmissãoAAA:\n");
+			printar(in);
 		int operacao = descobrirOperacao(in);
-		printf("\nINSTRUÇÃO: %d\n", operacao);
+		//printf("\nINSTRUÇÃO: %d\n", operacao);
 		if (in.posicao != -1)
 		{
-			printf("ENTROU NO IF -1");
+			//printf("ENTROU NO IF -1");
 			switch (operacao)
 			{
 			case ADD:

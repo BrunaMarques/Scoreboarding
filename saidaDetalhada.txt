@@ -1,20 +1,52 @@
 Programa:
-	addi $t0, $t1, 10
-	addi $s0, $t2, 5
-	sub $t4, $t5, $t6
-	addi $t0, $t1, 10
-	addi $s0, $t2, 5
-	addi $t0, $t1, 10
-	addi $s0, $t2, 5
+	mfhi $t1
+	mflo $S6
+	movn $A1, $a2, $A3
+	addi $s1, $s2, 5
+	and $T0, $T1, $T2
+	div $T3, $T4
+	movz $ZERO, $Z0, $AT
+	mthi $K0
+	mtlo $k1
+	mult $T8, $T9
+	nop
+	nor $S5, $S6, $S7
+	or $t1, $t2, $t3
+	sub $T3, $s0, $a2
+	xor $gp, $SP, $T5
+	madd $v0, $V1
+	msub $T0, $t1
+	mul $S1, $t1, $t4
+	addi $T0, $T1, 0
+	andi $S0, $s4, 1
+	lui $AT, 2
+	ori $FP, $RA, 7
+	xori $V0, $V1, 0
 
 Binário:
-	2128000A
-	21500005
-	1AE6022
-	2128000A
-	21500005
-	2128000A
-	21500005
+	4810
+	B012
+	C7280B
+	22510005
+	12A4024
+	16C001A
+	1000A
+	3400011
+	3600013
+	3190018
+	0
+	2D7A827
+	14B4825
+	2065822
+	3ADE026
+	70430000
+	71090004
+	712C8802
+	21280000
+	32900001
+	3C010002
+	37FE0007
+	38430000
 
 Ciclos:
 	0 cilcos
@@ -24,54 +56,17 @@ Ciclo: 1
 
 	Busca:
 
- 8		addi $t0  $t1  10 
- 8		addi $s0  $t2  5 
- 0		sub 		madd 		j 
- 8		addi $t0  $t1  10 
+ 0		mghi  $t1 
+
+ 31
+ 31
+ 8		addi $s1  $s2  5 
+
 
 Ciclo: 2
 
-	Busca:
+	EmissãoAAA:
 
- 8		addi $s0  $t2  5 
- 8		addi $t0  $t1  10 
- 8		addi $s0  $t2  5 
-
-Ciclo: 3
-
-	Busca:
-
-
-Ciclo: 4
-
-	Busca:
-
-
-Ciclo: 5
-
-	Busca:
-
-
-Ciclo: 6
-
-	Busca:
-
-
-Ciclo: 7
-
-	Busca:
-
-
-Ciclo: 8
-
-	Busca:
-
-
-Ciclo: 9
-
-	Busca:
-
-
-Ciclo: 10
+ 0		nop 
 
 	Busca:

@@ -56,7 +56,7 @@ void executarPipeline()
 		//getchar();
 		//filaVazia() == false || listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) != 1 || listaVazia(listaWriteB) != 1 || verifica_bar(barBI) != 0 || verifica_bar(barIR) != 0 || verifica_bar(barRE) != 0 || verifica_bar(barEW) != 0);
 
-	} while (i < 10);
+	} while (i < 2);
 	fprintf(prog, "\n\nCiclos:\n");
 
 	fprintf(prog, "\t%d cilcos\n", clock);
@@ -65,6 +65,7 @@ void executarPipeline()
 
 int main(int argc, char *argv[])
 {
+	detail = NULL;
 	for (int i = 0; i < argc; i++)
 	{
 		if (argc == 1)

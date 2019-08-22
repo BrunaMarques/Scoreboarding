@@ -131,121 +131,207 @@ void reg(int r){
 }
 
 void printar(Inst in){
-   // printf("\n %d", in.opcode);
- if(detail != NULL)
-    fprintf(detail, "\n %d", in.opcode);
-    //fprintf(detail, "\n %d", in.opcode);
+    if(detail != NULL)
+        fprintf(detail, "\n %d", in.opcode);
 switch (in.opcode){
 case ESPECIAL:
-    // in.opcode = instrucao >> 26 & MASCARA;
-	// 	in.s_instrucao.rs = instrucao >> 21 & MASCARA;
-	// 	in.s_instrucao.rt = instrucao >> 16 & MASCARA;
-	// 	in.s_instrucao.rd = instrucao >> 11 & MASCARA;
-	// 	in.s_instrucao.shamt = instrucao >> 6 & MASCARA;
-	// 	in.s_instrucao.func = instrucao & 63;
     switch (in.s_instrucao.func){
         case TADD:
             if(detail != NULL){
                 fprintf(detail, "\t\tadd ");
+                reg(in.s_instrucao.rd);
+                reg(in.s_instrucao.rs);
+                reg(in.s_instrucao.rt);
+                fprintf(detail, "\n");
             }
             break;
         case TAND:
-            if(detail != NULL)
+            if(detail != NULL){
                 fprintf(detail, "\t\tand ");
+                reg(in.s_instrucao.rd);
+                reg(in.s_instrucao.rs);
+                reg(in.s_instrucao.rt);
+                fprintf(detail, "\n");
+            }
             break;
         case TDIV:
-            if(detail != NULL)
+            if(detail != NULL){
                 fprintf(detail, "\t\tdiv ");
+                reg(in.s_instrucao.rs);
+                reg(in.s_instrucao.rt);
+                fprintf(detail, "\n");
+            }
             break;
         case TJR:
-            if(detail != NULL)
+            if(detail != NULL){
                 fprintf(detail, "\t\tjr ");
+                reg(in.s_instrucao.rs);
+                fprintf(detail, "\n");
+            }
             break;
         case TMFHI:
-            if(detail != NULL)
+            if(detail != NULL){
                 fprintf(detail, "\t\tmghi ");
+                reg(in.s_instrucao.rd);
+                fprintf(detail, "\n");
+            }
             break;
         case TMFLO:
-            if(detail != NULL)
+            if(detail != NULL){
                 fprintf(detail, "\t\tmflo ");
+                reg(in.s_instrucao.rd);
+                fprintf(detail, "\n");
+            }
             break;
         case TMOVN:
-            if(detail != NULL)
+            if(detail != NULL){
                 fprintf(detail, "\t\tmovn ");
+                reg(in.s_instrucao.rd);
+                reg(in.s_instrucao.rs);
+                reg(in.s_instrucao.rt);
+                fprintf(detail, "\n");
+            }
             break;
         case TMOVZ:
-            if(detail != NULL)
+            if(detail != NULL){
                 fprintf(detail, "\t\tmovz ");
+                reg(in.s_instrucao.rd);
+                reg(in.s_instrucao.rs);
+                reg(in.s_instrucao.rt);
+                fprintf(detail, "\n");
+            }
             break;
         case TMTHI:
-            if(detail != NULL)
+            if(detail != NULL){
                 fprintf(detail, "\t\tmthi ");
+                reg(in.s_instrucao.rs);
+                fprintf(detail, "\n");
+            }
             break;
         case TMTLO:
-            if(detail != NULL)
+            if(detail != NULL){
                 fprintf(detail, "\t\tmtlo ");
+                reg(in.s_instrucao.rs);
+                fprintf(detail, "\n");
+            }
             break;
         case TMULT:
-            if(detail != NULL)
+            if(detail != NULL){
                 fprintf(detail, "\t\tmult ");
+                reg(in.s_instrucao.rs);
+                reg(in.s_instrucao.rt);
+                fprintf(detail, "\n");
+            }
             break;
         case TNOP:
             if(detail != NULL)
-                fprintf(detail, "\t\tnop ");
+                fprintf(detail, "\t\tnop \n");
             break;
         case TNOR:
-            if(detail != NULL)
+            if(detail != NULL){
                 fprintf(detail, "\t\tnor ");
+                reg(in.s_instrucao.rd);
+                reg(in.s_instrucao.rs);
+                reg(in.s_instrucao.rt);
+                fprintf(detail, "\n");
+            }
             break;
         case TOR:
-            if(detail != NULL)
+            if(detail != NULL){
                 fprintf(detail, "\t\tor ");
+                reg(in.s_instrucao.rd);
+                reg(in.s_instrucao.rs);
+                reg(in.s_instrucao.rt);
+                fprintf(detail, "\n");
+            }
             break;
         case TSUB:
-            if(detail != NULL)
+            if(detail != NULL){
                 fprintf(detail, "\t\tsub ");
+                reg(in.s_instrucao.rd);
+                reg(in.s_instrucao.rs);
+                reg(in.s_instrucao.rt);
+                fprintf(detail, "\n");
+            }
             break;
         case TXOR:
-            if(detail != NULL)
+            if(detail != NULL){
                 fprintf(detail, "\t\txor ");
+                reg(in.s_instrucao.rd);
+                reg(in.s_instrucao.rs);
+                reg(in.s_instrucao.rt);
+                fprintf(detail, "\n");
+            }
             break;
         }   
+break;
 case ESPECIAL2:
     switch (in.s2_instrucao.func){
     case TMSUB:
-        if(detail != NULL)
+        if(detail != NULL){
             fprintf(detail, "\t\tmsub ");
+            reg(in.s2_instrucao.rs);
+            reg(in.s2_instrucao.rt);
+            fprintf(detail, "\n");
+        }
         break;
     case TMUL:
-        if(detail != NULL)
+        if(detail != NULL){
             fprintf(detail, "\t\tmul ");
+            reg(in.s2_instrucao.rd);
+            reg(in.s2_instrucao.rs);
+            reg(in.s2_instrucao.rt);
+            fprintf(detail, "\n");
+        }
         break;
-    default: 
-        if(detail != NULL)
-             fprintf(detail, "\t\tmadd ");
+    case TMADD:
+        if(detail != NULL){
+            fprintf(detail, "\t\tmadd ");
+            reg(in.s2_instrucao.rs);
+            reg(in.s2_instrucao.rt);
+            fprintf(detail, "\n");
+        }
+        break;
+    default:
         break;
     }
+break;
 case REGIMM:
     switch (in.r_instrucao.id){
     case TBGEZ:
-        if(detail != NULL)
+        if(detail != NULL){
             fprintf(detail, "\t\tbgez ");
+            reg(in.r_instrucao.rs);
+            reg(in.r_instrucao.offset);
+            fprintf(detail, "\n");
+        }
         break;
     case TBLTZ:
-        if(detail != NULL)
+        if(detail != NULL){
             fprintf(detail, "\t\tbltz ");
+            reg(in.r_instrucao.rs);
+            reg(in.r_instrucao.offset);
+            fprintf(detail, "\n");
+        }
+        break;
+    default:
         break;
     }
-case SALTO:
-    if(detail != NULL)
-        fprintf(detail, "\t\tj ");
-    break;
+break;
+// case TJ:
+//     if(detail != NULL){
+//         fprintf(detail, "\t\tj ");
+//         reg(in.j_instrucao.addr);
+//         fprintf(detail, "\n");
+//     }
+//     break;
 case TADDI:
     if(detail != NULL){
         fprintf(detail, "\t\taddi");
         reg(in.i_instrucao.rt);
         reg(in.i_instrucao.rs);
         fprintf(detail, " %d ", in.i_instrucao.imediato);
+        fprintf(detail, "\n");
     }
     break;
 case TANDI:
@@ -254,12 +340,15 @@ case TANDI:
         reg(in.i_instrucao.rt);
         reg(in.i_instrucao.rs);
         fprintf(detail, " %d ", in.i_instrucao.imediato);
+        fprintf(detail, "\n");
     }
     break;
 case TB:
-    if(detail != NULL)
+    if(detail != NULL){
         fprintf(detail, "\t\tb ");
         fprintf(detail, " %d ", in.i_instrucao.imediato);
+        fprintf(detail, "\n");
+    }
     break;
     
     // case TBEQ:
@@ -267,33 +356,68 @@ case TB:
     //         fprintf(detail, "beq");
     //     break;
 case TBEQL:
-    if(detail != NULL)
+    if(detail != NULL){
         fprintf(detail, "\t\tbeql ");
+        reg(in.i_instrucao.rs);
+        reg(in.i_instrucao.rt);
+        fprintf(detail, " %d ", in.i_instrucao.imediato);
+        fprintf(detail, "\n");
+    }
     break;
 case TBGTZ:
-    if(detail != NULL)
-        fprintf(detail, "\t\tj ");
+    if(detail != NULL){
+        fprintf(detail, "\t\tbgtz ");
+        reg(in.i_instrucao.rs);
+        fprintf(detail, " %d ", in.i_instrucao.imediato);
+        fprintf(detail, "\n");
+    }
     break;
 case TBLEZ:
-    if(detail != NULL)
+    if(detail != NULL){
         fprintf(detail, "\t\tblez ");
+        reg(in.i_instrucao.rs);
+        fprintf(detail, " %d ", in.i_instrucao.imediato);
+        fprintf(detail, "\n");
+    }
     break;
 case TBNE:
-    if(detail != NULL)
+    if(detail != NULL){
         fprintf(detail, "\t\tbne ");
+        reg(in.i_instrucao.rs);
+        reg(in.i_instrucao.rt);
+        fprintf(detail, " %d ", in.i_instrucao.imediato);
+        fprintf(detail, "\n");
+    }
     break;
 case TLUI:
-    if(detail != NULL)
+    if(detail != NULL){
         fprintf(detail, "\t\tlui ");
+        reg(in.i_instrucao.rt);
+        fprintf(detail, " %d ", in.i_instrucao.imediato);
+        fprintf(detail, "\n");
+    }
     break;
 case TORI:
-    if(detail != NULL)
+    if(detail != NULL){
         fprintf(detail, "\t\tori ");
+        reg(in.i_instrucao.rt);
+        reg(in.i_instrucao.rs);
+        fprintf(detail, " %d ", in.i_instrucao.imediato);
+        fprintf(detail, "\n");
+    }
     break;
 case TXORI:
-    if(detail != NULL)
+    if(detail != NULL){
         fprintf(detail, "\t\txori ");
-    break;
+        reg(in.i_instrucao.rt);
+        reg(in.i_instrucao.rs);
+        fprintf(detail, " %d ", in.i_instrucao.imediato);
+        fprintf(detail, "\n");
     }
+    break;
+    default:
+        break;
+    }
+
 }
 

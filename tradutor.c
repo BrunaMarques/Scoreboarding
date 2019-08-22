@@ -625,6 +625,7 @@ void print_assembly(FILE *instrucoes){
 }
 
 void tradutor(){
+	detail = fopen("saidaDetalhada.txt", "w+");
 	instrucoes = fopen(entrada, "r");
 	saidaBinario = fopen("codigoBinario.txt", "w+");
 	saidaHexa = fopen(saida, "w+");

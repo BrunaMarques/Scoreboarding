@@ -12,6 +12,7 @@ Inst decodificacao(unsigned int palavra[])
 	instrucao += (palavra[2] << 8);
 	instrucao += palavra[3];
 	int tipo = instrucao >> 26 & MASCARA;
+	printf("\n\nTIPOOOOO: %d\n", tipo);
 
 	switch (tipo)
 	{
