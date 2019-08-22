@@ -13,7 +13,7 @@
 int EMITIDA = true;
 
 void buscaPipeline()
-{
+{	
 	printf("\n\t--------------busca--------------\n");
 	 fprintf(detail, "\n\tBusca:\n");
 	if (filaVazia() && (PC < (qtd * 4)))
@@ -26,12 +26,13 @@ void buscaPipeline()
 			}
 			unsigned int instMem[4];
 			buscaMemoria(instMem);
-
+			//printf("\n\nAQUI: %ls", instMem);
 			Inst instDecode = decodificacao(instMem);
 			printar(instDecode);
 			inserirElementoFila(instDecode);
 			PC += 4;
 		}
+		
 	}
 	if (EMITIDA)
 	{
@@ -1341,8 +1342,9 @@ void execucao()
 			continue;
 		}
 
-		for (in.cont_clock = 0; in.cont_clock < in.qtd_cloc_prec; in.cont_clock++)
+		for (in.cont_clock = 1; in.cont_clock <= in.qtd_cloc_prec; in.cont_clock++)
 		{
+			printf("\n\nCONTCLOCK:%d CLOCP: %d", in.cont_clock,  in.qtd_cloc_prec);
 			if (in.cont_clock == 0)
 			{
 				switch (operacao)
@@ -1828,6 +1830,9 @@ void execucao()
 					printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					break;
 				}
+			}
+			else{
+				continue;
 			}
 		}
 	}

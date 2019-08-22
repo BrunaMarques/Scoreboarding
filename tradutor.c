@@ -4,7 +4,6 @@
 #include <strings.h>
 #include "tradutor.h"
 
-
 int registradores(char *aux){
 	if((strcasecmp(aux,"$zero") == 0) || (strcasecmp(aux,"$0") == 0))
 		return Z0;

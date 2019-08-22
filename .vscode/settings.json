@@ -7,6 +7,8 @@
         "simulador.h": "c",
         "pipeline.h": "c",
         "string.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "tradutor.h": "c",
+        "ula.h": "c"
     }
 }
