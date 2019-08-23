@@ -35,9 +35,10 @@ void buscaPipeline()
 	{
 		if (verifica_bar(barBI) == 0)
 		{
-			in = excluirElementoFila();
+
 			if (f->nroElem >= 0)
 			{
+				in = excluirElementoFila();
 				int operacao = descobrirOperacao(in);
 				printf("INSTRUÇÃO: %d\n", operacao);
 				escrita_bar(in, barBI);
@@ -53,13 +54,15 @@ void emissao()
 		printf("\nEMITIDA\n");
 		if (verifica_bar(barBI))
 		{
-			printf("\nif bar bi vazio\n");
+			printf("\nif bar bi n vazio\n");
+			printf("\nBAR BI OPCODE: %d\n", BI.instrucao.opcode);
 			EMITIDA = false;
 			in = leitura_bar(barBI);
+			printf("\ninstrução que peguei: %d\n", in.opcode);
 			exibirLista(listaIssue);
 			inserirElemLista(listaIssue, in);
-			//printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 			exibirLista(listaIssue);
+			printf("\nlista issue: %d\n", listaIssue->lista_inst[0].opcode);
 		}
 	}
 	if (!EMITIDA)
@@ -69,7 +72,7 @@ void emissao()
 		int operacao = descobrirOperacao(in);
 		printf("INSTRUÇÃO: %d\n", operacao);
 		exibirLista(listaIssue);
-		printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
+		//printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 
 		if (in.posicao != -1)
 		{

@@ -7,7 +7,7 @@ typedef struct
 {
     Inst lista_inst[N];
     int nroElem;
-} LISTA ;
+} LISTA;
 
 LISTA *listaIssue;
 LISTA *listaRead;
