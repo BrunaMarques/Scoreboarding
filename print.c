@@ -131,8 +131,8 @@ void reg(int r){
 }
 
 void printar(Inst in){
-    if(detail != NULL)
-        fprintf(detail, "\n %d", in.opcode);
+    // if(detail != NULL)
+    //     fprintf(detail, "\n %d", in.opcode);
 switch (in.opcode){
 case ESPECIAL:
     switch (in.s_instrucao.func){

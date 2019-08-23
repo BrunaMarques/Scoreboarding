@@ -15,9 +15,9 @@ int EMITIDA = true;
 void buscaPipeline()
 {	
 	printf("\n\t--------------busca--------------\n");
-	 fprintf(detail, "\n\tBusca:\n");
 	if (filaVazia() && (PC < (qtd * 4)))
 	{
+		fprintf(detail, "\n\tBusca:\n");
 		for (int i = 0; i < 4; i++)
 		{
 			if (PC >= (qtd * 4))
@@ -1129,6 +1129,7 @@ void leitura()
 	printf("\nEMITIDA COMEÇO DA LEITURA: %d\n", EMITIDA);
 	if (verifica_bar(barIR))
 	{
+		fprintf(detail, "\n\tLeitura:\n");
 		in = leitura_bar(barIR);
 		inserirElemLista(listaRead, in);
 		printf("\nBarramento IR: %d\n", IR.instrucao.opcode);
@@ -1136,6 +1137,7 @@ void leitura()
 	for (int i = 0; i < N; i++)
 	{
 		in = listaRead->lista_inst[i];
+		
 		int operacao = descobrirOperacao(in);
 		printf("INSTRUÇÃO: %d\n", operacao);
 		if (in.posicao == -1)
@@ -1316,6 +1318,7 @@ void leitura()
 			}
 			break;
 		}
+		printar(in);
 	}
 	printf("\nEMITIDA FIM DA LEITURA: %d\n", EMITIDA);
 }
@@ -1325,6 +1328,7 @@ void execucao()
 {
 	printf("\n\t--------------execução--------------\n");
 	printf("\nEMITIDA COMEÇO DA EXECUÇÃO: %d\n", EMITIDA);
+	fprintf(detail, "\n\tLeitura:\n");
 	while (verifica_bar(barRE))
 	{
 		in = leitura_bar(barRE);

@@ -26,23 +26,13 @@ void executarPipeline()
 	escritaMemoria();
 	if(detail != NULL){
 		fprintf(detail, "\n\nCiclos:\n");
-<<<<<<< HEAD
 		fprintf(detail, "\t%d cilcos\n", clock);
-=======
-		fprintf(detail, "\t%d cilcos\n", aux);
->>>>>>> 30ad2e185696dacc8769b9076dfa1c97d8896950
 	}
 	do
 	{
 		if(detail != NULL){
-<<<<<<< HEAD
 			fprintf(detail, "\n\nCiclo: %i\n", clock);
 		}
-=======
-			fprintf(detail, "\n\nCiclo: %d\n", clock);
-		}
-
->>>>>>> 30ad2e185696dacc8769b9076dfa1c97d8896950
 		escritaPipeline();
 		execucao();
 		leitura();

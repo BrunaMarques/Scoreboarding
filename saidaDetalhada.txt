@@ -1,16 +1,16 @@
 Programa:
-	addi $t0, $zero, 10
-	add $t0, $t0, $zero
-	sub $t1, $t0, $zero
-	addi $t1, $s1, 3
-	mul $t2, $t1, $t0
+	addi $t6, $t1, 10
+	mul $s0, $t2, $t3
+	div $t5, $t6
+	mul $s3, $s4, $s5
+	add $s2, $s1, $s6
 
 Binário:
-	2008000A
-	1004020
-	1004822
-	22290003
-	71285002
+	212E000A
+	714B8002
+	1AE001A
+	72959802
+	2369020
 
 Ciclos:
 	1 cilcos
@@ -19,103 +19,5920 @@ Ciclos:
 Ciclo: 1
 
 	Busca:
-
- 8		addi $t0  z0  10 
-
- 0		add  $t0  $t0  z0 
-
- 0		sub  $t1  $t0  z0 
-
- 8		addi $t1  $s1  3 
+		addi $t6  $t1  10 
+		mul  $s0  $t2  $t2 
+		div  $a1  $t6 
+		mul  $s3  $t4  $s4 
 
 
 Ciclo: 2
 
 	Emissão:
-
- 8		addi $t0  z0  10 
-
-	Busca:
+		addi $t6  $t1  10 
 
 
 Ciclo: 3
 
+	Leitura:
+		addi $t6  $t1  10 
+
 	Emissão:
-
- 0		add  $t0  $t0  z0 
-
-	Busca:
+		mul  $s0  $t2  $t2 
 
 
 Ciclo: 4
 
-	Busca:
+	Leitura:
+		mul  $s0  $t2  $t2 
+
+	Emissão:
+		div  $a1  $t6 
 
 
 Ciclo: 5
 
+	Leitura:
+		div  $a1  $t6 
+
+	Emissão:
+		mul  $s3  $t4  $s4 
+
 	Busca:
+		add  $s2  $s1  $s5 
 
 
 Ciclo: 6
 
+	Leitura:
+		div  $a1  $t6 
+		mul  $s3  $t4  $s4 
+
 	Emissão:
-
- 0		sub  $t1  $t0  z0 
-
-	Busca:
+		add  $s2  $s1  $s5 
 
 
 Ciclo: 7
 
-	Emissão:
-
- 8		addi $t1  $s1  3 
-
-	Busca:
-
- 28		mul  $t2  $t1  $t0 
+	Leitura:
+		div  $a1  $t6 
+		add  $s2  $s1  $s5 
 
 
 Ciclo: 8
-
-	Busca:
+		div  $a1  $t6 
 
 
 Ciclo: 9
-
-	Busca:
+		div  $a1  $t6 
 
 
 Ciclo: 10
-
-	Busca:
+		div  $a1  $t6 
 
 
 Ciclo: 11
-
-	Emissão:
-
- 28		mul  $t2  $t1  $t0 
-
-	Busca:
+		div  $a1  $t6 
 
 
 Ciclo: 12
-
-	Busca:
+		div  $a1  $t6 
 
 
 Ciclo: 13
-
-	Busca:
+		div  $a1  $t6 
 
 
 Ciclo: 14
-
-	Busca:
+		div  $a1  $t6 
 
 
 Ciclo: 15
+		div  $a1  $t6 
 
-	Busca:
+
+Ciclo: 16
+		div  $a1  $t6 
+
+
+Ciclo: 17
+		div  $a1  $t6 
+
+
+Ciclo: 18
+		div  $a1  $t6 
+
+
+Ciclo: 19
+		div  $a1  $t6 
+
+
+Ciclo: 20
+		div  $a1  $t6 
+
+
+Ciclo: 21
+		div  $a1  $t6 
+
+
+Ciclo: 22
+		div  $a1  $t6 
+
+
+Ciclo: 23
+		div  $a1  $t6 
+
+
+Ciclo: 24
+		div  $a1  $t6 
+
+
+Ciclo: 25
+		div  $a1  $t6 
+
+
+Ciclo: 26
+		div  $a1  $t6 
+
+
+Ciclo: 27
+		div  $a1  $t6 
+
+
+Ciclo: 28
+		div  $a1  $t6 
+
+
+Ciclo: 29
+		div  $a1  $t6 
+
+
+Ciclo: 30
+		div  $a1  $t6 
+
+
+Ciclo: 31
+		div  $a1  $t6 
+
+
+Ciclo: 32
+		div  $a1  $t6 
+
+
+Ciclo: 33
+		div  $a1  $t6 
+
+
+Ciclo: 34
+		div  $a1  $t6 
+
+
+Ciclo: 35
+		div  $a1  $t6 
+
+
+Ciclo: 36
+		div  $a1  $t6 
+
+
+Ciclo: 37
+		div  $a1  $t6 
+
+
+Ciclo: 38
+		div  $a1  $t6 
+
+
+Ciclo: 39
+		div  $a1  $t6 
+
+
+Ciclo: 40
+		div  $a1  $t6 
+
+
+Ciclo: 41
+		div  $a1  $t6 
+
+
+Ciclo: 42
+		div  $a1  $t6 
+
+
+Ciclo: 43
+		div  $a1  $t6 
+
+
+Ciclo: 44
+		div  $a1  $t6 
+
+
+Ciclo: 45
+		div  $a1  $t6 
+
+
+Ciclo: 46
+		div  $a1  $t6 
+
+
+Ciclo: 47
+		div  $a1  $t6 
+
+
+Ciclo: 48
+		div  $a1  $t6 
+
+
+Ciclo: 49
+		div  $a1  $t6 
+
+
+Ciclo: 50
+		div  $a1  $t6 
+
+
+Ciclo: 51
+		div  $a1  $t6 
+
+
+Ciclo: 52
+		div  $a1  $t6 
+
+
+Ciclo: 53
+		div  $a1  $t6 
+
+
+Ciclo: 54
+		div  $a1  $t6 
+
+
+Ciclo: 55
+		div  $a1  $t6 
+
+
+Ciclo: 56
+		div  $a1  $t6 
+
+
+Ciclo: 57
+		div  $a1  $t6 
+
+
+Ciclo: 58
+		div  $a1  $t6 
+
+
+Ciclo: 59
+		div  $a1  $t6 
+
+
+Ciclo: 60
+		div  $a1  $t6 
+
+
+Ciclo: 61
+		div  $a1  $t6 
+
+
+Ciclo: 62
+		div  $a1  $t6 
+
+
+Ciclo: 63
+		div  $a1  $t6 
+
+
+Ciclo: 64
+		div  $a1  $t6 
+
+
+Ciclo: 65
+		div  $a1  $t6 
+
+
+Ciclo: 66
+		div  $a1  $t6 
+
+
+Ciclo: 67
+		div  $a1  $t6 
+
+
+Ciclo: 68
+		div  $a1  $t6 
+
+
+Ciclo: 69
+		div  $a1  $t6 
+
+
+Ciclo: 70
+		div  $a1  $t6 
+
+
+Ciclo: 71
+		div  $a1  $t6 
+
+
+Ciclo: 72
+		div  $a1  $t6 
+
+
+Ciclo: 73
+		div  $a1  $t6 
+
+
+Ciclo: 74
+		div  $a1  $t6 
+
+
+Ciclo: 75
+		div  $a1  $t6 
+
+
+Ciclo: 76
+		div  $a1  $t6 
+
+
+Ciclo: 77
+		div  $a1  $t6 
+
+
+Ciclo: 78
+		div  $a1  $t6 
+
+
+Ciclo: 79
+		div  $a1  $t6 
+
+
+Ciclo: 80
+		div  $a1  $t6 
+
+
+Ciclo: 81
+		div  $a1  $t6 
+
+
+Ciclo: 82
+		div  $a1  $t6 
+
+
+Ciclo: 83
+		div  $a1  $t6 
+
+
+Ciclo: 84
+		div  $a1  $t6 
+
+
+Ciclo: 85
+		div  $a1  $t6 
+
+
+Ciclo: 86
+		div  $a1  $t6 
+
+
+Ciclo: 87
+		div  $a1  $t6 
+
+
+Ciclo: 88
+		div  $a1  $t6 
+
+
+Ciclo: 89
+		div  $a1  $t6 
+
+
+Ciclo: 90
+		div  $a1  $t6 
+
+
+Ciclo: 91
+		div  $a1  $t6 
+
+
+Ciclo: 92
+		div  $a1  $t6 
+
+
+Ciclo: 93
+		div  $a1  $t6 
+
+
+Ciclo: 94
+		div  $a1  $t6 
+
+
+Ciclo: 95
+		div  $a1  $t6 
+
+
+Ciclo: 96
+		div  $a1  $t6 
+
+
+Ciclo: 97
+		div  $a1  $t6 
+
+
+Ciclo: 98
+		div  $a1  $t6 
+
+
+Ciclo: 99
+		div  $a1  $t6 
+
+
+Ciclo: 100
+		div  $a1  $t6 
+
+
+Ciclo: 101
+		div  $a1  $t6 
+
+
+Ciclo: 102
+		div  $a1  $t6 
+
+
+Ciclo: 103
+		div  $a1  $t6 
+
+
+Ciclo: 104
+		div  $a1  $t6 
+
+
+Ciclo: 105
+		div  $a1  $t6 
+
+
+Ciclo: 106
+		div  $a1  $t6 
+
+
+Ciclo: 107
+		div  $a1  $t6 
+
+
+Ciclo: 108
+		div  $a1  $t6 
+
+
+Ciclo: 109
+		div  $a1  $t6 
+
+
+Ciclo: 110
+		div  $a1  $t6 
+
+
+Ciclo: 111
+		div  $a1  $t6 
+
+
+Ciclo: 112
+		div  $a1  $t6 
+
+
+Ciclo: 113
+		div  $a1  $t6 
+
+
+Ciclo: 114
+		div  $a1  $t6 
+
+
+Ciclo: 115
+		div  $a1  $t6 
+
+
+Ciclo: 116
+		div  $a1  $t6 
+
+
+Ciclo: 117
+		div  $a1  $t6 
+
+
+Ciclo: 118
+		div  $a1  $t6 
+
+
+Ciclo: 119
+		div  $a1  $t6 
+
+
+Ciclo: 120
+		div  $a1  $t6 
+
+
+Ciclo: 121
+		div  $a1  $t6 
+
+
+Ciclo: 122
+		div  $a1  $t6 
+
+
+Ciclo: 123
+		div  $a1  $t6 
+
+
+Ciclo: 124
+		div  $a1  $t6 
+
+
+Ciclo: 125
+		div  $a1  $t6 
+
+
+Ciclo: 126
+		div  $a1  $t6 
+
+
+Ciclo: 127
+		div  $a1  $t6 
+
+
+Ciclo: 128
+		div  $a1  $t6 
+
+
+Ciclo: 129
+		div  $a1  $t6 
+
+
+Ciclo: 130
+		div  $a1  $t6 
+
+
+Ciclo: 131
+		div  $a1  $t6 
+
+
+Ciclo: 132
+		div  $a1  $t6 
+
+
+Ciclo: 133
+		div  $a1  $t6 
+
+
+Ciclo: 134
+		div  $a1  $t6 
+
+
+Ciclo: 135
+		div  $a1  $t6 
+
+
+Ciclo: 136
+		div  $a1  $t6 
+
+
+Ciclo: 137
+		div  $a1  $t6 
+
+
+Ciclo: 138
+		div  $a1  $t6 
+
+
+Ciclo: 139
+		div  $a1  $t6 
+
+
+Ciclo: 140
+		div  $a1  $t6 
+
+
+Ciclo: 141
+		div  $a1  $t6 
+
+
+Ciclo: 142
+		div  $a1  $t6 
+
+
+Ciclo: 143
+		div  $a1  $t6 
+
+
+Ciclo: 144
+		div  $a1  $t6 
+
+
+Ciclo: 145
+		div  $a1  $t6 
+
+
+Ciclo: 146
+		div  $a1  $t6 
+
+
+Ciclo: 147
+		div  $a1  $t6 
+
+
+Ciclo: 148
+		div  $a1  $t6 
+
+
+Ciclo: 149
+		div  $a1  $t6 
+
+
+Ciclo: 150
+		div  $a1  $t6 
+
+
+Ciclo: 151
+		div  $a1  $t6 
+
+
+Ciclo: 152
+		div  $a1  $t6 
+
+
+Ciclo: 153
+		div  $a1  $t6 
+
+
+Ciclo: 154
+		div  $a1  $t6 
+
+
+Ciclo: 155
+		div  $a1  $t6 
+
+
+Ciclo: 156
+		div  $a1  $t6 
+
+
+Ciclo: 157
+		div  $a1  $t6 
+
+
+Ciclo: 158
+		div  $a1  $t6 
+
+
+Ciclo: 159
+		div  $a1  $t6 
+
+
+Ciclo: 160
+		div  $a1  $t6 
+
+
+Ciclo: 161
+		div  $a1  $t6 
+
+
+Ciclo: 162
+		div  $a1  $t6 
+
+
+Ciclo: 163
+		div  $a1  $t6 
+
+
+Ciclo: 164
+		div  $a1  $t6 
+
+
+Ciclo: 165
+		div  $a1  $t6 
+
+
+Ciclo: 166
+		div  $a1  $t6 
+
+
+Ciclo: 167
+		div  $a1  $t6 
+
+
+Ciclo: 168
+		div  $a1  $t6 
+
+
+Ciclo: 169
+		div  $a1  $t6 
+
+
+Ciclo: 170
+		div  $a1  $t6 
+
+
+Ciclo: 171
+		div  $a1  $t6 
+
+
+Ciclo: 172
+		div  $a1  $t6 
+
+
+Ciclo: 173
+		div  $a1  $t6 
+
+
+Ciclo: 174
+		div  $a1  $t6 
+
+
+Ciclo: 175
+		div  $a1  $t6 
+
+
+Ciclo: 176
+		div  $a1  $t6 
+
+
+Ciclo: 177
+		div  $a1  $t6 
+
+
+Ciclo: 178
+		div  $a1  $t6 
+
+
+Ciclo: 179
+		div  $a1  $t6 
+
+
+Ciclo: 180
+		div  $a1  $t6 
+
+
+Ciclo: 181
+		div  $a1  $t6 
+
+
+Ciclo: 182
+		div  $a1  $t6 
+
+
+Ciclo: 183
+		div  $a1  $t6 
+
+
+Ciclo: 184
+		div  $a1  $t6 
+
+
+Ciclo: 185
+		div  $a1  $t6 
+
+
+Ciclo: 186
+		div  $a1  $t6 
+
+
+Ciclo: 187
+		div  $a1  $t6 
+
+
+Ciclo: 188
+		div  $a1  $t6 
+
+
+Ciclo: 189
+		div  $a1  $t6 
+
+
+Ciclo: 190
+		div  $a1  $t6 
+
+
+Ciclo: 191
+		div  $a1  $t6 
+
+
+Ciclo: 192
+		div  $a1  $t6 
+
+
+Ciclo: 193
+		div  $a1  $t6 
+
+
+Ciclo: 194
+		div  $a1  $t6 
+
+
+Ciclo: 195
+		div  $a1  $t6 
+
+
+Ciclo: 196
+		div  $a1  $t6 
+
+
+Ciclo: 197
+		div  $a1  $t6 
+
+
+Ciclo: 198
+		div  $a1  $t6 
+
+
+Ciclo: 199
+		div  $a1  $t6 
+
+
+Ciclo: 200
+		div  $a1  $t6 
+
+
+Ciclo: 201
+		div  $a1  $t6 
+
+
+Ciclo: 202
+		div  $a1  $t6 
+
+
+Ciclo: 203
+		div  $a1  $t6 
+
+
+Ciclo: 204
+		div  $a1  $t6 
+
+
+Ciclo: 205
+		div  $a1  $t6 
+
+
+Ciclo: 206
+		div  $a1  $t6 
+
+
+Ciclo: 207
+		div  $a1  $t6 
+
+
+Ciclo: 208
+		div  $a1  $t6 
+
+
+Ciclo: 209
+		div  $a1  $t6 
+
+
+Ciclo: 210
+		div  $a1  $t6 
+
+
+Ciclo: 211
+		div  $a1  $t6 
+
+
+Ciclo: 212
+		div  $a1  $t6 
+
+
+Ciclo: 213
+		div  $a1  $t6 
+
+
+Ciclo: 214
+		div  $a1  $t6 
+
+
+Ciclo: 215
+		div  $a1  $t6 
+
+
+Ciclo: 216
+		div  $a1  $t6 
+
+
+Ciclo: 217
+		div  $a1  $t6 
+
+
+Ciclo: 218
+		div  $a1  $t6 
+
+
+Ciclo: 219
+		div  $a1  $t6 
+
+
+Ciclo: 220
+		div  $a1  $t6 
+
+
+Ciclo: 221
+		div  $a1  $t6 
+
+
+Ciclo: 222
+		div  $a1  $t6 
+
+
+Ciclo: 223
+		div  $a1  $t6 
+
+
+Ciclo: 224
+		div  $a1  $t6 
+
+
+Ciclo: 225
+		div  $a1  $t6 
+
+
+Ciclo: 226
+		div  $a1  $t6 
+
+
+Ciclo: 227
+		div  $a1  $t6 
+
+
+Ciclo: 228
+		div  $a1  $t6 
+
+
+Ciclo: 229
+		div  $a1  $t6 
+
+
+Ciclo: 230
+		div  $a1  $t6 
+
+
+Ciclo: 231
+		div  $a1  $t6 
+
+
+Ciclo: 232
+		div  $a1  $t6 
+
+
+Ciclo: 233
+		div  $a1  $t6 
+
+
+Ciclo: 234
+		div  $a1  $t6 
+
+
+Ciclo: 235
+		div  $a1  $t6 
+
+
+Ciclo: 236
+		div  $a1  $t6 
+
+
+Ciclo: 237
+		div  $a1  $t6 
+
+
+Ciclo: 238
+		div  $a1  $t6 
+
+
+Ciclo: 239
+		div  $a1  $t6 
+
+
+Ciclo: 240
+		div  $a1  $t6 
+
+
+Ciclo: 241
+		div  $a1  $t6 
+
+
+Ciclo: 242
+		div  $a1  $t6 
+
+
+Ciclo: 243
+		div  $a1  $t6 
+
+
+Ciclo: 244
+		div  $a1  $t6 
+
+
+Ciclo: 245
+		div  $a1  $t6 
+
+
+Ciclo: 246
+		div  $a1  $t6 
+
+
+Ciclo: 247
+		div  $a1  $t6 
+
+
+Ciclo: 248
+		div  $a1  $t6 
+
+
+Ciclo: 249
+		div  $a1  $t6 
+
+
+Ciclo: 250
+		div  $a1  $t6 
+
+
+Ciclo: 251
+		div  $a1  $t6 
+
+
+Ciclo: 252
+		div  $a1  $t6 
+
+
+Ciclo: 253
+		div  $a1  $t6 
+
+
+Ciclo: 254
+		div  $a1  $t6 
+
+
+Ciclo: 255
+		div  $a1  $t6 
+
+
+Ciclo: 256
+		div  $a1  $t6 
+
+
+Ciclo: 257
+		div  $a1  $t6 
+
+
+Ciclo: 258
+		div  $a1  $t6 
+
+
+Ciclo: 259
+		div  $a1  $t6 
+
+
+Ciclo: 260
+		div  $a1  $t6 
+
+
+Ciclo: 261
+		div  $a1  $t6 
+
+
+Ciclo: 262
+		div  $a1  $t6 
+
+
+Ciclo: 263
+		div  $a1  $t6 
+
+
+Ciclo: 264
+		div  $a1  $t6 
+
+
+Ciclo: 265
+		div  $a1  $t6 
+
+
+Ciclo: 266
+		div  $a1  $t6 
+
+
+Ciclo: 267
+		div  $a1  $t6 
+
+
+Ciclo: 268
+		div  $a1  $t6 
+
+
+Ciclo: 269
+		div  $a1  $t6 
+
+
+Ciclo: 270
+		div  $a1  $t6 
+
+
+Ciclo: 271
+		div  $a1  $t6 
+
+
+Ciclo: 272
+		div  $a1  $t6 
+
+
+Ciclo: 273
+		div  $a1  $t6 
+
+
+Ciclo: 274
+		div  $a1  $t6 
+
+
+Ciclo: 275
+		div  $a1  $t6 
+
+
+Ciclo: 276
+		div  $a1  $t6 
+
+
+Ciclo: 277
+		div  $a1  $t6 
+
+
+Ciclo: 278
+		div  $a1  $t6 
+
+
+Ciclo: 279
+		div  $a1  $t6 
+
+
+Ciclo: 280
+		div  $a1  $t6 
+
+
+Ciclo: 281
+		div  $a1  $t6 
+
+
+Ciclo: 282
+		div  $a1  $t6 
+
+
+Ciclo: 283
+		div  $a1  $t6 
+
+
+Ciclo: 284
+		div  $a1  $t6 
+
+
+Ciclo: 285
+		div  $a1  $t6 
+
+
+Ciclo: 286
+		div  $a1  $t6 
+
+
+Ciclo: 287
+		div  $a1  $t6 
+
+
+Ciclo: 288
+		div  $a1  $t6 
+
+
+Ciclo: 289
+		div  $a1  $t6 
+
+
+Ciclo: 290
+		div  $a1  $t6 
+
+
+Ciclo: 291
+		div  $a1  $t6 
+
+
+Ciclo: 292
+		div  $a1  $t6 
+
+
+Ciclo: 293
+		div  $a1  $t6 
+
+
+Ciclo: 294
+		div  $a1  $t6 
+
+
+Ciclo: 295
+		div  $a1  $t6 
+
+
+Ciclo: 296
+		div  $a1  $t6 
+
+
+Ciclo: 297
+		div  $a1  $t6 
+
+
+Ciclo: 298
+		div  $a1  $t6 
+
+
+Ciclo: 299
+		div  $a1  $t6 
+
+
+Ciclo: 300
+		div  $a1  $t6 
+
+
+Ciclo: 301
+		div  $a1  $t6 
+
+
+Ciclo: 302
+		div  $a1  $t6 
+
+
+Ciclo: 303
+		div  $a1  $t6 
+
+
+Ciclo: 304
+		div  $a1  $t6 
+
+
+Ciclo: 305
+		div  $a1  $t6 
+
+
+Ciclo: 306
+		div  $a1  $t6 
+
+
+Ciclo: 307
+		div  $a1  $t6 
+
+
+Ciclo: 308
+		div  $a1  $t6 
+
+
+Ciclo: 309
+		div  $a1  $t6 
+
+
+Ciclo: 310
+		div  $a1  $t6 
+
+
+Ciclo: 311
+		div  $a1  $t6 
+
+
+Ciclo: 312
+		div  $a1  $t6 
+
+
+Ciclo: 313
+		div  $a1  $t6 
+
+
+Ciclo: 314
+		div  $a1  $t6 
+
+
+Ciclo: 315
+		div  $a1  $t6 
+
+
+Ciclo: 316
+		div  $a1  $t6 
+
+
+Ciclo: 317
+		div  $a1  $t6 
+
+
+Ciclo: 318
+		div  $a1  $t6 
+
+
+Ciclo: 319
+		div  $a1  $t6 
+
+
+Ciclo: 320
+		div  $a1  $t6 
+
+
+Ciclo: 321
+		div  $a1  $t6 
+
+
+Ciclo: 322
+		div  $a1  $t6 
+
+
+Ciclo: 323
+		div  $a1  $t6 
+
+
+Ciclo: 324
+		div  $a1  $t6 
+
+
+Ciclo: 325
+		div  $a1  $t6 
+
+
+Ciclo: 326
+		div  $a1  $t6 
+
+
+Ciclo: 327
+		div  $a1  $t6 
+
+
+Ciclo: 328
+		div  $a1  $t6 
+
+
+Ciclo: 329
+		div  $a1  $t6 
+
+
+Ciclo: 330
+		div  $a1  $t6 
+
+
+Ciclo: 331
+		div  $a1  $t6 
+
+
+Ciclo: 332
+		div  $a1  $t6 
+
+
+Ciclo: 333
+		div  $a1  $t6 
+
+
+Ciclo: 334
+		div  $a1  $t6 
+
+
+Ciclo: 335
+		div  $a1  $t6 
+
+
+Ciclo: 336
+		div  $a1  $t6 
+
+
+Ciclo: 337
+		div  $a1  $t6 
+
+
+Ciclo: 338
+		div  $a1  $t6 
+
+
+Ciclo: 339
+		div  $a1  $t6 
+
+
+Ciclo: 340
+		div  $a1  $t6 
+
+
+Ciclo: 341
+		div  $a1  $t6 
+
+
+Ciclo: 342
+		div  $a1  $t6 
+
+
+Ciclo: 343
+		div  $a1  $t6 
+
+
+Ciclo: 344
+		div  $a1  $t6 
+
+
+Ciclo: 345
+		div  $a1  $t6 
+
+
+Ciclo: 346
+		div  $a1  $t6 
+
+
+Ciclo: 347
+		div  $a1  $t6 
+
+
+Ciclo: 348
+		div  $a1  $t6 
+
+
+Ciclo: 349
+		div  $a1  $t6 
+
+
+Ciclo: 350
+		div  $a1  $t6 
+
+
+Ciclo: 351
+		div  $a1  $t6 
+
+
+Ciclo: 352
+		div  $a1  $t6 
+
+
+Ciclo: 353
+		div  $a1  $t6 
+
+
+Ciclo: 354
+		div  $a1  $t6 
+
+
+Ciclo: 355
+		div  $a1  $t6 
+
+
+Ciclo: 356
+		div  $a1  $t6 
+
+
+Ciclo: 357
+		div  $a1  $t6 
+
+
+Ciclo: 358
+		div  $a1  $t6 
+
+
+Ciclo: 359
+		div  $a1  $t6 
+
+
+Ciclo: 360
+		div  $a1  $t6 
+
+
+Ciclo: 361
+		div  $a1  $t6 
+
+
+Ciclo: 362
+		div  $a1  $t6 
+
+
+Ciclo: 363
+		div  $a1  $t6 
+
+
+Ciclo: 364
+		div  $a1  $t6 
+
+
+Ciclo: 365
+		div  $a1  $t6 
+
+
+Ciclo: 366
+		div  $a1  $t6 
+
+
+Ciclo: 367
+		div  $a1  $t6 
+
+
+Ciclo: 368
+		div  $a1  $t6 
+
+
+Ciclo: 369
+		div  $a1  $t6 
+
+
+Ciclo: 370
+		div  $a1  $t6 
+
+
+Ciclo: 371
+		div  $a1  $t6 
+
+
+Ciclo: 372
+		div  $a1  $t6 
+
+
+Ciclo: 373
+		div  $a1  $t6 
+
+
+Ciclo: 374
+		div  $a1  $t6 
+
+
+Ciclo: 375
+		div  $a1  $t6 
+
+
+Ciclo: 376
+		div  $a1  $t6 
+
+
+Ciclo: 377
+		div  $a1  $t6 
+
+
+Ciclo: 378
+		div  $a1  $t6 
+
+
+Ciclo: 379
+		div  $a1  $t6 
+
+
+Ciclo: 380
+		div  $a1  $t6 
+
+
+Ciclo: 381
+		div  $a1  $t6 
+
+
+Ciclo: 382
+		div  $a1  $t6 
+
+
+Ciclo: 383
+		div  $a1  $t6 
+
+
+Ciclo: 384
+		div  $a1  $t6 
+
+
+Ciclo: 385
+		div  $a1  $t6 
+
+
+Ciclo: 386
+		div  $a1  $t6 
+
+
+Ciclo: 387
+		div  $a1  $t6 
+
+
+Ciclo: 388
+		div  $a1  $t6 
+
+
+Ciclo: 389
+		div  $a1  $t6 
+
+
+Ciclo: 390
+		div  $a1  $t6 
+
+
+Ciclo: 391
+		div  $a1  $t6 
+
+
+Ciclo: 392
+		div  $a1  $t6 
+
+
+Ciclo: 393
+		div  $a1  $t6 
+
+
+Ciclo: 394
+		div  $a1  $t6 
+
+
+Ciclo: 395
+		div  $a1  $t6 
+
+
+Ciclo: 396
+		div  $a1  $t6 
+
+
+Ciclo: 397
+		div  $a1  $t6 
+
+
+Ciclo: 398
+		div  $a1  $t6 
+
+
+Ciclo: 399
+		div  $a1  $t6 
+
+
+Ciclo: 400
+		div  $a1  $t6 
+
+
+Ciclo: 401
+		div  $a1  $t6 
+
+
+Ciclo: 402
+		div  $a1  $t6 
+
+
+Ciclo: 403
+		div  $a1  $t6 
+
+
+Ciclo: 404
+		div  $a1  $t6 
+
+
+Ciclo: 405
+		div  $a1  $t6 
+
+
+Ciclo: 406
+		div  $a1  $t6 
+
+
+Ciclo: 407
+		div  $a1  $t6 
+
+
+Ciclo: 408
+		div  $a1  $t6 
+
+
+Ciclo: 409
+		div  $a1  $t6 
+
+
+Ciclo: 410
+		div  $a1  $t6 
+
+
+Ciclo: 411
+		div  $a1  $t6 
+
+
+Ciclo: 412
+		div  $a1  $t6 
+
+
+Ciclo: 413
+		div  $a1  $t6 
+
+
+Ciclo: 414
+		div  $a1  $t6 
+
+
+Ciclo: 415
+		div  $a1  $t6 
+
+
+Ciclo: 416
+		div  $a1  $t6 
+
+
+Ciclo: 417
+		div  $a1  $t6 
+
+
+Ciclo: 418
+		div  $a1  $t6 
+
+
+Ciclo: 419
+		div  $a1  $t6 
+
+
+Ciclo: 420
+		div  $a1  $t6 
+
+
+Ciclo: 421
+		div  $a1  $t6 
+
+
+Ciclo: 422
+		div  $a1  $t6 
+
+
+Ciclo: 423
+		div  $a1  $t6 
+
+
+Ciclo: 424
+		div  $a1  $t6 
+
+
+Ciclo: 425
+		div  $a1  $t6 
+
+
+Ciclo: 426
+		div  $a1  $t6 
+
+
+Ciclo: 427
+		div  $a1  $t6 
+
+
+Ciclo: 428
+		div  $a1  $t6 
+
+
+Ciclo: 429
+		div  $a1  $t6 
+
+
+Ciclo: 430
+		div  $a1  $t6 
+
+
+Ciclo: 431
+		div  $a1  $t6 
+
+
+Ciclo: 432
+		div  $a1  $t6 
+
+
+Ciclo: 433
+		div  $a1  $t6 
+
+
+Ciclo: 434
+		div  $a1  $t6 
+
+
+Ciclo: 435
+		div  $a1  $t6 
+
+
+Ciclo: 436
+		div  $a1  $t6 
+
+
+Ciclo: 437
+		div  $a1  $t6 
+
+
+Ciclo: 438
+		div  $a1  $t6 
+
+
+Ciclo: 439
+		div  $a1  $t6 
+
+
+Ciclo: 440
+		div  $a1  $t6 
+
+
+Ciclo: 441
+		div  $a1  $t6 
+
+
+Ciclo: 442
+		div  $a1  $t6 
+
+
+Ciclo: 443
+		div  $a1  $t6 
+
+
+Ciclo: 444
+		div  $a1  $t6 
+
+
+Ciclo: 445
+		div  $a1  $t6 
+
+
+Ciclo: 446
+		div  $a1  $t6 
+
+
+Ciclo: 447
+		div  $a1  $t6 
+
+
+Ciclo: 448
+		div  $a1  $t6 
+
+
+Ciclo: 449
+		div  $a1  $t6 
+
+
+Ciclo: 450
+		div  $a1  $t6 
+
+
+Ciclo: 451
+		div  $a1  $t6 
+
+
+Ciclo: 452
+		div  $a1  $t6 
+
+
+Ciclo: 453
+		div  $a1  $t6 
+
+
+Ciclo: 454
+		div  $a1  $t6 
+
+
+Ciclo: 455
+		div  $a1  $t6 
+
+
+Ciclo: 456
+		div  $a1  $t6 
+
+
+Ciclo: 457
+		div  $a1  $t6 
+
+
+Ciclo: 458
+		div  $a1  $t6 
+
+
+Ciclo: 459
+		div  $a1  $t6 
+
+
+Ciclo: 460
+		div  $a1  $t6 
+
+
+Ciclo: 461
+		div  $a1  $t6 
+
+
+Ciclo: 462
+		div  $a1  $t6 
+
+
+Ciclo: 463
+		div  $a1  $t6 
+
+
+Ciclo: 464
+		div  $a1  $t6 
+
+
+Ciclo: 465
+		div  $a1  $t6 
+
+
+Ciclo: 466
+		div  $a1  $t6 
+
+
+Ciclo: 467
+		div  $a1  $t6 
+
+
+Ciclo: 468
+		div  $a1  $t6 
+
+
+Ciclo: 469
+		div  $a1  $t6 
+
+
+Ciclo: 470
+		div  $a1  $t6 
+
+
+Ciclo: 471
+		div  $a1  $t6 
+
+
+Ciclo: 472
+		div  $a1  $t6 
+
+
+Ciclo: 473
+		div  $a1  $t6 
+
+
+Ciclo: 474
+		div  $a1  $t6 
+
+
+Ciclo: 475
+		div  $a1  $t6 
+
+
+Ciclo: 476
+		div  $a1  $t6 
+
+
+Ciclo: 477
+		div  $a1  $t6 
+
+
+Ciclo: 478
+		div  $a1  $t6 
+
+
+Ciclo: 479
+		div  $a1  $t6 
+
+
+Ciclo: 480
+		div  $a1  $t6 
+
+
+Ciclo: 481
+		div  $a1  $t6 
+
+
+Ciclo: 482
+		div  $a1  $t6 
+
+
+Ciclo: 483
+		div  $a1  $t6 
+
+
+Ciclo: 484
+		div  $a1  $t6 
+
+
+Ciclo: 485
+		div  $a1  $t6 
+
+
+Ciclo: 486
+		div  $a1  $t6 
+
+
+Ciclo: 487
+		div  $a1  $t6 
+
+
+Ciclo: 488
+		div  $a1  $t6 
+
+
+Ciclo: 489
+		div  $a1  $t6 
+
+
+Ciclo: 490
+		div  $a1  $t6 
+
+
+Ciclo: 491
+		div  $a1  $t6 
+
+
+Ciclo: 492
+		div  $a1  $t6 
+
+
+Ciclo: 493
+		div  $a1  $t6 
+
+
+Ciclo: 494
+		div  $a1  $t6 
+
+
+Ciclo: 495
+		div  $a1  $t6 
+
+
+Ciclo: 496
+		div  $a1  $t6 
+
+
+Ciclo: 497
+		div  $a1  $t6 
+
+
+Ciclo: 498
+		div  $a1  $t6 
+
+
+Ciclo: 499
+		div  $a1  $t6 
+
+
+Ciclo: 500
+		div  $a1  $t6 
+
+
+Ciclo: 501
+		div  $a1  $t6 
+
+
+Ciclo: 502
+		div  $a1  $t6 
+
+
+Ciclo: 503
+		div  $a1  $t6 
+
+
+Ciclo: 504
+		div  $a1  $t6 
+
+
+Ciclo: 505
+		div  $a1  $t6 
+
+
+Ciclo: 506
+		div  $a1  $t6 
+
+
+Ciclo: 507
+		div  $a1  $t6 
+
+
+Ciclo: 508
+		div  $a1  $t6 
+
+
+Ciclo: 509
+		div  $a1  $t6 
+
+
+Ciclo: 510
+		div  $a1  $t6 
+
+
+Ciclo: 511
+		div  $a1  $t6 
+
+
+Ciclo: 512
+		div  $a1  $t6 
+
+
+Ciclo: 513
+		div  $a1  $t6 
+
+
+Ciclo: 514
+		div  $a1  $t6 
+
+
+Ciclo: 515
+		div  $a1  $t6 
+
+
+Ciclo: 516
+		div  $a1  $t6 
+
+
+Ciclo: 517
+		div  $a1  $t6 
+
+
+Ciclo: 518
+		div  $a1  $t6 
+
+
+Ciclo: 519
+		div  $a1  $t6 
+
+
+Ciclo: 520
+		div  $a1  $t6 
+
+
+Ciclo: 521
+		div  $a1  $t6 
+
+
+Ciclo: 522
+		div  $a1  $t6 
+
+
+Ciclo: 523
+		div  $a1  $t6 
+
+
+Ciclo: 524
+		div  $a1  $t6 
+
+
+Ciclo: 525
+		div  $a1  $t6 
+
+
+Ciclo: 526
+		div  $a1  $t6 
+
+
+Ciclo: 527
+		div  $a1  $t6 
+
+
+Ciclo: 528
+		div  $a1  $t6 
+
+
+Ciclo: 529
+		div  $a1  $t6 
+
+
+Ciclo: 530
+		div  $a1  $t6 
+
+
+Ciclo: 531
+		div  $a1  $t6 
+
+
+Ciclo: 532
+		div  $a1  $t6 
+
+
+Ciclo: 533
+		div  $a1  $t6 
+
+
+Ciclo: 534
+		div  $a1  $t6 
+
+
+Ciclo: 535
+		div  $a1  $t6 
+
+
+Ciclo: 536
+		div  $a1  $t6 
+
+
+Ciclo: 537
+		div  $a1  $t6 
+
+
+Ciclo: 538
+		div  $a1  $t6 
+
+
+Ciclo: 539
+		div  $a1  $t6 
+
+
+Ciclo: 540
+		div  $a1  $t6 
+
+
+Ciclo: 541
+		div  $a1  $t6 
+
+
+Ciclo: 542
+		div  $a1  $t6 
+
+
+Ciclo: 543
+		div  $a1  $t6 
+
+
+Ciclo: 544
+		div  $a1  $t6 
+
+
+Ciclo: 545
+		div  $a1  $t6 
+
+
+Ciclo: 546
+		div  $a1  $t6 
+
+
+Ciclo: 547
+		div  $a1  $t6 
+
+
+Ciclo: 548
+		div  $a1  $t6 
+
+
+Ciclo: 549
+		div  $a1  $t6 
+
+
+Ciclo: 550
+		div  $a1  $t6 
+
+
+Ciclo: 551
+		div  $a1  $t6 
+
+
+Ciclo: 552
+		div  $a1  $t6 
+
+
+Ciclo: 553
+		div  $a1  $t6 
+
+
+Ciclo: 554
+		div  $a1  $t6 
+
+
+Ciclo: 555
+		div  $a1  $t6 
+
+
+Ciclo: 556
+		div  $a1  $t6 
+
+
+Ciclo: 557
+		div  $a1  $t6 
+
+
+Ciclo: 558
+		div  $a1  $t6 
+
+
+Ciclo: 559
+		div  $a1  $t6 
+
+
+Ciclo: 560
+		div  $a1  $t6 
+
+
+Ciclo: 561
+		div  $a1  $t6 
+
+
+Ciclo: 562
+		div  $a1  $t6 
+
+
+Ciclo: 563
+		div  $a1  $t6 
+
+
+Ciclo: 564
+		div  $a1  $t6 
+
+
+Ciclo: 565
+		div  $a1  $t6 
+
+
+Ciclo: 566
+		div  $a1  $t6 
+
+
+Ciclo: 567
+		div  $a1  $t6 
+
+
+Ciclo: 568
+		div  $a1  $t6 
+
+
+Ciclo: 569
+		div  $a1  $t6 
+
+
+Ciclo: 570
+		div  $a1  $t6 
+
+
+Ciclo: 571
+		div  $a1  $t6 
+
+
+Ciclo: 572
+		div  $a1  $t6 
+
+
+Ciclo: 573
+		div  $a1  $t6 
+
+
+Ciclo: 574
+		div  $a1  $t6 
+
+
+Ciclo: 575
+		div  $a1  $t6 
+
+
+Ciclo: 576
+		div  $a1  $t6 
+
+
+Ciclo: 577
+		div  $a1  $t6 
+
+
+Ciclo: 578
+		div  $a1  $t6 
+
+
+Ciclo: 579
+		div  $a1  $t6 
+
+
+Ciclo: 580
+		div  $a1  $t6 
+
+
+Ciclo: 581
+		div  $a1  $t6 
+
+
+Ciclo: 582
+		div  $a1  $t6 
+
+
+Ciclo: 583
+		div  $a1  $t6 
+
+
+Ciclo: 584
+		div  $a1  $t6 
+
+
+Ciclo: 585
+		div  $a1  $t6 
+
+
+Ciclo: 586
+		div  $a1  $t6 
+
+
+Ciclo: 587
+		div  $a1  $t6 
+
+
+Ciclo: 588
+		div  $a1  $t6 
+
+
+Ciclo: 589
+		div  $a1  $t6 
+
+
+Ciclo: 590
+		div  $a1  $t6 
+
+
+Ciclo: 591
+		div  $a1  $t6 
+
+
+Ciclo: 592
+		div  $a1  $t6 
+
+
+Ciclo: 593
+		div  $a1  $t6 
+
+
+Ciclo: 594
+		div  $a1  $t6 
+
+
+Ciclo: 595
+		div  $a1  $t6 
+
+
+Ciclo: 596
+		div  $a1  $t6 
+
+
+Ciclo: 597
+		div  $a1  $t6 
+
+
+Ciclo: 598
+		div  $a1  $t6 
+
+
+Ciclo: 599
+		div  $a1  $t6 
+
+
+Ciclo: 600
+		div  $a1  $t6 
+
+
+Ciclo: 601
+		div  $a1  $t6 
+
+
+Ciclo: 602
+		div  $a1  $t6 
+
+
+Ciclo: 603
+		div  $a1  $t6 
+
+
+Ciclo: 604
+		div  $a1  $t6 
+
+
+Ciclo: 605
+		div  $a1  $t6 
+
+
+Ciclo: 606
+		div  $a1  $t6 
+
+
+Ciclo: 607
+		div  $a1  $t6 
+
+
+Ciclo: 608
+		div  $a1  $t6 
+
+
+Ciclo: 609
+		div  $a1  $t6 
+
+
+Ciclo: 610
+		div  $a1  $t6 
+
+
+Ciclo: 611
+		div  $a1  $t6 
+
+
+Ciclo: 612
+		div  $a1  $t6 
+
+
+Ciclo: 613
+		div  $a1  $t6 
+
+
+Ciclo: 614
+		div  $a1  $t6 
+
+
+Ciclo: 615
+		div  $a1  $t6 
+
+
+Ciclo: 616
+		div  $a1  $t6 
+
+
+Ciclo: 617
+		div  $a1  $t6 
+
+
+Ciclo: 618
+		div  $a1  $t6 
+
+
+Ciclo: 619
+		div  $a1  $t6 
+
+
+Ciclo: 620
+		div  $a1  $t6 
+
+
+Ciclo: 621
+		div  $a1  $t6 
+
+
+Ciclo: 622
+		div  $a1  $t6 
+
+
+Ciclo: 623
+		div  $a1  $t6 
+
+
+Ciclo: 624
+		div  $a1  $t6 
+
+
+Ciclo: 625
+		div  $a1  $t6 
+
+
+Ciclo: 626
+		div  $a1  $t6 
+
+
+Ciclo: 627
+		div  $a1  $t6 
+
+
+Ciclo: 628
+		div  $a1  $t6 
+
+
+Ciclo: 629
+		div  $a1  $t6 
+
+
+Ciclo: 630
+		div  $a1  $t6 
+
+
+Ciclo: 631
+		div  $a1  $t6 
+
+
+Ciclo: 632
+		div  $a1  $t6 
+
+
+Ciclo: 633
+		div  $a1  $t6 
+
+
+Ciclo: 634
+		div  $a1  $t6 
+
+
+Ciclo: 635
+		div  $a1  $t6 
+
+
+Ciclo: 636
+		div  $a1  $t6 
+
+
+Ciclo: 637
+		div  $a1  $t6 
+
+
+Ciclo: 638
+		div  $a1  $t6 
+
+
+Ciclo: 639
+		div  $a1  $t6 
+
+
+Ciclo: 640
+		div  $a1  $t6 
+
+
+Ciclo: 641
+		div  $a1  $t6 
+
+
+Ciclo: 642
+		div  $a1  $t6 
+
+
+Ciclo: 643
+		div  $a1  $t6 
+
+
+Ciclo: 644
+		div  $a1  $t6 
+
+
+Ciclo: 645
+		div  $a1  $t6 
+
+
+Ciclo: 646
+		div  $a1  $t6 
+
+
+Ciclo: 647
+		div  $a1  $t6 
+
+
+Ciclo: 648
+		div  $a1  $t6 
+
+
+Ciclo: 649
+		div  $a1  $t6 
+
+
+Ciclo: 650
+		div  $a1  $t6 
+
+
+Ciclo: 651
+		div  $a1  $t6 
+
+
+Ciclo: 652
+		div  $a1  $t6 
+
+
+Ciclo: 653
+		div  $a1  $t6 
+
+
+Ciclo: 654
+		div  $a1  $t6 
+
+
+Ciclo: 655
+		div  $a1  $t6 
+
+
+Ciclo: 656
+		div  $a1  $t6 
+
+
+Ciclo: 657
+		div  $a1  $t6 
+
+
+Ciclo: 658
+		div  $a1  $t6 
+
+
+Ciclo: 659
+		div  $a1  $t6 
+
+
+Ciclo: 660
+		div  $a1  $t6 
+
+
+Ciclo: 661
+		div  $a1  $t6 
+
+
+Ciclo: 662
+		div  $a1  $t6 
+
+
+Ciclo: 663
+		div  $a1  $t6 
+
+
+Ciclo: 664
+		div  $a1  $t6 
+
+
+Ciclo: 665
+		div  $a1  $t6 
+
+
+Ciclo: 666
+		div  $a1  $t6 
+
+
+Ciclo: 667
+		div  $a1  $t6 
+
+
+Ciclo: 668
+		div  $a1  $t6 
+
+
+Ciclo: 669
+		div  $a1  $t6 
+
+
+Ciclo: 670
+		div  $a1  $t6 
+
+
+Ciclo: 671
+		div  $a1  $t6 
+
+
+Ciclo: 672
+		div  $a1  $t6 
+
+
+Ciclo: 673
+		div  $a1  $t6 
+
+
+Ciclo: 674
+		div  $a1  $t6 
+
+
+Ciclo: 675
+		div  $a1  $t6 
+
+
+Ciclo: 676
+		div  $a1  $t6 
+
+
+Ciclo: 677
+		div  $a1  $t6 
+
+
+Ciclo: 678
+		div  $a1  $t6 
+
+
+Ciclo: 679
+		div  $a1  $t6 
+
+
+Ciclo: 680
+		div  $a1  $t6 
+
+
+Ciclo: 681
+		div  $a1  $t6 
+
+
+Ciclo: 682
+		div  $a1  $t6 
+
+
+Ciclo: 683
+		div  $a1  $t6 
+
+
+Ciclo: 684
+		div  $a1  $t6 
+
+
+Ciclo: 685
+		div  $a1  $t6 
+
+
+Ciclo: 686
+		div  $a1  $t6 
+
+
+Ciclo: 687
+		div  $a1  $t6 
+
+
+Ciclo: 688
+		div  $a1  $t6 
+
+
+Ciclo: 689
+		div  $a1  $t6 
+
+
+Ciclo: 690
+		div  $a1  $t6 
+
+
+Ciclo: 691
+		div  $a1  $t6 
+
+
+Ciclo: 692
+		div  $a1  $t6 
+
+
+Ciclo: 693
+		div  $a1  $t6 
+
+
+Ciclo: 694
+		div  $a1  $t6 
+
+
+Ciclo: 695
+		div  $a1  $t6 
+
+
+Ciclo: 696
+		div  $a1  $t6 
+
+
+Ciclo: 697
+		div  $a1  $t6 
+
+
+Ciclo: 698
+		div  $a1  $t6 
+
+
+Ciclo: 699
+		div  $a1  $t6 
+
+
+Ciclo: 700
+		div  $a1  $t6 
+
+
+Ciclo: 701
+		div  $a1  $t6 
+
+
+Ciclo: 702
+		div  $a1  $t6 
+
+
+Ciclo: 703
+		div  $a1  $t6 
+
+
+Ciclo: 704
+		div  $a1  $t6 
+
+
+Ciclo: 705
+		div  $a1  $t6 
+
+
+Ciclo: 706
+		div  $a1  $t6 
+
+
+Ciclo: 707
+		div  $a1  $t6 
+
+
+Ciclo: 708
+		div  $a1  $t6 
+
+
+Ciclo: 709
+		div  $a1  $t6 
+
+
+Ciclo: 710
+		div  $a1  $t6 
+
+
+Ciclo: 711
+		div  $a1  $t6 
+
+
+Ciclo: 712
+		div  $a1  $t6 
+
+
+Ciclo: 713
+		div  $a1  $t6 
+
+
+Ciclo: 714
+		div  $a1  $t6 
+
+
+Ciclo: 715
+		div  $a1  $t6 
+
+
+Ciclo: 716
+		div  $a1  $t6 
+
+
+Ciclo: 717
+		div  $a1  $t6 
+
+
+Ciclo: 718
+		div  $a1  $t6 
+
+
+Ciclo: 719
+		div  $a1  $t6 
+
+
+Ciclo: 720
+		div  $a1  $t6 
+
+
+Ciclo: 721
+		div  $a1  $t6 
+
+
+Ciclo: 722
+		div  $a1  $t6 
+
+
+Ciclo: 723
+		div  $a1  $t6 
+
+
+Ciclo: 724
+		div  $a1  $t6 
+
+
+Ciclo: 725
+		div  $a1  $t6 
+
+
+Ciclo: 726
+		div  $a1  $t6 
+
+
+Ciclo: 727
+		div  $a1  $t6 
+
+
+Ciclo: 728
+		div  $a1  $t6 
+
+
+Ciclo: 729
+		div  $a1  $t6 
+
+
+Ciclo: 730
+		div  $a1  $t6 
+
+
+Ciclo: 731
+		div  $a1  $t6 
+
+
+Ciclo: 732
+		div  $a1  $t6 
+
+
+Ciclo: 733
+		div  $a1  $t6 
+
+
+Ciclo: 734
+		div  $a1  $t6 
+
+
+Ciclo: 735
+		div  $a1  $t6 
+
+
+Ciclo: 736
+		div  $a1  $t6 
+
+
+Ciclo: 737
+		div  $a1  $t6 
+
+
+Ciclo: 738
+		div  $a1  $t6 
+
+
+Ciclo: 739
+		div  $a1  $t6 
+
+
+Ciclo: 740
+		div  $a1  $t6 
+
+
+Ciclo: 741
+		div  $a1  $t6 
+
+
+Ciclo: 742
+		div  $a1  $t6 
+
+
+Ciclo: 743
+		div  $a1  $t6 
+
+
+Ciclo: 744
+		div  $a1  $t6 
+
+
+Ciclo: 745
+		div  $a1  $t6 
+
+
+Ciclo: 746
+		div  $a1  $t6 
+
+
+Ciclo: 747
+		div  $a1  $t6 
+
+
+Ciclo: 748
+		div  $a1  $t6 
+
+
+Ciclo: 749
+		div  $a1  $t6 
+
+
+Ciclo: 750
+		div  $a1  $t6 
+
+
+Ciclo: 751
+		div  $a1  $t6 
+
+
+Ciclo: 752
+		div  $a1  $t6 
+
+
+Ciclo: 753
+		div  $a1  $t6 
+
+
+Ciclo: 754
+		div  $a1  $t6 
+
+
+Ciclo: 755
+		div  $a1  $t6 
+
+
+Ciclo: 756
+		div  $a1  $t6 
+
+
+Ciclo: 757
+		div  $a1  $t6 
+
+
+Ciclo: 758
+		div  $a1  $t6 
+
+
+Ciclo: 759
+		div  $a1  $t6 
+
+
+Ciclo: 760
+		div  $a1  $t6 
+
+
+Ciclo: 761
+		div  $a1  $t6 
+
+
+Ciclo: 762
+		div  $a1  $t6 
+
+
+Ciclo: 763
+		div  $a1  $t6 
+
+
+Ciclo: 764
+		div  $a1  $t6 
+
+
+Ciclo: 765
+		div  $a1  $t6 
+
+
+Ciclo: 766
+		div  $a1  $t6 
+
+
+Ciclo: 767
+		div  $a1  $t6 
+
+
+Ciclo: 768
+		div  $a1  $t6 
+
+
+Ciclo: 769
+		div  $a1  $t6 
+
+
+Ciclo: 770
+		div  $a1  $t6 
+
+
+Ciclo: 771
+		div  $a1  $t6 
+
+
+Ciclo: 772
+		div  $a1  $t6 
+
+
+Ciclo: 773
+		div  $a1  $t6 
+
+
+Ciclo: 774
+		div  $a1  $t6 
+
+
+Ciclo: 775
+		div  $a1  $t6 
+
+
+Ciclo: 776
+		div  $a1  $t6 
+
+
+Ciclo: 777
+		div  $a1  $t6 
+
+
+Ciclo: 778
+		div  $a1  $t6 
+
+
+Ciclo: 779
+		div  $a1  $t6 
+
+
+Ciclo: 780
+		div  $a1  $t6 
+
+
+Ciclo: 781
+		div  $a1  $t6 
+
+
+Ciclo: 782
+		div  $a1  $t6 
+
+
+Ciclo: 783
+		div  $a1  $t6 
+
+
+Ciclo: 784
+		div  $a1  $t6 
+
+
+Ciclo: 785
+		div  $a1  $t6 
+
+
+Ciclo: 786
+		div  $a1  $t6 
+
+
+Ciclo: 787
+		div  $a1  $t6 
+
+
+Ciclo: 788
+		div  $a1  $t6 
+
+
+Ciclo: 789
+		div  $a1  $t6 
+
+
+Ciclo: 790
+		div  $a1  $t6 
+
+
+Ciclo: 791
+		div  $a1  $t6 
+
+
+Ciclo: 792
+		div  $a1  $t6 
+
+
+Ciclo: 793
+		div  $a1  $t6 
+
+
+Ciclo: 794
+		div  $a1  $t6 
+
+
+Ciclo: 795
+		div  $a1  $t6 
+
+
+Ciclo: 796
+		div  $a1  $t6 
+
+
+Ciclo: 797
+		div  $a1  $t6 
+
+
+Ciclo: 798
+		div  $a1  $t6 
+
+
+Ciclo: 799
+		div  $a1  $t6 
+
+
+Ciclo: 800
+		div  $a1  $t6 
+
+
+Ciclo: 801
+		div  $a1  $t6 
+
+
+Ciclo: 802
+		div  $a1  $t6 
+
+
+Ciclo: 803
+		div  $a1  $t6 
+
+
+Ciclo: 804
+		div  $a1  $t6 
+
+
+Ciclo: 805
+		div  $a1  $t6 
+
+
+Ciclo: 806
+		div  $a1  $t6 
+
+
+Ciclo: 807
+		div  $a1  $t6 
+
+
+Ciclo: 808
+		div  $a1  $t6 
+
+
+Ciclo: 809
+		div  $a1  $t6 
+
+
+Ciclo: 810
+		div  $a1  $t6 
+
+
+Ciclo: 811
+		div  $a1  $t6 
+
+
+Ciclo: 812
+		div  $a1  $t6 
+
+
+Ciclo: 813
+		div  $a1  $t6 
+
+
+Ciclo: 814
+		div  $a1  $t6 
+
+
+Ciclo: 815
+		div  $a1  $t6 
+
+
+Ciclo: 816
+		div  $a1  $t6 
+
+
+Ciclo: 817
+		div  $a1  $t6 
+
+
+Ciclo: 818
+		div  $a1  $t6 
+
+
+Ciclo: 819
+		div  $a1  $t6 
+
+
+Ciclo: 820
+		div  $a1  $t6 
+
+
+Ciclo: 821
+		div  $a1  $t6 
+
+
+Ciclo: 822
+		div  $a1  $t6 
+
+
+Ciclo: 823
+		div  $a1  $t6 
+
+
+Ciclo: 824
+		div  $a1  $t6 
+
+
+Ciclo: 825
+		div  $a1  $t6 
+
+
+Ciclo: 826
+		div  $a1  $t6 
+
+
+Ciclo: 827
+		div  $a1  $t6 
+
+
+Ciclo: 828
+		div  $a1  $t6 
+
+
+Ciclo: 829
+		div  $a1  $t6 
+
+
+Ciclo: 830
+		div  $a1  $t6 
+
+
+Ciclo: 831
+		div  $a1  $t6 
+
+
+Ciclo: 832
+		div  $a1  $t6 
+
+
+Ciclo: 833
+		div  $a1  $t6 
+
+
+Ciclo: 834
+		div  $a1  $t6 
+
+
+Ciclo: 835
+		div  $a1  $t6 
+
+
+Ciclo: 836
+		div  $a1  $t6 
+
+
+Ciclo: 837
+		div  $a1  $t6 
+
+
+Ciclo: 838
+		div  $a1  $t6 
+
+
+Ciclo: 839
+		div  $a1  $t6 
+
+
+Ciclo: 840
+		div  $a1  $t6 
+
+
+Ciclo: 841
+		div  $a1  $t6 
+
+
+Ciclo: 842
+		div  $a1  $t6 
+
+
+Ciclo: 843
+		div  $a1  $t6 
+
+
+Ciclo: 844
+		div  $a1  $t6 
+
+
+Ciclo: 845
+		div  $a1  $t6 
+
+
+Ciclo: 846
+		div  $a1  $t6 
+
+
+Ciclo: 847
+		div  $a1  $t6 
+
+
+Ciclo: 848
+		div  $a1  $t6 
+
+
+Ciclo: 849
+		div  $a1  $t6 
+
+
+Ciclo: 850
+		div  $a1  $t6 
+
+
+Ciclo: 851
+		div  $a1  $t6 
+
+
+Ciclo: 852
+		div  $a1  $t6 
+
+
+Ciclo: 853
+		div  $a1  $t6 
+
+
+Ciclo: 854
+		div  $a1  $t6 
+
+
+Ciclo: 855
+		div  $a1  $t6 
+
+
+Ciclo: 856
+		div  $a1  $t6 
+
+
+Ciclo: 857
+		div  $a1  $t6 
+
+
+Ciclo: 858
+		div  $a1  $t6 
+
+
+Ciclo: 859
+		div  $a1  $t6 
+
+
+Ciclo: 860
+		div  $a1  $t6 
+
+
+Ciclo: 861
+		div  $a1  $t6 
+
+
+Ciclo: 862
+		div  $a1  $t6 
+
+
+Ciclo: 863
+		div  $a1  $t6 
+
+
+Ciclo: 864
+		div  $a1  $t6 
+
+
+Ciclo: 865
+		div  $a1  $t6 
+
+
+Ciclo: 866
+		div  $a1  $t6 
+
+
+Ciclo: 867
+		div  $a1  $t6 
+
+
+Ciclo: 868
+		div  $a1  $t6 
+
+
+Ciclo: 869
+		div  $a1  $t6 
+
+
+Ciclo: 870
+		div  $a1  $t6 
+
+
+Ciclo: 871
+		div  $a1  $t6 
+
+
+Ciclo: 872
+		div  $a1  $t6 
+
+
+Ciclo: 873
+		div  $a1  $t6 
+
+
+Ciclo: 874
+		div  $a1  $t6 
+
+
+Ciclo: 875
+		div  $a1  $t6 
+
+
+Ciclo: 876
+		div  $a1  $t6 
+
+
+Ciclo: 877
+		div  $a1  $t6 
+
+
+Ciclo: 878
+		div  $a1  $t6 
+
+
+Ciclo: 879
+		div  $a1  $t6 
+
+
+Ciclo: 880
+		div  $a1  $t6 
+
+
+Ciclo: 881
+		div  $a1  $t6 
+
+
+Ciclo: 882
+		div  $a1  $t6 
+
+
+Ciclo: 883
+		div  $a1  $t6 
+
+
+Ciclo: 884
+		div  $a1  $t6 
+
+
+Ciclo: 885
+		div  $a1  $t6 
+
+
+Ciclo: 886
+		div  $a1  $t6 
+
+
+Ciclo: 887
+		div  $a1  $t6 
+
+
+Ciclo: 888
+		div  $a1  $t6 
+
+
+Ciclo: 889
+		div  $a1  $t6 
+
+
+Ciclo: 890
+		div  $a1  $t6 
+
+
+Ciclo: 891
+		div  $a1  $t6 
+
+
+Ciclo: 892
+		div  $a1  $t6 
+
+
+Ciclo: 893
+		div  $a1  $t6 
+
+
+Ciclo: 894
+		div  $a1  $t6 
+
+
+Ciclo: 895
+		div  $a1  $t6 
+
+
+Ciclo: 896
+		div  $a1  $t6 
+
+
+Ciclo: 897
+		div  $a1  $t6 
+
+
+Ciclo: 898
+		div  $a1  $t6 
+
+
+Ciclo: 899
+		div  $a1  $t6 
+
+
+Ciclo: 900
+		div  $a1  $t6 
+
+
+Ciclo: 901
+		div  $a1  $t6 
+
+
+Ciclo: 902
+		div  $a1  $t6 
+
+
+Ciclo: 903
+		div  $a1  $t6 
+
+
+Ciclo: 904
+		div  $a1  $t6 
+
+
+Ciclo: 905
+		div  $a1  $t6 
+
+
+Ciclo: 906
+		div  $a1  $t6 
+
+
+Ciclo: 907
+		div  $a1  $t6 
+
+
+Ciclo: 908
+		div  $a1  $t6 
+
+
+Ciclo: 909
+		div  $a1  $t6 
+
+
+Ciclo: 910
+		div  $a1  $t6 
+
+
+Ciclo: 911
+		div  $a1  $t6 
+
+
+Ciclo: 912
+		div  $a1  $t6 
+
+
+Ciclo: 913
+		div  $a1  $t6 
+
+
+Ciclo: 914
+		div  $a1  $t6 
+
+
+Ciclo: 915
+		div  $a1  $t6 
+
+
+Ciclo: 916
+		div  $a1  $t6 
+
+
+Ciclo: 917
+		div  $a1  $t6 
+
+
+Ciclo: 918
+		div  $a1  $t6 
+
+
+Ciclo: 919
+		div  $a1  $t6 
+
+
+Ciclo: 920
+		div  $a1  $t6 
+
+
+Ciclo: 921
+		div  $a1  $t6 
+
+
+Ciclo: 922
+		div  $a1  $t6 
+
+
+Ciclo: 923
+		div  $a1  $t6 
+
+
+Ciclo: 924
+		div  $a1  $t6 
+
+
+Ciclo: 925
+		div  $a1  $t6 
+
+
+Ciclo: 926
+		div  $a1  $t6 
+
+
+Ciclo: 927
+		div  $a1  $t6 
+
+
+Ciclo: 928
+		div  $a1  $t6 
+
+
+Ciclo: 929
+		div  $a1  $t6 
+
+
+Ciclo: 930
+		div  $a1  $t6 
+
+
+Ciclo: 931
+		div  $a1  $t6 
+
+
+Ciclo: 932
+		div  $a1  $t6 
+
+
+Ciclo: 933
+		div  $a1  $t6 
+
+
+Ciclo: 934
+		div  $a1  $t6 
+
+
+Ciclo: 935
+		div  $a1  $t6 
+
+
+Ciclo: 936
+		div  $a1  $t6 
+
+
+Ciclo: 937
+		div  $a1  $t6 
+
+
+Ciclo: 938
+		div  $a1  $t6 
+
+
+Ciclo: 939
+		div  $a1  $t6 
+
+
+Ciclo: 940
+		div  $a1  $t6 
+
+
+Ciclo: 941
+		div  $a1  $t6 
+
+
+Ciclo: 942
+		div  $a1  $t6 
+
+
+Ciclo: 943
+		div  $a1  $t6 
+
+
+Ciclo: 944
+		div  $a1  $t6 
+
+
+Ciclo: 945
+		div  $a1  $t6 
+
+
+Ciclo: 946
+		div  $a1  $t6 
+
+
+Ciclo: 947
+		div  $a1  $t6 
+
+
+Ciclo: 948
+		div  $a1  $t6 
+
+
+Ciclo: 949
+		div  $a1  $t6 
+
+
+Ciclo: 950
+		div  $a1  $t6 
+
+
+Ciclo: 951
+		div  $a1  $t6 
+
+
+Ciclo: 952
+		div  $a1  $t6 
+
+
+Ciclo: 953
+		div  $a1  $t6 
+
+
+Ciclo: 954
+		div  $a1  $t6 
+
+
+Ciclo: 955
+		div  $a1  $t6 
+
+
+Ciclo: 956
+		div  $a1  $t6 
+
+
+Ciclo: 957
+		div  $a1  $t6 
+
+
+Ciclo: 958
+		div  $a1  $t6 
+
+
+Ciclo: 959
+		div  $a1  $t6 
+
+
+Ciclo: 960
+		div  $a1  $t6 
+
+
+Ciclo: 961
+		div  $a1  $t6 
+
+
+Ciclo: 962
+		div  $a1  $t6 
+
+
+Ciclo: 963
+		div  $a1  $t6 
+
+
+Ciclo: 964
+		div  $a1  $t6 
+
+
+Ciclo: 965
+		div  $a1  $t6 
+
+
+Ciclo: 966
+		div  $a1  $t6 
+
+
+Ciclo: 967
+		div  $a1  $t6 
+
+
+Ciclo: 968
+		div  $a1  $t6 
+
+
+Ciclo: 969
+		div  $a1  $t6 
+
+
+Ciclo: 970
+		div  $a1  $t6 
+
+
+Ciclo: 971
+		div  $a1  $t6 
+
+
+Ciclo: 972
+		div  $a1  $t6 
+
+
+Ciclo: 973
+		div  $a1  $t6 
+
+
+Ciclo: 974
+		div  $a1  $t6 
+
+
+Ciclo: 975
+		div  $a1  $t6 
+
+
+Ciclo: 976
+		div  $a1  $t6 
+
+
+Ciclo: 977
+		div  $a1  $t6 
+
+
+Ciclo: 978
+		div  $a1  $t6 
+
+
+Ciclo: 979
+		div  $a1  $t6 
+
+
+Ciclo: 980
+		div  $a1  $t6 
+
+
+Ciclo: 981
+		div  $a1  $t6 
+
+
+Ciclo: 982
+		div  $a1  $t6 
+
+
+Ciclo: 983
+		div  $a1  $t6 
+
+
+Ciclo: 984
+		div  $a1  $t6 
+
+
+Ciclo: 985
+		div  $a1  $t6 
+
+
+Ciclo: 986
+		div  $a1  $t6 
+
+
+Ciclo: 987
+		div  $a1  $t6 
+
+
+Ciclo: 988
+		div  $a1  $t6 
+
+
+Ciclo: 989
+		div  $a1  $t6 
+
+
+Ciclo: 990
+		div  $a1  $t6 
+
+
+Ciclo: 991
+		div  $a1  $t6 
+
+
+Ciclo: 992
+		div  $a1  $t6 
+
+
+Ciclo: 993
+		div  $a1  $t6 
+
+
+Ciclo: 994
+		div  $a1  $t6 
+
+
+Ciclo: 995
+		div  $a1  $t6 
+
+
+Ciclo: 996
+		div  $a1  $t6 
+
+
+Ciclo: 997
+		div  $a1  $t6 
+
+
+Ciclo: 998
+		div  $a1  $t6 
+
+
+Ciclo: 999
+		div  $a1  $t6 
+
+
+Ciclo: 1000
+		div  $a1  $t6 
+
+
+Ciclo: 1001
+		div  $a1  $t6 
+
+
+Ciclo: 1002
+		div  $a1  $t6 
+
+
+Ciclo: 1003
+		div  $a1  $t6 
+
+
+Ciclo: 1004
+		div  $a1  $t6 
+
+
+Ciclo: 1005
+		div  $a1  $t6 
+
+
+Ciclo: 1006
+		div  $a1  $t6 
+
+
+Ciclo: 1007
+		div  $a1  $t6 
+
+
+Ciclo: 1008
+		div  $a1  $t6 
+
+
+Ciclo: 1009
+		div  $a1  $t6 
+
+
+Ciclo: 1010
+		div  $a1  $t6 
+
+
+Ciclo: 1011
+		div  $a1  $t6 
+
+
+Ciclo: 1012
+		div  $a1  $t6 
+
+
+Ciclo: 1013
+		div  $a1  $t6 
+
+
+Ciclo: 1014
+		div  $a1  $t6 
+
+
+Ciclo: 1015
+		div  $a1  $t6 
+
+
+Ciclo: 1016
+		div  $a1  $t6 
+
+
+Ciclo: 1017
+		div  $a1  $t6 
+
+
+Ciclo: 1018
+		div  $a1  $t6 
+
+
+Ciclo: 1019
+		div  $a1  $t6 
+
+
+Ciclo: 1020
+		div  $a1  $t6 
+
+
+Ciclo: 1021
+		div  $a1  $t6 
+
+
+Ciclo: 1022
+		div  $a1  $t6 
+
+
+Ciclo: 1023
+		div  $a1  $t6 
+
+
+Ciclo: 1024
+		div  $a1  $t6 
+
+
+Ciclo: 1025
+		div  $a1  $t6 
+
+
+Ciclo: 1026
+		div  $a1  $t6 
+
+
+Ciclo: 1027
+		div  $a1  $t6 
+
+
+Ciclo: 1028
+		div  $a1  $t6 
+
+
+Ciclo: 1029
+		div  $a1  $t6 
+
+
+Ciclo: 1030
+		div  $a1  $t6 
+
+
+Ciclo: 1031
+		div  $a1  $t6 
+
+
+Ciclo: 1032
+		div  $a1  $t6 
+
+
+Ciclo: 1033
+		div  $a1  $t6 
+
+
+Ciclo: 1034
+		div  $a1  $t6 
+
+
+Ciclo: 1035
+		div  $a1  $t6 
+
+
+Ciclo: 1036
+		div  $a1  $t6 
+
+
+Ciclo: 1037
+		div  $a1  $t6 
+
+
+Ciclo: 1038
+		div  $a1  $t6 
+
+
+Ciclo: 1039
+		div  $a1  $t6 
+
+
+Ciclo: 1040
+		div  $a1  $t6 
+
+
+Ciclo: 1041
+		div  $a1  $t6 
+
+
+Ciclo: 1042
+		div  $a1  $t6 
+
+
+Ciclo: 1043
+		div  $a1  $t6 
+
+
+Ciclo: 1044
+		div  $a1  $t6 
+
+
+Ciclo: 1045
+		div  $a1  $t6 
+
+
+Ciclo: 1046
+		div  $a1  $t6 
+
+
+Ciclo: 1047
+		div  $a1  $t6 
+
+
+Ciclo: 1048
+		div  $a1  $t6 
+
+
+Ciclo: 1049
+		div  $a1  $t6 
+
+
+Ciclo: 1050
+		div  $a1  $t6 
+
+
+Ciclo: 1051
+		div  $a1  $t6 
+
+
+Ciclo: 1052
+		div  $a1  $t6 
+
+
+Ciclo: 1053
+		div  $a1  $t6 
+
+
+Ciclo: 1054
+		div  $a1  $t6 
+
+
+Ciclo: 1055
+		div  $a1  $t6 
+
+
+Ciclo: 1056
+		div  $a1  $t6 
+
+
+Ciclo: 1057
+		div  $a1  $t6 
+
+
+Ciclo: 1058
+		div  $a1  $t6 
+
+
+Ciclo: 1059
+		div  $a1  $t6 
+
+
+Ciclo: 1060
+		div  $a1  $t6 
+
+
+Ciclo: 1061
+		div  $a1  $t6 
+
+
+Ciclo: 1062
+		div  $a1  $t6 
+
+
+Ciclo: 1063
+		div  $a1  $t6 
+
+
+Ciclo: 1064
+		div  $a1  $t6 
+
+
+Ciclo: 1065
+		div  $a1  $t6 
+
+
+Ciclo: 1066
+		div  $a1  $t6 
+
+
+Ciclo: 1067
+		div  $a1  $t6 
+
+
+Ciclo: 1068
+		div  $a1  $t6 
+
+
+Ciclo: 1069
+		div  $a1  $t6 
+
+
+Ciclo: 1070
+		div  $a1  $t6 
+
+
+Ciclo: 1071
+		div  $a1  $t6 
+
+
+Ciclo: 1072
+		div  $a1  $t6 
+
+
+Ciclo: 1073
+		div  $a1  $t6 
+
+
+Ciclo: 1074
+		div  $a1  $t6 
+
+
+Ciclo: 1075
+		div  $a1  $t6 
+
+
+Ciclo: 1076
+		div  $a1  $t6 
+
+
+Ciclo: 1077
+		div  $a1  $t6 
+
+
+Ciclo: 1078
+		div  $a1  $t6 
+
+
+Ciclo: 1079
+		div  $a1  $t6 
+
+
+Ciclo: 1080
+		div  $a1  $t6 
+
+
+Ciclo: 1081
+		div  $a1  $t6 
+
+
+Ciclo: 1082
+		div  $a1  $t6 
+
+
+Ciclo: 1083
+		div  $a1  $t6 
+
+
+Ciclo: 1084
+		div  $a1  $t6 
+
+
+Ciclo: 1085
+		div  $a1  $t6 
+
+
+Ciclo: 1086
+		div  $a1  $t6 
+
+
+Ciclo: 1087
+		div  $a1  $t6 
+
+
+Ciclo: 1088
+		div  $a1  $t6 
+
+
+Ciclo: 1089
+		div  $a1  $t6 
+
+
+Ciclo: 1090
+		div  $a1  $t6 
+
+
+Ciclo: 1091
+		div  $a1  $t6 
+
+
+Ciclo: 1092
+		div  $a1  $t6 
+
+
+Ciclo: 1093
+		div  $a1  $t6 
+
+
+Ciclo: 1094
+		div  $a1  $t6 
+
+
+Ciclo: 1095
+		div  $a1  $t6 
+
+
+Ciclo: 1096
+		div  $a1  $t6 
+
+
+Ciclo: 1097
+		div  $a1  $t6 
+
+
+Ciclo: 1098
+		div  $a1  $t6 
+
+
+Ciclo: 1099
+		div  $a1  $t6 
+
+
+Ciclo: 1100
+		div  $a1  $t6 
+
+
+Ciclo: 1101
+		div  $a1  $t6 
+
+
+Ciclo: 1102
+		div  $a1  $t6 
+
+
+Ciclo: 1103
+		div  $a1  $t6 
+
+
+Ciclo: 1104
+		div  $a1  $t6 
+
+
+Ciclo: 1105
+		div  $a1  $t6 
+
+
+Ciclo: 1106
+		div  $a1  $t6 
+
+
+Ciclo: 1107
+		div  $a1  $t6 
+
+
+Ciclo: 1108
+		div  $a1  $t6 
+
+
+Ciclo: 1109
+		div  $a1  $t6 
+
+
+Ciclo: 1110
+		div  $a1  $t6 
+
+
+Ciclo: 1111
+		div  $a1  $t6 
+
+
+Ciclo: 1112
+		div  $a1  $t6 
+
+
+Ciclo: 1113
+		div  $a1  $t6 
+
+
+Ciclo: 1114
+		div  $a1  $t6 
+
+
+Ciclo: 1115
+		div  $a1  $t6 
+
+
+Ciclo: 1116
+		div  $a1  $t6 
+
+
+Ciclo: 1117
+		div  $a1  $t6 
+
+
+Ciclo: 1118
+		div  $a1  $t6 
+
+
+Ciclo: 1119
+		div  $a1  $t6 
+
+
+Ciclo: 1120
+		div  $a1  $t6 
+
+
+Ciclo: 1121
+		div  $a1  $t6 
+
+
+Ciclo: 1122
+		div  $a1  $t6 
+
+
+Ciclo: 1123
+		div  $a1  $t6 
+
+
+Ciclo: 1124
+		div  $a1  $t6 
+
+
+Ciclo: 1125
+		div  $a1  $t6 
+
+
+Ciclo: 1126
+		div  $a1  $t6 
+
+
+Ciclo: 1127
+		div  $a1  $t6 
+
+
+Ciclo: 1128
+		div  $a1  $t6 
+
+
+Ciclo: 1129
+		div  $a1  $t6 
+
+
+Ciclo: 1130
+		div  $a1  $t6 
+
+
+Ciclo: 1131
+		div  $a1  $t6 
+
+
+Ciclo: 1132
+		div  $a1  $t6 
+
+
+Ciclo: 1133
+		div  $a1  $t6 
+
+
+Ciclo: 1134
+		div  $a1  $t6 
+
+
+Ciclo: 1135
+		div  $a1  $t6 
+
+
+Ciclo: 1136
+		div  $a1  $t6 
+
+
+Ciclo: 1137
+		div  $a1  $t6 
+
+
+Ciclo: 1138
+		div  $a1  $t6 
+
+
+Ciclo: 1139
+		div  $a1  $t6 
+
+
+Ciclo: 1140
+		div  $a1  $t6 
+
+
+Ciclo: 1141
+		div  $a1  $t6 
+
+
+Ciclo: 1142
+		div  $a1  $t6 
+
+
+Ciclo: 1143
+		div  $a1  $t6 
+
+
+Ciclo: 1144
+		div  $a1  $t6 
+
+
+Ciclo: 1145
+		div  $a1  $t6 
+
+
+Ciclo: 1146
+		div  $a1  $t6 
+
+
+Ciclo: 1147
+		div  $a1  $t6 
+
+
+Ciclo: 1148
+		div  $a1  $t6 
+
+
+Ciclo: 1149
+		div  $a1  $t6 
+
+
+Ciclo: 1150
+		div  $a1  $t6 
+
+
+Ciclo: 1151
+		div  $a1  $t6 
+
+
+Ciclo: 1152
+		div  $a1  $t6 
+
+
+Ciclo: 1153
+		div  $a1  $t6 
+
+
+Ciclo: 1154
+		div  $a1  $t6 
+
+
+Ciclo: 1155
+		div  $a1  $t6 
+
+
+Ciclo: 1156
+		div  $a1  $t6 
+
+
+Ciclo: 1157
+		div  $a1  $t6 
+
+
+Ciclo: 1158
+		div  $a1  $t6 
+
+
+Ciclo: 1159
+		div  $a1  $t6 
+
+
+Ciclo: 1160
+		div  $a1  $t6 
+
+
+Ciclo: 1161
+		div  $a1  $t6 
+
+
+Ciclo: 1162
+		div  $a1  $t6 
+
+
+Ciclo: 1163
+		div  $a1  $t6 
+
+
+Ciclo: 1164
+		div  $a1  $t6 
+
+
+Ciclo: 1165
+		div  $a1  $t6 
+
+
+Ciclo: 1166
+		div  $a1  $t6 
+
+
+Ciclo: 1167
+		div  $a1  $t6 
+
+
+Ciclo: 1168
+		div  $a1  $t6 
+
+
+Ciclo: 1169
+		div  $a1  $t6 
+
+
+Ciclo: 1170
+		div  $a1  $t6 
+
+
+Ciclo: 1171
+		div  $a1  $t6 
+
+
+Ciclo: 1172
+		div  $a1  $t6 
+
+
+Ciclo: 1173
+		div  $a1  $t6 
+
+
+Ciclo: 1174
+		div  $a1  $t6 
+
+
+Ciclo: 1175
+		div  $a1  $t6 
+
+
+Ciclo: 1176
+		div  $a1  $t6 
+
+
+Ciclo: 1177
+		div  $a1  $t6 
+
+
+Ciclo: 1178
+		div  $a1  $t6 
+
+
+Ciclo: 1179
+		div  $a1  $t6 
+
+
+Ciclo: 1180
+		div  $a1  $t6 
+
+
+Ciclo: 1181
+		div  $a1  $t6 
+
+
+Ciclo: 1182
+		div  $a1  $t6 
+
+
+Ciclo: 1183
+		div  $a1  $t6 
+
+
+Ciclo: 1184
+		div  $a1  $t6 
+
+
+Ciclo: 1185
+		div  $a1  $t6 
+
+
+Ciclo: 1186
+		div  $a1  $t6 
+
+
+Ciclo: 1187
+		div  $a1  $t6 
+
+
+Ciclo: 1188
+		div  $a1  $t6 
+
+
+Ciclo: 1189
+		div  $a1  $t6 
+
+
+Ciclo: 1190
+		div  $a1  $t6 
+
+
+Ciclo: 1191
+		div  $a1  $t6 
+
+
+Ciclo: 1192
+		div  $a1  $t6 
+
+
+Ciclo: 1193
+		div  $a1  $t6 
+
+
+Ciclo: 1194
+		div  $a1  $t6 
+
+
+Ciclo: 1195
+		div  $a1  $t6 
+
+
+Ciclo: 1196
+		div  $a1  $t6 
+
+
+Ciclo: 1197
+		div  $a1  $t6 
+
+
+Ciclo: 1198
+		div  $a1  $t6 
+
+
+Ciclo: 1199
+		div  $a1  $t6 
+
+
+Ciclo: 1200
+		div  $a1  $t6 
+
+
+Ciclo: 1201
+		div  $a1  $t6 
+
+
+Ciclo: 1202
+		div  $a1  $t6 
+
+
+Ciclo: 1203
+		div  $a1  $t6 
+
+
+Ciclo: 1204
+		div  $a1  $t6 
+
+
+Ciclo: 1205
+		div  $a1  $t6 
+
+
+Ciclo: 1206
+		div  $a1  $t6 
+
+
+Ciclo: 1207
+		div  $a1  $t6 
+
+
+Ciclo: 1208
+		div  $a1  $t6 
+
+
+Ciclo: 1209
+		div  $a1  $t6 
+
+
+Ciclo: 1210
+		div  $a1  $t6 
+
+
+Ciclo: 1211
+		div  $a1  $t6 
+
+
+Ciclo: 1212
+		div  $a1  $t6 
+
+
+Ciclo: 1213
+		div  $a1  $t6 
+
+
+Ciclo: 1214
+		div  $a1  $t6 
+
+
+Ciclo: 1215
+		div  $a1  $t6 
+
+
+Ciclo: 1216
+		div  $a1  $t6 
+
+
+Ciclo: 1217
+		div  $a1  $t6 
+
+
+Ciclo: 1218
+		div  $a1  $t6 
+
+
+Ciclo: 1219
+		div  $a1  $t6 
+
+
+Ciclo: 1220
+		div  $a1  $t6 
+
+
+Ciclo: 1221
+		div  $a1  $t6 
+
+
+Ciclo: 1222
+		div  $a1  $t6 
+
+
+Ciclo: 1223
+		div  $a1  $t6 
+
+
+Ciclo: 1224
+		div  $a1  $t6 
+
+
+Ciclo: 1225
+		div  $a1  $t6 
+
+
+Ciclo: 1226
+		div  $a1  $t6 
+
+
+Ciclo: 1227
+		div  $a1  $t6 
+
+
+Ciclo: 1228
+		div  $a1  $t6 
+
+
+Ciclo: 1229
+		div  $a1  $t6 
+
+
+Ciclo: 1230
+		div  $a1  $t6 
+
+
+Ciclo: 1231
+		div  $a1  $t6 
+
+
+Ciclo: 1232
+		div  $a1  $t6 
+
+
+Ciclo: 1233
+		div  $a1  $t6 
+
+
+Ciclo: 1234
+		div  $a1  $t6 
+
+
+Ciclo: 1235
+		div  $a1  $t6 
+
+
+Ciclo: 1236
+		div  $a1  $t6 
+
+
+Ciclo: 1237
+		div  $a1  $t6 
+
+
+Ciclo: 1238
+		div  $a1  $t6 
+
+
+Ciclo: 1239
+		div  $a1  $t6 
+
+
+Ciclo: 1240
+		div  $a1  $t6 
+
+
+Ciclo: 1241
+		div  $a1  $t6 
+
+
+Ciclo: 1242
+		div  $a1  $t6 
+
+
+Ciclo: 1243
+		div  $a1  $t6 
+
+
+Ciclo: 1244
+		div  $a1  $t6 
+
+
+Ciclo: 1245
+		div  $a1  $t6 
+
+
+Ciclo: 1246
+		div  $a1  $t6 
+
+
+Ciclo: 1247
+		div  $a1  $t6 
+
+
+Ciclo: 1248
+		div  $a1  $t6 
+
+
+Ciclo: 1249
+		div  $a1  $t6 
+
+
+Ciclo: 1250
+		div  $a1  $t6 
+
+
+Ciclo: 1251
+		div  $a1  $t6 
+
+
+Ciclo: 1252
+		div  $a1  $t6 
+
+
+Ciclo: 1253
+		div  $a1  $t6 
+
+
+Ciclo: 1254
+		div  $a1  $t6 
+
+
+Ciclo: 1255
+		div  $a1  $t6 
+
+
+Ciclo: 1256
+		div  $a1  $t6 
+
+
+Ciclo: 1257
+		div  $a1  $t6 
+
+
+Ciclo: 1258
+		div  $a1  $t6 
+
+
+Ciclo: 1259
+		div  $a1  $t6 
+
+
+Ciclo: 1260
+		div  $a1  $t6 
+
+
+Ciclo: 1261
+		div  $a1  $t6 
+
+
+Ciclo: 1262
+		div  $a1  $t6 
+
+
+Ciclo: 1263
+		div  $a1  $t6 
+
+
+Ciclo: 1264
+		div  $a1  $t6 
+
+
+Ciclo: 1265
+		div  $a1  $t6 
+
+
+Ciclo: 1266
+		div  $a1  $t6 
+
+
+Ciclo: 1267
+		div  $a1  $t6 
+
+
+Ciclo: 1268
+		div  $a1  $t6 
+
+
+Ciclo: 1269
+		div  $a1  $t6 
+
+
+Ciclo: 1270
+		div  $a1  $t6 
+
+
+Ciclo: 1271
+		div  $a1  $t6 
+
+
+Ciclo: 1272
+		div  $a1  $t6 
+
+
+Ciclo: 1273
+		div  $a1  $t6 
+
+
+Ciclo: 1274
+		div  $a1  $t6 
+
+
+Ciclo: 1275
+		div  $a1  $t6 
+
+
+Ciclo: 1276
+		div  $a1  $t6 
+
+
+Ciclo: 1277
+		div  $a1  $t6 
+
+
+Ciclo: 1278
+		div  $a1  $t6 
+
+
+Ciclo: 1279
+		div  $a1  $t6 
+
+
+Ciclo: 1280
+		div  $a1  $t6 
+
+
+Ciclo: 1281
+		div  $a1  $t6 
+
+
+Ciclo: 1282
+		div  $a1  $t6 
+
+
+Ciclo: 1283
+		div  $a1  $t6 
+
+
+Ciclo: 1284
+		div  $a1  $t6 
+
+
+Ciclo: 1285
+		div  $a1  $t6 
+
+
+Ciclo: 1286
+		div  $a1  $t6 
+
+
+Ciclo: 1287
+		div  $a1  $t6 
+
+
+Ciclo: 1288
+		div  $a1  $t6 
+
+
+Ciclo: 1289
+		div  $a1  $t6 
+
+
+Ciclo: 1290
+		div  $a1  $t6 
+
+
+Ciclo: 1291
+		div  $a1  $t6 
+
+
+Ciclo: 1292
+		div  $a1  $t6 
+
+
+Ciclo: 1293
+		div  $a1  $t6 
+
+
+Ciclo: 1294
+		div  $a1  $t6 
+
+
+Ciclo: 1295
+		div  $a1  $t6 
+
+
+Ciclo: 1296
+		div  $a1  $t6 
+
+
+Ciclo: 1297
+		div  $a1  $t6 
+
+
+Ciclo: 1298
+		div  $a1  $t6 
+
+
+Ciclo: 1299
+		div  $a1  $t6 
+
+
+Ciclo: 1300
+		div  $a1  $t6 
+
+
+Ciclo: 1301
+		div  $a1  $t6 
+
+
+Ciclo: 1302
+		div  $a1  $t6 
+
+
+Ciclo: 1303
+		div  $a1  $t6 
+
+
+Ciclo: 1304
+		div  $a1  $t6 
+
+
+Ciclo: 1305
+		div  $a1  $t6 
+
+
+Ciclo: 1306
+		div  $a1  $t6 
+
+
+Ciclo: 1307
+		div  $a1  $t6 
+
+
+Ciclo: 1308
+		div  $a1  $t6 
+
+
+Ciclo: 1309
+		div  $a1  $t6 
+
+
+Ciclo: 1310
+		div  $a1  $t6 
+
+
+Ciclo: 1311
+		div  $a1  $t6 
+
+
+Ciclo: 1312
+		div  $a1  $t6 
+
+
+Ciclo: 1313
+		div  $a1  $t6 
+
+
+Ciclo: 1314
+		div  $a1  $t6 
+
+
+Ciclo: 1315
+		div  $a1  $t6 
+
+
+Ciclo: 1316
+		div  $a1  $t6 
+
+
+Ciclo: 1317
+		div  $a1  $t6 
+
+
+Ciclo: 1318
+		div  $a1  $t6 
+
+
+Ciclo: 1319
+		div  $a1  $t6 
+
+
+Ciclo: 1320
+		div  $a1  $t6 
+
+
+Ciclo: 1321
+		div  $a1  $t6 
+
+
+Ciclo: 1322
+		div  $a1  $t6 
+
+
+Ciclo: 1323
+		div  $a1  $t6 
+
+
+Ciclo: 1324
+		div  $a1  $t6 
+
+
+Ciclo: 1325
+		div  $a1  $t6 
+
+
+Ciclo: 1326
+		div  $a1  $t6 
+
+
+Ciclo: 1327
+		div  $a1  $t6 
+
+
+Ciclo: 1328
+		div  $a1  $t6 
+
+
+Ciclo: 1329
+		div  $a1  $t6 
+
+
+Ciclo: 1330
+		div  $a1  $t6 
+
+
+Ciclo: 1331
+		div  $a1  $t6 
+
+
+Ciclo: 1332
+		div  $a1  $t6 
+
+
+Ciclo: 1333
+		div  $a1  $t6 
+
+
+Ciclo: 1334
+		div  $a1  $t6 
+
+
+Ciclo: 1335
+		div  $a1  $t6 
+
+
+Ciclo: 1336
+		div  $a1  $t6 
+
+
+Ciclo: 1337
+		div  $a1  $t6 
+
+
+Ciclo: 1338
+		div  $a1  $t6 
+
+
+Ciclo: 1339
+		div  $a1  $t6 
+
+
+Ciclo: 1340
+		div  $a1  $t6 
+
+
+Ciclo: 1341
+		div  $a1  $t6 
+
+
+Ciclo: 1342
+		div  $a1  $t6 
+
+
+Ciclo: 1343
+		div  $a1  $t6 
+
+
+Ciclo: 1344
+		div  $a1  $t6 
+
+
+Ciclo: 1345
+		div  $a1  $t6 
+
+
+Ciclo: 1346
+		div  $a1  $t6 
+
+
+Ciclo: 1347
+		div  $a1  $t6 
+
+
+Ciclo: 1348
+		div  $a1  $t6 
+
+
+Ciclo: 1349
+		div  $a1  $t6 
+
+
+Ciclo: 1350
+		div  $a1  $t6 
+
+
+Ciclo: 1351
+		div  $a1  $t6 
+
+
+Ciclo: 1352
+		div  $a1  $t6 
+
+
+Ciclo: 1353
+		div  $a1  $t6 
+
+
+Ciclo: 1354
+		div  $a1  $t6 
+
+
+Ciclo: 1355
+		div  $a1  $t6 
+
+
+Ciclo: 1356
+		div  $a1  $t6 
+
+
+Ciclo: 1357
+		div  $a1  $t6 
+
+
+Ciclo: 1358
+		div  $a1  $t6 
+
+
+Ciclo: 1359
+		div  $a1  $t6 
+
+
+Ciclo: 1360
+		div  $a1  $t6 
+
+
+Ciclo: 1361
+		div  $a1  $t6 
+
+
+Ciclo: 1362
+		div  $a1  $t6 
+
+
+Ciclo: 1363
+		div  $a1  $t6 
+
+
+Ciclo: 1364
+		div  $a1  $t6 
+
+
+Ciclo: 1365
+		div  $a1  $t6 
+
+
+Ciclo: 1366
+		div  $a1  $t6 
+
+
+Ciclo: 1367
+		div  $a1  $t6 
+
+
+Ciclo: 1368
+		div  $a1  $t6 
+
+
+Ciclo: 1369
+		div  $a1  $t6 
+
+
+Ciclo: 1370
+		div  $a1  $t6 
+
+
+Ciclo: 1371
+		div  $a1  $t6 
+
+
+Ciclo: 1372
+		div  $a1  $t6 
+
+
+Ciclo: 1373
+		div  $a1  $t6 
+
+
+Ciclo: 1374
+		div  $a1  $t6 
+
+
+Ciclo: 1375
+		div  $a1  $t6 
+
+
+Ciclo: 1376
+		div  $a1  $t6 
+
+
+Ciclo: 1377
+		div  $a1  $t6 
+
+
+Ciclo: 1378
+		div  $a1  $t6 
+
+
+Ciclo: 1379
+		div  $a1  $t6 
+
+
+Ciclo: 1380
+		div  $a1  $t6 
+
+
+Ciclo: 1381
+		div  $a1  $t6 
+
+
+Ciclo: 1382
+		div  $a1  $t6 
+
+
+Ciclo: 1383
+		div  $a1  $t6 
+
+
+Ciclo: 1384
+		div  $a1  $t6 
+
+
+Ciclo: 1385
+		div  $a1  $t6 
+
+
+Ciclo: 1386
+		div  $a1  $t6 
+
+
+Ciclo: 1387
+		div  $a1  $t6 
+
+
+Ciclo: 1388
+		div  $a1  $t6 
+
+
+Ciclo: 1389
+		div  $a1  $t6 
+
+
+Ciclo: 1390
+		div  $a1  $t6 
+
+
+Ciclo: 1391
+		div  $a1  $t6 
+
+
+Ciclo: 1392
+		div  $a1  $t6 
+
+
+Ciclo: 1393
+		div  $a1  $t6 
+
+
+Ciclo: 1394
+		div  $a1  $t6 
+
+
+Ciclo: 1395
+		div  $a1  $t6 
+
+
+Ciclo: 1396
+		div  $a1  $t6 
+
+
+Ciclo: 1397
+		div  $a1  $t6 
+
+
+Ciclo: 1398
+		div  $a1  $t6 
+
+
+Ciclo: 1399
+		div  $a1  $t6 
+
+
+Ciclo: 1400
+		div  $a1  $t6 
+
+
+Ciclo: 1401
+		div  $a1  $t6 
+
+
+Ciclo: 1402
+		div  $a1  $t6 
+
+
+Ciclo: 1403
+		div  $a1  $t6 
+
+
+Ciclo: 1404
+		div  $a1  $t6 
+
+
+Ciclo: 1405
+		div  $a1  $t6 
+
+
+Ciclo: 1406
+		div  $a1  $t6 
+
+
+Ciclo: 1407
+		div  $a1  $t6 
+
+
+Ciclo: 1408
+		div  $a1  $t6 
+
+
+Ciclo: 1409
+		div  $a1  $t6 
+
+
+Ciclo: 1410
+		div  $a1  $t6 
+
+
+Ciclo: 1411
+		div  $a1  $t6 
+
+
+Ciclo: 1412
+		div  $a1  $t6 
+
+
+Ciclo: 1413
+		div  $a1  $t6 
+
+
+Ciclo: 1414
+		div  $a1  $t6 
+
+
+Ciclo: 1415
+		div  $a1  $t6 
+
+
+Ciclo: 1416
+		div  $a1  $t6 
+
+
+Ciclo: 1417
+		div  $a1  $t6 
+
+
+Ciclo: 1418
+		div  $a1  $t6 
+
+
+Ciclo: 1419
+		div  $a1  $t6 
+
+
+Ciclo: 1420
+		div  $a1  $t6 
+
+
+Ciclo: 1421
+		div  $a1  $t6 
+
+
+Ciclo: 1422
+		div  $a1  $t6 
+
+
+Ciclo: 1423
+		div  $a1  $t6 
+
+
+Ciclo: 1424
+		div  $a1  $t6 
+
+
+Ciclo: 1425
+		div  $a1  $t6 
+
+
+Ciclo: 1426
+		div  $a1  $t6 
+
+
+Ciclo: 1427
+		div  $a1  $t6 
+
+
+Ciclo: 1428
+		div  $a1  $t6 
+
+
+Ciclo: 1429
+		div  $a1  $t6 
+
+
+Ciclo: 1430
+		div  $a1  $t6 
+
+
+Ciclo: 1431
+		div  $a1  $t6 
+
+
+Ciclo: 1432
+		div  $a1  $t6 
+
+
+Ciclo: 1433
+		div  $a1  $t6 
+
+
+Ciclo: 1434
+		div  $a1  $t6 
+
+
+Ciclo: 1435
+		div  $a1  $t6 
+
+
+Ciclo: 1436
+		div  $a1  $t6 
+
+
+Ciclo: 1437
+		div  $a1  $t6 
+
+
+Ciclo: 1438
+		div  $a1  $t6 
+
+
+Ciclo: 1439
+		div  $a1  $t6 
+
+
+Ciclo: 1440
+		div  $a1  $t6 
+
+
+Ciclo: 1441
+		div  $a1  $t6 
+
+
+Ciclo: 1442
+		div  $a1  $t6 
+
+
+Ciclo: 1443
+		div  $a1  $t6 
+
+
+Ciclo: 1444
+		div  $a1  $t6 
+
+
+Ciclo: 1445
+		div  $a1  $t6 
+
+
+Ciclo: 1446
+		div  $a1  $t6 
+
+
+Ciclo: 1447
+		div  $a1  $t6 
+
+
+Ciclo: 1448
+		div  $a1  $t6 
+
+
+Ciclo: 1449
+		div  $a1  $t6 
+
+
+Ciclo: 1450
+		div  $a1  $t6 
+
+
+Ciclo: 1451
+		div  $a1  $t6 
+
+
+Ciclo: 1452
+		div  $a1  $t6 
+
+
+Ciclo: 1453
+		div  $a1  $t6 
+
+
+Ciclo: 1454
+		div  $a1  $t6 
+
+
+Ciclo: 1455
+		div  $a1  $t6 
+
+
+Ciclo: 1456
+		div  $a1  $t6 
+
+
+Ciclo: 1457
+		div  $a1  $t6 
+
+
+Ciclo: 1458
+		div  $a1  $t6 
+
+
+Ciclo: 1459
+		div  $a1  $t6 
+
+
+Ciclo: 1460
+		div  $a1  $t6 
+
+
+Ciclo: 1461
+		div  $a1  $t6 
+
+
+Ciclo: 1462
+		div  $a1  $t6 
+
+
+Ciclo: 1463
+		div  $a1  $t6 
+
+
+Ciclo: 1464
+		div  $a1  $t6 
+
+
+Ciclo: 1465
+		div  $a1  $t6 
+
+
+Ciclo: 1466
+		div  $a1  $t6 
+
+
+Ciclo: 1467
+		div  $a1  $t6 
+
+
+Ciclo: 1468
+		div  $a1  $t6 
+
+
+Ciclo: 1469
+		div  $a1  $t6 
+
+
+Ciclo: 1470
+		div  $a1  $t6 
+
+
+Ciclo: 1471
+		div  $a1  $t6 
+
+
+Ciclo: 1472
+		div  $a1
