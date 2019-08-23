@@ -8,12 +8,12 @@
 
 #define TAMANHO_MEMORIA 512 //por enquanto memoria tem 512 bytes
 
-char* memoria;
+char *memoria;
 
 void inicializaMemoria();
 
 void escritaMemoria();
 
-void buscaMemoria(unsigned int palavra[]);
+void buscaMemoria(unsigned char palavra[]);
 
 #endif

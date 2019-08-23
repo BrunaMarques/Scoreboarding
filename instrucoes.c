@@ -3,16 +3,21 @@
 #include "instrucoes.h"
 #include "ula.h"
 
-Inst decodificacao(unsigned int palavra[])
+Inst decodificacao(unsigned char palavra[])
 //etapa de decodificação
 {
 	Inst in;
 	int instrucao = palavra[0] << 24;
+	printf("\n instrucao 0: %d\n", instrucao);
 	instrucao += (palavra[1] << 16);
+	printf("\n instrucao 1: %d\n", instrucao);
 	instrucao += (palavra[2] << 8);
+	printf("\n instrucao 2: %d\n", instrucao);
 	instrucao += palavra[3];
+	printf("\n instrucao 3: %d\n", instrucao);
 	int tipo = instrucao >> 26 & MASCARA;
-
+	printf("\nINSTRUÇÃO tipo: %d\np0: %d\np1: %d\np2: %d\np3: %d\n", tipo, palavra[0] << 24, palavra[1] << 16, palavra[2] << 8, palavra[3]);
+	printf("\ninstrucao: %d\n", instrucao);
 	switch (tipo)
 	{
 
@@ -24,7 +29,7 @@ Inst decodificacao(unsigned int palavra[])
 		in.s_instrucao.rd = instrucao >> 11 & MASCARA;
 		in.s_instrucao.shamt = instrucao >> 6 & MASCARA;
 		in.s_instrucao.func = instrucao & 63;
-		printf("opcode: %d rs: %d rt: %d rd: %d funct: %d\n", in.opcode, in.s_instrucao.rs, in.s_instrucao.rt, in.s_instrucao.rd, in.s_instrucao.func);
+		printf("ESPECIAL opcode: %d rs: %d rt: %d rd: %d funct: %d\n", in.opcode, in.s_instrucao.rs, in.s_instrucao.rt, in.s_instrucao.rd, in.s_instrucao.func);
 
 		return in;
 
@@ -38,7 +43,7 @@ Inst decodificacao(unsigned int palavra[])
 		in.s2_instrucao.rd = instrucao >> 11 & MASCARA;
 		in.s2_instrucao.shamt = instrucao >> 6 & MASCARA;
 		in.s2_instrucao.func = instrucao & 63;
-		printf("opcode: %d rs: %d rt: %d rd: %d funct: %d\n", in.opcode, in.s2_instrucao.rs, in.s2_instrucao.rt, in.s2_instrucao.rd, in.s2_instrucao.func);
+		printf("ESPECIAL 2 opcode: %d rs: %d rt: %d rd: %d funct: %d\n", in.opcode, in.s2_instrucao.rs, in.s2_instrucao.rt, in.s2_instrucao.rd, in.s2_instrucao.func);
 		return in;
 
 		break;
@@ -69,7 +74,7 @@ Inst decodificacao(unsigned int palavra[])
 		in.i_instrucao.rs = instrucao >> 21 & MASCARA;
 		in.i_instrucao.rt = instrucao >> 16 & MASCARA;
 		in.i_instrucao.imediato = instrucao & MASCARA;
-		printf("opcode: %d rs: %d rt: %d imediato: %d\n", in.opcode, in.i_instrucao.rs, in.i_instrucao.rt, in.i_instrucao.imediato);
+		printf("DEFAULT opcode: %d rs: %d rt: %d imediato: %d\n", in.opcode, in.i_instrucao.rs, in.i_instrucao.rt, in.i_instrucao.imediato);
 		return in;
 
 		break;
@@ -90,4 +95,3 @@ int juntarHILO(int hi, int lo)
 
 	return hi << 5 + lo;
 }
-

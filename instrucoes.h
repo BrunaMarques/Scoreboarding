@@ -63,7 +63,7 @@ typedef struct
 
 Inst in;
 
-Inst decodificacao(unsigned int palavra[]);
+Inst decodificacao(unsigned char palavra[]);
 
 void separarHILO(int in);
 

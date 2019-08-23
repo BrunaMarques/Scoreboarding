@@ -15,6 +15,7 @@ int EMITIDA = true;
 void buscaPipeline()
 {
 	printf("\n\t--------------busca--------------\n");
+	printf("\nVAMU VER\n");
 	if (filaVazia() && (PC < (qtd * 4)))
 	{
 		for (int i = 0; i < 4; i++)
@@ -23,7 +24,7 @@ void buscaPipeline()
 			{
 				break;
 			}
-			unsigned int instMem[4];
+			unsigned char instMem[4];
 			buscaMemoria(instMem);
 
 			Inst instDecode = decodificacao(instMem);
@@ -576,15 +577,15 @@ void emissao()
 				{
 					if ((bancoRegistradores[HI].UF == semUF) && (bancoRegistradores[LO].UF == semUF))
 					{
-						UFINT.status.Busy = true;
-						UFINT.status.Op = MADD;
-						UFINT.status.Fi = HI;
-						UFINT.status.Fj = in.s2_instrucao.rs;
-						UFINT.status.Fk = in.s2_instrucao.rt;
-						UFINT.status.Qj = bancoRegistradores[in.s2_instrucao.rs].UF;
-						UFINT.status.Qk = bancoRegistradores[in.s2_instrucao.rt].UF;
-						UFINT.status.Rj = (bancoRegistradores[in.s2_instrucao.rs].UF == semUF) ? true : false;
-						UFINT.status.Rk = (bancoRegistradores[in.s2_instrucao.rt].UF == semUF) ? true : false;
+						UFMUL1.status.Busy = true;
+						UFMUL1.status.Op = MADD;
+						UFMUL1.status.Fi = HI;
+						UFMUL1.status.Fj = in.s2_instrucao.rs;
+						UFMUL1.status.Fk = in.s2_instrucao.rt;
+						UFMUL1.status.Qj = bancoRegistradores[in.s2_instrucao.rs].UF;
+						UFMUL1.status.Qk = bancoRegistradores[in.s2_instrucao.rt].UF;
+						UFMUL1.status.Rj = (bancoRegistradores[in.s2_instrucao.rs].UF == semUF) ? true : false;
+						UFMUL1.status.Rk = (bancoRegistradores[in.s2_instrucao.rt].UF == semUF) ? true : false;
 						bancoRegistradores[HI].UF = UF_MUL1;
 						bancoRegistradores[LO].UF = UF_MUL1;
 						in.UF = UF_MUL1;
@@ -607,15 +608,15 @@ void emissao()
 				{
 					if ((bancoRegistradores[HI].UF == semUF) && (bancoRegistradores[LO].UF == semUF))
 					{
-						UFINT.status.Busy = true;
-						UFINT.status.Op = MADD;
-						UFINT.status.Fi = HI;
-						UFINT.status.Fj = in.s2_instrucao.rs;
-						UFINT.status.Fk = in.s2_instrucao.rt;
-						UFINT.status.Qj = bancoRegistradores[in.s2_instrucao.rs].UF;
-						UFINT.status.Qk = bancoRegistradores[in.s2_instrucao.rt].UF;
-						UFINT.status.Rj = (bancoRegistradores[in.s2_instrucao.rs].UF == semUF) ? true : false;
-						UFINT.status.Rk = (bancoRegistradores[in.s2_instrucao.rt].UF == semUF) ? true : false;
+						UFMUL2.status.Busy = true;
+						UFMUL2.status.Op = MADD;
+						UFMUL2.status.Fi = HI;
+						UFMUL2.status.Fj = in.s2_instrucao.rs;
+						UFMUL2.status.Fk = in.s2_instrucao.rt;
+						UFMUL2.status.Qj = bancoRegistradores[in.s2_instrucao.rs].UF;
+						UFMUL2.status.Qk = bancoRegistradores[in.s2_instrucao.rt].UF;
+						UFMUL2.status.Rj = (bancoRegistradores[in.s2_instrucao.rs].UF == semUF) ? true : false;
+						UFMUL2.status.Rk = (bancoRegistradores[in.s2_instrucao.rt].UF == semUF) ? true : false;
 						bancoRegistradores[HI].UF = UF_MUL2;
 						bancoRegistradores[LO].UF = UF_MUL2;
 						in.UF = UF_MUL2;
@@ -638,15 +639,15 @@ void emissao()
 				{
 					if ((bancoRegistradores[HI].UF == semUF) && (bancoRegistradores[LO].UF == semUF))
 					{
-						UFINT.status.Busy = true;
-						UFINT.status.Op = MSUB;
-						UFINT.status.Fi = HI;
-						UFINT.status.Fj = in.s2_instrucao.rs;
-						UFINT.status.Fk = in.s2_instrucao.rt;
-						UFINT.status.Qj = bancoRegistradores[in.s2_instrucao.rs].UF;
-						UFINT.status.Qk = bancoRegistradores[in.s2_instrucao.rt].UF;
-						UFINT.status.Rj = (bancoRegistradores[in.s2_instrucao.rs].UF == semUF) ? true : false;
-						UFINT.status.Rk = (bancoRegistradores[in.s2_instrucao.rt].UF == semUF) ? true : false;
+						UFMUL1.status.Busy = true;
+						UFMUL1.status.Op = MSUB;
+						UFMUL1.status.Fi = HI;
+						UFMUL1.status.Fj = in.s2_instrucao.rs;
+						UFMUL1.status.Fk = in.s2_instrucao.rt;
+						UFMUL1.status.Qj = bancoRegistradores[in.s2_instrucao.rs].UF;
+						UFMUL1.status.Qk = bancoRegistradores[in.s2_instrucao.rt].UF;
+						UFMUL1.status.Rj = (bancoRegistradores[in.s2_instrucao.rs].UF == semUF) ? true : false;
+						UFMUL1.status.Rk = (bancoRegistradores[in.s2_instrucao.rt].UF == semUF) ? true : false;
 						bancoRegistradores[HI].UF = UF_MUL1;
 						bancoRegistradores[LO].UF = UF_MUL1;
 						in.UF = UF_MUL1;
@@ -669,15 +670,15 @@ void emissao()
 				{
 					if ((bancoRegistradores[HI].UF == semUF) && (bancoRegistradores[LO].UF == semUF))
 					{
-						UFINT.status.Busy = true;
-						UFINT.status.Op = MSUB;
-						UFINT.status.Fi = HI;
-						UFINT.status.Fj = in.s2_instrucao.rs;
-						UFINT.status.Fk = in.s2_instrucao.rt;
-						UFINT.status.Qj = bancoRegistradores[in.s2_instrucao.rs].UF;
-						UFINT.status.Qk = bancoRegistradores[in.s2_instrucao.rt].UF;
-						UFINT.status.Rj = (bancoRegistradores[in.s2_instrucao.rs].UF == semUF) ? true : false;
-						UFINT.status.Rk = (bancoRegistradores[in.s2_instrucao.rt].UF == semUF) ? true : false;
+						UFMUL2.status.Busy = true;
+						UFMUL2.status.Op = MSUB;
+						UFMUL2.status.Fi = HI;
+						UFMUL2.status.Fj = in.s2_instrucao.rs;
+						UFMUL2.status.Fk = in.s2_instrucao.rt;
+						UFMUL2.status.Qj = bancoRegistradores[in.s2_instrucao.rs].UF;
+						UFMUL2.status.Qk = bancoRegistradores[in.s2_instrucao.rt].UF;
+						UFMUL2.status.Rj = (bancoRegistradores[in.s2_instrucao.rs].UF == semUF) ? true : false;
+						UFMUL2.status.Rk = (bancoRegistradores[in.s2_instrucao.rt].UF == semUF) ? true : false;
 						bancoRegistradores[HI].UF = UF_MUL2;
 						bancoRegistradores[LO].UF = UF_MUL2;
 						in.UF = UF_MUL2;
