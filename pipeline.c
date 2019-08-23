@@ -42,6 +42,7 @@ void buscaPipeline()
 				int operacao = descobrirOperacao(in);
 				printf("INSTRUÇÃO: %d\n", operacao);
 				escrita_bar(in, barBI);
+				printf("\nBAR BI OPCODE: %d\n", BI.instrucao.opcode);
 			}
 		}
 	}
@@ -63,12 +64,17 @@ void emissao()
 			inserirElemLista(listaIssue, in);
 			exibirLista(listaIssue);
 			printf("\nlista issue: %d\n", listaIssue->lista_inst[0].opcode);
+			printf("\nlista issue vazia?: %d\n", listaVazia(listaIssue));
 		}
 	}
 	if (!EMITIDA)
 	{
 		printf("\nNÃO EMITIDA\n");
 		in = listaIssue->lista_inst[0];
+		printf("\nlista issue: %d\n", listaIssue->lista_inst[0].opcode);
+		printf("\nlista issue pos 1: %d\n", listaIssue->lista_inst[1].opcode);
+
+		printf("\nlista issue vazia?: %d\n", listaVazia(listaIssue));
 		int operacao = descobrirOperacao(in);
 		printf("INSTRUÇÃO: %d\n", operacao);
 		exibirLista(listaIssue);
