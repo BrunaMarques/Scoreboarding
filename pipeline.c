@@ -38,12 +38,14 @@ void buscaPipeline()
 	{
 		if (verifica_bar(barBI) == 0)
 		{
-			in = excluirElementoFila();
+
 			if (f->nroElem >= 0)
 			{
+				in = excluirElementoFila();
 				int operacao = descobrirOperacao(in);
 				printf("INSTRUÇÃO: %d\n", operacao);
 				escrita_bar(in, barBI);
+				printf("\nBAR BI OPCODE: %d\n", BI.instrucao.opcode);
 			}
 		}
 	}
@@ -63,18 +65,23 @@ void emissao()
 			printar(in);
 			exibirLista(listaIssue);
 			inserirElemLista(listaIssue, in);
-			//printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 			exibirLista(listaIssue);
+			printf("\nlista issue: %d\n", listaIssue->lista_inst[0].opcode);
+			printf("\nlista issue vazia?: %d\n", listaVazia(listaIssue));
 		}
 	}
 	if (!EMITIDA)
 	{
 		printf("\nNÃO EMITIDA\n");
 		in = listaIssue->lista_inst[0];
+		printf("\nlista issue: %d\n", listaIssue->lista_inst[0].opcode);
+		printf("\nlista issue pos 1: %d\n", listaIssue->lista_inst[1].opcode);
+
+		printf("\nlista issue vazia?: %d\n", listaVazia(listaIssue));
 		int operacao = descobrirOperacao(in);
 		printf("INSTRUÇÃO: %d\n", operacao);
 		exibirLista(listaIssue);
-		printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
+		//printf("posição elemento na lista issue: %d", listaIssue->lista_inst[in.posicao].posicao);
 
 		if (in.posicao != -1)
 		{
