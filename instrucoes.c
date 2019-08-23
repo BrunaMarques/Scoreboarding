@@ -8,16 +8,10 @@ Inst decodificacao(unsigned char palavra[])
 {
 	Inst in;
 	int instrucao = palavra[0] << 24;
-	printf("\n instrucao 0: %d\n", instrucao);
 	instrucao += (palavra[1] << 16);
-	printf("\n instrucao 1: %d\n", instrucao);
 	instrucao += (palavra[2] << 8);
-	printf("\n instrucao 2: %d\n", instrucao);
 	instrucao += palavra[3];
-	printf("\n instrucao 3: %d\n", instrucao);
 	int tipo = instrucao >> 26 & MASCARA;
-	printf("\nINSTRUÇÃO tipo: %d\np0: %d\np1: %d\np2: %d\np3: %d\n", tipo, palavra[0] << 24, palavra[1] << 16, palavra[2] << 8, palavra[3]);
-	printf("\ninstrucao: %d\n", instrucao);
 	switch (tipo)
 	{
 

@@ -37,7 +37,7 @@ void buscaPipeline()
 		if (verifica_bar(barBI) == 0)
 		{
 
-			if (f->nroElem >= 0)
+			if (f->nroElem > 0)
 			{
 				in = excluirElementoFila();
 				int operacao = descobrirOperacao(in);
@@ -310,6 +310,7 @@ void emissao()
 			case MTHI:
 				if (!UFINT.status.Busy)
 				{
+					printf("\nUF NÃO BUSY\n");
 					if (bancoRegistradores[HI].UF == semUF)
 					{
 						UFINT.status.Busy = true;
@@ -1334,16 +1335,30 @@ void execucao()
 	{
 		in = leitura_bar(barRE);
 		printf("barramento RE: %d", RE->instrucao.opcode);
+		printf("\nLista execução 0: %d", listaExecucao->lista_inst[0].opcode);
+		printf("\nLista execução 1: %d", listaExecucao->lista_inst[1].opcode);
+		printf("\nLista execução 2: %d", listaExecucao->lista_inst[2].opcode);
+		printf("\nLista execução 3: %d", listaExecucao->lista_inst[3].opcode);
+		printf("\nLista execução 4: %d", listaExecucao->lista_inst[4].opcode);
+
 		inserirElemLista(listaExecucao, in);
-		//exibirLista(listaExecucao);
+		exibirLista(listaExecucao);
+		printf("\nLista execução 0: %d", listaExecucao->lista_inst[0].opcode);
+		printf("\nLista execução 1: %d", listaExecucao->lista_inst[1].opcode);
+		printf("\nLista execução 2: %d", listaExecucao->lista_inst[2].opcode);
+		printf("\nLista execução 3: %d", listaExecucao->lista_inst[3].opcode);
+		printf("\nLista execução 4: %d", listaExecucao->lista_inst[4].opcode);
 	}
 	for (int i = 0; i < N; i++)
 	{
 		in = listaExecucao->lista_inst[i];
+		printf("\nOPCODE: %d", in.opcode);
 		int operacao = descobrirOperacao(in);
-		printf("INSTRUÇÃO: %d\n", operacao);
+		printf("\nINSTRUÇÃO: %d\n", operacao);
+		printf("\nPOSIÇAÕ LISTA: %d", in.posicao);
 		if (in.posicao == -1)
 		{
+			printf("\nentrou if -1");
 			continue;
 		}
 
