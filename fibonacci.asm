@@ -1,4 +1,4 @@
-addi $t0, $zero, 4
+addi $t0, $zero, 6
 addi $t1, $zero, 0
 add $a0, $zero, $zero
 add $a1, $zero, $zero

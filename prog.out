@@ -1,33 +1,23 @@
 Programa:
-	addi $t0, $zero, 4
-	addi $t1, $zero, 0
-	add $a0, $zero, $zero
-	add $a1, $zero, $zero
-	addi $a2, $zero, 1
-	beq $t0, $zero, end
-	loop:
-	addi $t1, $t1, 1
-	add $a0, $a1, $a2
-	addi $a1, $a2, 0
-	addi $a2, $a0, 0
-	bne $t0, $t1, loop
-	end:
+	addi $t0, $zero, 10
+	mul $t0, $t0, $t0 
+	addi $t1, $zero, 10
+	ori $t2, $zero, 3 
+	mul $t1, $t1, $t2 
+	add $t2, $t0, $t1
+	add $t3, $t2, $zero
 
 Binário:
-	20080004
-	20090000
-	2020
-	2820
-	20060001
-	11000034
-	21290001
-	A62020
-	20C50000
-	20860000
-	1509001C
+	2008000A
+	71084002
+	2009000A
+	340A0003
+	712A4802
+	1095020
+	1405820
 
 Ciclos:
-	29 cilcos
+	19 cilcos
 
 Instruções:
  	Emitidas: ver o que colocar
