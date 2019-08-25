@@ -1690,8 +1690,10 @@ void execucao()
 					printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					break;
 				case BEQ:
-					if (igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.i_instrucao.rt].valor))
+					if (igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.i_instrucao.rt].valor)){
+						printf("\n\n\nAAAA ENTROU\n\n");
 						PC += in.i_instrucao.imediato;
+					}
 					printf("BEQ opcode: %d\n", in.opcode);
 					printf("BEQ RS: %d\n", in.i_instrucao.rs);
 					printf("BEQ RT: %d\n", in.i_instrucao.rt);
@@ -1735,8 +1737,11 @@ void execucao()
 					printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					break;
 				case BLEZ:
-					if (menorIgual(bancoRegistradores[in.i_instrucao.rs].valor, 0))
+				printf("\n\n ENTORU NO CASE DA EXEC, pc %d\n\n", PC);
+					if (menorIgual(bancoRegistradores[in.i_instrucao.rs].valor, 0)){
 						PC += in.i_instrucao.imediato;
+						printf("\n\nENTOU NO IF\n\n");
+					}
 					printf("BLEZ opcode: %d\n", in.opcode);
 					printf("BLEZ RS: %d\n", in.i_instrucao.rs);
 					printf("BLEZ RT: %d\n", in.i_instrucao.rt);
@@ -1750,8 +1755,15 @@ void execucao()
 					printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					break;
 				case BNE:
-					if (not(igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor)))
+					printf("\n\nCASE\n\n");
+					printf("\n rs:%d, rt:%d\n", bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.i_instrucao.rt].valor);
+					int aux1 = bancoRegistradores[in.i_instrucao.rs].valor;
+					int aux2 = bancoRegistradores[in.i_instrucao.rt].valor;
+					//if (not(igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor)))
+					if (not(igual(aux1, aux2))){
+						printf("\nEntou no if\n");
 						PC += in.i_instrucao.imediato;
+					}
 					printf("BNE opcode: %d\n", in.opcode);
 					printf("BNE RS: %d\n", in.i_instrucao.rs);
 					printf("BNE RT: %d\n", in.i_instrucao.rt);
@@ -1936,6 +1948,7 @@ void escritaPipeline()
 		}
 	}
 	printf("\nEMITIDA FIM DA ESCRITA: %d\n", EMITIDA);
+	printarBancoRegistradores();
 }
 /*
 switch (operacao)
