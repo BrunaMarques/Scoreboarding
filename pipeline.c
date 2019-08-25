@@ -1937,3 +1937,153 @@ void escritaPipeline()
 	}
 	printf("\nEMITIDA FIM DA ESCRITA: %d\n", EMITIDA);
 }
+/*
+switch (operacao)
+{
+case ADD:
+	bufferRegistradores[in.s_instrucao.rd].valor = adicao(bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor);
+
+	break;
+case AND:
+	bufferRegistradores[in.s_instrucao.rd].valor = and(bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor);
+
+	break;
+case DIV:
+	bufferRegistradores[HI].valor = divisao(bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor);
+	bufferRegistradores[LO].valor = (bancoRegistradores[in.s_instrucao.rs].valor % bancoRegistradores[in.s_instrucao.rt].valor);
+
+	break;
+case JR:
+	PC = bancoRegistradores[in.s_instrucao.rs].valor;
+
+	break;
+case MFHI:
+	bufferRegistradores[in.s_instrucao.rd].valor = bancoRegistradores[HI].valor;
+
+	break;
+case MFLO:
+	bufferRegistradores[in.s_instrucao.rd].valor = bancoRegistradores[LO].valor;
+
+	break;
+case MOVN:
+	if (not(igual(bancoRegistradores[in.s_instrucao.rt].valor, 0)))
+		bufferRegistradores[in.s_instrucao.rd].valor = bancoRegistradores[in.s_instrucao.rs].valor;
+
+	break;
+case MOVZ:
+	if (igual(bancoRegistradores[in.s_instrucao.rt].valor, 0))
+		bufferRegistradores[in.s_instrucao.rd].valor = bancoRegistradores[in.s_instrucao.rs].valor;
+
+	break;
+case MTHI: //ver isso
+	bufferRegistradores[HI].valor = bancoRegistradores[in.s_instrucao.rs].valor;
+
+	break;
+case MTLO:
+	bufferRegistradores[LO].valor = bancoRegistradores[in.s_instrucao.rs].valor;
+
+	break;
+case MULT:
+	separarHILO(multiplicacao(bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor));
+
+	break;
+case NOP:
+	// nao faz nada por enquanto (no operation)//
+	break;
+case NOR:
+	bufferRegistradores[in.s_instrucao.rd].valor = nor(bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor);
+
+	break;
+case OR:
+	bufferRegistradores[in.s_instrucao.rd].valor = or (bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor);
+
+	break;
+case SUB:
+	bufferRegistradores[in.s_instrucao.rd].valor = subtracao(bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor);
+
+	break;
+case XOR:
+	bufferRegistradores[in.s_instrucao.rd].valor = xor(bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor);
+
+	break;
+case MADD: //MAIS SIG SOMA PRO HI E 16 MENOS SOMA PRO LO
+	bufferRegistradores[in.s2_instrucao.rd].valor = multiplicacao(bancoRegistradores[in.s2_instrucao.rs].valor, bancoRegistradores[in.s2_instrucao.rt].valor);
+	bufferRegistradores[HI].valor = adicao(bufferRegistradores[in.s2_instrucao.rd].valor >> 16, bancoRegistradores[HI].valor);
+	bufferRegistradores[LO].valor = adicao(bufferRegistradores[in.s2_instrucao.rd].valor << 16, bancoRegistradores[LO].valor);
+
+	break;
+case MSUB:
+	bancoRegistradores[in.s2_instrucao.rd].valor = multiplicacao(bancoRegistradores[in.s2_instrucao.rs].valor, bancoRegistradores[in.s2_instrucao.rt].valor);
+	bufferRegistradores[HI].valor = subtracao(bufferResultado.valor, juntarHILO(bancoRegistradores[HI].valor, bancoRegistradores[LO].valor));
+
+	break;
+case MUL:
+	bufferRegistradores[in.s2_instrucao.rd].valor = multiplicacao(bancoRegistradores[in.s2_instrucao.rs].valor, bancoRegistradores[in.s2_instrucao.rt].valor);
+
+	break;
+case ADDI:
+	bufferRegistradores[in.i_instrucao.rt].valor = adicao(bancoRegistradores[in.i_instrucao.rs].valor, in.i_instrucao.imediato);
+
+	break;
+case ANDI:
+	bufferRegistradores[in.s_instrucao.rt].valor = and(bancoRegistradores[in.s_instrucao.rs].valor, in.i_instrucao.imediato);
+
+	break;
+case B:
+	PC = in.i_instrucao.imediato; //arrumar em todos pra = só
+
+	break;
+case BEQ:
+	if (igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.i_instrucao.rt].valor))
+		PC += in.i_instrucao.imediato;
+
+	break;
+case BEQL:
+	if (igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.i_instrucao.rt].valor))
+		PC += in.i_instrucao.imediato;
+
+	break;
+case BGTZ: //ta certo??
+	if (maior(bancoRegistradores[in.i_instrucao.rs].valor, 0))
+		PC += in.i_instrucao.imediato;
+
+	break;
+case BLEZ:
+	if (menorIgual(bancoRegistradores[in.i_instrucao.rs].valor, 0))
+		PC += in.i_instrucao.imediato;
+
+	break;
+case BNE:
+	if (not(igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor)))
+		PC += in.i_instrucao.imediato;
+
+	break;
+case LUI:
+	bufferRegistradores[in.i_instrucao.rt].valor = shiftLeft(in.i_instrucao.imediato, 16);
+
+	break;
+case ORI:
+	bufferRegistradores[in.i_instrucao.rt].valor = or (bancoRegistradores[in.i_instrucao.rs].valor, in.i_instrucao.imediato);
+
+	break;
+case XORI:
+	bufferRegistradores[in.i_instrucao.rt].valor = xor(bancoRegistradores[in.i_instrucao.rs].valor, in.i_instrucao.imediato);
+
+	break;
+case J:
+	PC = in.j_instrucao.addr;
+
+	break;
+case BGEZ:
+	if (maiorIgual(bancoRegistradores[in.r_instrucao.rs].valor, 0))
+		PC += in.r_instrucao.offset;
+
+	break;
+case BLTZ:
+	if (menor(bancoRegistradores[in.r_instrucao.rs].valor, 0))
+		PC += in.r_instrucao.offset;
+
+	break;
+}
+}
+*/
