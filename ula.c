@@ -136,8 +136,11 @@ int descobrirOperacao(Inst in)
         break;
 
     case 0b000100:
-
-        op = B;
+        if(in.i_instrucao.rs == 0 && in.i_instrucao.rt == 0)
+            op = B;
+        else
+            op = BEQ;
+        
         break;
 
     case 0b010100:
@@ -235,7 +238,7 @@ int xor (int op1, int op2) {
     return op1 ^ op2;
 }
 
-    int not(int op)
+int not(int op)
 {
     return !op;
 }

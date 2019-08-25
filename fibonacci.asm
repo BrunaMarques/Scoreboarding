@@ -1,6 +1,6 @@
 addi $t0, $zero, 4
 addi $t1, $zero, 0
-add $a0, $s0, $a1
+add $a0, $zero, $zero
 add $a1, $zero, $zero
 addi $a2, $zero, 1
 beq $t0, $zero, end
