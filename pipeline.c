@@ -1737,8 +1737,11 @@ void execucao()
 					printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					break;
 				case BLEZ:
-					if (menorIgual(bancoRegistradores[in.i_instrucao.rs].valor, 0))
+				printf("\n\n ENTORU NO CASE DA EXEC, pc %d\n\n", PC);
+					if (menorIgual(bancoRegistradores[in.i_instrucao.rs].valor, 0)){
 						PC += in.i_instrucao.imediato;
+						printf("\n\nENTOU NO IF\n\n");
+					}
 					printf("BLEZ opcode: %d\n", in.opcode);
 					printf("BLEZ RS: %d\n", in.i_instrucao.rs);
 					printf("BLEZ RT: %d\n", in.i_instrucao.rt);
