@@ -41,9 +41,7 @@ void escritaMemoria()
 		{
 
 			memoria[contPalavra - contByte + 3] = palavra & 0x0FF;
-			printf("\nPALAVRA antes= %d", palavra);
 			palavra = (palavra >> 8);
-			printf("\nPALAVRA= %d", palavra);
 		}
 
 		contPalavra += 4;
@@ -57,7 +55,6 @@ void buscaMemoria(unsigned char palavra[])
 	for (contByte = 0; contByte < 4; contByte++)
 	{
 		palavra[contByte] = memoria[PC + contByte];
-		printf("\nPALAVRA BUSCA: %d", palavra[contByte]);
 		// printf ("teste --> %X", palavra[contByte]);
 	}
 }

@@ -6,7 +6,7 @@ mfhi $t1
 mflo $t2
 movn $s1, $a2, $s0
 movz $ZERO, $t0, $t1
-mthi $K0
+mthi $t0
 mtlo $k1
 mult $T8, $T9
 nop
@@ -15,7 +15,7 @@ or $t1, $t2, $t3
 sub $T3, $s0, $s1
 xor $gp, $SP, $T5
 madd $v0, $V1
-# msub $T0, $t1
+msub $T0, $t1
 mul $S1, $t1, $t4
 andi $S0, $s4, 1
 lui $AT, 2
