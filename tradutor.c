@@ -267,9 +267,13 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				special[5] = TJR;
 				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
 				special[2] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 				special[3] = 0b00000;
-				special[4] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
+				hash(aux);
+				special[4] = pegarEndereco(aux);
 				aux = strtok(NULL, ", \n\0");
 			}
 			else if (strcasecmp(aux,"mfhi") == 0){
@@ -451,10 +455,11 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 		}
 		else if((strcasecmp(aux,"bgez") == 0) || (strcasecmp(aux,"bltz") == 0)){
 			regim[0] = 0b000001;
+			aux = strtok(NULL, ", \n\0");
 			if (strcasecmp(aux,"bgez") == 0){
 				regim[2] = TBGEZ;
-				aux = strtok(NULL, ", \n\0");
 				regim[1] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
 				aux = strtok(NULL, ", \n\0");
 				hash(aux);
 				regim[3] = pegarEndereco(aux);
@@ -462,8 +467,8 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 			}
 			else{
 				regim[2] = TBLTZ;
-				aux = strtok(NULL, ", \n\0");
 				regim[1] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
 				aux = strtok(NULL, ", \n\0");
 				hash(aux);
 				regim[3] = pegarEndereco(aux);
@@ -496,7 +501,9 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				imediato[0] = TB;
 				aux = strtok(NULL, ", \n\0");
 				imediato[1] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 				imediato[2] = 0b00000;
+				aux = strtok(NULL, ", \n\0");
 				hash(aux);
 				imediato[3] = pegarEndereco(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -537,6 +544,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				imediato[0] = TBLEZ;
 				aux = strtok(NULL, ", \n\0");
 				imediato[1] = registradores(aux);
+				aux = strtok(NULL, ", \n\0");
 				imediato[2] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
 				hash(aux);
