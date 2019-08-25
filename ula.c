@@ -93,6 +93,11 @@ int descobrirOperacao(Inst in)
 
             op = JR;
             break;
+
+        case 0b011000:
+
+            op = MULT;
+            break;
         }
 
         break;
@@ -115,11 +120,6 @@ int descobrirOperacao(Inst in)
         case 0b000010:
 
             op = MUL;
-            break;
-
-        case 0b011000:
-
-            op = MULT;
             break;
         }
 
