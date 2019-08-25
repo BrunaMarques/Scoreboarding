@@ -267,9 +267,7 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				special[5] = TJR;
 				aux = strtok(NULL, ", \n\0");
 				special[1] = registradores(aux);
-				aux = strtok(NULL, ", \n\0");
 				special[2] = 0b00000;
-				aux = strtok(NULL, ", \n\0");
 				special[3] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
 				hash(aux);
@@ -460,7 +458,6 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				regim[2] = TBGEZ;
 				regim[1] = registradores(aux);
 				aux = strtok(NULL, ", \n\0");
-				aux = strtok(NULL, ", \n\0");
 				hash(aux);
 				regim[3] = pegarEndereco(aux);
 				aux = strtok(NULL, ", \n\0");
@@ -468,7 +465,6 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 			else{
 				regim[2] = TBLTZ;
 				regim[1] = registradores(aux);
-				aux = strtok(NULL, ", \n\0");
 				aux = strtok(NULL, ", \n\0");
 				hash(aux);
 				regim[3] = pegarEndereco(aux);
@@ -544,7 +540,6 @@ void tradutorBin(FILE *instrucoes, FILE *saidaBinario){
 				imediato[0] = TBLEZ;
 				aux = strtok(NULL, ", \n\0");
 				imediato[1] = registradores(aux);
-				aux = strtok(NULL, ", \n\0");
 				imediato[2] = 0b00000;
 				aux = strtok(NULL, ", \n\0");
 				hash(aux);
