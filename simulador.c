@@ -18,6 +18,7 @@ void executarPipeline()
 {
 	efetivadas = 0;
 	emitidas = 0;
+	saltou = 0;
 	prog = fopen("prog.out", "w");
 	clock = 1;
 	int i = 0;
