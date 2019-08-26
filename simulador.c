@@ -28,7 +28,8 @@ void executarPipeline()
 	escritaMemoria();
 	do
 	{
-		if(detail != NULL){
+		if (detail != NULL)
+		{
 			fprintf(detail, "\n\nCiclo: %i\n", clock);
 		}
 		escritaPipeline();
@@ -50,28 +51,28 @@ void executarPipeline()
 		printf("BARRAMENTO IR: %d\n", verifica_bar(barIR));
 		printf("BARRAMENTO RE: %d\n", verifica_bar(barRE));
 		printf("BARRAMENTO EW: %d\n", verifica_bar(barEW));
-		getchar();
+		//getchar();
 		//filaVazia() == false || listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) != 1 || listaVazia(listaWriteB) != 1 || verifica_bar(barBI) != 0 || verifica_bar(barIR) != 0 || verifica_bar(barRE) != 0 || verifica_bar(barEW) != 0);
 
 	} while (listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) != 1 || listaVazia(listaWriteB) != 1 || verifica_bar(barBI) == 1 || verifica_bar(barIR) == 1 || verifica_bar(barRE) == 1 || verifica_bar(barEW) == 1);
 
-	if(detail != NULL){
+	if (detail != NULL)
+	{
 		fprintf(detail, "\n\nCiclos totais:\n");
-		fprintf(detail, "\t%d cilcos\n", clock-1);
+		fprintf(detail, "\t%d cilcos\n", clock - 1);
 		fprintf(detail, "\nInstruções:\n \tEmitidas: %d\n \tEfetivadas: %d\n", emitidas, efetivadas);
 		fprintf(detail, "\n\nRegistradores:\n");
 		printarBancoRegistradores(detail);
 	}
-	
+
 	fprintf(prog, "\n\nCiclos:\n");
 	fprintf(prog, "\t%d cilcos\n", clock);
 	fprintf(prog, "\nInstruções:\n \tEmitidas: ver o que colocar\n \tEfetivadas: ver o que colocar");
-	
 }
 
 int main(int argc, char *argv[])
 {
-	FLAGDETAIL=0;
+	FLAGDETAIL = 0;
 	printf("\n%d\n", argc);
 	for (int i = 0; i < argc; i++)
 	{
@@ -127,7 +128,6 @@ int main(int argc, char *argv[])
 			printf("\n\nPORQUEEEE\n\n %d", FLAGDETAIL);
 			FLAGDETAIL = 1;
 			executarPipeline();
-
 		}
 
 		else if (strcmp(argv[1], "--detail") == 0)

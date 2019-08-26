@@ -1862,7 +1862,6 @@ void execucao()
 			listaExecucao->lista_inst[i].qtd_cloc_prec--;
 			if (listaExecucao->lista_inst[i].qtd_cloc_prec == 0)
 			{
-				//PC = in.i_instrucao.imediato;
 				saltou++;
 				printf("B opcode: %d\n", in.opcode);
 				printf("B IMM: %d\n", in.i_instrucao.imediato);
@@ -1885,7 +1884,15 @@ void execucao()
 				}
 				else
 				{
-					//todas as listas e todos os barramentos limpa a instrução de clock maior
+					PC = PC_ant;
+					esvaziarLista(listaIssue, in);
+					esvaziarLista(listaRead, in);
+					esvaziarLista(listaExecucao, in);
+					esvaziarLista(listaWriteB, in);
+					excluir_bar(barBI, in);
+					excluir_bar(barIR, in);
+					excluir_bar(barRE, in);
+					excluir_bar(barEW, in);
 				}
 				printf("BEQ opcode: %d\n", in.opcode);
 				printf("BEQ RS: %d\n", in.i_instrucao.rs);
@@ -1904,8 +1911,22 @@ void execucao()
 			if (listaExecucao->lista_inst[i].qtd_cloc_prec == 0)
 			{
 				if (igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.i_instrucao.rt].valor))
+				{
+
 					saltou++;
-				//PC = in.i_instrucao.imediato;
+				}
+				else
+				{
+					PC = PC_ant;
+					esvaziarLista(listaIssue, in);
+					esvaziarLista(listaRead, in);
+					esvaziarLista(listaExecucao, in);
+					esvaziarLista(listaWriteB, in);
+					excluir_bar(barBI, in);
+					excluir_bar(barIR, in);
+					excluir_bar(barRE, in);
+					excluir_bar(barEW, in);
+				}
 				printf("BEQL opcode: %d\n", in.opcode);
 				printf("BEQL RS: %d\n", in.i_instrucao.rs);
 				printf("BEQL IMM: %d\n", in.i_instrucao.imediato);
@@ -1923,7 +1944,21 @@ void execucao()
 			if (listaExecucao->lista_inst[i].qtd_cloc_prec == 0)
 			{
 				if (maior(bancoRegistradores[in.i_instrucao.rs].valor, 0))
+				{
 					saltou++;
+				}
+				else
+				{
+					PC = PC_ant;
+					esvaziarLista(listaIssue, in);
+					esvaziarLista(listaRead, in);
+					esvaziarLista(listaExecucao, in);
+					esvaziarLista(listaWriteB, in);
+					excluir_bar(barBI, in);
+					excluir_bar(barIR, in);
+					excluir_bar(barRE, in);
+					excluir_bar(barEW, in);
+				}
 				//PC = in.i_instrucao.imediato;
 				printf("BGTZ opcode: %d\n", in.opcode);
 				printf("BGTZ IMM: %d\n", in.i_instrucao.imediato);
@@ -1943,8 +1978,18 @@ void execucao()
 				if (menorIgual(bancoRegistradores[in.i_instrucao.rs].valor, 0))
 				{
 					saltou++;
-					//PC = in.i_instrucao.imediato;
 					printf("\n\nENTOU NO IF\n\n");
+				}
+				else
+				{
+					esvaziarLista(listaIssue, in);
+					esvaziarLista(listaRead, in);
+					esvaziarLista(listaExecucao, in);
+					esvaziarLista(listaWriteB, in);
+					excluir_bar(barBI, in);
+					excluir_bar(barIR, in);
+					excluir_bar(barRE, in);
+					excluir_bar(barEW, in);
 				}
 				printf("BLEZ opcode: %d\n", in.opcode);
 				printf("BLEZ RS: %d\n", in.i_instrucao.rs);
@@ -1972,6 +2017,18 @@ void execucao()
 					saltou++;
 					printf("\nEntou no if\n");
 					//PC = in.i_instrucao.imediato;
+				}
+				else
+				{
+					PC = PC_ant;
+					esvaziarLista(listaIssue, in);
+					esvaziarLista(listaRead, in);
+					esvaziarLista(listaExecucao, in);
+					esvaziarLista(listaWriteB, in);
+					excluir_bar(barBI, in);
+					excluir_bar(barIR, in);
+					excluir_bar(barRE, in);
+					excluir_bar(barEW, in);
 				}
 				printf("BNE opcode: %d\n", in.opcode);
 				printf("BNE RS: %d\n", in.i_instrucao.rs);
@@ -2057,7 +2114,21 @@ void execucao()
 			if (listaExecucao->lista_inst[i].qtd_cloc_prec == 0)
 			{
 				if (maiorIgual(bancoRegistradores[in.r_instrucao.rs].valor, 0))
+				{
 					saltou++;
+				}
+				else
+				{
+					PC = PC_ant;
+					esvaziarLista(listaIssue, in);
+					esvaziarLista(listaRead, in);
+					esvaziarLista(listaExecucao, in);
+					esvaziarLista(listaWriteB, in);
+					excluir_bar(barBI, in);
+					excluir_bar(barIR, in);
+					excluir_bar(barRE, in);
+					excluir_bar(barEW, in);
+				}
 				//PC = in.r_instrucao.offset;
 				printf("BGEZ opcode: %d\n", in.opcode);
 				printf("BGEZ RS: %d\n", in.r_instrucao.rs);
@@ -2076,7 +2147,21 @@ void execucao()
 			if (listaExecucao->lista_inst[i].qtd_cloc_prec == 0)
 			{
 				if (menor(bancoRegistradores[in.r_instrucao.rs].valor, 0))
+				{
 					saltou++;
+				}
+				else
+				{
+					PC = PC_ant;
+					esvaziarLista(listaIssue, in);
+					esvaziarLista(listaRead, in);
+					esvaziarLista(listaExecucao, in);
+					esvaziarLista(listaWriteB, in);
+					excluir_bar(barBI, in);
+					excluir_bar(barIR, in);
+					excluir_bar(barRE, in);
+					excluir_bar(barEW, in);
+				}
 				//PC = in.r_instrucao.offset;
 				printf("BLTZ opcode: %d\n", in.opcode);
 				printf("BLTZ RS: %d\n", in.r_instrucao.rs);

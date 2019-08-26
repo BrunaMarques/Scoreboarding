@@ -13,7 +13,7 @@ void inicializa_bar()
     }
 }
 
-void excluir_bar(int tipo_bar)
+void excluir_bar(int tipo_bar, Inst in)
 {
     switch (tipo_bar)
     {
@@ -35,9 +35,11 @@ void excluir_bar(int tipo_bar)
         {
             if (RE[i].tem_instrucao == true)
             {
+                if (RE[i].instrucao.cont_clock > in.cont_clock)
+                {
 
-                RE[i].tem_instrucao = false;
-
+                    RE[i].tem_instrucao = false;
+                }
                 break;
             }
         }
@@ -50,9 +52,11 @@ void excluir_bar(int tipo_bar)
         {
             if (EW[i].tem_instrucao == true)
             {
+                if (EW[i].instrucao.cont_clock > in.cont_clock)
+                {
 
-                EW[i].tem_instrucao = false;
-
+                    EW[i].tem_instrucao = false;
+                }
                 break;
             }
         }

@@ -20,5 +20,6 @@ void exibirLista(LISTA *list);
 int inserirElemLista(LISTA *list, Inst ch);
 int excluirElem(LISTA *list, int pos);
 int listaVazia(LISTA *list);
+void esvaziarLista(LISTA *list, Inst in);
 
 #endif

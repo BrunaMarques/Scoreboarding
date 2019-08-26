@@ -1,176 +1,123 @@
 Programa:
-	addi $t0, $zero, 10
-	mul $t0, $t0, $t0 
-	addi $t1, $zero, 10
-	ori $t2, $zero, 3 
-	mul $t1, $t1, $t2 
-	add $t2, $t0, $t1
-	add $t3, $t2, $zero
+	addi $t0, $t3, 10
+	addi $t1, $t4, 14
+	sub $t2, $t0, $t1
+	blez $t2, skip
+	addi $t2, $zero, 5
+	skip:
 
 Binário:
-	2008000A
-	71084002
-	2009000A
-	340A0003
-	712A4802
-	1095020
-	1405820
+	2168000A
+	2189000E
+	1095022
+	19400018
+	200A0005
 
 Ciclo: 1
 
 	Busca:
-		addi $t0  z0  10 
-		mul  $t0  $t0  $t0 
-		addi $t1  z0  10 
-		ori  $t2  z0  3 
+		addi $t0  $t3  10 
+		addi $t1  $t4  14 
+		sub  $t2  $t0  $t1 
+		blez  $t2  24 
 
 
 Ciclo: 2
 
 	Emissão:
-		addi $t0  z0  10 
+		addi $t0  $t3  10 
 
 
 Ciclo: 3
 
 	Leitura:
-		addi $t0  z0  10 
+		addi $t0  $t3  10 
 
 	Emissão:
-		mul  $t0  $t0  $t0 
+		addi $t1  $t4  14 
 
 
 Ciclo: 4
 
 	Execução
-		addi $t0  z0  10 
+		addi $t0  $t3  10 
 
 
 Ciclo: 5
 
 	Escrita
-		addi $t0  z0  10 
+		addi $t0  $t3  10 
 
 
 Ciclo: 6
 
 	Leitura:
-		mul  $t0  $t0  $t0 
+		addi $t1  $t4  14 
 
 	Emissão:
-		addi $t1  z0  10 
+		sub  $t2  $t0  $t1 
 
 
 Ciclo: 7
 
 	Execução
-		mul  $t0  $t0  $t0 
-
-	Leitura:
-		addi $t1  z0  10 
-
-	Emissão:
-		ori  $t2  z0  3 
-
-	Busca:
-		mul  $t1  $t1  $t2 
-		add  $t2  $t0  $t1 
-		add  $t3  $t2  z0 
+		addi $t1  $t4  14 
 
 
 Ciclo: 8
 
 	Escrita
-		mul  $t0  $t0  $t0 
-
-	Execução
-		addi $t1  z0  10 
+		addi $t1  $t4  14 
 
 
 Ciclo: 9
 
-	Escrita
-		addi $t1  z0  10 
+	Leitura:
+		sub  $t2  $t0  $t1 
+
+	Emissão:
+		blez  $t2  24 
 
 
 Ciclo: 10
 
-	Leitura:
-		ori  $t2  z0  3 
-
-	Emissão:
-		mul  $t1  $t1  $t2 
+	Execução
+		sub  $t2  $t0  $t1 
 
 
 Ciclo: 11
-
-	Execução
-		ori  $t2  z0  3 
-
-	Leitura:
-		mul  $t1  $t1  $t2 
-
-	Emissão:
-		add  $t2  $t0  $t1 
 
 
 Ciclo: 12
 
 	Escrita
-		ori  $t2  z0  3 
-
-	Execução
-		mul  $t1  $t1  $t2 
+		sub  $t2  $t0  $t1 
 
 
 Ciclo: 13
 
-	Escrita
-		mul  $t1  $t1  $t2 
-
 	Leitura:
-		add  $t2  $t0  $t1 
-
-	Emissão:
-		add  $t3  $t2  z0 
+		blez  $t2  24 
 
 
 Ciclo: 14
 
 	Execução
-		add  $t2  $t0  $t1 
+		blez  $t2  24 
 
 
 Ciclo: 15
 
 	Escrita
-		add  $t2  $t0  $t1 
-
-
-Ciclo: 16
-
-	Leitura:
-		add  $t3  $t2  z0 
-
-
-Ciclo: 17
-
-	Execução
-		add  $t3  $t2  z0 
-
-
-Ciclo: 18
-
-	Escrita
-		add  $t3  $t2  z0 
+		blez  $t2  24 
 
 
 Ciclos totais:
-	18 cilcos
+	15 cilcos
 
 Instruções:
- 	Emitidas: 7
- 	Efetivadas: 7
+ 	Emitidas: 4
+ 	Efetivadas: 4
 
 
 Registradores:
@@ -182,10 +129,10 @@ Registradores:
 	Registrador A1 --> 0
 	Registrador A2 --> 0
 	Registrador A3 --> 0
-	Registrador T0 --> 100
-	Registrador T1 --> 30
-	Registrador T2 --> 130
-	Registrador T3 --> 130
+	Registrador T0 --> 10
+	Registrador T1 --> 14
+	Registrador T2 --> -4
+	Registrador T3 --> 0
 	Registrador T4 --> 0
 	Registrador T5 --> 0
 	Registrador T6 --> 0

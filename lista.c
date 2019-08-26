@@ -136,11 +136,16 @@ int listaVazia(LISTA *list)
     return 1;
 }
 
-void esvaziarLista(LISTA *list){
-    for (int i = 0; i<N; i++){
-        list->lista_inst[i].posicao = excluido;
+void esvaziarLista(LISTA *list, Inst in)
+{
+    for (int i = 0; i < N; i++)
+    {
+        if (list->lista_inst[i].cont_clock > in.cont_clock)
+        {
+            list->lista_inst[i].posicao = excluido;
+            list->nroElem--;
+        }
     }
-    list->nroElem = 0;
 }
 
 // int main()

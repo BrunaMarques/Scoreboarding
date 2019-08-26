@@ -28,4 +28,6 @@ Inst leitura_bar(int tipo_bar);
 
 int verifica_bar(int tipo_bar);
 
+void excluir_bar(int tipo_bar, Inst in);
+
 #endif
