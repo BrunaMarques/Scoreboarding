@@ -1251,7 +1251,7 @@ void leitura()
 			if ((UFADD.status.Fj != semREG) && (UFADD.status.Fk != semREG))
 			{
 				printf("\nEntou no 1 if\n");
-				if (((bancoRegistradores[UFADD.status.Fj].UF == semUF) && (bancoRegistradores[UFADD.status.Fk].UF == semUF)) || (bancoRegistradores[UFADD.status.Fi].UF == bancoRegistradores[UFADD.status.Fj].UF) || (bancoRegistradores[UFADD.status.Fi].UF == bancoRegistradores[UFADD.status.Fk].UF) || (bancoRegistradores[UFADD.status.Fi].UF == bancoRegistradores[UFADD.status.Fj].UF == bancoRegistradores[UFADD.status.Fk]))
+				if (((bancoRegistradores[UFADD.status.Fj].UF == semUF) && (bancoRegistradores[UFADD.status.Fk].UF == semUF)) || (bancoRegistradores[UFADD.status.Fi].UF == bancoRegistradores[UFADD.status.Fj].UF) || (bancoRegistradores[UFADD.status.Fi].UF == bancoRegistradores[UFADD.status.Fk].UF) || (bancoRegistradores[UFADD.status.Fi].UF == bancoRegistradores[UFADD.status.Fj].UF == bancoRegistradores[UFADD.status.Fk].UF))
 				{
 					// bancoRegistradores[in.s_instrucao.rs].UF = UF_ADD;
 					// bancoRegistradores[in.s_instrucao.rt].UF = UF_ADD;
@@ -1288,7 +1288,7 @@ void leitura()
 			if ((UFDIV.status.Fj != semREG) && (UFDIV.status.Fk != semREG))
 			{
 				printf("\nEntou no primeiro if\n");
-				if (((bancoRegistradores[UFDIV.status.Fj].UF == semUF) && (bancoRegistradores[UFDIV.status.Fk].UF == semUF)) || (bancoRegistradores[UFDIV.status.Fi].UF == bancoRegistradores[UFDIV.status.Fj].UF) || (bancoRegistradores[UFDIV.status.Fi].UF == bancoRegistradores[UFDIV.status.Fk].UF) || (bancoRegistradores[UFDIV.status.Fi].UF == bancoRegistradores[UFDIV.status.Fj].UF == bancoRegistradores[UFDIV.status.Fk]))
+				if (((bancoRegistradores[UFDIV.status.Fj].UF == semUF) && (bancoRegistradores[UFDIV.status.Fk].UF == semUF)) || (bancoRegistradores[UFDIV.status.Fi].UF == bancoRegistradores[UFDIV.status.Fj].UF) || (bancoRegistradores[UFDIV.status.Fi].UF == bancoRegistradores[UFDIV.status.Fk].UF) || (bancoRegistradores[UFDIV.status.Fi].UF == bancoRegistradores[UFDIV.status.Fj].UF == bancoRegistradores[UFDIV.status.Fk].UF))
 				{
 					printf("\nEntou no if do if\n");
 					escrita_bar(in, barRE);
@@ -1315,7 +1315,7 @@ void leitura()
 			if ((UFINT.status.Fj != semREG) && (UFINT.status.Fk != semREG))
 			{
 				printf("\nEntou no 1 if\n");
-				if (((bancoRegistradores[UFINT.status.Fj].UF == semUF) && (bancoRegistradores[UFINT.status.Fk].UF == semUF)) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fj].UF) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fk].UF) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fj].UF == bancoRegistradores[UFINT.status.Fk]))
+				if (((bancoRegistradores[UFINT.status.Fj].UF == semUF) && (bancoRegistradores[UFINT.status.Fk].UF == semUF)) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fj].UF) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fk].UF) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fj].UF == bancoRegistradores[UFINT.status.Fk].UF))
 				{
 					printf("\nEntou no 2 if\n");
 					escrita_bar(in, barRE);
@@ -1350,7 +1350,7 @@ void leitura()
 			if ((UFMUL1.status.Fj != semREG) && (UFMUL1.status.Fk != semREG))
 			{
 				printf("\nEntou no 1 if\n");
-				if (((bancoRegistradores[UFMUL1.status.Fj].UF == semUF) && (bancoRegistradores[UFMUL1.status.Fk].UF == semUF)) || (bancoRegistradores[UFMUL1.status.Fi].UF == bancoRegistradores[UFMUL1.status.Fj].UF) || (bancoRegistradores[UFMUL1.status.Fi].UF == bancoRegistradores[UFMUL1.status.Fk].UF) || (bancoRegistradores[UFMUL1.status.Fi].UF == bancoRegistradores[UFMUL1.status.Fj].UF == bancoRegistradores[UFMUL1.status.Fk]))
+				if (((bancoRegistradores[UFMUL1.status.Fj].UF == semUF) && (bancoRegistradores[UFMUL1.status.Fk].UF == semUF)) || (bancoRegistradores[UFMUL1.status.Fi].UF == bancoRegistradores[UFMUL1.status.Fj].UF) || (bancoRegistradores[UFMUL1.status.Fi].UF == bancoRegistradores[UFMUL1.status.Fk].UF) || (bancoRegistradores[UFMUL1.status.Fi].UF == bancoRegistradores[UFMUL1.status.Fj].UF == bancoRegistradores[UFMUL1.status.Fk].UF))
 				{
 					printf("\nEntou no 2 if\n");
 					escrita_bar(in, barRE);
@@ -1387,7 +1387,7 @@ void leitura()
 			if ((UFMUL2.status.Fj != semREG) && (UFMUL2.status.Fk != semREG))
 			{
 				printf("\nEntou no 1 if\n");
-				if (((bancoRegistradores[UFMUL2.status.Fj].UF == semUF) && (bancoRegistradores[UFMUL2.status.Fk].UF == semUF)) || (bancoRegistradores[UFMUL2.status.Fi].UF == bancoRegistradores[UFMUL2.status.Fj].UF) || (bancoRegistradores[UFMUL2.status.Fi].UF == bancoRegistradores[UFMUL2.status.Fk].UF) || (bancoRegistradores[UFMUL2.status.Fi].UF == bancoRegistradores[UFMUL2.status.Fj].UF == bancoRegistradores[UFMUL2.status.Fk]))
+				if (((bancoRegistradores[UFMUL2.status.Fj].UF == semUF) && (bancoRegistradores[UFMUL2.status.Fk].UF == semUF)) || (bancoRegistradores[UFMUL2.status.Fi].UF == bancoRegistradores[UFMUL2.status.Fj].UF) || (bancoRegistradores[UFMUL2.status.Fi].UF == bancoRegistradores[UFMUL2.status.Fk].UF) || (bancoRegistradores[UFMUL2.status.Fi].UF == bancoRegistradores[UFMUL2.status.Fj].UF == bancoRegistradores[UFMUL2.status.Fk].UF))
 				{
 					printf("\nEntou no 2 if\n");
 					escrita_bar(in, barRE);
@@ -1892,8 +1892,8 @@ void execucao()
 			if (listaExecucao->lista_inst[i].qtd_cloc_prec == 0)
 			{
 				if (igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.i_instrucao.rt].valor))
-					saltou++:
-					//PC = in.i_instrucao.imediato;
+					saltou++;
+				//PC = in.i_instrucao.imediato;
 				printf("BEQL opcode: %d\n", in.opcode);
 				printf("BEQL RS: %d\n", in.i_instrucao.rs);
 				printf("BEQL IMM: %d\n", in.i_instrucao.imediato);
@@ -1912,7 +1912,7 @@ void execucao()
 			{
 				if (maior(bancoRegistradores[in.i_instrucao.rs].valor, 0))
 					saltou++;
-					//PC = in.i_instrucao.imediato;
+				//PC = in.i_instrucao.imediato;
 				printf("BGTZ opcode: %d\n", in.opcode);
 				printf("BGTZ IMM: %d\n", in.i_instrucao.imediato);
 				printf("resultado/PC BGTZ: %d\n", PC);
@@ -2046,7 +2046,7 @@ void execucao()
 			{
 				if (maiorIgual(bancoRegistradores[in.r_instrucao.rs].valor, 0))
 					saltou++;
-					//PC = in.r_instrucao.offset;
+				//PC = in.r_instrucao.offset;
 				printf("BGEZ opcode: %d\n", in.opcode);
 				printf("BGEZ RS: %d\n", in.r_instrucao.rs);
 				printf("BGEZ RT: %d\n", in.r_instrucao.id);
@@ -2065,7 +2065,7 @@ void execucao()
 			{
 				if (menor(bancoRegistradores[in.r_instrucao.rs].valor, 0))
 					saltou++;
-					//PC = in.r_instrucao.offset;
+				//PC = in.r_instrucao.offset;
 				printf("BLTZ opcode: %d\n", in.opcode);
 				printf("BLTZ RS: %d\n", in.r_instrucao.rs);
 				printf("BLTZ RT: %d\n", in.r_instrucao.id);

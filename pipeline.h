@@ -17,6 +17,7 @@
 
 int emitidas;
 int efetivadas;
+int saltou;
 
 void buscaPipeline();
 void execucao();
