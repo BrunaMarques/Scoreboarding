@@ -1,6 +1,6 @@
 #ifndef LISTA_H
 #define LISTA_H
-#define N 5
+#define N 4
 #define excluido -1
 
 typedef struct
@@ -20,6 +20,5 @@ void exibirLista(LISTA *list);
 int inserirElemLista(LISTA *list, Inst ch);
 int excluirElem(LISTA *list, int pos);
 int listaVazia(LISTA *list);
-//int main();
 
 #endif
