@@ -3,6 +3,7 @@
 
 #include "registradores.h"
 #include "hash.h"
+#include "print.h"
 
 //instruções ESPECIAL
 #define TADD 0b100000
@@ -55,6 +56,7 @@ FILE *saidaHexa;
 FILE *prog;
 FILE *detail;
 int qtd;
+int FLAGDETAIL;
 char entrada[100], saida[100];
 
 

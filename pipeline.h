@@ -14,6 +14,10 @@
 #define infinito 2147483647;
 //salvar pc antigo
 //35 clocks pro teste do mul
+
+int emitidas;
+int efetivadas;
+
 void buscaPipeline();
 void execucao();
 void emissao();

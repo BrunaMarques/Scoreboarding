@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Programa:
 	addi $t0, $zero, 10
 	add $t0, $t0, $zero
@@ -18,3 +19,32 @@ Ciclos:
 Instruções:
  	Emitidas: ver o que colocar
  	Efetivadas: ver o que colocar
+=======
+<<<<<<< HEAD
+Programa:
+	addi $t0, $zero, 10
+	mul $t0, $t0, $t0 
+	addi $t1, $zero, 10
+	ori $t2, $zero, 3 
+	mul $t1, $t1, $t2 
+	add $t2, $t0, $t1
+	add $t3, $t2, $zero
+
+Binário:
+	2008000A
+	71084002
+	2009000A
+	340A0003
+	712A4802
+	1095020
+	1405820
+
+Ciclos:
+	19 cilcos
+
+Instruções:
+ 	Emitidas: ver o que colocar
+ 	Efetivadas: ver o que colocar
+=======
+>>>>>>> 0bc52dbda44c496ddf1bafa8e9c22f7496237ee9
+>>>>>>> 8908d0cde7e7a853326d75e0865130f5857dda61
