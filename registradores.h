@@ -54,6 +54,7 @@ registrador bufferRegistradores[34];
 registrador bufferResultado;
 
 int PC;
+int PC_ant;
 
 void inicializarRegistradores();
 void escreverRegistrador(int registrador, int valor);

@@ -13,6 +13,54 @@ void inicializa_bar()
     }
 }
 
+void excluir_bar(int tipo_bar)
+{
+    switch (tipo_bar)
+    {
+    case barBI:
+
+        BI.tem_instrucao = false;
+
+        break;
+
+    case barIR:
+
+        IR.tem_instrucao = false;
+
+        break;
+
+    case barRE:
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (RE[i].tem_instrucao == true)
+            {
+
+                RE[i].tem_instrucao = false;
+
+                break;
+            }
+        }
+
+        break;
+
+    case barEW:
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (EW[i].tem_instrucao == true)
+            {
+
+                EW[i].tem_instrucao = false;
+
+                break;
+            }
+        }
+
+        break;
+    }
+}
+
 void escrita_bar(Inst instrucao, int tipo_bar)
 {
     switch (tipo_bar)

@@ -38,21 +38,26 @@ void buscaPipeline()
 			switch (operacao)
 			{
 			case JR:
+				PC_ant = PC + 4;
 				PC = bancoRegistradores[in.s_instrucao.rs].valor;
 				break;
 			case B:
+				PC_ant = PC + 4;
 				PC = in.i_instrucao.imediato;
 				break;
 			case BEQ:
+				PC_ant = PC + 4;
 				PC = in.i_instrucao.imediato;
 				break;
 			case BEQL:
+				PC_ant = PC + 4;
 				PC = in.i_instrucao.imediato;
 				break;
 			case BGTZ:
 				PC = in.i_instrucao.imediato;
 				break;
 			case BLEZ:
+				PC_ant = PC + 4;
 				printf("\nENTROU BLEZ\n");
 				printf("BLEZ opcode: %d\n", instDecode.opcode);
 				printf("BLEZ RS: %d\n", instDecode.i_instrucao.rs);
@@ -63,15 +68,19 @@ void buscaPipeline()
 				printf("resultado/PC BLEZ: %d\n", PC);
 				break;
 			case BNE:
+				PC_ant = PC + 4;
 				PC = in.i_instrucao.imediato;
 				break;
 			case J:
+				PC_ant = PC + 4;
 				PC = in.j_instrucao.addr;
 				break;
 			case BGEZ:
+				PC_ant = PC + 4;
 				PC = in.r_instrucao.offset;
 				break;
 			case BLTZ:
+				PC_ant = PC + 4;
 				PC = in.r_instrucao.offset;
 				break;
 			default:
@@ -1871,9 +1880,12 @@ void execucao()
 			{
 				if (igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.i_instrucao.rt].valor))
 				{
-					printf("\n\n\nAAAA ENTROU\n\n");
+					printf("\n\n\nAAAA SALTOU\n\n");
 					saltou++;
-					//PC = in.i_instrucao.imediato;
+				}
+				else
+				{
+					//todas as listas e todos os barramentos limpa a instrução de clock maior
 				}
 				printf("BEQ opcode: %d\n", in.opcode);
 				printf("BEQ RS: %d\n", in.i_instrucao.rs);
