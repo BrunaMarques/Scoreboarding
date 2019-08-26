@@ -18,6 +18,9 @@ void buscaPipeline()
 	printf("\nVAMU VER\n");
 	if (filaVazia() && (PC < (qtd * 4)))
 	{
+		if(detail != NULL){
+			fprintf(detail, "\n\tBusca:\n");
+		}
 		for (int i = 0; i < 4; i++)
 		{
 			if (PC >= (qtd * 4))
@@ -29,6 +32,7 @@ void buscaPipeline()
 
 			Inst instDecode = decodificacao(instMem);
 			inserirElementoFila(instDecode);
+			printar(instDecode);
 			PC += 4;
 		}
 	}
@@ -56,10 +60,15 @@ void emissao()
 		printf("\nEMITIDA\n");
 		if (verifica_bar(barBI))
 		{
+			emitidas++;
+			if(detail != NULL){
+				fprintf(detail, "\n\tEmissão:\n");
+			}
 			printf("\nif bar bi n vazio\n");
 			printf("\nBAR BI OPCODE: %d\n", BI.instrucao.opcode);
 			EMITIDA = false;
 			in = leitura_bar(barBI);
+			printar(in);
 			printf("\ninstrução que peguei: %d\n", in.opcode);
 			exibirLista(listaIssue);
 			inserirElemLista(listaIssue, in);
@@ -1135,7 +1144,11 @@ void leitura()
 	printf("\nEMITIDA COMEÇO DA LEITURA: %d\n", EMITIDA);
 	if (verifica_bar(barIR))
 	{
+		if(detail != NULL){
+			fprintf(detail, "\n\tLeitura:\n");
+		}
 		in = leitura_bar(barIR);
+		printar(in);
 		inserirElemLista(listaRead, in);
 		printf("\nBarramento IR: %d\n", IR.instrucao.opcode);
 	}
@@ -1331,9 +1344,14 @@ void execucao()
 {
 	printf("\n\t--------------execução--------------\n");
 	printf("\nEMITIDA COMEÇO DA EXECUÇÃO: %d\n", EMITIDA);
+	
 	while (verifica_bar(barRE))
 	{
+		if(detail != NULL){
+		fprintf(detail, "\n\tExecução\n");
+		}
 		in = leitura_bar(barRE);
+		printar(in);
 		printf("barramento RE: %d", RE->instrucao.opcode);
 		printf("\nLista execução 0: %d", listaExecucao->lista_inst[0].opcode);
 		printf("\nLista execução 1: %d", listaExecucao->lista_inst[1].opcode);
@@ -1858,9 +1876,15 @@ void escritaPipeline()
 {
 	printf("\n\t--------------escrita--------------\n");
 	printf("\nEMITIDA COMEÇO DA ESCRITA: %d\n", EMITIDA);
+	
 	while (verifica_bar(barEW))
 	{
+		efetivadas++;
+		if(detail != NULL){
+		fprintf(detail, "\n\tEscrita\n");
+	}
 		in = leitura_bar(barEW);
+		printar(in);
 		inserirElemLista(listaWriteB, in);
 		//exibirLista(listaWriteB);
 		printf("barramento EW: %d", EW->instrucao.opcode);
@@ -2126,5 +2150,4 @@ void escritaPipeline()
 		}
 	}
 	printf("\nEMITIDA FIM DA ESCRITA: %d\n", EMITIDA);
-	printarBancoRegistradores();
 }

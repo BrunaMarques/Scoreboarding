@@ -58,6 +58,6 @@ int PC;
 void inicializarRegistradores();
 void escreverRegistrador(int registrador, int valor);
 int lerRegistrador(int registrador);
-void printarBancoRegistradores();
+void printarBancoRegistradores(FILE *detail);
 
 #endif

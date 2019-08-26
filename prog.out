@@ -1,20 +1,23 @@
 Programa:
-	addi $t0, $zero, 18
-	addi $t1, $zero, 14
-	sub $t2, $t0, $t1
-	blez $t2, skip
-	addi $t2, $zero, 5
-	skip:
+	addi $t0, $zero, 10
+	mul $t0, $t0, $t0 
+	addi $t1, $zero, 10
+	ori $t2, $zero, 3 
+	mul $t1, $t1, $t2 
+	add $t2, $t0, $t1
+	add $t3, $t2, $zero
 
 Binário:
-	20080012
-	2009000E
-	1095022
-	19400018
-	200A0005
+	2008000A
+	71084002
+	2009000A
+	340A0003
+	712A4802
+	1095020
+	1405820
 
 Ciclos:
-	18 cilcos
+	19 cilcos
 
 Instruções:
  	Emitidas: ver o que colocar

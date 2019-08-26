@@ -12,6 +12,9 @@
 
 #define infinito 2147483647;
 
+int emitidas;
+int efetivadas;
+
 void buscaPipeline();
 void execucao();
 void emissao();

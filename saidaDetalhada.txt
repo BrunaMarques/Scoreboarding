@@ -1,0 +1,210 @@
+Programa:
+	addi $t0, $zero, 10
+	mul $t0, $t0, $t0 
+	addi $t1, $zero, 10
+	ori $t2, $zero, 3 
+	mul $t1, $t1, $t2 
+	add $t2, $t0, $t1
+	add $t3, $t2, $zero
+
+Binário:
+	2008000A
+	71084002
+	2009000A
+	340A0003
+	712A4802
+	1095020
+	1405820
+
+Ciclo: 1
+
+	Busca:
+		addi $t0  z0  10 
+		mul  $t0  $t0  $t0 
+		addi $t1  z0  10 
+		ori  $t2  z0  3 
+
+
+Ciclo: 2
+
+	Emissão:
+		addi $t0  z0  10 
+
+
+Ciclo: 3
+
+	Leitura:
+		addi $t0  z0  10 
+
+	Emissão:
+		mul  $t0  $t0  $t0 
+
+
+Ciclo: 4
+
+	Execução
+		addi $t0  z0  10 
+
+
+Ciclo: 5
+
+	Escrita
+		addi $t0  z0  10 
+
+
+Ciclo: 6
+
+	Leitura:
+		mul  $t0  $t0  $t0 
+
+	Emissão:
+		addi $t1  z0  10 
+
+
+Ciclo: 7
+
+	Execução
+		mul  $t0  $t0  $t0 
+
+	Leitura:
+		addi $t1  z0  10 
+
+	Emissão:
+		ori  $t2  z0  3 
+
+	Busca:
+		mul  $t1  $t1  $t2 
+		add  $t2  $t0  $t1 
+		add  $t3  $t2  z0 
+
+
+Ciclo: 8
+
+	Escrita
+		mul  $t0  $t0  $t0 
+
+	Execução
+		addi $t1  z0  10 
+
+
+Ciclo: 9
+
+	Escrita
+		addi $t1  z0  10 
+
+
+Ciclo: 10
+
+	Leitura:
+		ori  $t2  z0  3 
+
+	Emissão:
+		mul  $t1  $t1  $t2 
+
+
+Ciclo: 11
+
+	Execução
+		ori  $t2  z0  3 
+
+	Leitura:
+		mul  $t1  $t1  $t2 
+
+	Emissão:
+		add  $t2  $t0  $t1 
+
+
+Ciclo: 12
+
+	Escrita
+		ori  $t2  z0  3 
+
+	Execução
+		mul  $t1  $t1  $t2 
+
+
+Ciclo: 13
+
+	Escrita
+		mul  $t1  $t1  $t2 
+
+	Leitura:
+		add  $t2  $t0  $t1 
+
+	Emissão:
+		add  $t3  $t2  z0 
+
+
+Ciclo: 14
+
+	Execução
+		add  $t2  $t0  $t1 
+
+
+Ciclo: 15
+
+	Escrita
+		add  $t2  $t0  $t1 
+
+
+Ciclo: 16
+
+	Leitura:
+		add  $t3  $t2  z0 
+
+
+Ciclo: 17
+
+	Execução
+		add  $t3  $t2  z0 
+
+
+Ciclo: 18
+
+	Escrita
+		add  $t3  $t2  z0 
+
+
+Ciclos totais:
+	18 cilcos
+
+Instruções:
+ 	Emitidas: 7
+ 	Efetivadas: 7
+
+
+Registradores:
+	Registrador Z0 --> 0
+	Registrador AT --> 0
+	Registrador V0 --> 0
+	Registrador V1 --> 0
+	Registrador A0 --> 0
+	Registrador A1 --> 0
+	Registrador A2 --> 0
+	Registrador A3 --> 0
+	Registrador T0 --> 100
+	Registrador T1 --> 30
+	Registrador T2 --> 130
+	Registrador T3 --> 130
+	Registrador T4 --> 0
+	Registrador T5 --> 0
+	Registrador T6 --> 0
+	Registrador T7 --> 0
+	Registrador S0 --> 0
+	Registrador S1 --> 0
+	Registrador S2 --> 0
+	Registrador S3 --> 0
+	Registrador S4 --> 0
+	Registrador S5 --> 0
+	Registrador S6 --> 0
+	Registrador S7 --> 0
+	Registrador T8 --> 0
+	Registrador T9 --> 0
+	Registrador K0 --> 0
+	Registrador K1 --> 0
+	Registrador GP --> 0
+	Registrador SP --> 0
+	Registrador FP --> 0
+	Registrador S8 / RA --> 0
+	Registrador HI --> 0
+	Registrador LO --> 0
