@@ -18,7 +18,8 @@ void buscaPipeline()
 	printf("\nVAMU VER\n");
 	if (filaVazia() && (PC < (qtd * 4)))
 	{
-		if(detail != NULL){
+		if (detail != NULL)
+		{
 			fprintf(detail, "\n\tBusca:\n");
 		}
 		for (int i = 0; i < 4; i++)
@@ -104,7 +105,8 @@ void emissao()
 		if (verifica_bar(barBI))
 		{
 			emitidas++;
-			if(detail != NULL){
+			if (detail != NULL)
+			{
 				fprintf(detail, "\n\tEmissão:\n");
 			}
 			printf("\nif bar bi n vazio\n");
@@ -156,7 +158,7 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_ADD;
 						in.UF = UF_ADD;
 						in.qtd_cloc_prec = 2;
-
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nADD\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -186,7 +188,7 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 1;
-
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nAND\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -216,7 +218,7 @@ void emissao()
 						bancoRegistradores[LO].UF = UF_DIV;
 						in.UF = UF_DIV;
 						in.qtd_cloc_prec = 5;
-
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nDIV\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -242,7 +244,7 @@ void emissao()
 					UFINT.status.Rk = semUF;
 					in.UF = UF_INT;
 					in.qtd_cloc_prec = 1;
-
+					in.cont_clock = clock;
 					escrita_bar(in, barIR);
 					printf("\nJR\n");
 					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -268,7 +270,7 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 1;
-
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nMFHI\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -295,7 +297,7 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 1;
-
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nMFLO\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -322,7 +324,7 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 1;
-
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nMOVN\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -353,7 +355,7 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 1;
-
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nMOVZ\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -385,7 +387,7 @@ void emissao()
 						bancoRegistradores[HI].UF = UF_INT;
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 1;
-
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nMTHI\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -414,7 +416,7 @@ void emissao()
 						bancoRegistradores[LO].UF = UF_INT;
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 1;
-
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nMTLO\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -445,7 +447,7 @@ void emissao()
 						bancoRegistradores[LO].UF = UF_MUL1;
 						in.UF = UF_MUL1;
 						in.qtd_cloc_prec = 5;
-
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nMUL\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -474,7 +476,7 @@ void emissao()
 							bancoRegistradores[LO].UF = UF_MUL2;
 							in.UF = UF_MUL2;
 							in.qtd_cloc_prec = 5;
-
+							in.cont_clock = clock;
 							escrita_bar(in, barIR);
 							printf("\nMUL\n");
 							printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -505,6 +507,7 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 1;
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nNOP\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -535,6 +538,7 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 1;
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nNOR\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -564,6 +568,7 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 1;
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nOR\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -594,6 +599,7 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 2;
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nSUB\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -624,6 +630,7 @@ void emissao()
 						bancoRegistradores[in.s_instrucao.rd].UF = UF_INT;
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 1;
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nXOR\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -655,6 +662,7 @@ void emissao()
 						bancoRegistradores[LO].UF = UF_MUL1;
 						in.UF = UF_MUL1;
 						in.qtd_cloc_prec = 5;
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nMADD\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -686,6 +694,7 @@ void emissao()
 						bancoRegistradores[LO].UF = UF_MUL2;
 						in.UF = UF_MUL2;
 						in.qtd_cloc_prec = 5;
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nMADD\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -717,6 +726,7 @@ void emissao()
 						bancoRegistradores[LO].UF = UF_MUL1;
 						in.UF = UF_MUL1;
 						in.qtd_cloc_prec = 5;
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nMSUB\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -748,6 +758,7 @@ void emissao()
 						bancoRegistradores[LO].UF = UF_MUL2;
 						in.UF = UF_MUL2;
 						in.qtd_cloc_prec = 5;
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nMSUB\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -779,6 +790,7 @@ void emissao()
 						bancoRegistradores[in.s2_instrucao.rd].UF = UF_MUL1;
 						in.UF = UF_MUL1;
 						in.qtd_cloc_prec = 5;
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\n depois de atribuir: rt %d, rs %d\n", bancoRegistradores[in.s2_instrucao.rs].UF, bancoRegistradores[in.s2_instrucao.rt].UF);
 						printf("\nMUL\n");
@@ -809,6 +821,7 @@ void emissao()
 						bancoRegistradores[in.s2_instrucao.rd].UF = UF_MUL2;
 						in.UF = UF_MUL2;
 						in.qtd_cloc_prec = 5;
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nMUL\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -839,6 +852,7 @@ void emissao()
 						bancoRegistradores[in.i_instrucao.rt].UF = UF_INT;
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 1;
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nADDI\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -869,6 +883,7 @@ void emissao()
 						bancoRegistradores[in.i_instrucao.rt].UF = UF_INT;
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 1;
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						printf("\nANDI\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -896,6 +911,7 @@ void emissao()
 					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
 					in.UF = UF_INT;
 					in.qtd_cloc_prec = 1;
+					in.cont_clock = clock;
 					escrita_bar(in, barIR);
 					printf("\nB\n");
 					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -920,6 +936,7 @@ void emissao()
 					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
 					in.UF = UF_INT;
 					in.qtd_cloc_prec = 1;
+					in.cont_clock = clock;
 					escrita_bar(in, barIR);
 					printf("\nBEQ\n");
 					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -945,6 +962,7 @@ void emissao()
 					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
 					in.UF = UF_INT;
 					in.qtd_cloc_prec = 1;
+					in.cont_clock = clock;
 					escrita_bar(in, barIR);
 					printf("\nBEQL\n");
 					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -971,6 +989,7 @@ void emissao()
 					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
 					in.UF = UF_INT;
 					in.qtd_cloc_prec = 1;
+					in.cont_clock = clock;
 					escrita_bar(in, barIR);
 					printf("\nBGTZ\n");
 					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -996,6 +1015,7 @@ void emissao()
 					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.imediato].UF == semUF) ? true : false;
 					in.UF = UF_INT;
 					in.qtd_cloc_prec = 1;
+					in.cont_clock = clock;
 					escrita_bar(in, barIR);
 					printf("\nBLEZ\n");
 					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -1021,6 +1041,7 @@ void emissao()
 					UFINT.status.Rk = (bancoRegistradores[in.i_instrucao.rt].UF == semUF) ? true : false;
 					in.UF = UF_INT;
 					in.qtd_cloc_prec = 1;
+					in.cont_clock = clock;
 					escrita_bar(in, barIR);
 					printf("\nBNE\n");
 					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -1050,6 +1071,7 @@ void emissao()
 						bancoRegistradores[in.i_instrucao.rt].UF = UF_INT;
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 1;
+						in.cont_clock = clock;
 						printf("\nLUI\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
 						printf("barramento IR RS: %d\n", IR.instrucao.i_instrucao.rs);
@@ -1077,6 +1099,7 @@ void emissao()
 						bancoRegistradores[in.i_instrucao.rt].UF = UF_INT;
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 1;
+						in.cont_clock = clock;
 						printf("\nORI\n");
 						printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
 						printf("barramento IR RS: %d\n", IR.instrucao.i_instrucao.rs);
@@ -1104,6 +1127,7 @@ void emissao()
 						bancoRegistradores[in.i_instrucao.rt].UF = UF_INT;
 						in.UF = UF_INT;
 						in.qtd_cloc_prec = 1;
+						in.cont_clock = clock;
 						escrita_bar(in, barIR);
 						excluirElem(listaIssue, 0);
 						EMITIDA = true;
@@ -1124,6 +1148,7 @@ void emissao()
 					UFINT.status.Rk = semUF;
 					in.UF = UF_INT;
 					in.qtd_cloc_prec = 1;
+					in.cont_clock = clock;
 					escrita_bar(in, barIR);
 					printf("\nJUMP\n");
 					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -1148,6 +1173,7 @@ void emissao()
 					UFINT.status.Rk = (bancoRegistradores[in.r_instrucao.offset].UF == semUF) ? true : false;
 					in.UF = UF_INT;
 					in.qtd_cloc_prec = 1;
+					in.cont_clock = clock;
 					escrita_bar(in, barIR);
 					printf("\nBGEZ\n");
 					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -1173,6 +1199,7 @@ void emissao()
 					UFINT.status.Rk = (bancoRegistradores[in.r_instrucao.offset].UF == semUF) ? true : false;
 					in.UF = UF_INT;
 					in.qtd_cloc_prec = 1;
+					in.cont_clock = clock;
 					escrita_bar(in, barIR);
 					printf("\nBLTZ\n");
 					printf("barramento IR opcode: %d\n", IR.instrucao.opcode);
@@ -1199,7 +1226,8 @@ void leitura()
 	printf("\nEMITIDA COMEÇO DA LEITURA: %d\n", EMITIDA);
 	if (verifica_bar(barIR))
 	{
-		if(detail != NULL){
+		if (detail != NULL)
+		{
 			fprintf(detail, "\n\tLeitura:\n");
 		}
 		in = leitura_bar(barIR);
@@ -1223,7 +1251,7 @@ void leitura()
 			if ((UFADD.status.Fj != semREG) && (UFADD.status.Fk != semREG))
 			{
 				printf("\nEntou no 1 if\n");
-				if (((bancoRegistradores[UFADD.status.Fj].UF == semUF) && (bancoRegistradores[UFADD.status.Fk].UF == semUF)) || (bancoRegistradores[UFADD.status.Fi].UF == bancoRegistradores[UFADD.status.Fj].UF)) //ou fi = fk, ou os 3 iguais
+				if (((bancoRegistradores[UFADD.status.Fj].UF == semUF) && (bancoRegistradores[UFADD.status.Fk].UF == semUF)) || (bancoRegistradores[UFADD.status.Fi].UF == bancoRegistradores[UFADD.status.Fj].UF) || (bancoRegistradores[UFADD.status.Fi].UF == bancoRegistradores[UFADD.status.Fk].UF) || (bancoRegistradores[UFADD.status.Fi].UF == bancoRegistradores[UFADD.status.Fj].UF == bancoRegistradores[UFADD.status.Fk]))
 				{
 					// bancoRegistradores[in.s_instrucao.rs].UF = UF_ADD;
 					// bancoRegistradores[in.s_instrucao.rt].UF = UF_ADD;
@@ -1260,7 +1288,7 @@ void leitura()
 			if ((UFDIV.status.Fj != semREG) && (UFDIV.status.Fk != semREG))
 			{
 				printf("\nEntou no primeiro if\n");
-				if (((bancoRegistradores[UFDIV.status.Fj].UF == semUF) && (bancoRegistradores[UFDIV.status.Fk].UF == semUF)) || (bancoRegistradores[UFDIV.status.Fj].UF == bancoRegistradores[UFDIV.status.Fk].UF))
+				if (((bancoRegistradores[UFDIV.status.Fj].UF == semUF) && (bancoRegistradores[UFDIV.status.Fk].UF == semUF)) || (bancoRegistradores[UFDIV.status.Fi].UF == bancoRegistradores[UFDIV.status.Fj].UF) || (bancoRegistradores[UFDIV.status.Fi].UF == bancoRegistradores[UFDIV.status.Fk].UF) || (bancoRegistradores[UFDIV.status.Fi].UF == bancoRegistradores[UFDIV.status.Fj].UF == bancoRegistradores[UFDIV.status.Fk]))
 				{
 					printf("\nEntou no if do if\n");
 					escrita_bar(in, barRE);
@@ -1272,7 +1300,7 @@ void leitura()
 			else if (UFDIV.status.Fj != semREG)
 			{
 				printf("\nEntou no else if\n");
-				if ((bancoRegistradores[UFDIV.status.Fj].UF == semUF) || (bancoRegistradores[UFDIV.status.Fj].UF == bancoRegistradores[UFDIV.status.Fk].UF))
+				if ((bancoRegistradores[UFDIV.status.Fj].UF == semUF) || (bancoRegistradores[UFDIV.status.Fi].UF == bancoRegistradores[UFDIV.status.Fj].UF))
 				{
 					printf("\nEntou no if do else if\n");
 					escrita_bar(in, barRE);
@@ -1287,7 +1315,7 @@ void leitura()
 			if ((UFINT.status.Fj != semREG) && (UFINT.status.Fk != semREG))
 			{
 				printf("\nEntou no 1 if\n");
-				if (((bancoRegistradores[UFINT.status.Fj].UF == semUF) && (bancoRegistradores[UFINT.status.Fk].UF == semUF)) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fj].UF))
+				if (((bancoRegistradores[UFINT.status.Fj].UF == semUF) && (bancoRegistradores[UFINT.status.Fk].UF == semUF)) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fj].UF) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fk].UF) || (bancoRegistradores[UFINT.status.Fi].UF == bancoRegistradores[UFINT.status.Fj].UF == bancoRegistradores[UFINT.status.Fk]))
 				{
 					printf("\nEntou no 2 if\n");
 					escrita_bar(in, barRE);
@@ -1322,7 +1350,7 @@ void leitura()
 			if ((UFMUL1.status.Fj != semREG) && (UFMUL1.status.Fk != semREG))
 			{
 				printf("\nEntou no 1 if\n");
-				if (((bancoRegistradores[UFMUL1.status.Fj].UF == semUF) && (bancoRegistradores[UFMUL1.status.Fk].UF == semUF)) || (bancoRegistradores[UFMUL1.status.Fi].UF == bancoRegistradores[UFMUL1.status.Fj].UF))
+				if (((bancoRegistradores[UFMUL1.status.Fj].UF == semUF) && (bancoRegistradores[UFMUL1.status.Fk].UF == semUF)) || (bancoRegistradores[UFMUL1.status.Fi].UF == bancoRegistradores[UFMUL1.status.Fj].UF) || (bancoRegistradores[UFMUL1.status.Fi].UF == bancoRegistradores[UFMUL1.status.Fk].UF) || (bancoRegistradores[UFMUL1.status.Fi].UF == bancoRegistradores[UFMUL1.status.Fj].UF == bancoRegistradores[UFMUL1.status.Fk]))
 				{
 					printf("\nEntou no 2 if\n");
 					escrita_bar(in, barRE);
@@ -1336,7 +1364,7 @@ void leitura()
 			else if (UFMUL1.status.Fj != semREG)
 			{
 				printf("\nEntou no else if\n");
-				if ((bancoRegistradores[UFMUL1.status.Fj].UF == semUF) || (bancoRegistradores[UFMUL1.status.Fk].UF == bancoRegistradores[UFMUL1.status.Fj].UF))
+				if ((bancoRegistradores[UFMUL1.status.Fj].UF == semUF) || (bancoRegistradores[UFMUL1.status.Fi].UF == bancoRegistradores[UFMUL1.status.Fj].UF))
 				{
 					printf("\nEntou no if do else if\n");
 					escrita_bar(in, barRE);
@@ -1359,7 +1387,7 @@ void leitura()
 			if ((UFMUL2.status.Fj != semREG) && (UFMUL2.status.Fk != semREG))
 			{
 				printf("\nEntou no 1 if\n");
-				if (((bancoRegistradores[UFMUL2.status.Fj].UF == semUF) && (bancoRegistradores[UFMUL2.status.Fk].UF == semUF)) || (bancoRegistradores[UFMUL2.status.Fi].UF == bancoRegistradores[UFMUL2.status.Fj].UF))
+				if (((bancoRegistradores[UFMUL2.status.Fj].UF == semUF) && (bancoRegistradores[UFMUL2.status.Fk].UF == semUF)) || (bancoRegistradores[UFMUL2.status.Fi].UF == bancoRegistradores[UFMUL2.status.Fj].UF) || (bancoRegistradores[UFMUL2.status.Fi].UF == bancoRegistradores[UFMUL2.status.Fk].UF) || (bancoRegistradores[UFMUL2.status.Fi].UF == bancoRegistradores[UFMUL2.status.Fj].UF == bancoRegistradores[UFMUL2.status.Fk]))
 				{
 					printf("\nEntou no 2 if\n");
 					escrita_bar(in, barRE);
@@ -1399,11 +1427,12 @@ void execucao()
 {
 	printf("\n\t--------------execução--------------\n");
 	printf("\nEMITIDA COMEÇO DA EXECUÇÃO: %d\n", EMITIDA);
-	
+
 	while (verifica_bar(barRE))
 	{
-		if(detail != NULL){
-		fprintf(detail, "\n\tExecução\n");
+		if (detail != NULL)
+		{
+			fprintf(detail, "\n\tExecução\n");
 		}
 		in = leitura_bar(barRE);
 		printar(in);
@@ -2050,13 +2079,14 @@ void escritaPipeline()
 {
 	printf("\n\t--------------escrita--------------\n");
 	printf("\nEMITIDA COMEÇO DA ESCRITA: %d\n", EMITIDA);
-	
+
 	while (verifica_bar(barEW))
 	{
 		efetivadas++;
-		if(detail != NULL){
-		fprintf(detail, "\n\tEscrita\n");
-	}
+		if (detail != NULL)
+		{
+			fprintf(detail, "\n\tEscrita\n");
+		}
 		in = leitura_bar(barEW);
 		printar(in);
 		inserirElemLista(listaWriteB, in);
