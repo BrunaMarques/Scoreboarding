@@ -1506,7 +1506,8 @@ void execucao()
 			listaExecucao->lista_inst[i].qtd_cloc_prec--;
 			if (listaExecucao->lista_inst[i].qtd_cloc_prec == 0)
 			{
-				PC = bancoRegistradores[in.s_instrucao.rs].valor;
+				saltou++;
+				//PC = bancoRegistradores[in.s_instrucao.rs].valor;
 				printf("JR opcode: %d\n", in.opcode);
 				printf("JR RS: %d\n", in.s_instrucao.rs);
 				printf("JR RT: %d\n", in.s_instrucao.rt);
@@ -1823,7 +1824,8 @@ void execucao()
 			listaExecucao->lista_inst[i].qtd_cloc_prec--;
 			if (listaExecucao->lista_inst[i].qtd_cloc_prec == 0)
 			{
-				PC = in.i_instrucao.imediato;
+				//PC = in.i_instrucao.imediato;
+				saltou++;
 				printf("B opcode: %d\n", in.opcode);
 				printf("B IMM: %d\n", in.i_instrucao.imediato);
 				printf("resultado/PC B: %d\n", PC);
@@ -1841,7 +1843,8 @@ void execucao()
 				if (igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.i_instrucao.rt].valor))
 				{
 					printf("\n\n\nAAAA ENTROU\n\n");
-					PC = in.i_instrucao.imediato;
+					saltou++;
+					//PC = in.i_instrucao.imediato;
 				}
 				printf("BEQ opcode: %d\n", in.opcode);
 				printf("BEQ RS: %d\n", in.i_instrucao.rs);
@@ -1860,7 +1863,8 @@ void execucao()
 			if (listaExecucao->lista_inst[i].qtd_cloc_prec == 0)
 			{
 				if (igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.i_instrucao.rt].valor))
-					PC = in.i_instrucao.imediato;
+					saltou++:
+					//PC = in.i_instrucao.imediato;
 				printf("BEQL opcode: %d\n", in.opcode);
 				printf("BEQL RS: %d\n", in.i_instrucao.rs);
 				printf("BEQL IMM: %d\n", in.i_instrucao.imediato);
@@ -1878,7 +1882,8 @@ void execucao()
 			if (listaExecucao->lista_inst[i].qtd_cloc_prec == 0)
 			{
 				if (maior(bancoRegistradores[in.i_instrucao.rs].valor, 0))
-					PC = in.i_instrucao.imediato;
+					saltou++;
+					//PC = in.i_instrucao.imediato;
 				printf("BGTZ opcode: %d\n", in.opcode);
 				printf("BGTZ IMM: %d\n", in.i_instrucao.imediato);
 				printf("resultado/PC BGTZ: %d\n", PC);
@@ -1896,7 +1901,8 @@ void execucao()
 				printf("\n\n ENTORU NO CASE DA EXEC, pc %d\n\n", PC);
 				if (menorIgual(bancoRegistradores[in.i_instrucao.rs].valor, 0))
 				{
-					PC = in.i_instrucao.imediato;
+					saltou++;
+					//PC = in.i_instrucao.imediato;
 					printf("\n\nENTOU NO IF\n\n");
 				}
 				printf("BLEZ opcode: %d\n", in.opcode);
@@ -1922,8 +1928,9 @@ void execucao()
 				//if (not(igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor)))
 				if (not(igual(aux1, aux2)))
 				{
+					saltou++;
 					printf("\nEntou no if\n");
-					PC = in.i_instrucao.imediato;
+					//PC = in.i_instrucao.imediato;
 				}
 				printf("BNE opcode: %d\n", in.opcode);
 				printf("BNE RS: %d\n", in.i_instrucao.rs);
@@ -1992,7 +1999,8 @@ void execucao()
 			listaExecucao->lista_inst[i].qtd_cloc_prec--;
 			if (listaExecucao->lista_inst[i].qtd_cloc_prec == 0)
 			{
-				PC = in.j_instrucao.addr;
+				saltou++;
+				//PC = in.j_instrucao.addr;
 				printf("J opcode: %d\n", in.opcode);
 				printf("J RS: %d\n", in.j_instrucao.addr);
 				printf("resultado/PC J: %d\n", PC);
@@ -2008,7 +2016,8 @@ void execucao()
 			if (listaExecucao->lista_inst[i].qtd_cloc_prec == 0)
 			{
 				if (maiorIgual(bancoRegistradores[in.r_instrucao.rs].valor, 0))
-					PC = in.r_instrucao.offset;
+					saltou++;
+					//PC = in.r_instrucao.offset;
 				printf("BGEZ opcode: %d\n", in.opcode);
 				printf("BGEZ RS: %d\n", in.r_instrucao.rs);
 				printf("BGEZ RT: %d\n", in.r_instrucao.id);
@@ -2026,7 +2035,8 @@ void execucao()
 			if (listaExecucao->lista_inst[i].qtd_cloc_prec == 0)
 			{
 				if (menor(bancoRegistradores[in.r_instrucao.rs].valor, 0))
-					PC = in.r_instrucao.offset;
+					saltou++;
+					//PC = in.r_instrucao.offset;
 				printf("BLTZ opcode: %d\n", in.opcode);
 				printf("BLTZ RS: %d\n", in.r_instrucao.rs);
 				printf("BLTZ RT: %d\n", in.r_instrucao.id);
