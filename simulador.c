@@ -44,7 +44,7 @@ void executarPipeline()
 		printf("BARRAMENTO IR: %d\n", verifica_bar(barIR));
 		printf("BARRAMENTO RE: %d\n", verifica_bar(barRE));
 		printf("BARRAMENTO EW: %d\n", verifica_bar(barEW));
-		//getchar();
+		getchar();
 		//filaVazia() == false || listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) != 1 || listaVazia(listaWriteB) != 1 || verifica_bar(barBI) != 0 || verifica_bar(barIR) != 0 || verifica_bar(barRE) != 0 || verifica_bar(barEW) != 0);
 
 	} while (listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) != 1 || listaVazia(listaWriteB) != 1 || verifica_bar(barBI) == 1 || verifica_bar(barIR) == 1 || verifica_bar(barRE) == 1 || verifica_bar(barEW) == 1);

@@ -7,11 +7,11 @@ Inst decodificacao(unsigned char palavra[])
 //etapa de decodificação
 {
 	Inst in;
-	int instrucao = palavra[0] << 24;
+	unsigned int instrucao = palavra[0] << 24;
 	instrucao += (palavra[1] << 16);
 	instrucao += (palavra[2] << 8);
 	instrucao += palavra[3];
-	int tipo = instrucao >> 26 & MASCARA;
+	unsigned int tipo = instrucao >> 26 & MASCARA;
 	switch (tipo)
 	{
 

@@ -1522,7 +1522,8 @@ void execucao()
 					printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					break;
 				case MULT:
-					separarHILO(multiplicacao(bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor));
+					bufferRegistradores[HI].valor = shiftRight(16, multiplicacao(bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor));
+					bufferRegistradores[LO].valor = shiftLeft(16, multiplicacao(bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor));
 					printf("MULT opcode: %d\n", in.opcode);
 					printf("MULT RS: %d\n", in.s_instrucao.rs);
 					printf("MULT RT: %d\n", in.s_instrucao.rt);
@@ -1537,9 +1538,7 @@ void execucao()
 					excluirElem(listaExecucao, in.posicao);
 					printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					break;
-					break;
 				case NOP:
-					// nao faz nada por enquanto (no operation)//
 					break;
 				case NOR:
 					bufferRegistradores[in.s_instrucao.rd].valor = nor(bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor);
@@ -1552,7 +1551,6 @@ void execucao()
 					printf("resultado NOR: %d\n", bufferRegistradores[in.s_instrucao.rd].valor);
 					escrita_bar(in, barEW);
 					printf("barramento EW: %d\n", EW->instrucao.opcode);
-					//exibirLista(listaExecucao);
 					printf("elemento na lista execução dentro do int: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					excluirElem(listaExecucao, in.posicao);
 					printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
@@ -1568,7 +1566,6 @@ void execucao()
 					printf("resultado OR: %d\n", bufferRegistradores[in.s_instrucao.rd].valor);
 					escrita_bar(in, barEW);
 					printf("barramento EW: %d\n", EW->instrucao.opcode);
-					//exibirLista(listaExecucao);
 					excluirElem(listaExecucao, in.posicao);
 					break;
 				case SUB:
@@ -1582,7 +1579,6 @@ void execucao()
 					printf("resultado SUB: %d\n", bufferRegistradores[in.s_instrucao.rd].valor);
 					escrita_bar(in, barEW);
 					printf("barramento EW: %d\n", EW->instrucao.opcode);
-					//exibirLista(listaExecucao);
 					excluirElem(listaExecucao, in.posicao);
 					break;
 				case XOR:
@@ -1596,16 +1592,14 @@ void execucao()
 					printf("resultado XOR: %d\n", bufferRegistradores[in.s_instrucao.rd].valor);
 					escrita_bar(in, barEW);
 					printf("barramento EW: %d\n", EW->instrucao.opcode);
-					//exibirLista(listaExecucao);
 					printf("elemento na lista execução dentro do int: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					excluirElem(listaExecucao, in.posicao);
 					printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					break;
-				case MADD: //MAIS SIG SOMA PRO HI E 16 MENOS SOMA PRO LO
+				case MADD:
 					bufferRegistradores[in.s2_instrucao.rd].valor = multiplicacao(bancoRegistradores[in.s2_instrucao.rs].valor, bancoRegistradores[in.s2_instrucao.rt].valor);
 					bufferRegistradores[HI].valor = adicao(bufferRegistradores[in.s2_instrucao.rd].valor >> 16, bancoRegistradores[HI].valor);
 					bufferRegistradores[LO].valor = adicao(bufferRegistradores[in.s2_instrucao.rd].valor << 16, bancoRegistradores[LO].valor);
-					//fazer o msm pro lo
 					printf("MADD opcode: %d\n", in.opcode);
 					printf("MADD RS: %d\n", in.s2_instrucao.rs);
 					printf("MADD RT: %d\n", in.s2_instrucao.rt);
@@ -1621,8 +1615,9 @@ void execucao()
 					printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					break;
 				case MSUB:
-					bancoRegistradores[in.s2_instrucao.rd].valor = multiplicacao(bancoRegistradores[in.s2_instrucao.rs].valor, bancoRegistradores[in.s2_instrucao.rt].valor);
-					bufferRegistradores[HI].valor = subtracao(bufferResultado.valor, juntarHILO(bancoRegistradores[HI].valor, bancoRegistradores[LO].valor));
+					bufferRegistradores[in.s2_instrucao.rd].valor = multiplicacao(bancoRegistradores[in.s2_instrucao.rs].valor, bancoRegistradores[in.s2_instrucao.rt].valor);
+					bufferRegistradores[HI].valor = subtracao(bufferRegistradores[in.s2_instrucao.rd].valor >> 16, bancoRegistradores[HI].valor);
+					bufferRegistradores[LO].valor = subtracao(bufferRegistradores[in.s2_instrucao.rd].valor << 16, bancoRegistradores[LO].valor);
 					printf("MSUB opcode: %d\n", in.opcode);
 					printf("MSUB RS: %d\n", in.s2_instrucao.rs);
 					printf("MSUB RT: %d\n", in.s2_instrucao.rt);
@@ -1632,7 +1627,6 @@ void execucao()
 					printf("resultado MSUB: %d\n", bufferRegistradores[HI].valor);
 					escrita_bar(in, barEW);
 					printf("barramento EW: %d\n", EW->instrucao.opcode);
-					//exibirLista(listaExecucao);
 					printf("elemento na lista execução dentro do int: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					excluirElem(listaExecucao, in.posicao);
 					printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
@@ -1648,7 +1642,6 @@ void execucao()
 					printf("resultado MUL: %d\n", bufferRegistradores[in.s2_instrucao.rd].valor);
 					escrita_bar(in, barEW);
 					printf("barramento EW: %d\n", EW->instrucao.opcode);
-					//exibirLista(listaExecucao);
 					excluirElem(listaExecucao, in.posicao);
 					break;
 				case ADDI:
@@ -1660,11 +1653,10 @@ void execucao()
 					printf("resultado ADDI: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 					escrita_bar(in, barEW);
 					printf("barramento EW: %d\n", EW->instrucao.opcode);
-					//exibirLista(listaExecucao);
 					excluirElem(listaExecucao, in.posicao);
 					break;
 				case ANDI:
-					bufferRegistradores[in.s_instrucao.rt].valor = and(bancoRegistradores[in.s_instrucao.rs].valor, in.i_instrucao.imediato);
+					bufferRegistradores[in.i_instrucao.rt].valor = and(bancoRegistradores[in.i_instrucao.rs].valor, in.i_instrucao.imediato);
 					printf("ANDI opcode: %d\n", in.opcode);
 					printf("ANDI RS: %d\n", in.i_instrucao.rs);
 					printf("ANDI RT: %d\n", in.i_instrucao.rt);
@@ -1672,27 +1664,24 @@ void execucao()
 					printf("resultado ANDI: %d\n", bufferRegistradores[in.i_instrucao.rt].valor);
 					escrita_bar(in, barEW);
 					printf("barramento EW: %d\n", EW->instrucao.opcode);
-					//exibirLista(listaExecucao);
 					excluirElem(listaExecucao, in.posicao);
 					break;
 				case B:
-					PC = in.i_instrucao.imediato; //arrumar em todos pra = só
+					PC = in.i_instrucao.imediato;
 					printf("B opcode: %d\n", in.opcode);
-					printf("B RS: %d\n", in.i_instrucao.rs);
-					printf("B RT: %d\n", in.i_instrucao.rt);
 					printf("B IMM: %d\n", in.i_instrucao.imediato);
 					printf("resultado/PC B: %d\n", PC);
 					escrita_bar(in, barEW);
 					printf("barramento EW: %d\n", EW->instrucao.opcode);
-					//exibirLista(listaExecucao);
 					printf("elemento na lista execução dentro do int: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					excluirElem(listaExecucao, in.posicao);
 					printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					break;
 				case BEQ:
-					if (igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.i_instrucao.rt].valor)){
+					if (igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.i_instrucao.rt].valor))
+					{
 						printf("\n\n\nAAAA ENTROU\n\n");
-						PC += in.i_instrucao.imediato;
+						PC = in.i_instrucao.imediato;
 					}
 					printf("BEQ opcode: %d\n", in.opcode);
 					printf("BEQ RS: %d\n", in.i_instrucao.rs);
@@ -1701,7 +1690,6 @@ void execucao()
 					printf("resultado/PC BEQ: %d\n", PC);
 					escrita_bar(in, barEW);
 					printf("barramento EW: %d\n", EW->instrucao.opcode);
-					//exibirLista(listaExecucao);
 					printf("elemento na lista execução dentro do int: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					excluirElem(listaExecucao, in.posicao);
 					printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
@@ -1711,7 +1699,6 @@ void execucao()
 						PC += in.i_instrucao.imediato;
 					printf("BEQL opcode: %d\n", in.opcode);
 					printf("BEQL RS: %d\n", in.i_instrucao.rs);
-					printf("BEQL RT: %d\n", in.i_instrucao.rt);
 					printf("BEQL IMM: %d\n", in.i_instrucao.imediato);
 					printf("resultado/PC BEQL: %d\n", PC);
 					escrita_bar(in, barEW);
@@ -1721,24 +1708,22 @@ void execucao()
 					excluirElem(listaExecucao, in.posicao);
 					printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					break;
-				case BGTZ: //ta certo??
+				case BGTZ:
 					if (maior(bancoRegistradores[in.i_instrucao.rs].valor, 0))
 						PC += in.i_instrucao.imediato;
 					printf("BGTZ opcode: %d\n", in.opcode);
-					printf("BGTZ RS: %d\n", in.i_instrucao.rs);
-					printf("BGTZ RT: %d\n", in.i_instrucao.rt);
 					printf("BGTZ IMM: %d\n", in.i_instrucao.imediato);
 					printf("resultado/PC BGTZ: %d\n", PC);
 					escrita_bar(in, barEW);
 					printf("barramento EW: %d\n", EW->instrucao.opcode);
-					//exibirLista(listaExecucao);
 					printf("elemento na lista execução dentro do int: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					excluirElem(listaExecucao, in.posicao);
 					printf("elemento na lista execução: %d", listaExecucao->lista_inst[in.posicao].posicao);
 					break;
 				case BLEZ:
-				printf("\n\n ENTORU NO CASE DA EXEC, pc %d\n\n", PC);
-					if (menorIgual(bancoRegistradores[in.i_instrucao.rs].valor, 0)){
+					printf("\n\n ENTORU NO CASE DA EXEC, pc %d\n\n", PC);
+					if (menorIgual(bancoRegistradores[in.i_instrucao.rs].valor, 0))
+					{
 						PC += in.i_instrucao.imediato;
 						printf("\n\nENTOU NO IF\n\n");
 					}
@@ -1760,7 +1745,8 @@ void execucao()
 					int aux1 = bancoRegistradores[in.i_instrucao.rs].valor;
 					int aux2 = bancoRegistradores[in.i_instrucao.rt].valor;
 					//if (not(igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor)))
-					if (not(igual(aux1, aux2))){
+					if (not(igual(aux1, aux2)))
+					{
 						printf("\nEntou no if\n");
 						PC += in.i_instrucao.imediato;
 					}
@@ -1888,38 +1874,175 @@ void escritaPipeline()
 
 			continue;
 		}
-		int tipo = in.opcode;
-		switch (tipo)
+		switch (operacao)
 		{
-		case ESPECIAL:
-
+		case ADD:
 			bancoRegistradores[in.s_instrucao.rd].valor = bufferRegistradores[in.s_instrucao.rd].valor;
 			bancoRegistradores[in.s_instrucao.rd].UF = semUF;
 			excluirElem(listaWriteB, in.posicao);
 			break;
-		case ESPECIAL2:
+		case AND:
+			bancoRegistradores[in.s_instrucao.rd].valor = bufferRegistradores[in.s_instrucao.rd].valor;
+			bancoRegistradores[in.s_instrucao.rd].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case DIV:
+			bancoRegistradores[HI].valor = bufferRegistradores[HI].valor;
+			bancoRegistradores[LO].valor = bufferRegistradores[LO].valor;
+			bancoRegistradores[HI].UF = semUF;
+			bancoRegistradores[LO].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
 
+			break;
+		case JR:
+			PC = bancoRegistradores[in.s_instrucao.rs].valor;
+			excluirElem(listaWriteB, in.posicao);
+
+			break;
+		case MFHI:
+			bancoRegistradores[in.s_instrucao.rd].valor = bufferRegistradores[in.s_instrucao.rd].valor;
+			bancoRegistradores[in.s_instrucao.rd].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case MFLO:
+			bancoRegistradores[in.s_instrucao.rd].valor = bufferRegistradores[in.s_instrucao.rd].valor;
+			bancoRegistradores[in.s_instrucao.rd].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case MOVN:
+			bancoRegistradores[in.s_instrucao.rd].valor = bufferRegistradores[in.s_instrucao.rd].valor;
+			bancoRegistradores[in.s_instrucao.rd].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case MOVZ:
+			bancoRegistradores[in.s_instrucao.rd].valor = bufferRegistradores[in.s_instrucao.rd].valor;
+			bancoRegistradores[in.s_instrucao.rd].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case MTHI:
+
+			bancoRegistradores[HI].valor = bufferRegistradores[HI].valor;
+			bancoRegistradores[HI].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case MTLO:
+			bancoRegistradores[LO].valor = bufferRegistradores[HI].valor;
+			bancoRegistradores[LO].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case MULT:
+			bancoRegistradores[HI].valor = bufferRegistradores[HI].valor;
+			bancoRegistradores[LO].valor = bufferRegistradores[LO].valor;
+			bancoRegistradores[HI].UF = semUF;
+			bancoRegistradores[LO].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case NOP:
+			// nao faz nada por enquanto (no operation)//
+			bancoRegistradores[in.s_instrucao.rd].UF = semUF;
+
+			excluirElem(listaWriteB, in.posicao);
+
+			break;
+		case NOR:
+			bancoRegistradores[in.s_instrucao.rd].valor = bufferRegistradores[in.s_instrucao.rd].valor;
+			bancoRegistradores[in.s_instrucao.rd].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case OR:
+			bancoRegistradores[in.s_instrucao.rd].valor = bufferRegistradores[in.s_instrucao.rd].valor;
+			bancoRegistradores[in.s_instrucao.rd].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case SUB:
+			bancoRegistradores[in.s_instrucao.rd].valor = bufferRegistradores[in.s_instrucao.rd].valor;
+			bancoRegistradores[in.s_instrucao.rd].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case XOR:
+			bancoRegistradores[in.s_instrucao.rd].valor = bufferRegistradores[in.s_instrucao.rd].valor;
+			bancoRegistradores[in.s_instrucao.rd].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case MADD:
+			bancoRegistradores[HI].valor = bufferRegistradores[HI].valor;
+			bancoRegistradores[LO].valor = bufferRegistradores[LO].valor;
+			bancoRegistradores[HI].UF = semUF;
+			bancoRegistradores[LO].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
+
+			break;
+		case MSUB:
+			bancoRegistradores[HI].valor = bufferRegistradores[HI].valor;
+			bancoRegistradores[LO].valor = bufferRegistradores[LO].valor;
+			bancoRegistradores[HI].UF = semUF;
+			bancoRegistradores[LO].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case MUL:
 			bancoRegistradores[in.s2_instrucao.rd].valor = bufferRegistradores[in.s2_instrucao.rd].valor;
 			bancoRegistradores[in.s2_instrucao.rd].UF = semUF;
 			excluirElem(listaWriteB, in.posicao);
 			break;
-		case SALTO:
-
-			bancoRegistradores[in.j_instrucao.addr].valor = bufferRegistradores[in.j_instrucao.addr].valor;
-			bancoRegistradores[in.j_instrucao.addr].UF = semUF;
-			excluirElem(listaWriteB, in.posicao);
-			break;
-		case REGIMM:
-
-			bancoRegistradores[in.r_instrucao.rs].valor = bufferRegistradores[in.r_instrucao.rs].valor;
-			bancoRegistradores[in.r_instrucao.rs].UF = semUF;
-			excluirElem(listaWriteB, in.posicao);
-			break;
-		default:
-
+		case ADDI:
 			bancoRegistradores[in.i_instrucao.rt].valor = bufferRegistradores[in.i_instrucao.rt].valor;
 			bancoRegistradores[in.i_instrucao.rt].UF = semUF;
 			excluirElem(listaWriteB, in.posicao);
+			break;
+		case ANDI:
+			bancoRegistradores[in.i_instrucao.rt].valor = bufferRegistradores[in.i_instrucao.rt].valor;
+			bancoRegistradores[in.i_instrucao.rt].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case B:
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case BEQ:
+			excluirElem(listaWriteB, in.posicao);
+
+			break;
+		case BEQL:
+			excluirElem(listaWriteB, in.posicao);
+
+			break;
+		case BGTZ: //ta certo??
+			excluirElem(listaWriteB, in.posicao);
+
+			break;
+		case BLEZ:
+			excluirElem(listaWriteB, in.posicao);
+
+			break;
+		case BNE:
+			excluirElem(listaWriteB, in.posicao);
+
+			break;
+		case LUI:
+			bancoRegistradores[in.i_instrucao.rt].valor = bufferRegistradores[in.i_instrucao.rt].valor;
+			bancoRegistradores[in.i_instrucao.rt].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case ORI:
+			bancoRegistradores[in.i_instrucao.rt].valor = bufferRegistradores[in.i_instrucao.rt].valor;
+			bancoRegistradores[in.i_instrucao.rt].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case XORI:
+			bancoRegistradores[in.i_instrucao.rt].valor = bufferRegistradores[in.i_instrucao.rt].valor;
+			bancoRegistradores[in.i_instrucao.rt].UF = semUF;
+			excluirElem(listaWriteB, in.posicao);
+			break;
+		case J:
+			excluirElem(listaWriteB, in.posicao);
+
+			break;
+		case BGEZ:
+			excluirElem(listaWriteB, in.posicao);
+
+			break;
+		case BLTZ:
+			excluirElem(listaWriteB, in.posicao);
+
 			break;
 		}
 		switch (in.UF)
@@ -1950,153 +2073,3 @@ void escritaPipeline()
 	printf("\nEMITIDA FIM DA ESCRITA: %d\n", EMITIDA);
 	printarBancoRegistradores();
 }
-/*
-switch (operacao)
-{
-case ADD:
-	bufferRegistradores[in.s_instrucao.rd].valor = adicao(bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor);
-
-	break;
-case AND:
-	bufferRegistradores[in.s_instrucao.rd].valor = and(bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor);
-
-	break;
-case DIV:
-	bufferRegistradores[HI].valor = divisao(bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor);
-	bufferRegistradores[LO].valor = (bancoRegistradores[in.s_instrucao.rs].valor % bancoRegistradores[in.s_instrucao.rt].valor);
-
-	break;
-case JR:
-	PC = bancoRegistradores[in.s_instrucao.rs].valor;
-
-	break;
-case MFHI:
-	bufferRegistradores[in.s_instrucao.rd].valor = bancoRegistradores[HI].valor;
-
-	break;
-case MFLO:
-	bufferRegistradores[in.s_instrucao.rd].valor = bancoRegistradores[LO].valor;
-
-	break;
-case MOVN:
-	if (not(igual(bancoRegistradores[in.s_instrucao.rt].valor, 0)))
-		bufferRegistradores[in.s_instrucao.rd].valor = bancoRegistradores[in.s_instrucao.rs].valor;
-
-	break;
-case MOVZ:
-	if (igual(bancoRegistradores[in.s_instrucao.rt].valor, 0))
-		bufferRegistradores[in.s_instrucao.rd].valor = bancoRegistradores[in.s_instrucao.rs].valor;
-
-	break;
-case MTHI: //ver isso
-	bufferRegistradores[HI].valor = bancoRegistradores[in.s_instrucao.rs].valor;
-
-	break;
-case MTLO:
-	bufferRegistradores[LO].valor = bancoRegistradores[in.s_instrucao.rs].valor;
-
-	break;
-case MULT:
-	separarHILO(multiplicacao(bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor));
-
-	break;
-case NOP:
-	// nao faz nada por enquanto (no operation)//
-	break;
-case NOR:
-	bufferRegistradores[in.s_instrucao.rd].valor = nor(bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor);
-
-	break;
-case OR:
-	bufferRegistradores[in.s_instrucao.rd].valor = or (bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor);
-
-	break;
-case SUB:
-	bufferRegistradores[in.s_instrucao.rd].valor = subtracao(bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor);
-
-	break;
-case XOR:
-	bufferRegistradores[in.s_instrucao.rd].valor = xor(bancoRegistradores[in.s_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor);
-
-	break;
-case MADD: //MAIS SIG SOMA PRO HI E 16 MENOS SOMA PRO LO
-	bufferRegistradores[in.s2_instrucao.rd].valor = multiplicacao(bancoRegistradores[in.s2_instrucao.rs].valor, bancoRegistradores[in.s2_instrucao.rt].valor);
-	bufferRegistradores[HI].valor = adicao(bufferRegistradores[in.s2_instrucao.rd].valor >> 16, bancoRegistradores[HI].valor);
-	bufferRegistradores[LO].valor = adicao(bufferRegistradores[in.s2_instrucao.rd].valor << 16, bancoRegistradores[LO].valor);
-
-	break;
-case MSUB:
-	bancoRegistradores[in.s2_instrucao.rd].valor = multiplicacao(bancoRegistradores[in.s2_instrucao.rs].valor, bancoRegistradores[in.s2_instrucao.rt].valor);
-	bufferRegistradores[HI].valor = subtracao(bufferResultado.valor, juntarHILO(bancoRegistradores[HI].valor, bancoRegistradores[LO].valor));
-
-	break;
-case MUL:
-	bufferRegistradores[in.s2_instrucao.rd].valor = multiplicacao(bancoRegistradores[in.s2_instrucao.rs].valor, bancoRegistradores[in.s2_instrucao.rt].valor);
-
-	break;
-case ADDI:
-	bufferRegistradores[in.i_instrucao.rt].valor = adicao(bancoRegistradores[in.i_instrucao.rs].valor, in.i_instrucao.imediato);
-
-	break;
-case ANDI:
-	bufferRegistradores[in.s_instrucao.rt].valor = and(bancoRegistradores[in.s_instrucao.rs].valor, in.i_instrucao.imediato);
-
-	break;
-case B:
-	PC = in.i_instrucao.imediato; //arrumar em todos pra = só
-
-	break;
-case BEQ:
-	if (igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.i_instrucao.rt].valor))
-		PC += in.i_instrucao.imediato;
-
-	break;
-case BEQL:
-	if (igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.i_instrucao.rt].valor))
-		PC += in.i_instrucao.imediato;
-
-	break;
-case BGTZ: //ta certo??
-	if (maior(bancoRegistradores[in.i_instrucao.rs].valor, 0))
-		PC += in.i_instrucao.imediato;
-
-	break;
-case BLEZ:
-	if (menorIgual(bancoRegistradores[in.i_instrucao.rs].valor, 0))
-		PC += in.i_instrucao.imediato;
-
-	break;
-case BNE:
-	if (not(igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor)))
-		PC += in.i_instrucao.imediato;
-
-	break;
-case LUI:
-	bufferRegistradores[in.i_instrucao.rt].valor = shiftLeft(in.i_instrucao.imediato, 16);
-
-	break;
-case ORI:
-	bufferRegistradores[in.i_instrucao.rt].valor = or (bancoRegistradores[in.i_instrucao.rs].valor, in.i_instrucao.imediato);
-
-	break;
-case XORI:
-	bufferRegistradores[in.i_instrucao.rt].valor = xor(bancoRegistradores[in.i_instrucao.rs].valor, in.i_instrucao.imediato);
-
-	break;
-case J:
-	PC = in.j_instrucao.addr;
-
-	break;
-case BGEZ:
-	if (maiorIgual(bancoRegistradores[in.r_instrucao.rs].valor, 0))
-		PC += in.r_instrucao.offset;
-
-	break;
-case BLTZ:
-	if (menor(bancoRegistradores[in.r_instrucao.rs].valor, 0))
-		PC += in.r_instrucao.offset;
-
-	break;
-}
-}
-*/
