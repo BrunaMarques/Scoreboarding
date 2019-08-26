@@ -136,6 +136,13 @@ int listaVazia(LISTA *list)
     return 1;
 }
 
+void esvaziarLista(LISTA *list){
+    for (int i = 0; i<N; i++){
+        list->lista_inst[i].posicao = excluido;
+    }
+    list->nroElem = 0;
+}
+
 // int main()
 // {
 //         LISTA *l;
@@ -152,8 +159,9 @@ int listaVazia(LISTA *list)
 //     inserirElemLista(l, C);
 //     exibirLista(l);
 //     printf("\nVazia? %d\n" ,listaVazia(l));
-//     printf("\nB: %d", l->lista_inst[B.posicao].posicao);
-//     excluirElem(l, B.posicao);
-//     printf("\nB: %d", l->lista_inst[B.posicao].posicao);
+//    // excluirElem(l, B.posicao);
 //     exibirLista(l);
+//     esvaziarLista(l);
+//     printf("\nVazia? %d\n" ,listaVazia(l));
+//     printf("\nAA\n");
 // }
