@@ -26,6 +26,8 @@ void buscaPipeline()
 		{
 			if (PC >= (qtd * 4))
 			{
+				if (detail != NULL)
+					fprintf(detail, "\nPAROU\n");
 				break;
 			}
 			unsigned char instMem[4];
@@ -39,22 +41,26 @@ void buscaPipeline()
 			{
 			case JR:
 				PC_ant = PC + 4;
-				PC = bancoRegistradores[in.s_instrucao.rs].valor;
+				PC = bancoRegistradores[in.s_instrucao.rs].valor - 4;
 				break;
 			case B:
 				PC_ant = PC + 4;
-				PC = in.i_instrucao.imediato;
+				PC = in.i_instrucao.imediato - 4;
 				break;
 			case BEQ:
+				if (detail != NULL)
+				{
+					fprintf(detail, "\nENTROU BEQ\n");
+				}
 				PC_ant = PC + 4;
-				PC = in.i_instrucao.imediato;
+				PC = in.i_instrucao.imediato - 4;
 				break;
 			case BEQL:
 				PC_ant = PC + 4;
-				PC = in.i_instrucao.imediato;
+				PC = in.i_instrucao.imediato - 4;
 				break;
 			case BGTZ:
-				PC = in.i_instrucao.imediato;
+				PC = in.i_instrucao.imediato - 4;
 				break;
 			case BLEZ:
 				PC_ant = PC + 4;
@@ -64,24 +70,24 @@ void buscaPipeline()
 				printf("BLEZ RT: %d\n", instDecode.i_instrucao.rt);
 				printf("BLEZ IMM: %d\n", instDecode.i_instrucao.imediato);
 				printf("resultado/PC BLEZ: %d\n", PC);
-				PC = instDecode.i_instrucao.imediato;
+				PC = instDecode.i_instrucao.imediato - 4;
 				printf("resultado/PC BLEZ: %d\n", PC);
 				break;
 			case BNE:
 				PC_ant = PC + 4;
-				PC = in.i_instrucao.imediato;
+				PC = in.i_instrucao.imediato - 4;
 				break;
 			case J:
 				PC_ant = PC + 4;
-				PC = in.j_instrucao.addr;
+				PC = in.j_instrucao.addr - 4;
 				break;
 			case BGEZ:
 				PC_ant = PC + 4;
-				PC = in.r_instrucao.offset;
+				PC = in.r_instrucao.offset - 4;
 				break;
 			case BLTZ:
 				PC_ant = PC + 4;
-				PC = in.r_instrucao.offset;
+				PC = in.r_instrucao.offset - 4;
 				break;
 			default:
 				PC += 4;
@@ -1982,6 +1988,7 @@ void execucao()
 				}
 				else
 				{
+					PC = PC_ant;
 					esvaziarLista(listaIssue, in);
 					esvaziarLista(listaRead, in);
 					esvaziarLista(listaExecucao, in);

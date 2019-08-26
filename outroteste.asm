@@ -4,3 +4,5 @@ sub $t2, $t0, $t1
 blez $t2, skip
 addi $t2, $zero, 5
 skip:
+addi $t3, $t4, 20
+addi $t4, $zero, 22
