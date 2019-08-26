@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Programa:
 	addi $t0, $zero, 10
 	mul $t0, $t0, $t0 
@@ -22,3 +23,5 @@ Ciclos:
 Instruções:
  	Emitidas: ver o que colocar
  	Efetivadas: ver o que colocar
+=======
+>>>>>>> 0bc52dbda44c496ddf1bafa8e9c22f7496237ee9
