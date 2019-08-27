@@ -1,152 +1,187 @@
 Programa:
-	addi $t0, $t3, 10
-	addi $t1, $t4, 14
-	sub $t2, $t0, $t1
-	blez $t2, skip
-	addi $t3, $zero, 5
-	skip:
-	addi $t3, $zero, 20
+	addi $t1, $zero, 5
+	addi $t2, $zero, 2    
+	mul $t1, $t2, $t1        # RAW
+	addi $t0, $zero, 44    
+	sub $t0, $t1, $t2         # WAW
+	addi $t1, $zero, 8       # WAR
 
 Binário:
-	2168000A
-	2189000E
-	1095022
-	19400018
-	200B0005
-	200B0014
+	20090005
+	200A0002
+	71494802
+	2008002C
+	12A4022
+	20090008
 
 Ciclo: 1
 
 	Busca:
-		addi $t0  $t3  10 
-		addi $t1  $t4  14 
-		sub  $t2  $t0  $t1 
-		blez  $t2  24 
+		addi $t1  z0  5 
+		addi $t2  z0  2 
+		mul  $t1  $t2  $t1 
+		addi $t0  z0  44 
 
 
 Ciclo: 2
 
 	Emissão:
-		addi $t0  $t3  10 
+		addi $t1  z0  5 
 
 
 Ciclo: 3
 
 	Leitura:
-		addi $t0  $t3  10 
+		addi $t1  z0  5 
 
 	Emissão:
-		addi $t1  $t4  14 
+		addi $t2  z0  2 
 
 
 Ciclo: 4
 
 	Execução
-		addi $t0  $t3  10 
+		addi $t1  z0  5 
 
 
 Ciclo: 5
 
 	Escrita
-		addi $t0  $t3  10 
+		addi $t1  z0  5 
 
 
 Ciclo: 6
 
 	Leitura:
-		addi $t1  $t4  14 
+		addi $t2  z0  2 
 
 	Emissão:
-		sub  $t2  $t0  $t1 
+		mul  $t1  $t2  $t1 
 
 
 Ciclo: 7
 
 	Execução
-		addi $t1  $t4  14 
+		addi $t2  z0  2 
+
+	Leitura:
+		mul  $t1  $t2  $t1 
+
+	Emissão:
+		addi $t0  z0  44 
+
+	Busca:
+		sub  $t0  $t1  $t2 
+		addi $t1  z0  8 
 
 
 Ciclo: 8
 
 	Escrita
-		addi $t1  $t4  14 
+		addi $t2  z0  2 
+
+	Execução
+		mul  $t1  $t2  $t1 
 
 
 Ciclo: 9
 
+	Execução
+		mul  $t1  $t2  $t1 
+
 	Leitura:
-		sub  $t2  $t0  $t1 
+		addi $t0  z0  44 
 
 	Emissão:
-		blez  $t2  24 
-
-	Busca:
-		addi $t3  z0  20 
-
-PAROU
+		sub  $t0  $t1  $t2 
 
 
 Ciclo: 10
 
 	Execução
-		sub  $t2  $t0  $t1 
+		mul  $t1  $t2  $t1 
+
+	Execução
+		addi $t0  z0  44 
 
 
 Ciclo: 11
-		sub  $t2  $t0  $t1 
+
+	Escrita
+		addi $t0  z0  44 
+
+	Execução
+		mul  $t1  $t2  $t1 
 
 
 Ciclo: 12
 
-	Escrita
-		sub  $t2  $t0  $t1 
+	Execução
+		mul  $t1  $t2  $t1 
+
+	Leitura:
+		sub  $t0  $t1  $t2 
+
+	Emissão:
+		addi $t1  z0  8 
 
 
 Ciclo: 13
 
-	Leitura:
-		blez  $t2  24 
-
-	Emissão:
-		addi $t3  z0  20 
+	Escrita
+		mul  $t1  $t2  $t1 
+		sub  $t0  $t1  $t2 
 
 
 Ciclo: 14
 
 	Execução
-		blez  $t2  24 
+		sub  $t0  $t1  $t2 
 
 
 Ciclo: 15
 
-	Escrita
-		blez  $t2  24 
+	Execução
+		sub  $t0  $t1  $t2 
 
 
 Ciclo: 16
 
-	Leitura:
-		addi $t3  z0  20 
+	Escrita
+		sub  $t0  $t1  $t2 
 
 
 Ciclo: 17
 
-	Execução
-		addi $t3  z0  20 
+	Leitura:
+		addi $t1  z0  8 
 
 
 Ciclo: 18
 
+	Execução
+		addi $t1  z0  8 
+
+
+Ciclo: 19
+
 	Escrita
-		addi $t3  z0  20 
+		addi $t1  z0  8 
+
+
+Previsão:
+	Total de saltos: 0
+	Acertos: 0
+	Erros: 0
+	
 
 
 Ciclos totais:
-	18 cilcos
+	19 cilcos
 
 Instruções:
- 	Emitidas: 5
- 	Efetivadas: 5
+ 	Emitidas: 6
+ 	Efetivadas: 6
 
 
 Registradores:
@@ -158,10 +193,10 @@ Registradores:
 	Registrador A1 --> 0
 	Registrador A2 --> 0
 	Registrador A3 --> 0
-	Registrador T0 --> 10
-	Registrador T1 --> 14
-	Registrador T2 --> -4
-	Registrador T3 --> 20
+	Registrador T0 --> 8
+	Registrador T1 --> 8
+	Registrador T2 --> 2
+	Registrador T3 --> 0
 	Registrador T4 --> 0
 	Registrador T5 --> 0
 	Registrador T6 --> 0

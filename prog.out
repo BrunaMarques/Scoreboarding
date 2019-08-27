@@ -1,23 +1,29 @@
 Programa:
-	addi $t0, $t3, 10
-	addi $t1, $t4, 14
-	sub $t2, $t0, $t1
-	blez $t2, skip
-	addi $t3, $zero, 5
-	skip:
-	addi $t3, $zero, 20
+	addi $t1, $zero, 5
+	addi $t2, $zero, 2    
+	mul $t1, $t2, $t1        # RAW
+	addi $t0, $zero, 44    
+	sub $t0, $t1, $t2         # WAW
+	addi $t1, $zero, 8       # WAR
 
 Binário:
-	2168000A
-	2189000E
-	1095022
-	19400018
-	200B0005
-	200B0014
+	20090005
+	200A0002
+	71494802
+	2008002C
+	12A4022
+	20090008
+
+Previsão:
+	Total de saltos: 0
+	Acertos: 0
+	Erros: 0
+	
+
 
 Ciclos:
-	18 cilcos
+	19 cilcos
 
 Instruções:
- 	Emitidas: ver o que colocar
- 	Efetivadas: ver o que colocar
+ 	Emitidas: 6
+ 	Efetivadas: 6

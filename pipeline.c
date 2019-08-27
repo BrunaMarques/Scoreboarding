@@ -24,8 +24,6 @@ void buscaPipeline()
 		{
 			if (PC >= (qtd * 4))
 			{
-				if (detail != NULL)
-					fprintf(detail, "\nPAROU\n");
 				break;
 			}
 			unsigned char instMem[4];
@@ -1123,10 +1121,7 @@ void execucao()
 
 	while (verifica_bar(barRE))
 	{
-		if (detail != NULL)
-		{
-			fprintf(detail, "\n\tExecução\n");
-		}
+		
 		in = leitura_bar(barRE);
 		// printar(in);
 
@@ -1136,6 +1131,10 @@ void execucao()
 	{
 		in = listaExecucao->lista_inst[i];
 		if(listaExecucao->lista_inst[i].posicao != -1){
+			if (detail != NULL)
+		{
+			fprintf(detail, "\n\tExecução\n");
+		}
 			printar(in);
 		}
 		int operacao = descobrirOperacao(in);
@@ -1182,6 +1181,7 @@ void execucao()
 			if (listaExecucao->lista_inst[i].qtd_cloc_prec == 0)
 			{
 				saltou++;
+				tomado++;
 				escrita_bar(in, barEW);
 				excluirElem(listaExecucao, in.posicao);
 			}
@@ -1191,7 +1191,9 @@ void execucao()
 
 			if (listaExecucao->lista_inst[i].qtd_cloc_prec == 0)
 			{
-				bufferRegistradores[in.s_instrucao.rd].valor = bancoRegistradores[HI].valor;
+				bufferRegistradores[in.s_instrucao.rd].valor = bufferRegistradores[HI].valor;
+				printf("\n%d\n", bufferRegistradores[in.s_instrucao.rd].valor);
+				printf("\n%d\n", bufferRegistradores[HI].valor);
 				escrita_bar(in, barEW);
 				excluirElem(listaExecucao, in.posicao);
 			}
@@ -1350,6 +1352,7 @@ void execucao()
 			if (listaExecucao->lista_inst[i].qtd_cloc_prec == 0)
 			{
 				saltou++;
+				tomado++;
 				escrita_bar(in, barEW);
 				excluirElem(listaExecucao, in.posicao);
 			}
@@ -1360,10 +1363,12 @@ void execucao()
 			{
 				if (igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.i_instrucao.rt].valor))
 				{
+					tomado++;
 					saltou++;
 				}
 				else
 				{
+					naotomado++;
 					PC = PC_ant;
 					esvaziarLista(listaIssue, in);
 					esvaziarLista(listaRead, in);
@@ -1384,11 +1389,12 @@ void execucao()
 			{
 				if (igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.i_instrucao.rt].valor))
 				{
-
+					tomado++;
 					saltou++;
 				}
 				else
 				{
+					naotomado++;
 					PC = PC_ant;
 					esvaziarLista(listaIssue, in);
 					esvaziarLista(listaRead, in);
@@ -1409,10 +1415,12 @@ void execucao()
 			{
 				if (maior(bancoRegistradores[in.i_instrucao.rs].valor, 0))
 				{
+					tomado++;
 					saltou++;
 				}
 				else
 				{
+					naotomado++;
 					PC = PC_ant;
 					esvaziarLista(listaIssue, in);
 					esvaziarLista(listaRead, in);
@@ -1434,9 +1442,11 @@ void execucao()
 				if (menorIgual(bancoRegistradores[in.i_instrucao.rs].valor, 0))
 				{
 					saltou++;
+					tomado++;
 				}
 				else
 				{
+					naotomado++;
 					PC = PC_ant;
 					esvaziarLista(listaIssue, in);
 					esvaziarLista(listaRead, in);
@@ -1460,11 +1470,13 @@ void execucao()
 				//if (not(igual(bancoRegistradores[in.i_instrucao.rs].valor, bancoRegistradores[in.s_instrucao.rt].valor)))
 				if (not(igual(aux1, aux2)))
 				{
+					tomado++;
 					saltou++;
 					//PC = in.i_instrucao.imediato;
 				}
 				else
 				{
+					naotomado++;
 					PC = PC_ant;
 					esvaziarLista(listaIssue, in);
 					esvaziarLista(listaRead, in);
@@ -1511,6 +1523,7 @@ void execucao()
 			if (listaExecucao->lista_inst[i].qtd_cloc_prec == 0)
 			{
 				saltou++;
+				tomado ++;
 				escrita_bar(in, barEW);
 				excluirElem(listaExecucao, in.posicao);
 			}
@@ -1521,10 +1534,12 @@ void execucao()
 			{
 				if (maiorIgual(bancoRegistradores[in.r_instrucao.rs].valor, 0))
 				{
+					tomado++;
 					saltou++;
 				}
 				else
 				{
+					naotomado++;
 					PC = PC_ant;
 					esvaziarLista(listaIssue, in);
 					esvaziarLista(listaRead, in);
@@ -1545,10 +1560,12 @@ void execucao()
 			{
 				if (menor(bancoRegistradores[in.r_instrucao.rs].valor, 0))
 				{
+					tomado++;
 					saltou++;
 				}
 				else
 				{
+					naotomado++;
 					PC = PC_ant;
 					esvaziarLista(listaIssue, in);
 					esvaziarLista(listaRead, in);
@@ -1572,10 +1589,6 @@ void escritaPipeline()
 	while (verifica_bar(barEW))
 	{
 		efetivadas++;
-		if (detail != NULL)
-		{
-			fprintf(detail, "\n\tEscrita\n");
-		}
 		in = leitura_bar(barEW);
 		inserirElemLista(listaWriteB, in);
 	}
@@ -1583,7 +1596,11 @@ void escritaPipeline()
 	{
 		in = listaWriteB->lista_inst[i];
 		if(listaWriteB->lista_inst[i].posicao != -1){
-			printar(in);
+			if (detail != NULL)
+			{
+				fprintf(detail, "\n\tEscrita\n");
+			}
+				printar(in);
 		}
 		int operacao = descobrirOperacao(in);
 		if (in.posicao == -1)

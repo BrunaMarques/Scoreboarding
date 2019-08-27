@@ -6,7 +6,7 @@ addi $t0, $zero, 2   #fetch 2
 addi $t1, $zero, 4 #fetch X
 div $t1, $t0
 mfhi $t2
-add $ra, $zero, $t1
+add $s0, $zero, $t1
 bgez $t2, par
-add $ra, $zero, $zero
+# add $s0, $zero, $zero
 par:

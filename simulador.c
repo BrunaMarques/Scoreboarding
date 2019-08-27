@@ -16,6 +16,8 @@ void inicializar()
 
 void executarPipeline()
 {
+	tomado = 0;
+	naotomado = 0;
 	efetivadas = 0;
 	emitidas = 0;
 	saltou = 0;
@@ -28,7 +30,6 @@ void executarPipeline()
 	escritaMemoria();
 	do
 	{
-		printf("\nAAA\n");
 		if (detail != NULL)
 		{
 			fprintf(detail, "\n\nCiclo: %i\n", clock);
@@ -44,6 +45,7 @@ void executarPipeline()
 
 	if (detail != NULL)
 	{
+		fprintf(detail, "\n\nPrevisão:\n\tTotal de saltos: %d\n\tAcertos: %d\n\tErros: %d\n\t\n", saltou, tomado, naotomado);
 		fprintf(detail, "\n\nCiclos totais:\n");
 		fprintf(detail, "\t%d cilcos\n", clock - 1);
 		fprintf(detail, "\nInstruções:\n \tEmitidas: %d\n \tEfetivadas: %d\n", emitidas, efetivadas);
@@ -52,9 +54,10 @@ void executarPipeline()
 		fclose(detail);
 	}
 
+	fprintf(prog, "\n\nPrevisão:\n\tTotal de saltos: %d\n\tAcertos: %d\n\tErros: %d\n\t\n", saltou, tomado, naotomado);
 	fprintf(prog, "\n\nCiclos:\n");
 	fprintf(prog, "\t%d cilcos\n", clock-1);
-	fprintf(prog, "\nInstruções:\n \tEmitidas: ver o que colocar\n \tEfetivadas: ver o que colocar");
+	fprintf(prog, "\nInstruções:\n \tEmitidas: %d\n \tEfetivadas: %d\n", emitidas, efetivadas);
 
 	
 }
