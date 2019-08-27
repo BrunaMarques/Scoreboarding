@@ -21,23 +21,3 @@ mtlo $k1
 mult $T8, $T9
 mul $S1, $t1, $t4
 sub $T3, $s0, $s1
-# b a
-# a:
-# beq $s0, $s1, b
-# b:
-# beql $t3, $t4, c
-# c:
-# bgez $t0, aaa
-# aaa:
-# bgtz $t2, d
-# d:
-# blez $t4, e
-# e:
-# bltz$t1, oi
-# oi:
-# bne $t0, $t1, f
-# f:
-# j j
-# j:
-# jr $t0
-# nop

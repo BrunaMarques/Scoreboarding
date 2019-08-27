@@ -1,640 +1,627 @@
 Programa:
-	addi $t0, $zero, 6      # N = 6
-	addi $t1, $zero, 10     # MAX_SIZE = 10
-	addi $t2, $zero, 0      #fi = 0
-	addi $s0, $zero, 0      # A
-	begin:
-	beq $t2, $t0, end
-	addi $t2, $t2, 1
-	add $s0, $s0, $t1
-	j begin
-	end:
+	add $t0, $zero, $zero
+	nor $S5, $S6, $S7
+	or $t1, $t2, $t3
+	xor $gp, $SP, $T5
+	madd $v0, $V1
+	msub $T0, $t1
+	andi $S0, $s4, 1
+	lui $AT, 2
+	ori $FP, $RA, 7
+	xori $V0, $V1, 0
+	add $t0, $zero, $zero
+	and $T0, $T1, $T2
+	addi $T0, $T1, 10
+	div $T3, $T0
+	mfhi $t1
+	mflo $t2
+	movn $s1, $a2, $s0
+	movz $ZERO, $t0, $t1
+	mthi $t0
+	mtlo $k1
+	mult $T8, $T9
+	mul $S1, $t1, $t4
+	sub $T3, $s0, $s1
 
 Binário:
-	20080006
-	2009000A
-	200A0000
-	20100000
-	11480028
-	214A0001
-	2098020
-	8000014
+	4020
+	2D7A827
+	14B4825
+	3ADE026
+	70430000
+	71090004
+	32900001
+	3C010002
+	37FE0007
+	38430000
+	4020
+	12A4024
+	2128000A
+	168001A
+	4810
+	5012
+	D0880B
+	109000A
+	1000011
+	3600013
+	3190018
+	712C8802
+	2115822
 
 Ciclo: 1
 
 	Busca:
-		addi $t0  z0  6 
-		addi $t1  z0  10 
-		addi $t2  z0  0 
-		addi $s0  z0  0 
+		add  $t0  z0  z0 
+		nor  $s5  $s6  $s7 
+		or  $t1  $t2  $t3 
+		xor  $gp  $sp  $t5 
 
 
 Ciclo: 2
 
 	Emissão:
-		addi $t0  z0  6 
+		add  $t0  z0  z0 
 
 
 Ciclo: 3
 
 	Leitura:
-		addi $t0  z0  6 
+		add  $t0  z0  z0 
 
 	Emissão:
-		addi $t1  z0  10 
+		nor  $s5  $s6  $s7 
 
 
 Ciclo: 4
 
 	Execução
-		addi $t0  z0  6 
+		add  $t0  z0  z0 
+
+	Leitura:
+		nor  $s5  $s6  $s7 
+
+	Emissão:
+		or  $t1  $t2  $t3 
 
 
 Ciclo: 5
 
-	Escrita
-		addi $t0  z0  6 
+	Execução
+		add  $t0  z0  z0 
+		nor  $s5  $s6  $s7 
 
 
 Ciclo: 6
 
-	Leitura:
-		addi $t1  z0  10 
+	Escrita
 
-	Emissão:
-		addi $t2  z0  0 
+	Escrita
+		add  $t0  z0  z0 
+		nor  $s5  $s6  $s7 
 
 
 Ciclo: 7
 
-	Execução
-		addi $t1  z0  10 
+	Leitura:
+		or  $t1  $t2  $t3 
+
+	Emissão:
+		xor  $gp  $sp  $t5 
+
+	Busca:
+		madd  $v0  $v1 
+		msub  $t0  $t1 
+		andi  $s0  $s4  1 
+		lui  $at  2 
 
 
 Ciclo: 8
 
-	Escrita
-		addi $t1  z0  10 
+	Execução
+		or  $t1  $t2  $t3 
 
 
 Ciclo: 9
 
-	Leitura:
-		addi $t2  z0  0 
-
-	Emissão:
-		addi $s0  z0  0 
-
-	Busca:
-		beq  $t2  $t0  40 
-
-PAROU
+	Escrita
+		or  $t1  $t2  $t3 
 
 
 Ciclo: 10
 
-	Execução
-		addi $t2  z0  0 
+	Leitura:
+		xor  $gp  $sp  $t5 
+
+	Emissão:
+		madd  $v0  $v1 
 
 
 Ciclo: 11
 
-	Escrita
-		addi $t2  z0  0 
+	Execução
+		xor  $gp  $sp  $t5 
+
+	Leitura:
+		madd  $v0  $v1 
+
+	Emissão:
+		msub  $t0  $t1 
 
 
 Ciclo: 12
 
-	Leitura:
-		addi $s0  z0  0 
+	Escrita
+		xor  $gp  $sp  $t5 
 
-	Emissão:
-		beq  $t2  $t0  40 
+	Execução
+		madd  $v0  $v1 
 
 
 Ciclo: 13
-
-	Execução
-		addi $s0  z0  0 
+		madd  $v0  $v1 
 
 
 Ciclo: 14
-
-	Escrita
-		addi $s0  z0  0 
+		madd  $v0  $v1 
 
 
 Ciclo: 15
-
-	Leitura:
-		beq  $t2  $t0  40 
+		madd  $v0  $v1 
 
 
 Ciclo: 16
-
-	Execução
-		beq  $t2  $t0  40 
-
-	Busca:
-		addi $t2  $t2  1 
-		add  $s0  $s0  $t1 
-		beq  $t2  $t0  40 
+		madd  $v0  $v1 
 
 
 Ciclo: 17
 
 	Escrita
-		beq  $t2  $t0  40 
-
-	Emissão:
-		addi $t2  $t2  1 
+		madd  $v0  $v1 
 
 
 Ciclo: 18
 
 	Leitura:
-		addi $t2  $t2  1 
+		msub  $t0  $t1 
 
 	Emissão:
-		add  $s0  $s0  $t1 
+		andi  $s0  $s4  1 
 
 
 Ciclo: 19
 
 	Execução
-		addi $t2  $t2  1 
+		msub  $t0  $t1 
 
 	Leitura:
-		add  $s0  $s0  $t1 
+		andi  $s0  $s4  1 
 
 	Emissão:
+		lui  $at  2 
+
+	Busca:
+		ori  $fp/s8  7 
+		xori  $v1  $v0  0 
+		add  $t0  z0  z0 
+		and  $t0  $t1  $t2 
 
 
 Ciclo: 20
 
-	Escrita
-		addi $t2  $t2  1 
-
 	Execução
-		add  $s0  $s0  $t1 
+		msub  $t0  $t1 
+		andi  $s0  $s4  1 
 
 
 Ciclo: 21
-		add  $s0  $s0  $t1 
 
-	Leitura:
-
-	Emissão:
-		beq  $t2  $t0  40 
+	Escrita
+		andi  $s0  $s4  1 
+		msub  $t0  $t1 
 
 
 Ciclo: 22
+		msub  $t0  $t1 
 
-	Escrita
-		add  $s0  $s0  $t1 
+	Leitura:
+		lui  $at  2 
 
-	Execução
+	Emissão:
+		ori  $fp/s8  7 
 
 
 Ciclo: 23
 
-	Escrita
+	Execução
+		msub  $t0  $t1 
+		lui  $at  2 
 
 
 Ciclo: 24
 
-	Leitura:
-		beq  $t2  $t0  40 
+	Escrita
+
+	Escrita
+		msub  $t0  $t1 
+		lui  $at  2 
 
 
 Ciclo: 25
 
-	Execução
-		beq  $t2  $t0  40 
+	Leitura:
+		ori  $fp/s8  7 
 
-	Busca:
-		addi $t2  $t2  1 
-		add  $s0  $s0  $t1 
-		beq  $t2  $t0  40 
+	Emissão:
+		xori  $v1  $v0  0 
 
 
 Ciclo: 26
 
-	Escrita
-		beq  $t2  $t0  40 
-
-	Emissão:
-		addi $t2  $t2  1 
+	Execução
+		ori  $fp/s8  7 
 
 
 Ciclo: 27
 
-	Leitura:
-		addi $t2  $t2  1 
-
-	Emissão:
-		add  $s0  $s0  $t1 
+	Escrita
+		ori  $fp/s8  7 
 
 
 Ciclo: 28
 
-	Execução
-		addi $t2  $t2  1 
-
 	Leitura:
-		add  $s0  $s0  $t1 
+		xori  $v1  $v0  0 
 
 	Emissão:
+		add  $t0  z0  z0 
 
 
 Ciclo: 29
 
-	Escrita
-		addi $t2  $t2  1 
-
 	Execução
-		add  $s0  $s0  $t1 
+		xori  $v1  $v0  0 
+
+	Leitura:
+		add  $t0  z0  z0 
+
+	Emissão:
+		and  $t0  $t1  $t2 
+
+	Busca:
+		addi $t0  $t1  10 
+		div  $t3  $t0 
+		mghi  $t1 
+		mflo  $t2 
 
 
 Ciclo: 30
-		add  $s0  $s0  $t1 
 
-	Leitura:
+	Escrita
+		xori  $v1  $v0  0 
 
-	Emissão:
-		beq  $t2  $t0  40 
+	Execução
+		add  $t0  z0  z0 
 
 
 Ciclo: 31
-
-	Escrita
-		add  $s0  $s0  $t1 
-
-	Execução
+		add  $t0  z0  z0 
 
 
 Ciclo: 32
 
 	Escrita
+		add  $t0  z0  z0 
 
 
 Ciclo: 33
 
 	Leitura:
-		beq  $t2  $t0  40 
+		and  $t0  $t1  $t2 
+
+	Emissão:
+		addi $t0  $t1  10 
 
 
 Ciclo: 34
 
 	Execução
-		beq  $t2  $t0  40 
-
-	Busca:
-		addi $t2  $t2  1 
-		add  $s0  $s0  $t1 
-		beq  $t2  $t0  40 
+		and  $t0  $t1  $t2 
 
 
 Ciclo: 35
 
 	Escrita
-		beq  $t2  $t0  40 
-
-	Emissão:
-		addi $t2  $t2  1 
+		and  $t0  $t1  $t2 
 
 
 Ciclo: 36
 
 	Leitura:
-		addi $t2  $t2  1 
+		addi $t0  $t1  10 
 
 	Emissão:
-		add  $s0  $s0  $t1 
+		div  $t3  $t0 
 
 
 Ciclo: 37
 
 	Execução
-		addi $t2  $t2  1 
+		addi $t0  $t1  10 
 
 	Leitura:
-		add  $s0  $s0  $t1 
+		div  $t3  $t0 
 
 	Emissão:
+		mghi  $t1 
 
 
 Ciclo: 38
 
 	Escrita
-		addi $t2  $t2  1 
-
-	Execução
-		add  $s0  $s0  $t1 
+		addi $t0  $t1  10 
+		div  $t3  $t0 
 
 
 Ciclo: 39
-		add  $s0  $s0  $t1 
+
+	Execução
+		div  $t3  $t0 
 
 	Leitura:
+		mghi  $t1 
 
 	Emissão:
-		beq  $t2  $t0  40 
+		mflo  $t2 
+
+	Busca:
+		movn  $s1  $a2  $s0 
+		movz  z0  $t0  $t1 
+		mthi  $t0 
+		mtlo  $k1 
 
 
 Ciclo: 40
 
-	Escrita
-		add  $s0  $s0  $t1 
-
 	Execução
+		div  $t3  $t0 
+		mghi  $t1 
 
 
 Ciclo: 41
 
 	Escrita
+		mghi  $t1 
+		div  $t3  $t0 
 
 
 Ciclo: 42
+		div  $t3  $t0 
 
 	Leitura:
-		beq  $t2  $t0  40 
+		mflo  $t2 
+
+	Emissão:
+		movn  $s1  $a2  $s0 
 
 
 Ciclo: 43
 
 	Execução
-		beq  $t2  $t0  40 
-
-	Busca:
-		addi $t2  $t2  1 
-		add  $s0  $s0  $t1 
-		beq  $t2  $t0  40 
+		div  $t3  $t0 
+		mflo  $t2 
 
 
 Ciclo: 44
 
 	Escrita
-		beq  $t2  $t0  40 
 
-	Emissão:
-		addi $t2  $t2  1 
+	Escrita
+		div  $t3  $t0 
+		mflo  $t2 
 
 
 Ciclo: 45
 
 	Leitura:
-		addi $t2  $t2  1 
+		movn  $s1  $a2  $s0 
 
 	Emissão:
-		add  $s0  $s0  $t1 
+		movz  z0  $t0  $t1 
 
 
 Ciclo: 46
 
 	Execução
-		addi $t2  $t2  1 
-
-	Leitura:
-		add  $s0  $s0  $t1 
-
-	Emissão:
+		movn  $s1  $a2  $s0 
 
 
 Ciclo: 47
 
 	Escrita
-		addi $t2  $t2  1 
-
-	Execução
-		add  $s0  $s0  $t1 
+		movn  $s1  $a2  $s0 
 
 
 Ciclo: 48
-		add  $s0  $s0  $t1 
 
 	Leitura:
+		movz  z0  $t0  $t1 
 
 	Emissão:
-		beq  $t2  $t0  40 
+		mthi  $t0 
 
 
 Ciclo: 49
 
-	Escrita
-		add  $s0  $s0  $t1 
-
 	Execução
+		movz  z0  $t0  $t1 
 
 
 Ciclo: 50
 
 	Escrita
+		movz  z0  $t0  $t1 
 
 
 Ciclo: 51
 
 	Leitura:
-		beq  $t2  $t0  40 
+		mthi  $t0 
+
+	Emissão:
+		mtlo  $k1 
+
+	Busca:
+		mult  $t8  $t9 
+		mul  $s1  $t1  $t4 
+		sub  $t3  $s0  $s1 
+
+PAROU
 
 
 Ciclo: 52
 
 	Execução
-		beq  $t2  $t0  40 
-
-	Busca:
-		addi $t2  $t2  1 
-		add  $s0  $s0  $t1 
-		beq  $t2  $t0  40 
+		mthi  $t0 
 
 
 Ciclo: 53
 
 	Escrita
-		beq  $t2  $t0  40 
-
-	Emissão:
-		addi $t2  $t2  1 
+		mthi  $t0 
 
 
 Ciclo: 54
 
 	Leitura:
-		addi $t2  $t2  1 
+		mtlo  $k1 
 
 	Emissão:
-		add  $s0  $s0  $t1 
+		mult  $t8  $t9 
 
 
 Ciclo: 55
 
 	Execução
-		addi $t2  $t2  1 
-
-	Leitura:
-		add  $s0  $s0  $t1 
-
-	Emissão:
+		mtlo  $k1 
 
 
 Ciclo: 56
 
 	Escrita
-		addi $t2  $t2  1 
-
-	Execução
-		add  $s0  $s0  $t1 
+		mtlo  $k1 
 
 
 Ciclo: 57
-		add  $s0  $s0  $t1 
 
 	Leitura:
+		mult  $t8  $t9 
 
 	Emissão:
-		beq  $t2  $t0  40 
+		mul  $s1  $t1  $t4 
 
 
 Ciclo: 58
 
-	Escrita
-		add  $s0  $s0  $t1 
-
 	Execução
+		mult  $t8  $t9 
+
+	Leitura:
+		mul  $s1  $t1  $t4 
+
+	Emissão:
+		sub  $t3  $s0  $s1 
 
 
 Ciclo: 59
 
-	Escrita
+	Execução
+		mult  $t8  $t9 
+		mul  $s1  $t1  $t4 
+
+	Leitura:
+		sub  $t3  $s0  $s1 
 
 
 Ciclo: 60
-
-	Leitura:
-		beq  $t2  $t0  40 
+		mult  $t8  $t9 
+		mul  $s1  $t1  $t4 
+		sub  $t3  $s0  $s1 
 
 
 Ciclo: 61
-
-	Execução
-		beq  $t2  $t0  40 
-
-	Busca:
-		addi $t2  $t2  1 
-		add  $s0  $s0  $t1 
-		beq  $t2  $t0  40 
+		mult  $t8  $t9 
+		mul  $s1  $t1  $t4 
+		sub  $t3  $s0  $s1 
 
 
 Ciclo: 62
-
-	Escrita
-		beq  $t2  $t0  40 
-
-	Emissão:
-		addi $t2  $t2  1 
+		mult  $t8  $t9 
+		mul  $s1  $t1  $t4 
+		sub  $t3  $s0  $s1 
 
 
 Ciclo: 63
 
-	Leitura:
-		addi $t2  $t2  1 
-
-	Emissão:
-		add  $s0  $s0  $t1 
+	Escrita
+		mult  $t8  $t9 
+		mul  $s1  $t1  $t4 
+		sub  $t3  $s0  $s1 
 
 
 Ciclo: 64
 
-	Execução
-		addi $t2  $t2  1 
-
-	Leitura:
-		add  $s0  $s0  $t1 
-
-	Emissão:
+	Escrita
+		mul  $s1  $t1  $t4 
+		sub  $t3  $s0  $s1 
 
 
 Ciclo: 65
 
-	Escrita
-		addi $t2  $t2  1 
-
 	Execução
-		add  $s0  $s0  $t1 
+		sub  $t3  $s0  $s1 
 
 
 Ciclo: 66
-		add  $s0  $s0  $t1 
-
-	Leitura:
-
-	Emissão:
-		beq  $t2  $t0  40 
+		sub  $t3  $s0  $s1 
 
 
 Ciclo: 67
 
 	Escrita
-		add  $s0  $s0  $t1 
-
-	Execução
-
-
-Ciclo: 68
-
-	Escrita
-
-
-Ciclo: 69
-
-	Leitura:
-		beq  $t2  $t0  40 
-
-
-Ciclo: 70
-
-	Execução
-		beq  $t2  $t0  40 
-
-
-Ciclo: 71
-
-	Escrita
-		beq  $t2  $t0  40 
+		sub  $t3  $s0  $s1 
 
 
 Ciclos totais:
-	71 cilcos
+	67 cilcos
 
 Instruções:
- 	Emitidas: 29
- 	Efetivadas: 29
+ 	Emitidas: 23
+ 	Efetivadas: 23
 
 
 Registradores:
-	Registrador Z0 --> 0
-	Registrador AT --> 0
+	Registrador Z0 --> 10
+	Registrador AT --> 64
 	Registrador V0 --> 0
 	Registrador V1 --> 0
 	Registrador A0 --> 0
 	Registrador A1 --> 0
 	Registrador A2 --> 0
 	Registrador A3 --> 0
-	Registrador T0 --> 6
-	Registrador T1 --> 10
-	Registrador T2 --> 6
+	Registrador T0 --> 10
+	Registrador T1 --> 0
+	Registrador T2 --> 0
 	Registrador T3 --> 0
 	Registrador T4 --> 0
 	Registrador T5 --> 0
 	Registrador T6 --> 0
 	Registrador T7 --> 0
-	Registrador S0 --> 60
+	Registrador S0 --> 0
 	Registrador S1 --> 0
 	Registrador S2 --> 0
 	Registrador S3 --> 0
 	Registrador S4 --> 0
-	Registrador S5 --> 0
+	Registrador S5 --> 1
 	Registrador S6 --> 0
 	Registrador S7 --> 0
 	Registrador T8 --> 0
@@ -643,7 +630,7 @@ Registradores:
 	Registrador K1 --> 0
 	Registrador GP --> 0
 	Registrador SP --> 0
-	Registrador FP --> 0
-	Registrador S8 / RA --> 0
+	Registrador FP --> 7
+	Registrador S8 / RA --> 7
 	Registrador HI --> 0
 	Registrador LO --> 0

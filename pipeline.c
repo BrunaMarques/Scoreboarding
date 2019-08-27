@@ -49,7 +49,7 @@ void buscaPipeline()
 				PC = instDecode.i_instrucao.imediato - 4;
 				break;
 			case BEQ:
-					//printf("\nENTROU BEQ\n");
+				//printf("\nENTROU BEQ\n");
 				PC_ant = PC + 4;
 				//printf("\nPC ant %d\n", PC_ant);
 				//printf("\n%d\n", instDecode.i_instrucao.rt);
@@ -1253,7 +1253,8 @@ void leitura()
 	for (int i = 0; i < N; i++)
 	{
 		in = listaRead->lista_inst[i];
-		if(listaRead->lista_inst[i].posicao != -1){
+		if (listaRead->lista_inst[i].posicao != -1)
+		{
 			printar(in);
 		}
 		int operacao = descobrirOperacao(in);
@@ -1472,7 +1473,8 @@ void execucao()
 	for (int i = 0; i < N; i++)
 	{
 		in = listaExecucao->lista_inst[i];
-		if(listaExecucao->lista_inst[i].posicao != -1){
+		if (listaExecucao->lista_inst[i].posicao != -1)
+		{
 			printar(in);
 		}
 		//printf("\nOPCODE: %d", in.opcode);
@@ -1575,7 +1577,7 @@ void execucao()
 
 			if (listaExecucao->lista_inst[i].qtd_cloc_prec == 0)
 			{
-				bufferRegistradores[in.s_instrucao.rd].valor = bancoRegistradores[HI].valor;
+				bufferRegistradores[in.s_instrucao.rd].valor = bufferRegistradores[HI].valor;
 				//printf("MFHI opcode: %d\n", in.opcode);
 				//printf("MFHI RS: %d\n", in.s_instrucao.rs);
 				//printf("MFHI RT: %d\n", in.s_instrucao.rt);
@@ -1896,6 +1898,7 @@ void execucao()
 				}
 				else
 				{
+					printf("\nENTROU ELSE BEQ\n");
 					PC = PC_ant;
 					esvaziarLista(listaIssue, in);
 					esvaziarLista(listaRead, in);
@@ -2215,7 +2218,8 @@ void escritaPipeline()
 	for (int i = 0; i < N; i++)
 	{
 		in = listaWriteB->lista_inst[i];
-		if(listaWriteB->lista_inst[i].posicao != -1){
+		if (listaWriteB->lista_inst[i].posicao != -1)
+		{
 			printar(in);
 		}
 		int operacao = descobrirOperacao(in);

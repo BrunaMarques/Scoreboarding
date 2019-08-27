@@ -1,27 +1,55 @@
 Programa:
-	addi $t0, $zero, 6      # N = 6
-	addi $t1, $zero, 10     # MAX_SIZE = 10
-	addi $t2, $zero, 0      #fi = 0
-	addi $s0, $zero, 0      # A
-	begin:
-	beq $t2, $t0, end
-	addi $t2, $t2, 1
-	add $s0, $s0, $t1
-	j begin
-	end:
+	add $t0, $zero, $zero
+	nor $S5, $S6, $S7
+	or $t1, $t2, $t3
+	xor $gp, $SP, $T5
+	madd $v0, $V1
+	msub $T0, $t1
+	andi $S0, $s4, 1
+	lui $AT, 2
+	ori $FP, $RA, 7
+	xori $V0, $V1, 0
+	add $t0, $zero, $zero
+	and $T0, $T1, $T2
+	addi $T0, $T1, 10
+	div $T3, $T0
+	mfhi $t1
+	mflo $t2
+	movn $s1, $a2, $s0
+	movz $ZERO, $t0, $t1
+	mthi $t0
+	mtlo $k1
+	mult $T8, $T9
+	mul $S1, $t1, $t4
+	sub $T3, $s0, $s1
 
 Binário:
-	20080006
-	2009000A
-	200A0000
-	20100000
-	11480028
-	214A0001
-	2098020
-	8000014
+	4020
+	2D7A827
+	14B4825
+	3ADE026
+	70430000
+	71090004
+	32900001
+	3C010002
+	37FE0007
+	38430000
+	4020
+	12A4024
+	2128000A
+	168001A
+	4810
+	5012
+	D0880B
+	109000A
+	1000011
+	3600013
+	3190018
+	712C8802
+	2115822
 
 Ciclos:
-	72 cilcos
+	68 cilcos
 
 Instruções:
  	Emitidas: ver o que colocar

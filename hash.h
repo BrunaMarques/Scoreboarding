@@ -8,16 +8,17 @@
 #include <stdio.h>
 #include <string.h>
 
-typedef struct{
+typedef struct
+{
     int linha;
-    char* label;
-}Hash;
+    char *label;
+} Hash;
 
-Hash* Hash_Table;
+Hash *Hash_Table;
 
 void inicializarHash();
-unsigned int hash(char* label);
-int inserirLabel(char* label, int linha);
-int pegarEndereco(char* label);
+unsigned int hash(char *label);
+int inserirLabel(char *label, int linha);
+int pegarEndereco(char *label);
 
 #endif

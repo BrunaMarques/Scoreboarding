@@ -1,14 +1,9 @@
-# irá calcula o fatorial de um número diferente de zero e um
-# o previsor irá errar 
-addi $t0, $zero, 0x6
-addi $t1, $zero, 0x1
-addi $t2, $zero, 0x2
-addi $t3, $zero, 0x0
-beq $t0, $t1, end   #erra aqui
-beq $t0, $zero, end #erra aqui
-loop:
-mul $t1, $t2, $t1
-addi $t2, $t2, 0x1
-addi $t3, $t3, 0x1
-bne $t3, $t0, loop
-end:
+addi $t0, $zero, 4
+addi $t1, $zero, 5
+beq $t0, $t1 pula
+addi $s0, $zero, 10
+pula:
+# verifica se a é igual a b
+# se é, S0 = 0
+# se não é S0 = 10
+# o previsor irá errar pois os números são diferentes

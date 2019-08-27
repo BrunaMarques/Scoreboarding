@@ -1,8 +1,6 @@
-addi $t0, $t3, 10
-addi $t1, $t4, 14
-sub $t2, $t0, $t1
-blez $t2, skip
-addi $t2, $zero, 5
+addi $t0, $zero, 10 #i
+addi $t1, $zero, 14 #N
+sub $t2, $t0, $t1 #i-N
+blez $t2, skip #se (i-N)< 0  pula
+addi $t3, $zero, 5 # A = 5
 skip:
-addi $t3, $t4, 20
-addi $t4, $zero, 22

@@ -1,10 +1,10 @@
-addi $t0, $zero, 6      # N = 6
+addi $t0, $zero, 5      # N = 5
 addi $t1, $zero, 10     # MAX_SIZE = 10
-addi $t2, $zero, 0      #fi = 0
-addi $s0, $zero, 0      # A
-begin:
-beq $t2, $t0, end
-addi $t2, $t2, 1
-add $s0, $s0, $t1
-j begin
-end:
+addi $t2, $zero, 0      # i = 0
+addi $t3, $zero, 0      # A = 0
+for:
+beq $t2, $t0, break     # sai do for se i = N
+addi $t2, $t2, 1        # i ++
+add $t3, $t3, $t1       # A += MAX_SIZE
+j for                   # executa o laço
+break:
