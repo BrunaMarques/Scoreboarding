@@ -1247,13 +1247,15 @@ void leitura()
 			fprintf(detail, "\n\tLeitura:\n");
 		}
 		in = leitura_bar(barIR);
-		printar(in);
 		inserirElemLista(listaRead, in);
 		printf("\nBarramento IR: %d\n", IR.instrucao.opcode);
 	}
 	for (int i = 0; i < N; i++)
 	{
 		in = listaRead->lista_inst[i];
+		if(listaRead->lista_inst[i].posicao != -1){
+			printar(in);
+		}
 		int operacao = descobrirOperacao(in);
 		printf("INSTRUÇÃO: %d\n", operacao);
 		if (in.posicao == -1)
@@ -1451,7 +1453,7 @@ void execucao()
 			fprintf(detail, "\n\tExecução\n");
 		}
 		in = leitura_bar(barRE);
-		printar(in);
+		// printar(in);
 		printf("barramento RE: %d", RE->instrucao.opcode);
 		printf("\nLista execução 0: %d", listaExecucao->lista_inst[0].opcode);
 		printf("\nLista execução 1: %d", listaExecucao->lista_inst[1].opcode);
@@ -1470,6 +1472,9 @@ void execucao()
 	for (int i = 0; i < N; i++)
 	{
 		in = listaExecucao->lista_inst[i];
+		if(listaExecucao->lista_inst[i].posicao != -1){
+			printar(in);
+		}
 		printf("\nOPCODE: %d", in.opcode);
 		int operacao = descobrirOperacao(in);
 		printf("\nINSTRUÇÃO: %d\n", operacao);
@@ -2203,7 +2208,6 @@ void escritaPipeline()
 			fprintf(detail, "\n\tEscrita\n");
 		}
 		in = leitura_bar(barEW);
-		printar(in);
 		inserirElemLista(listaWriteB, in);
 		//exibirLista(listaWriteB);
 		printf("barramento EW: %d", EW->instrucao.opcode);
@@ -2211,6 +2215,9 @@ void escritaPipeline()
 	for (int i = 0; i < N; i++)
 	{
 		in = listaWriteB->lista_inst[i];
+		if(listaWriteB->lista_inst[i].posicao != -1){
+			printar(in);
+		}
 		int operacao = descobrirOperacao(in);
 		printf("INSTRUÇÃO: %d\n", operacao);
 		if (in.posicao == -1)

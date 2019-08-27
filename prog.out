@@ -1,27 +1,23 @@
 Programa:
-	addi $t0, $zero, 6      # N = 6
-	addi $t1, $zero, 10     # MAX_SIZE = 10
-	addi $t2, $zero, 0      #fi = 0
-	addi $s0, $zero, 0      # A
-	begin:
-	beq $t2, $t0, end
-	addi $t2, $t2, 1
-	add $s0, $s0, $t1
-	j begin
-	end:
+	addi $t1, $zero, 5
+	addi $t2, $zero, 2    
+	mul $t1, $t2, $t1        # RAW
+	addi $t3, $zero, 44    
+	mflo $t0                 # RAW
+	or $t0, $t1, $t2         # WAW
+	addi $t1, $zero, 8       # WAR
 
 Binário:
-	20080006
-	2009000A
-	200A0000
-	20100000
-	11480028
-	214A0001
-	2098020
-	8000014
+	20090005
+	200A0002
+	71494802
+	200B002C
+	4012
+	12A4025
+	20090008
 
 Ciclos:
-	72 cilcos
+	21 cilcos
 
 Instruções:
  	Emitidas: ver o que colocar
