@@ -630,10 +630,8 @@ void print_assembly(FILE *instrucoes){
 }
 
 void tradutor(){
-	printf("\n\nFLAG DETAIL %d", FLAGDETAIL);
 	if (FLAGDETAIL == 1){
-	printf("\nENTOU NO IF do detail\n");
-	detail = fopen("saidaDetalhada.txt", "w");
+		detail = fopen("saidaDetalhada.txt", "w");
 	}
 	instrucoes = fopen(entrada, "r");
 	saidaBinario = fopen("codigoBinario.txt", "w+");
