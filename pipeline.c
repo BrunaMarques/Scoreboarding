@@ -37,30 +37,31 @@ void buscaPipeline()
 			inserirElementoFila(instDecode);
 			printar(instDecode);
 			int operacao = descobrirOperacao(instDecode);
+			printf("\n%d\n", operacao);
 			switch (operacao)
 			{
 			case JR:
 				PC_ant = PC + 4;
-				PC = bancoRegistradores[in.s_instrucao.rs].valor - 4;
+				PC = bancoRegistradores[instDecode.s_instrucao.rs].valor - 4;
 				break;
 			case B:
 				PC_ant = PC + 4;
-				PC = in.i_instrucao.imediato - 4;
+				PC = instDecode.i_instrucao.imediato - 4;
 				break;
 			case BEQ:
-				if (detail != NULL)
-				{
-					fprintf(detail, "\nENTROU BEQ\n");
-				}
+					printf("\nENTROU BEQ\n");
 				PC_ant = PC + 4;
-				PC = in.i_instrucao.imediato - 4;
+				printf("\nPC ant %d\n", PC_ant);
+				printf("\n%d\n", instDecode.i_instrucao.rt);
+				PC = instDecode.i_instrucao.imediato - 4;
+				printf("\nPC: %d", PC);
 				break;
 			case BEQL:
 				PC_ant = PC + 4;
-				PC = in.i_instrucao.imediato - 4;
+				PC = instDecode.i_instrucao.imediato - 4;
 				break;
 			case BGTZ:
-				PC = in.i_instrucao.imediato - 4;
+				PC = instDecode.i_instrucao.imediato - 4;
 				break;
 			case BLEZ:
 				PC_ant = PC + 4;
@@ -75,19 +76,19 @@ void buscaPipeline()
 				break;
 			case BNE:
 				PC_ant = PC + 4;
-				PC = in.i_instrucao.imediato - 4;
+				PC = instDecode.i_instrucao.imediato - 4;
 				break;
 			case J:
 				PC_ant = PC + 4;
-				PC = in.j_instrucao.addr - 4;
+				PC = instDecode.j_instrucao.addr - 4;
 				break;
 			case BGEZ:
 				PC_ant = PC + 4;
-				PC = in.r_instrucao.offset - 4;
+				PC = instDecode.r_instrucao.offset - 4;
 				break;
 			case BLTZ:
 				PC_ant = PC + 4;
-				PC = in.r_instrucao.offset - 4;
+				PC = instDecode.r_instrucao.offset - 4;
 				break;
 			default:
 				PC += 4;

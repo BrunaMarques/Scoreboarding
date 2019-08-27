@@ -343,18 +343,32 @@ case TANDI:
         fprintf(detail, "\n");
     }
     break;
-case TB:
-    if(detail != NULL){
-        fprintf(detail, "\t\tb ");
-        fprintf(detail, " %d ", in.i_instrucao.imediato);
-        fprintf(detail, "\n");
+// case TB:
+//     if(detail != NULL){
+//         fprintf(detail, "\t\tb ");
+//         fprintf(detail, " %d ", in.i_instrucao.imediato);
+//         fprintf(detail, "\n");
+//     }
+//     break;
+    
+case TBEQ://ou TB
+    if(in.i_instrucao.rs == 0 && in.i_instrucao.rt == 0){
+        if(detail != NULL){
+            fprintf(detail, "\t\tb ");
+            fprintf(detail, " %d ", in.i_instrucao.imediato);
+            fprintf(detail, "\n");
+        }
+    }
+    else{
+        if(detail != NULL){
+            fprintf(detail, "\t\tbeq ");
+            reg(in.i_instrucao.rs);
+            reg(in.i_instrucao.rt);
+            fprintf(detail, " %d ", in.i_instrucao.imediato);
+            fprintf(detail, "\n");
+        }
     }
     break;
-    
-    // case TBEQ:
-    //     if(detail != NULL)
-    //         fprintf(detail, "beq");
-    //     break;
 case TBEQL:
     if(detail != NULL){
         fprintf(detail, "\t\tbeql ");

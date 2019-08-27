@@ -8,10 +8,15 @@ Inst decodificacao(unsigned char palavra[])
 {
 	Inst in;
 	unsigned int instrucao = palavra[0] << 24;
+	printf("\ninst1 %d", instrucao);
 	instrucao += (palavra[1] << 16);
+	printf("\ninst2 %d", instrucao);
 	instrucao += (palavra[2] << 8);
+	printf("\ninst3 %d", instrucao);
 	instrucao += palavra[3];
+	printf("\ninst4 %d", instrucao);
 	unsigned int tipo = instrucao >> 26 & MASCARA;
+	printf("\n tipo %d", tipo);
 	switch (tipo)
 	{
 
@@ -67,7 +72,7 @@ Inst decodificacao(unsigned char palavra[])
 		in.opcode = instrucao >> 26 & MASCARA;
 		in.i_instrucao.rs = instrucao >> 21 & MASCARA;
 		in.i_instrucao.rt = instrucao >> 16 & MASCARA;
-		in.i_instrucao.imediato = instrucao & MASCARA;
+		in.i_instrucao.imediato = instrucao & 63;
 		printf("DEFAULT opcode: %d rs: %d rt: %d imediato: %d\n", in.opcode, in.i_instrucao.rs, in.i_instrucao.rt, in.i_instrucao.imediato);
 		return in;
 
