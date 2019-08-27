@@ -63,11 +63,14 @@ void executarPipeline()
 		fprintf(detail, "\nInstruções:\n \tEmitidas: %d\n \tEfetivadas: %d\n", emitidas, efetivadas);
 		fprintf(detail, "\n\nRegistradores:\n");
 		printarBancoRegistradores(detail);
+		fclose(detail);
 	}
 
 	fprintf(prog, "\n\nCiclos:\n");
 	fprintf(prog, "\t%d cilcos\n", clock);
 	fprintf(prog, "\nInstruções:\n \tEmitidas: ver o que colocar\n \tEfetivadas: ver o que colocar");
+
+	
 }
 
 int main(int argc, char *argv[])
