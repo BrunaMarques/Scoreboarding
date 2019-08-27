@@ -318,13 +318,12 @@ case REGIMM:
         break;
     }
 break;
-// case TJ:
-//     if(detail != NULL){
-//         fprintf(detail, "\t\tj ");
-//         reg(in.j_instrucao.addr);
-//         fprintf(detail, "\n");
-//     }
-//     break;
+case TJ:
+    if(detail != NULL){
+        fprintf(detail, "\t\tj ");
+        fprintf(detail, "%d\n", in.j_instrucao.addr);
+    }
+    break;
 case TADDI:
     if(detail != NULL){
         fprintf(detail, "\t\taddi");

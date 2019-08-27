@@ -8,15 +8,10 @@ Inst decodificacao(unsigned char palavra[])
 {
 	Inst in;
 	unsigned int instrucao = palavra[0] << 24;
-	printf("\ninst1 %d", instrucao);
 	instrucao += (palavra[1] << 16);
-	printf("\ninst2 %d", instrucao);
 	instrucao += (palavra[2] << 8);
-	printf("\ninst3 %d", instrucao);
 	instrucao += palavra[3];
-	printf("\ninst4 %d", instrucao);
 	unsigned int tipo = instrucao >> 26 & MASCARA;
-	printf("\n tipo %d", tipo);
 	switch (tipo)
 	{
 
@@ -28,7 +23,7 @@ Inst decodificacao(unsigned char palavra[])
 		in.s_instrucao.rd = instrucao >> 11 & MASCARA;
 		in.s_instrucao.shamt = instrucao >> 6 & MASCARA;
 		in.s_instrucao.func = instrucao & 63;
-		printf("ESPECIAL opcode: %d rs: %d rt: %d rd: %d funct: %d\n", in.opcode, in.s_instrucao.rs, in.s_instrucao.rt, in.s_instrucao.rd, in.s_instrucao.func);
+		//printf("ESPECIAL opcode: %d rs: %d rt: %d rd: %d funct: %d\n", in.opcode, in.s_instrucao.rs, in.s_instrucao.rt, in.s_instrucao.rd, in.s_instrucao.func);
 
 		return in;
 
@@ -42,7 +37,7 @@ Inst decodificacao(unsigned char palavra[])
 		in.s2_instrucao.rd = instrucao >> 11 & MASCARA;
 		in.s2_instrucao.shamt = instrucao >> 6 & MASCARA;
 		in.s2_instrucao.func = instrucao & 63;
-		printf("ESPECIAL 2 opcode: %d rs: %d rt: %d rd: %d funct: %d\n", in.opcode, in.s2_instrucao.rs, in.s2_instrucao.rt, in.s2_instrucao.rd, in.s2_instrucao.func);
+		//printf("ESPECIAL 2 opcode: %d rs: %d rt: %d rd: %d funct: %d\n", in.opcode, in.s2_instrucao.rs, in.s2_instrucao.rt, in.s2_instrucao.rd, in.s2_instrucao.func);
 		return in;
 
 		break;
@@ -73,7 +68,7 @@ Inst decodificacao(unsigned char palavra[])
 		in.i_instrucao.rs = instrucao >> 21 & MASCARA;
 		in.i_instrucao.rt = instrucao >> 16 & MASCARA;
 		in.i_instrucao.imediato = instrucao & 63;
-		printf("DEFAULT opcode: %d rs: %d rt: %d imediato: %d\n", in.opcode, in.i_instrucao.rs, in.i_instrucao.rt, in.i_instrucao.imediato);
+		//printf("DEFAULT opcode: %d rs: %d rt: %d imediato: %d\n", in.opcode, in.i_instrucao.rs, in.i_instrucao.rt, in.i_instrucao.imediato);
 		return in;
 
 		break;

@@ -4,7 +4,6 @@ void inicializaMemoria()
 {
 	//procurar tamanho da memoria e por em n //
 	memoria = (char *)malloc(sizeof(char) * TAMANHO_MEMORIA);
-	printf("\nMemoria inicializada\n");
 }
 
 /*void escritaMemoria()
@@ -52,10 +51,8 @@ void escritaMemoria()
 void buscaMemoria(unsigned char palavra[])
 {
 	int contByte = 0;
-	printf("\nPC = %d ", PC);
 	for (contByte = 0; contByte < 4; contByte++)
 	{
 		palavra[contByte] = memoria[PC + contByte];
-		printf("\nteste --> %X\n", palavra[contByte]);
 	}
 }

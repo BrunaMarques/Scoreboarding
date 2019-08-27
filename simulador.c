@@ -16,6 +16,8 @@ void inicializar()
 
 void executarPipeline()
 {
+	tomado = 0;
+	naotomado = 0;
 	efetivadas = 0;
 	emitidas = 0;
 	saltou = 0;
@@ -39,25 +41,11 @@ void executarPipeline()
 		buscaPipeline();
 
 		clock++;
-		i++;
-
-		printf("FILA nro elementos: %d\n", f->nroElem);
-		exibirFila();
-		printf("LISTA EMISSAO: %d\n", listaVazia(listaIssue));
-		printf("LISTA READ: %d\n", listaVazia(listaRead));
-		printf("LISTA EXECUÇÃO: %d\n", listaVazia(listaExecucao));
-		printf("LISTA ESCRITA: %d\n", listaVazia(listaWriteB));
-		printf("BARRAMENTO BI: %d\n", verifica_bar(barBI));
-		printf("BARRAMENTO IR: %d\n", verifica_bar(barIR));
-		printf("BARRAMENTO RE: %d\n", verifica_bar(barRE));
-		printf("BARRAMENTO EW: %d\n", verifica_bar(barEW));
-		//getchar();
-		//filaVazia() == false || listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) != 1 || listaVazia(listaWriteB) != 1 || verifica_bar(barBI) != 0 || verifica_bar(barIR) != 0 || verifica_bar(barRE) != 0 || verifica_bar(barEW) != 0);
-
 	} while (listaVazia(listaExecucao) != 1 || listaVazia(listaIssue) != 1 || listaVazia(listaRead) != 1 || listaVazia(listaWriteB) != 1 || verifica_bar(barBI) == 1 || verifica_bar(barIR) == 1 || verifica_bar(barRE) == 1 || verifica_bar(barEW) == 1);
 
 	if (detail != NULL)
 	{
+		fprintf(detail, "\n\nPrevisão:\n\tTotal de saltos: %d\n\tAcertos: %d\n\tErros: %d\n\t\n", saltou, tomado, naotomado);
 		fprintf(detail, "\n\nCiclos totais:\n");
 		fprintf(detail, "\t%d cilcos\n", clock - 1);
 		fprintf(detail, "\nInstruções:\n \tEmitidas: %d\n \tEfetivadas: %d\n", emitidas, efetivadas);
@@ -66,9 +54,10 @@ void executarPipeline()
 		fclose(detail);
 	}
 
+	fprintf(prog, "\n\nPrevisão:\n\tTotal de saltos: %d\n\tAcertos: %d\n\tErros: %d\n\t\n", saltou, tomado, naotomado);
 	fprintf(prog, "\n\nCiclos:\n");
-	fprintf(prog, "\t%d cilcos\n", clock);
-	fprintf(prog, "\nInstruções:\n \tEmitidas: ver o que colocar\n \tEfetivadas: ver o que colocar");
+	fprintf(prog, "\t%d cilcos\n", clock-1);
+	fprintf(prog, "\nInstruções:\n \tEmitidas: %d\n \tEfetivadas: %d\n", emitidas, efetivadas);
 
 	
 }
@@ -76,7 +65,6 @@ void executarPipeline()
 int main(int argc, char *argv[])
 {
 	FLAGDETAIL = 0;
-	printf("\n%d\n", argc);
 	for (int i = 0; i < argc; i++)
 	{
 		if (argc == 1)
@@ -88,7 +76,8 @@ int main(int argc, char *argv[])
 		else if (strcmp(argv[i], "-h") == 0)
 		{
 			printf("\n\n---------------------------------------------HELP----------------------------------------------------\n");
-			printf("\n\t-h: help\n \n\t-i: arquivo assembly contendo programa a ser simulado: \n\t\tDeve-se utilizar \"-i nomedoarquivo.asm\"\n \n\t-o: arquivo de saída contendo programa convertido para binário\n \n\t--detail: execução detalhada");
+			printf("\n\t-h: help\n \n\t-i: arquivo assembly contendo programa a ser simulado: \n\t\tDeve-se utilizar \"-i nomedoarquivo.asm\"\n \n\t-o: arquivo de saída contendo programa convertido para binário(hexadecimal):\n\t\tDeve-se utilizar \"./mips32sim -i nomedoarquivo.asm -o nomedoarquivo.txt\"\n \n\t--detail: execução detalhada");
+			printf("\n\n\tA saida normal é gerada automaticamente no arquivo \"prog.out\"\n\t");
 			printf("\n\n-----------------------------------------------------------------------------------------------------\n");
 		}
 		else if (argc == 2)
@@ -114,7 +103,6 @@ int main(int argc, char *argv[])
 		{
 			strcpy(entrada, argv[2]);
 			strcpy(saida, "saida.txt");
-			printf("\n\tArquivo de saída gerado com o nome genérico saida.txt!\n");
 			executarPipeline();
 		}
 
@@ -128,7 +116,6 @@ int main(int argc, char *argv[])
 		else if (strcmp(argv[i], "--detail") == 0)
 		{
 			//detail = fopen("saidaDetalhada.txt", "w");
-			printf("\n\nPORQUEEEE\n\n %d", FLAGDETAIL);
 			FLAGDETAIL = 1;
 			executarPipeline();
 		}
